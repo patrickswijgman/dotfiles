@@ -1,1 +1,19 @@
 theme = "fleet_dark"
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+w = 'move_next_sub_word_start'
+b = 'move_prev_sub_word_start'
+e = 'move_next_sub_word_end'
+
+[keys.select]
+w = 'extend_next_sub_word_start'
+b = 'extend_prev_sub_word_start'
+e = 'extend_next_sub_word_end'
