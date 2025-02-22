@@ -7,12 +7,59 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme": "JetBrains New Dark",
   "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "theme": {
-    "mode": "system",
-    "light": "One Dark",
-    "dark": "One Dark"
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "use_system_clipboard": "always",
+    "toggle_relative_line_numbers": true
+  },
+  "double_click_in_multibuffer": "open",
+  "languages": {
+    "Markdown": {
+      "format_on_save": "on"
+    },
+    "Python": {
+      "language_servers": ["!pylsp", "..."] // Use pyright instead of pylsp
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    }
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "preferences": {
+            "importModuleSpecifier": "non-relative",
+            "importModuleSpecifierEnding": "js"
+          }
+        }
+      }
+    }
+    // "dart": {
+    //   "binary": {
+    //     "path": "/home/patrick/flutter/bin/dart",
+    //     "arguments": ["language-server", "--protocol=lsp"]
+    //   }
+    // }
   }
+  // "features": {
+  //   "edit_prediction_provider": "zed"
+  // },
+  // "assistant": {
+  //   "default_model": {
+  //     "provider": "copilot_chat",
+  //     "model": "claude-3-5-sonnet"
+  //   },
+  //   "version": "2"
+  // }
 }
