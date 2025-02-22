@@ -1,0 +1,12 @@
+[language-server.taplo.config]
+root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
+
+[[language]]
+name = "toml"
+auto-format = true
+
+[[language]]
+name = "nix"
+language-servers = ["nixd"]
+formatter = { command = "nixfmt" }
+auto-format = true
