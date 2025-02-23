@@ -28,19 +28,20 @@ vim.opt.autoindent = true
 -- vim.opt.spelllang = "en_us"
 -- vim.opt.spelloptions = "camel"
 
+-- Set <leader> key to space.
+vim.g.mapleader = " "
+
+-- Disable netrw in favor if a file exporer plugin.
+vim.g.loaded_netrw = true
+vim.g.loaded_netrwPlugin = true
+
 -- Set colorscheme.
 require("catppuccin")
 vim.cmd.colorscheme("catppuccin")
 
--- Set up treesitter.
+-- Set up syntax highlighting with Treesitter.
 require("nvim-treesitter.configs").setup({
-	-- Automatically install missing parsers when entering buffer
-	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
 	auto_install = false,
-
-	---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-	-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
 	highlight = {
 		enable = true,
 		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -52,7 +53,8 @@ require("nvim-treesitter.configs").setup({
 })
 
 -- Set up session management.
-require("auto-session")
+require("auto-session").setup({})
+-- For a better experience with the plugin overall using this config for sessionoptions is recommended:
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Set up auto completion.
@@ -66,16 +68,13 @@ cmp.setup({
 			vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
 		end,
 	},
-	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
-	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-b>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<c-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<c-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		["<c-y>"] = cmp.mapping.confirm({ select = true }),
+		["<c-space>"] = cmp.mapping.complete(),
+		["<c-d>"] = cmp.mapping.scroll_docs(-4),
+		["<c-u>"] = cmp.mapping.scroll_docs(4),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
@@ -103,16 +102,24 @@ cmp.setup.cmdline(":", {
 	matching = { disallow_symbol_nonprefix_matching = false },
 })
 
--- Set up lspconfig.
-
-local capabilities = cmp_lsp.default_capabilities()
-
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- Set up language servers.
 -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local lspconfig = require("lspconfig")
+local capabilities = cmp_lsp.default_capabilities()
+
+local on_attach = function(client)
+	-- Disable semantic tokens (if the language has them) in favor of Treesitter.
+	client.server_capabilities.semanticTokensProvider = nil
+end
+
+lspconfig["nixd"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
 
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 	settings = {
 		Lua = {
 			runtime = {
@@ -131,8 +138,20 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
--- Set up formatter.
+lspconfig["ts_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		init_options = {
+			preferences = {
+				importModuleSpecifierPreference = "non-relative",
+				importModuleSpecifierEnding = "js",
+			},
+		},
+	},
+})
 
+-- Set up formatter.
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -141,9 +160,16 @@ require("conform").setup({
 		typescript = { "prettierd" },
 		javascriptreact = { "prettierd" },
 		typescriptreact = { "prettierd" },
+		html = { "prettierd" },
+		css = { "prettierd" },
+		json = { "prettierd" },
+		yaml = { "prettierd" },
+		markdown = { "prettierd" },
+		["*"] = { "codespell" },
+		["_"] = { "trim_whitespace" },
 	},
 	format_on_save = {
-		timeout_ms = 1000,
+		timeout_ms = 2000,
 		lsp_format = "fallback",
 	},
 })
