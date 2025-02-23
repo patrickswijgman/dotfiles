@@ -39,7 +39,7 @@ vim.g.loaded_netrwPlugin = true
 require("catppuccin")
 vim.cmd.colorscheme("catppuccin")
 
--- Set up syntax highlighting with Treesitter.
+-- Setup syntax highlighting with Treesitter.
 require("nvim-treesitter.configs").setup({
 	auto_install = false,
 	highlight = {
@@ -52,12 +52,12 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
--- Set up session management.
+-- Setup session management.
 require("auto-session").setup({})
 -- For a better experience with the plugin overall using this config for sessionoptions is recommended:
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
--- Set up auto completion.
+-- Setup auto completion.
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 
@@ -102,7 +102,7 @@ cmp.setup.cmdline(":", {
 	matching = { disallow_symbol_nonprefix_matching = false },
 })
 
--- Set up language servers.
+-- Setup language servers.
 -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local lspconfig = require("lspconfig")
 local capabilities = cmp_lsp.default_capabilities()
@@ -151,7 +151,12 @@ lspconfig["ts_ls"].setup({
 	},
 })
 
--- Set up formatter.
+lspconfig["eslint"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- Setup formatter.
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
@@ -173,3 +178,13 @@ require("conform").setup({
 		lsp_format = "fallback",
 	},
 })
+
+-- Setup picker.
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Telescope help tags" })
+
+-- Setup file explorer.
+require("neo-tree").setup({})
