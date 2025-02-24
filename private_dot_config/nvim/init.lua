@@ -1,7 +1,8 @@
 require("config.options")
 require("config.keymaps")
+require("config.autocmds")
 
-require("plugins.rose-pine")
+require("plugins.catppuccin")
 require("plugins.auto-session")
 require("plugins.treesitter")
 require("plugins.lsp")
