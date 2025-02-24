@@ -163,6 +163,10 @@ lspconfig.eslint.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.taplo.setup({
+	capabilities = capabilities,
+})
+
 -- Setup formatter.
 require("conform").setup({
 	formatters_by_ft = {
@@ -177,6 +181,7 @@ require("conform").setup({
 		markdown = { "prettierd" },
 		lua = { "stylua" },
 		nix = { "nixfmt" },
+		toml = { "taplo" },
 		_ = { "trim_whitespace" },
 	},
 	format_on_save = {
