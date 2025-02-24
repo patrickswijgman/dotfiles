@@ -24,20 +24,20 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 
--- vim.opt.spell = true
--- vim.opt.spelllang = "en_us"
--- vim.opt.spelloptions = "camel"
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
+vim.opt.spelloptions = "camel"
 
 -- Set <leader> key to space.
 vim.g.mapleader = " "
 
--- Disable netrw in favor if a file exporer plugin.
+-- Disable netrw in favor of a file explorer plugin.
 vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
 
 -- Set colorscheme.
-require("catppuccin")
-vim.cmd.colorscheme("catppuccin")
+require("rose-pine")
+vim.cmd.colorscheme("rose-pine-moon")
 
 -- Setup syntax highlighting with Treesitter.
 require("nvim-treesitter.configs").setup({
@@ -59,13 +59,12 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 
 -- Setup auto completion.
 local cmp = require("cmp")
-local cmp_lsp = require("cmp_nvim_lsp")
 
 cmp.setup({
 	snippet = {
-		-- REQUIRED - you must specify a snippet engine
+		-- REQUIRED - you must specify a snippet engine.
 		expand = function(args)
-			vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+			vim.snippet.expand(args.body) -- For native Neovim snippets (Neovim v0.10+).
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -105,21 +104,27 @@ cmp.setup.cmdline(":", {
 -- Setup language servers.
 -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local lspconfig = require("lspconfig")
-local capabilities = cmp_lsp.default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local on_attach = function(client)
-	-- Disable semantic tokens (if the language has them) in favor of Treesitter.
-	client.server_capabilities.semanticTokensProvider = nil
-end
-
-lspconfig["nixd"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { buffer = bufnr, desc = "LSP go to definition" })
+		vim.keymap.set("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<cr>", { buffer = bufnr, desc = "LSP go to type definition" })
+		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { buffer = bufnr, desc = "LSP go to references" })
+		vim.keymap.set("n", "gh", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { buffer = bufnr, desc = "LSP function signature" })
+		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", { buffer = bufnr, desc = "LSP show diagnostic" })
+		vim.keymap.set("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<cr>", { buffer = bufnr, desc = "LSP rename" })
+		vim.keymap.set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", { buffer = bufnr, desc = "LSP code action" })
+	end,
 })
 
-lspconfig["lua_ls"].setup({
+lspconfig.nixd.setup({
 	capabilities = capabilities,
-	on_attach = on_attach,
+})
+
+lspconfig.lua_ls.setup({
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			runtime = {
@@ -138,9 +143,12 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
-lspconfig["ts_ls"].setup({
+lspconfig.ts_ls.setup({
 	capabilities = capabilities,
-	on_attach = on_attach,
+	on_attach = function(client)
+		-- Disable semantic tokens in favor of Treesitter.
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
 	settings = {
 		init_options = {
 			preferences = {
@@ -151,16 +159,13 @@ lspconfig["ts_ls"].setup({
 	},
 })
 
-lspconfig["eslint"].setup({
+lspconfig.eslint.setup({
 	capabilities = capabilities,
-	on_attach = on_attach,
 })
 
 -- Setup formatter.
 require("conform").setup({
 	formatters_by_ft = {
-		lua = { "stylua" },
-		nix = { "nixfmt" },
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
 		javascriptreact = { "prettierd" },
@@ -170,8 +175,9 @@ require("conform").setup({
 		json = { "prettierd" },
 		yaml = { "prettierd" },
 		markdown = { "prettierd" },
-		["*"] = { "codespell" },
-		["_"] = { "trim_whitespace" },
+		lua = { "stylua" },
+		nix = { "nixfmt" },
+		_ = { "trim_whitespace" },
 	},
 	format_on_save = {
 		timeout_ms = 2000,
@@ -179,12 +185,35 @@ require("conform").setup({
 	},
 })
 
--- Setup picker.
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Telescope help tags" })
+-- Setup file picker.
+local telescope = require("telescope")
+local telescope_actions = require("telescope.actions")
+local telescope_builtin = require("telescope.builtin")
+
+telescope.setup({
+	defaults = {
+		mappings = {
+			i = {
+				-- Close Telescope when pressing escape instead of going to normal mode.
+				["<esc>"] = telescope_actions.close,
+			},
+		},
+		-- Make it possible to grep in hidden files.
+		vimgrep_arguments = { "rg", "--vimgrep", "--hidden", "--glob", "!**/.git/*" },
+	},
+	pickers = {
+		find_files = {
+			-- Include hidden files when searching for a file.
+			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+		},
+	},
+})
+
+vim.keymap.set("n", "<leader>f", telescope_builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>g", telescope_builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>b", telescope_builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>h", telescope_builtin.help_tags, { desc = "Telescope help tags" })
 
 -- Setup file explorer.
 require("neo-tree").setup({})
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree<cr>", { desc = "Neo-tree open" })
