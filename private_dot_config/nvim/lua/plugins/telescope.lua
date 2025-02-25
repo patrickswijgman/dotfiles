@@ -8,7 +8,7 @@ telescope.setup({
 			i = {
 				-- Close Telescope when pressing escape instead of going to normal mode.
 				["<esc>"] = actions.close,
-
+				-- Cycle through history, not included by default.
 				["<c-down>"] = actions.cycle_history_next,
 				["<c-up>"] = actions.cycle_history_prev,
 			},
