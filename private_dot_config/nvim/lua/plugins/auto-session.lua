@@ -3,7 +3,4 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 
 require("auto-session").setup({
 	use_git_branch = true,
-	session_lens = {
-		load_on_setup = false, -- Initialize on startup (requires Telescope)
-	},
 })

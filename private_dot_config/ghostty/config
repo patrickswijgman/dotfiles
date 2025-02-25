@@ -1,3 +1,4 @@
 theme = Wombat
 window-width = 999
 window-height = 999
+mouse-scroll-multiplier = 0.25
