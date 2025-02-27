@@ -26,10 +26,3 @@ vim.opt.autoindent = true
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 vim.opt.spelloptions = "camel"
-
--- Set <leader> key to space.
-vim.g.mapleader = " "
-
--- Disable netrw in favor of a file explorer plugin.
-vim.g.loaded_netrw = true
-vim.g.loaded_netrwPlugin = true
