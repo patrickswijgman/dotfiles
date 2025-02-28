@@ -1,3 +1,5 @@
+require("nvim-surround").setup({})
+
 require("spider").setup({
 	skipInsignificantPunctuation = true,
 	consistentOperatorPending = false, -- See "Consistent Operator-pending Mode" in the README.
