@@ -2,7 +2,7 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 
--- Require colorscheme as the first plugin because of highlight groups.
+-- Require colorscheme first because of highlight groups.
 require("plugins.colorscheme")
 
 require("plugins.bookmarks")
