@@ -26,8 +26,9 @@ require("catppuccin").setup({
 
 	default_integrations = true,
 	integrations = {
-		copilot_vim = true,
 		nvim_surround = true,
+		neotest = true,
+		which_key = true,
 		-- For more plugins integrations see https://github.com/catppuccin/nvim#integrations
 	},
 })

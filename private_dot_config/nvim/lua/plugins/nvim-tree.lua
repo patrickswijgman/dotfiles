@@ -8,6 +8,7 @@ require("nvim-tree").setup({
 		width = {},
 	},
 	update_focused_file = {
+		-- Follow the current file.
 		enable = true,
 	},
 })

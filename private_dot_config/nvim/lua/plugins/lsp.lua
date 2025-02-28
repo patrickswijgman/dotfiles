@@ -2,16 +2,16 @@
 
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 local lsp_group = vim.api.nvim_create_augroup("LSP", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
-
-		vim.keymap.set("n", "gh", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { buffer = bufnr, desc = "LSP show function signature" })
-		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", { buffer = bufnr, desc = "LSP show diagnostic" })
-		vim.keymap.set("n", "cd", "<cmd>lua vim.lsp.buf.rename()<cr>", { buffer = bufnr, desc = "LSP rename" })
-		vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", { buffer = bufnr, desc = "LSP code action" })
+		vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "LSP show function signature" })
+		vim.keymap.set("n", "gl", vim.diagnostic.open_float, { buffer = bufnr, desc = "LSP show diagnostic" })
+		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP rename" })
+		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP code action" })
 	end,
 	group = lsp_group,
 	desc = "LSP on attach",
@@ -65,15 +65,6 @@ lspconfig.taplo.setup({
 
 lspconfig.tailwindcss.setup({
 	capabilities = capabilities,
-})
-
-require("lsp_signature").setup({
-	hint_enable = true,
-	hint_prefix = {
-		above = "↙ ", -- when the hint is on the line above the current line
-		current = "← ", -- when the hint is on the same line
-		below = "↖ ", -- when the hint is on the line below the current line
-	},
 })
 
 require("lsp_lines").setup({})
