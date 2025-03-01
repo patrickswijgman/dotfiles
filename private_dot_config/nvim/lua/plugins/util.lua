@@ -3,10 +3,7 @@ require("colorizer").setup({
 	user_default_options = {
 		css = true,
 		css_fn = true,
-		tailwind = "both", -- Determine with both normal and LSP.
-		tailwind_opts = {
-			update_names = true, -- When using tailwind = 'both', update tailwind names from LSP results. See tailwind section.
-		},
+		tailwind = "lsp",
 		mode = "virtualtext",
 		virtualtext = "■",
 		virtualtext_inline = "after",
@@ -14,7 +11,17 @@ require("colorizer").setup({
 	},
 })
 
-require("which-key").setup({})
+require("which-key").setup({
+	preset = "helix",
+	spec = {
+		{ "<leader>gy", desc = "Copy git repository link" },
+	},
+	plugins = {
+		spelling = {
+			enabled = false, -- Use Telescope for spelling suggestions.
+		},
+	},
+})
 
 require("zen-mode").setup({
 	window = {

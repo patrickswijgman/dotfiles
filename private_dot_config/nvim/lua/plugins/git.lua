@@ -13,4 +13,4 @@ require("git-conflict").setup({})
 
 require("gitsigns").setup({})
 
-vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", { desc = "Git blame" })
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame<cr>", { desc = "Git blame" })

@@ -10,7 +10,7 @@ vim.keymap.set("n", "<a-n>", "<cmd>new<cr>", { desc = "Buffer prev" })
 vim.keymap.set("n", "<a-h>", "<cmd>bprev<cr>", { desc = "Buffer prev" })
 vim.keymap.set("n", "<a-h>", "<cmd>bprev<cr>", { desc = "Buffer prev" })
 vim.keymap.set("n", "<a-l>", "<cmd>bnext<cr>", { desc = "Buffer next" })
-vim.keymap.set("n", "<a-q>", "<cmd>bprev<cr><cmd>bdelete #<cr>", { desc = "Buffer close" })
+vim.keymap.set("n", "<a-q>", "<cmd>buffer #<cr><cmd>bdelete #<cr>", { desc = "Buffer close" })
 vim.keymap.set("n", "<a-a>", "<cmd>buffer #<cr>", { desc = "Buffer alternate" })
 
 -- Windows.
@@ -32,3 +32,7 @@ vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Tab next" })
 
 -- Misc.
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
+
+-- Disabled.
+vim.keymap.set("n", "q", "<nop>")
+vim.keymap.set("n", "Q", "<nop>")

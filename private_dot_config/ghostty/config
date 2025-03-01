@@ -4,8 +4,8 @@ window-height = 999
 mouse-scroll-multiplier = 0.25
 
 # Tabs.
-keybind = ctrl+alt+h=previous_tab
-keybind = ctrl+alt+l=next_tab
+keybind = alt+shift+h=previous_tab
+keybind = alt+shift+l=next_tab
 
 # Splits.
 keybind = ctrl+shift+h=goto_split:left

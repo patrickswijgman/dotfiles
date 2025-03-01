@@ -7,5 +7,6 @@ neotest.setup({
 })
 
 vim.keymap.set("n", "<leader>tr", neotest.run.run, { desc = "Neotest run nearest test" })
+vim.keymap.set("n", "<leader>tw", neotest.watch.watch, { desc = "Neotest watch nearest test" })
 vim.keymap.set("n", "<leader>ts", neotest.summary.open, { desc = "Neotest open summary" })
 vim.keymap.set("n", "<leader>to", neotest.output_panel.open, { desc = "Neotest open output" })

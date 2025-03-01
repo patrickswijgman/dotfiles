@@ -1,4 +1,4 @@
-local group = vim.api.nvim_create_augroup("Config", { clear = true })
+local group = vim.api.nvim_create_augroup("UserConfig", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "checkhealth", "qf" },

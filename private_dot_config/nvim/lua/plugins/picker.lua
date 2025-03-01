@@ -14,7 +14,6 @@ telescope.setup({
 				["<tab>"] = layout.toggle_preview,
 			},
 		},
-		-- Make it possible to grep in hidden files.
 		vimgrep_arguments = {
 			"rg",
 			"--vimgrep",
@@ -26,7 +25,6 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			-- Make it possible to pick a hidden file.
 			find_command = {
 				"rg",
 				"--files",

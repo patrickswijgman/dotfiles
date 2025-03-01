@@ -1,21 +1,5 @@
--- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-local lsp_group = vim.api.nvim_create_augroup("LSP", { clear = true })
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local bufnr = args.buf
-		vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "LSP show function signature" })
-		vim.keymap.set("n", "gl", vim.diagnostic.open_float, { buffer = bufnr, desc = "LSP show diagnostic" })
-		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP rename" })
-		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP code action" })
-	end,
-	group = lsp_group,
-	desc = "LSP on attach",
-})
 
 lspconfig.nixd.setup({
 	capabilities = capabilities,
@@ -67,9 +51,25 @@ lspconfig.tailwindcss.setup({
 	capabilities = capabilities,
 })
 
+local lsp_group = vim.api.nvim_create_augroup("UserConfigLsp", { clear = true })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local bufnr = args.buf
+		vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "LSP show function signature" })
+		vim.keymap.set("n", "gl", vim.diagnostic.open_float, { buffer = bufnr, desc = "LSP show diagnostic" })
+		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP rename" })
+		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP code action" })
+	end,
+	group = lsp_group,
+	desc = "LSP on attach",
+})
+
 require("lsp_lines").setup({})
 
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
 	virtual_text = false,
 })
+
+require("fidget").setup({})
