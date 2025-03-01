@@ -1,2 +1,3 @@
-[diff]
-exclude = ["scripts"]
+[hooks.apply.post]
+command = "dconf"
+args    = ["load", "/", "<", "~/.config/gnome/settings.ini"]
