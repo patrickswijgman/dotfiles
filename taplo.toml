@@ -1,3 +1,5 @@
+include = ["*.toml", "*.toml.tmpl"]
+
 [formatting]
 align_entries = true
 column_width  = 999

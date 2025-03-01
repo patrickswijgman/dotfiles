@@ -1,6 +1,7 @@
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require("config.filetypes")
 
 -- Require colorscheme first because of highlight groups.
 require("plugins.colorscheme")
