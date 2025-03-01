@@ -26,9 +26,10 @@ require("catppuccin").setup({
 
 	default_integrations = true,
 	integrations = {
-		nvim_surround = true,
 		neotest = true,
+		nvim_surround = true,
 		which_key = true,
+		leap = true,
 		-- For more plugins integrations see https://github.com/catppuccin/nvim#integrations
 	},
 })

@@ -2,3 +2,13 @@ theme = Wombat
 window-width = 999
 window-height = 999
 mouse-scroll-multiplier = 0.25
+
+# Tabs.
+keybind = ctrl+alt+h=previous_tab
+keybind = ctrl+alt+l=next_tab
+
+# Splits.
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right

@@ -50,3 +50,5 @@ vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Telescope LSP refere
 vim.keymap.set("n", "go", builtin.lsp_document_symbols, { desc = "Telescope LSP document symbols" })
 vim.keymap.set("n", "gt", builtin.lsp_workspace_symbols, { desc = "Telescope LSP workspace symbols" })
 vim.keymap.set("n", "ge", builtin.diagnostics, { desc = "Telescope LSP diagnostics" })
+
+vim.keymap.set("n", "z=", builtin.spell_suggest, { desc = "Telescope spell suggest" })
