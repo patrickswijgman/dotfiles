@@ -4,11 +4,28 @@ vim.g.loaded_netrwPlugin = true
 
 require("nvim-tree").setup({
 	view = {
-		-- A table indicates that the view should be dynamically sized based on the longest line.
-		width = {},
+		width = {}, -- A table indicates that the view should be dynamically sized based on the longest line.
+	},
+	renderer = {
+		special_files = {}, -- This will not highlight e.g. README.md.
+		icons = {
+			git_placement = "signcolumn",
+			modified_placement = "signcolumn",
+			hidden_placement = "signcolumn",
+			diagnostics_placement = "signcolumn",
+			bookmarks_placement = "signcolumn",
+		},
 	},
 	update_focused_file = {
-		-- Follow the current file.
+		enable = true, -- Follow the current file.
+	},
+	git = {
+		enable = true,
+	},
+	diagnostics = {
+		enable = true,
+	},
+	modified = {
 		enable = true,
 	},
 })
