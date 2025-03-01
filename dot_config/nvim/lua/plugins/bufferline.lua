@@ -3,5 +3,6 @@ require("bufferline").setup({
 		offsets = {
 			{ filetype = "NvimTree" },
 		},
+		show_close_icon = false, -- Use keymap instead.
 	},
 })

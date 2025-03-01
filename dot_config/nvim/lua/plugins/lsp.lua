@@ -43,11 +43,15 @@ lspconfig.eslint.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.tailwindcss.setup({
+	capabilities = capabilities,
+})
+
 lspconfig.taplo.setup({
 	capabilities = capabilities,
 })
 
-lspconfig.tailwindcss.setup({
+lspconfig.yamlls.setup({
 	capabilities = capabilities,
 })
 
