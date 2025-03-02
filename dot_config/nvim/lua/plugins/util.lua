@@ -21,6 +21,9 @@ require("which-key").setup({
 			enabled = false, -- Use Telescope for spelling suggestions.
 		},
 	},
+	icons = {
+		mappings = false,
+	},
 	show_help = false,
 })
 

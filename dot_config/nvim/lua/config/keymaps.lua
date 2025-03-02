@@ -2,39 +2,35 @@
 vim.g.mapleader = " "
 
 -- Clipboard.
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipbard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
 
--- Buffers.
--- vim.keymap.set("n", "<a-n>", "<cmd>new<cr>", { desc = "Buffer new" })
--- vim.keymap.set("n", "<a-h>", "<cmd>bprev<cr>", { desc = "Buffer prev" })
--- vim.keymap.set("n", "<a-l>", "<cmd>bnext<cr>", { desc = "Buffer next" })
--- vim.keymap.set("n", "<a-q>", "<cmd>bprev<cr><cmd>bdelete #<cr>", { desc = "Buffer close" })
--- vim.keymap.set("n", "<a-a>", "<cmd>buffer #<cr>", { desc = "Buffer alternate" })
-
 -- Tabs.
-vim.keymap.set("n", "<a-n>", "<cmd>tabnew<cr>", { desc = "Tab new" })
-vim.keymap.set("n", "<a-h>", "<cmd>tabprev<cr>", { desc = "Tab prev" })
-vim.keymap.set("n", "<a-l>", "<cmd>tabnext<cr>", { desc = "Tab next" })
-vim.keymap.set("n", "<a-q>", "<cmd>tabclose<cr>", { desc = "Tab close" })
-vim.keymap.set("n", "<a-a>", "g<tab>", { desc = "Tab alternate" })
+vim.keymap.set("n", "<a-n>", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<a-h>", "<cmd>tabprev<cr>", { desc = "Previous tab" })
+vim.keymap.set("n", "<a-l>", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "<a-q>", "<cmd>tabclose<cr>", { desc = "Close tab" })
+vim.keymap.set("n", "<a-a>", "g<tab>", { desc = "Switch tab" })
 
 -- Windows.
-vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Window left" })
-vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Window down" })
-vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Window up" })
-vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Window right" })
-vim.keymap.set("n", "<c-q>", "<c-w>q", { desc = "Window close" })
+vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Go to the left window" })
+vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Go to the down window" })
+vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to the up window" })
+vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to the right window" })
+vim.keymap.set("n", "<c-q>", "<c-w>q", { desc = "Quit a window" })
 
 -- Pairs.
-vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { desc = "Quickfix list prev" })
-vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Quickfix list next" })
-vim.keymap.set("n", "[l", "<cmd>lprev<cr>", { desc = "Location list prev" })
-vim.keymap.set("n", "]l", "<cmd>lnext<cr>", { desc = "Location list next" })
-vim.keymap.set("n", "[b", "<cmd>bprev<cr>", { desc = "Buffer prev" })
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Buffer next" })
-vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Tab prev" })
-vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Tab next" })
+vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { desc = "Previous quickfix list item" })
+vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix list item" })
+
+vim.keymap.set("n", "[l", "<cmd>lprev<cr>", { desc = "Previous location list item" })
+vim.keymap.set("n", "]l", "<cmd>lnext<cr>", { desc = "Next location list item" })
+
+vim.keymap.set("n", "[b", "<cmd>bprev<cr>", { desc = "Previous buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
+vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Previous tab" })
+vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
 
 -- Misc.
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
