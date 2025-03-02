@@ -13,6 +13,6 @@ vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<c
 
 -- Leap does not require setup, only keybindings.
 -- Only set in normal mode to not clash with nvim-surround.
-vim.keymap.set("n", "s", "<Plug>(leap-forward)")
-vim.keymap.set("n", "S", "<Plug>(leap-backward)")
-vim.keymap.set("n", "gs", "<Plug>(leap-from-window)")
+vim.keymap.set("n", "s", "<Plug>(leap-forward)", { desc = "Leap forward" })
+vim.keymap.set("n", "S", "<Plug>(leap-backward)", { desc = "Leap backward" })
+vim.keymap.set("n", "gs", "<Plug>(leap-from-window)", { desc = "Leap from window" })

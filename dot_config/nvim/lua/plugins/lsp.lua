@@ -28,7 +28,7 @@ lspconfig.lua_ls.setup({
 lspconfig.ts_ls.setup({
 	capabilities = capabilities,
 	on_attach = function(client)
-		-- Disable semantic tokens in favor of Treesitter.
+		-- Disable semantic tokens to prevent race conditions with Treesitter.
 		client.server_capabilities.semanticTokensProvider = nil
 	end,
 	init_options = {
@@ -44,6 +44,14 @@ lspconfig.eslint.setup({
 })
 
 lspconfig.tailwindcss.setup({
+	capabilities = capabilities,
+})
+
+lspconfig.gopls.setup({
+	capabilities = capabilities,
+})
+
+lspconfig.golangci_lint_ls.setup({
 	capabilities = capabilities,
 })
 
@@ -71,9 +79,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("lsp_lines").setup({})
 
--- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
-	virtual_text = false,
+	virtual_text = false, -- Disable virtual_text since it's redundant due to lsp_lines.
+	virtual_lines = {
+		highlight_whole_line = false,
+	},
 })
 
 require("fidget").setup({})

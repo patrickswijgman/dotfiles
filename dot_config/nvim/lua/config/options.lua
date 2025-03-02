@@ -7,6 +7,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = ""
+vim.opt.wrap = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 8
