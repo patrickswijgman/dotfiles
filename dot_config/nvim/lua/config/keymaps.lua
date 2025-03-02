@@ -5,13 +5,19 @@ vim.g.mapleader = " "
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
 
--- Buffer.
-vim.keymap.set("n", "<a-n>", "<cmd>new<cr>", { desc = "Buffer prev" })
-vim.keymap.set("n", "<a-h>", "<cmd>bprev<cr>", { desc = "Buffer prev" })
-vim.keymap.set("n", "<a-h>", "<cmd>bprev<cr>", { desc = "Buffer prev" })
-vim.keymap.set("n", "<a-l>", "<cmd>bnext<cr>", { desc = "Buffer next" })
-vim.keymap.set("n", "<a-q>", "<cmd>buffer #<cr><cmd>bdelete #<cr>", { desc = "Buffer close" })
-vim.keymap.set("n", "<a-a>", "<cmd>buffer #<cr>", { desc = "Buffer alternate" })
+-- Buffers.
+-- vim.keymap.set("n", "<a-n>", "<cmd>new<cr>", { desc = "Buffer new" })
+-- vim.keymap.set("n", "<a-h>", "<cmd>bprev<cr>", { desc = "Buffer prev" })
+-- vim.keymap.set("n", "<a-l>", "<cmd>bnext<cr>", { desc = "Buffer next" })
+-- vim.keymap.set("n", "<a-q>", "<cmd>bprev<cr><cmd>bdelete #<cr>", { desc = "Buffer close" })
+-- vim.keymap.set("n", "<a-a>", "<cmd>buffer #<cr>", { desc = "Buffer alternate" })
+
+-- Tabs.
+vim.keymap.set("n", "<a-n>", "<cmd>tabnew<cr>", { desc = "Tab new" })
+vim.keymap.set("n", "<a-h>", "<cmd>tabprev<cr>", { desc = "Tab prev" })
+vim.keymap.set("n", "<a-l>", "<cmd>tabnext<cr>", { desc = "Tab next" })
+vim.keymap.set("n", "<a-q>", "<cmd>tabclose<cr>", { desc = "Tab close" })
+vim.keymap.set("n", "<a-a>", "g<tab>", { desc = "Tab alternate" })
 
 -- Windows.
 vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Window left" })
