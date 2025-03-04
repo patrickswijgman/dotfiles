@@ -55,6 +55,19 @@ lspconfig.golangci_lint_ls.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.pyright.setup({
+	capabilities = capabilities,
+	settings = {
+		python = {
+			pythonPath = ".venv/bin/python",
+		},
+	},
+})
+
+lspconfig.ruff.setup({
+	capabilities = capabilities,
+})
+
 lspconfig.taplo.setup({
 	capabilities = capabilities,
 })

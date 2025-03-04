@@ -16,9 +16,6 @@ require("nvim-tree").setup({
 			bookmarks_placement = "signcolumn",
 		},
 	},
-	update_focused_file = {
-		enable = true, -- Follow the current file.
-	},
 	git = {
 		enable = true,
 	},
@@ -30,4 +27,4 @@ require("nvim-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<cr>", { desc = "Nvim-tree open" })
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFile<cr>", { desc = "Nvim-tree open (focus current file)" })
