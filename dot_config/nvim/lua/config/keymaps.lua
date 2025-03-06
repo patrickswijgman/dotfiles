@@ -19,18 +19,10 @@ vim.keymap.set("n", "<a-l>", "<cmd>tabnext<cr>", { desc = "Next tab" })
 vim.keymap.set("n", "<a-q>", "<cmd>tabclose<cr>", { desc = "Close tab" })
 vim.keymap.set("n", "<a-a>", "g<tab>", { desc = "Switch tab" })
 
--- Pairs.
+-- Quickfix.
 vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { desc = "Previous quickfix list item" })
 vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix list item" })
-
-vim.keymap.set("n", "[l", "<cmd>lprev<cr>", { desc = "Previous location list item" })
-vim.keymap.set("n", "]l", "<cmd>lnext<cr>", { desc = "Next location list item" })
-
-vim.keymap.set("n", "[b", "<cmd>bprev<cr>", { desc = "Previous buffer" })
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
-vim.keymap.set("n", "[t", "<cmd>tabprev<cr>", { desc = "Previous tab" })
-vim.keymap.set("n", "]t", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>q", "<cmd>botright cwindow<cr>", { desc = "Open quickfix list (if there are items)" })
 
 -- Misc.
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })

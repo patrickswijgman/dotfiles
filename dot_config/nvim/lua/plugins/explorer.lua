@@ -27,4 +27,5 @@ require("nvim-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFile<cr>", { desc = "Nvim-tree open (focus current file)" })
+vim.keymap.set("n", "<leader>ee", "<cmd>NvimTreeFocus<cr>", { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFile<cr>", { desc = "Open file explorer to current file" })
