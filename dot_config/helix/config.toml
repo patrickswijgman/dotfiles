@@ -21,14 +21,6 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
-'<' = '>'
-
 [editor.gutters]
 layout = ["diagnostics", "spacer", "line-numbers", "spacer", "diff", "spacer"]
 
@@ -42,9 +34,9 @@ cursor-line = "warning"
 # https://docs.helix-editor.com/commands.html
 
 [keys.normal]
-"w"   = 'move_next_sub_word_start'
-"b"   = 'move_prev_sub_word_start'
-"e"   = 'move_next_sub_word_end'
+"w"   = "move_next_sub_word_start"
+"b"   = "move_prev_sub_word_start"
+"e"   = "move_next_sub_word_end"
 "q"   = "no_op"
 "Q"   = "no_op"
 "x"   = "select_line_below"
@@ -66,8 +58,8 @@ cursor-line = "warning"
 "esc" = ["collapse_selection", "normal_mode"]
 
 [keys.select]
-"w"   = 'extend_next_sub_word_start'
-"b"   = 'extend_prev_sub_word_start'
-"e"   = 'extend_next_sub_word_end'
+"w"   = "extend_next_sub_word_start"
+"b"   = "extend_prev_sub_word_start"
+"e"   = "extend_next_sub_word_end"
 "C-d" = ["search_selection", "extend_search_next"]
 "esc" = ["collapse_selection", "keep_primary_selection", "normal_mode"]
