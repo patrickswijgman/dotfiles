@@ -34,25 +34,21 @@ cursor-line = "warning"
 # https://docs.helix-editor.com/commands.html
 
 [keys.normal]
-"w"   = "move_next_sub_word_start"
-"b"   = "move_prev_sub_word_start"
-"e"   = "move_next_sub_word_end"
-"q"   = "no_op"
-"Q"   = "no_op"
-"x"   = "select_line_below"
-"X"   = "select_line_above"
-"Y"   = ["extend_to_line_bounds", "yank"]
-"D"   = ["extend_to_line_bounds", "delete_selection"]
-"C-h" = "jump_view_left"
-"C-j" = "jump_view_down"
-"C-k" = "jump_view_up"
-"C-l" = "jump_view_right"
-"C-r" = "redo"
-"A-h" = "goto_previous_buffer"
-"A-l" = "goto_next_buffer"
-"A-q" = ":buffer-close"
-"A-a" = "goto_last_accessed_file"
-"esc" = ["collapse_selection", "keep_primary_selection"]
+"w"     = "move_next_sub_word_start"
+"b"     = "move_prev_sub_word_start"
+"e"     = "move_next_sub_word_end"
+"q"     = "no_op"
+"Q"     = "no_op"
+"x"     = "select_line_below"
+"X"     = "select_line_above"
+"Y"     = ["extend_to_line_bounds", "yank"]
+"D"     = ["extend_to_line_bounds", "delete_selection"]
+"C-r"   = "redo"
+"C-h"   = "goto_previous_buffer"
+"C-l"   = "goto_next_buffer"
+"C-q"   = ":buffer-close"
+"C-tab" = "goto_last_accessed_file"
+"esc"   = ["collapse_selection", "keep_primary_selection"]
 
 [keys.insert]
 "esc" = ["collapse_selection", "normal_mode"]
