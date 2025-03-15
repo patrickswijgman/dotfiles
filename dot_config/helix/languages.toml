@@ -4,8 +4,8 @@
 [language-server.scls]
 command = "simple-completion-language-server"
 
-[language-server.typos]
-command = "typos-lsp"
+[language-server.vale]
+command = "vale-ls"
 
 [language-server.typescript-language-server.config]
 preferences.importModuleSpecifierPreference = "non-relative"
@@ -16,37 +16,37 @@ root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
 
 [[language]]
 name             = "typescript"
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "scls", "typos"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "scls", "vale"]
 formatter        = { command = "prettierd", args = [".ts"] }
 auto-format      = true
 
 [[language]]
 name             = "tsx"
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "scls", "typos"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "scls", "vale"]
 formatter        = { command = "prettierd", args = [".tsx"] }
 auto-format      = true
 
 [[language]]
 name             = "python"
-language-servers = ["basedpyright", "ruff", "scls", "typos"]
+language-servers = ["basedpyright", "ruff", "scls", "vale"]
 formatter        = { command = "ruff", args = ["format", "-"] }
 auto-format      = true
 
 [[language]]
 name             = "go"
-language-servers = ["gopls", "golangci-lint-lsp", "scls", "typos"]
+language-servers = ["gopls", "golangci-lint-lsp", "scls", "vale"]
 formatter        = { command = "gofmt" }
 auto-format      = true
 
 [[language]]
 name             = "rust"
-language-servers = ["rust-analyzer", "scls", "typos"]
+language-servers = ["rust-analyzer", "scls", "vale"]
 formatter        = { command = "rustfmt", args = ["--emit=stdout"] }
 auto-format      = true
 
 [[language]]
 name             = "nix"
-language-servers = ["nixd", "typos"]
+language-servers = ["nixd", "vale"]
 formatter        = { command = "nixfmt" }
 auto-format      = true
 

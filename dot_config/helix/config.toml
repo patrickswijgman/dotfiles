@@ -2,6 +2,7 @@ theme = "catppuccin_mocha"
 
 [editor]
 scrolloff               = 8
+scroll-lines            = 1
 shell                   = ["fish", "-c"]
 cursorline              = true
 bufferline              = "multiple"
