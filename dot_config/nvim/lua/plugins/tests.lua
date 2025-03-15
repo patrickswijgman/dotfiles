@@ -16,6 +16,6 @@ end
 
 vim.keymap.set("n", "<leader>tr", run_test, { desc = "Run test" })
 vim.keymap.set("n", "<leader>tf", run_tests_in_file, { desc = "Run tests in current file" })
-vim.keymap.set("n", "<leader>tw", neotest.watch.watch, { desc = "Watch nearest test" })
+vim.keymap.set("n", "<leader>tw", neotest.watch.toggle, { desc = "Run test and watch (toggle)" })
 vim.keymap.set("n", "<leader>ts", neotest.summary.open, { desc = "Open test summary" })
 vim.keymap.set("n", "<leader>to", neotest.output_panel.open, { desc = "Open test output" })

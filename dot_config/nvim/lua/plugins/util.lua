@@ -29,7 +29,7 @@ require("which-key").setup({
 
 require("zen-mode").setup({
 	window = {
-		width = 120,
+		width = 1, -- 100% width.
 	},
 })
 

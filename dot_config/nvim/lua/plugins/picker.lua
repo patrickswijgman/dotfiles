@@ -37,9 +37,8 @@ telescope.setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find file" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find content (grep)" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffer" })
+vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find file" })
+vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Find content (grep)" })
 
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to LSP definitions" })
 vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Go to LSP type definitions" })

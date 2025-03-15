@@ -4,7 +4,7 @@ require("neogit").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogit open" })
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open git" })
 
 require("gitlinker").setup({
 	mappings = "<leader>gy",

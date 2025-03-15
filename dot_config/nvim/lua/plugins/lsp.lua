@@ -67,6 +67,10 @@ lspconfig.golangci_lint_ls.setup({
 	capabilities = capabilities,
 })
 
+lspconfig.rust_analyzer.setup({
+	capabilities = capabilities,
+})
+
 lspconfig.basedpyright.setup({
 	capabilities = capabilities,
 	settings = {
@@ -113,4 +117,6 @@ vim.diagnostic.config({
 
 require("fidget").setup({})
 
-require("tsc").setup({})
+require("tsc").setup({
+	use_diagnostics = true,
+})

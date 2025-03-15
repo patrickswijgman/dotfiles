@@ -7,9 +7,6 @@ vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system c
 
 -- Buffers.
 vim.keymap.set("n", "<c-n>", "<cmd>new<cr>", { desc = "New buffer" })
-vim.keymap.set("n", "<c-h>", "<cmd>bprev<cr>", { desc = "Previous buffer" })
-vim.keymap.set("n", "<c-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-vim.keymap.set("n", "<c-q>", "<cmd>bprev<cr><cmd>bdelete #<cr>", { desc = "Close buffer" })
 vim.keymap.set("n", "<c-a>", "<c-^>", { desc = "Switch buffer" })
 
 -- Tabs.
@@ -22,7 +19,7 @@ vim.keymap.set("n", "<a-a>", "g<tab>", { desc = "Switch tab" })
 -- Quickfix.
 vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { desc = "Previous quickfix list item" })
 vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix list item" })
-vim.keymap.set("n", "<leader>q", "<cmd>botright cwindow<cr>", { desc = "Open quickfix list (if there are items)" })
+vim.keymap.set("n", "<leader>q", "<cmd>copen<cr>", { desc = "Open quickfix list" })
 
 -- Misc.
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
