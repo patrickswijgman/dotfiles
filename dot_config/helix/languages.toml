@@ -4,8 +4,15 @@
 [language-server.scls]
 command = "simple-completion-language-server"
 
+[language-server.typos]
+command = "typos-lsp"
+
 [language-server.taplo.config]
 root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
+
+[language-server.typescript-language-server.config]
+preferences.importModuleSpecifierPreference = "non-relative"
+preferences.importModuleSpecifierEnding     = "js"
 
 [[language]]
 name        = "toml"
@@ -14,18 +21,54 @@ auto-format = true
 
 [[language]]
 name             = "nix"
-language-servers = ["nixd"]
+language-servers = ["nixd", "typos"]
 formatter        = { command = "nixfmt" }
 auto-format      = true
 
 [[language]]
 name             = "typescript"
-language-servers = ["typescript-language-server", "scls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "scls", "typos"]
 formatter        = { command = "prettierd", args = [".ts"] }
 auto-format      = true
 
 [[language]]
 name             = "tsx"
-language-servers = ["typescript-language-server", "scls"]
-formatter        = { command = "prettierd", args = [".ts"] }
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "scls", "typos"]
+formatter        = { command = "prettierd", args = [".tsx"] }
+auto-format      = true
+
+[[language]]
+name        = "html"
+formatter   = { command = 'prettierd', args = [".html"] }
+auto-format = true
+
+[[language]]
+name        = "css"
+formatter   = { command = 'prettierd', args = [".css"] }
+auto-format = true
+
+[[language]]
+name        = "json"
+formatter   = { command = 'prettierd', args = [".json"] }
+auto-format = true
+
+[[language]]
+name        = "jsonc"
+formatter   = { command = 'prettierd', args = [".jsonc"] }
+auto-format = true
+
+[[language]]
+name        = "markdown"
+formatter   = { command = 'prettierd', args = [".md"] }
+auto-format = true
+
+[[language]]
+name        = "yaml"
+formatter   = { command = "prettierd", args = [".yaml"] }
+auto-format = true
+
+[[language]]
+name             = "python"
+language-servers = ["basedpyright", "ruff", "scls", "typos"]
+formatter        = { command = "ruff", args = ["format", "-"] }
 auto-format      = true
