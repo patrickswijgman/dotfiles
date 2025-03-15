@@ -1,5 +1,8 @@
 set fish_greeting
 
+alias n nnn
+alias lg lazygit
+
 abbr gc 'git checkout'
 abbr ga 'git add .'
 abbr gs 'git status'
@@ -21,4 +24,4 @@ abbr grss 'git restore --staged'
 abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
-abbr ns 'nix-shell --run fish -p';
+abbr ns 'nix-shell --run fish';
