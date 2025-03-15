@@ -7,23 +7,12 @@ command = "simple-completion-language-server"
 [language-server.typos]
 command = "typos-lsp"
 
-[language-server.taplo.config]
-root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
-
 [language-server.typescript-language-server.config]
 preferences.importModuleSpecifierPreference = "non-relative"
 preferences.importModuleSpecifierEnding     = "js"
 
-[[language]]
-name        = "toml"
-file-types  = ["toml", { glob = "poetry.lock" }, { glob = "Cargo.lock" }, { glob = "*.toml.tmpl" }]
-auto-format = true
-
-[[language]]
-name             = "nix"
-language-servers = ["nixd", "typos"]
-formatter        = { command = "nixfmt" }
-auto-format      = true
+[language-server.taplo.config]
+root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
 
 [[language]]
 name             = "typescript"
@@ -35,6 +24,30 @@ auto-format      = true
 name             = "tsx"
 language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "scls", "typos"]
 formatter        = { command = "prettierd", args = [".tsx"] }
+auto-format      = true
+
+[[language]]
+name             = "python"
+language-servers = ["basedpyright", "ruff", "scls", "typos"]
+formatter        = { command = "ruff", args = ["format", "-"] }
+auto-format      = true
+
+[[language]]
+name             = "go"
+language-servers = ["gopls", "golangci-lint-lsp", "scls", "typos"]
+formatter        = { command = "gofmt" }
+auto-format      = true
+
+[[language]]
+name             = "rust"
+language-servers = ["rust-analyzer", "scls", "typos"]
+formatter        = { command = "rustfmt", args = ["--emit=stdout"] }
+auto-format      = true
+
+[[language]]
+name             = "nix"
+language-servers = ["nixd", "typos"]
+formatter        = { command = "nixfmt" }
 auto-format      = true
 
 [[language]]
@@ -68,7 +81,6 @@ formatter   = { command = "prettierd", args = [".yaml"] }
 auto-format = true
 
 [[language]]
-name             = "python"
-language-servers = ["basedpyright", "ruff", "scls", "typos"]
-formatter        = { command = "ruff", args = ["format", "-"] }
-auto-format      = true
+name        = "toml"
+file-types  = ["toml", { glob = "poetry.lock" }, { glob = "Cargo.lock" }, { glob = "*.toml.tmpl" }]
+auto-format = true
