@@ -17,7 +17,7 @@
           "type": "path",
           "style": "plain",
           "foreground": "blue",
-          "template": "  {{ .Path }} ",
+          "template": " 󰝰 {{ .Path }} ",
           "properties": {
             "style": "full"
           }
@@ -34,7 +34,7 @@
           "template": " {{ .HEAD }} ",
           "properties": {
             "fetch_status": true,
-            "branch_icon": " "
+            "branch_icon": "󰘬 "
           }
         },
         {
@@ -48,7 +48,7 @@
           "style": "plain",
           "foreground": "green",
           "foreground_templates": ["{{ if .Code }}red{{ end }}"],
-          "template": " ❯"
+          "template": " {{ if .Code }}󰅗{{ else }}󰧚{{ end }}"
         }
       ]
     },
@@ -60,19 +60,19 @@
           "type": "executiontime",
           "style": "plain",
           "foreground": "default",
-          "template": " <d> {{ .FormattedMs }}</d> "
+          "template": " <d>󰔛 {{ .FormattedMs }}</d> "
         },
         {
           "type": "node",
           "style": "plain",
           "foreground": "green",
-          "template": "  {{ .Full }} "
+          "template": " 󰎙 {{ .Full }} "
         },
         {
           "type": "python",
           "style": "plain",
           "foreground": "green",
-          "template": "  {{ .Full }}{{ if .Venv }} ({{ .Venv }}){{ end }} "
+          "template": " 󰌠 {{ .Full }}{{ if .Venv }} ({{ .Venv }}){{ end }} "
         },
         {
           "type": "go",
@@ -84,19 +84,19 @@
           "type": "rust",
           "style": "plain",
           "foreground": "green",
-          "template": "  {{ .Full }} "
+          "template": " 󱘗 {{ .Full }} "
         },
         {
           "type": "dart",
           "style": "plain",
           "foreground": "green",
-          "template": "  {{ .Full }} "
+          "template": "  {{ .Full }} "
         },
         {
           "type": "time",
           "style": "plain",
           "foreground": "default",
-          "template": " <d> {{ .CurrentDate | date .Format }}</d> "
+          "template": " <d>󱑎 {{ .CurrentDate | date .Format }}</d> "
         }
       ]
     }
