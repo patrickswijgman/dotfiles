@@ -1,0 +1,10 @@
+# Custom allowlist of words to ignore (case-insensitive)
+# Codebook will add words here when you select "Add to dictionary"
+words = ["usecases", "ridder"]
+
+# List of glob patterns for paths to ignore when spell checking
+ignore_paths = ["dist/**/*", "target/**/*", ".git/**/*"]
+
+# List of regex patterns to ignore when spell checking
+# Useful for domain-specific strings or patterns
+ignore_patterns = []

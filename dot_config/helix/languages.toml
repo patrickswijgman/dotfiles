@@ -1,43 +1,51 @@
 # See default configuration of all languages here:
 # https://github.com/helix-editor/helix/blob/25.01.1/languages.toml
 
+[language-server.vtsls]
+command = "vtsls"
+args    = ["--stdio"]
+
+[language-server.vtsls.config]
+typescript.preferences.importModuleSpecifier       = "non-relative"
+typescript.preferences.importModuleSpecifierEnding = "js"
+
 [language-server.scls]
 command = "simple-completion-language-server"
 
-[language-server.typescript-language-server.config]
-preferences.importModuleSpecifierPreference = "non-relative"
-preferences.importModuleSpecifierEnding     = "js"
+[language-server.codebook]
+command = "codebook-lsp"
+args    = ["serve"]
 
 [language-server.taplo.config]
 root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
 
 [[language]]
 name             = "typescript"
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "vale-ls"]
+language-servers = ["vtsls", "vscode-eslint-language-server", "codebook"]
 formatter        = { command = "prettierd", args = [".ts"] }
 auto-format      = true
 
 [[language]]
 name             = "tsx"
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "vale-ls"]
+language-servers = ["vtsls", "vscode-eslint-language-server", "tailwindcss-ls", "codebook"]
 formatter        = { command = "prettierd", args = [".tsx"] }
 auto-format      = true
 
 [[language]]
 name             = "python"
-language-servers = ["basedpyright", "ruff", "vale-ls"]
+language-servers = ["basedpyright", "ruff", "codebook"]
 formatter        = { command = "ruff", args = ["format", "-"] }
 auto-format      = true
 
 [[language]]
 name             = "go"
-language-servers = ["gopls", "golangci-lint-lsp", "vale-ls"]
+language-servers = ["gopls", "golangci-lint-lsp", "codebook"]
 formatter        = { command = "gofmt" }
 auto-format      = true
 
 [[language]]
 name             = "rust"
-language-servers = ["rust-analyzer", "vale-ls"]
+language-servers = ["rust-analyzer", "codebook"]
 formatter        = { command = "rustfmt", args = ["--emit=stdout"] }
 auto-format      = true
 
@@ -74,7 +82,7 @@ auto-format = true
 
 [[language]]
 name             = "markdown"
-language-servers = ["scls"]
+language-servers = ["scls", "codebook"]
 formatter        = { command = 'prettierd', args = [".md"] }
 auto-format      = true
 
