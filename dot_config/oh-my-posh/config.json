@@ -38,12 +38,6 @@
           }
         },
         {
-          "type": "status",
-          "style": "plain",
-          "foreground": "red",
-          "template": " [{{ .Code }}]"
-        },
-        {
           "type": "text",
           "style": "plain",
           "foreground": "green",
