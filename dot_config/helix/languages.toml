@@ -25,19 +25,19 @@ auto-format      = true
 
 [[language]]
 name             = "python"
-language-servers = ["basedpyright", "ruff", "scls", "vale-ls"]
+language-servers = ["basedpyright", "ruff", "vale-ls"]
 formatter        = { command = "ruff", args = ["format", "-"] }
 auto-format      = true
 
 [[language]]
 name             = "go"
-language-servers = ["gopls", "golangci-lint-lsp", "scls", "vale-ls"]
+language-servers = ["gopls", "golangci-lint-lsp", "vale-ls"]
 formatter        = { command = "gofmt" }
 auto-format      = true
 
 [[language]]
 name             = "rust"
-language-servers = ["rust-analyzer", "scls", "vale-ls"]
+language-servers = ["rust-analyzer", "vale-ls"]
 formatter        = { command = "rustfmt", args = ["--emit=stdout"] }
 auto-format      = true
 
@@ -68,19 +68,17 @@ formatter   = { command = 'prettierd', args = [".jsonc"] }
 auto-format = true
 
 [[language]]
+name        = "yaml"
+formatter   = { command = "prettierd", args = [".yaml"] }
+auto-format = true
+
+[[language]]
 name             = "markdown"
 language-servers = ["scls"]
 formatter        = { command = 'prettierd', args = [".md"] }
 auto-format      = true
 
 [[language]]
-name             = "yaml"
-language-servers = ["yaml-language-server", "scls"]
-formatter        = { command = "prettierd", args = [".yaml"] }
-auto-format      = true
-
-[[language]]
 name             = "toml"
-file-types       = ["toml", { glob = "poetry.lock" }, { glob = "Cargo.lock" }, { glob = "*.toml.tmpl" }]
 language-servers = ["taplo", "scls"]
 auto-format      = true
