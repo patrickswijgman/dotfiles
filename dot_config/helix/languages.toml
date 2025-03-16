@@ -13,13 +13,13 @@ root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
 
 [[language]]
 name             = "typescript"
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "scls", "vale-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "vale-ls"]
 formatter        = { command = "prettierd", args = [".ts"] }
 auto-format      = true
 
 [[language]]
 name             = "tsx"
-language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "scls", "vale-ls"]
+language-servers = ["typescript-language-server", "vscode-eslint-language-server", "tailwindcss-ls", "vale-ls"]
 formatter        = { command = "prettierd", args = [".tsx"] }
 auto-format      = true
 
@@ -43,7 +43,7 @@ auto-format      = true
 
 [[language]]
 name             = "nix"
-language-servers = ["nixd", "vale-ls"]
+language-servers = ["nixd"]
 formatter        = { command = "nixfmt" }
 auto-format      = true
 
@@ -68,16 +68,19 @@ formatter   = { command = 'prettierd', args = [".jsonc"] }
 auto-format = true
 
 [[language]]
-name        = "markdown"
-formatter   = { command = 'prettierd', args = [".md"] }
-auto-format = true
+name             = "markdown"
+language-servers = ["scls"]
+formatter        = { command = 'prettierd', args = [".md"] }
+auto-format      = true
 
 [[language]]
-name        = "yaml"
-formatter   = { command = "prettierd", args = [".yaml"] }
-auto-format = true
+name             = "yaml"
+language-servers = ["yaml-language-server", "scls"]
+formatter        = { command = "prettierd", args = [".yaml"] }
+auto-format      = true
 
 [[language]]
-name        = "toml"
-file-types  = ["toml", { glob = "poetry.lock" }, { glob = "Cargo.lock" }, { glob = "*.toml.tmpl" }]
-auto-format = true
+name             = "toml"
+file-types       = ["toml", { glob = "poetry.lock" }, { glob = "Cargo.lock" }, { glob = "*.toml.tmpl" }]
+language-servers = ["taplo", "scls"]
+auto-format      = true

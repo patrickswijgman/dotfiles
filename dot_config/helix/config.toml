@@ -10,7 +10,7 @@ color-modes             = true
 end-of-line-diagnostics = "hint"
 
 [editor.statusline]
-left   = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+left   = ["mode", "spacer", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
 center = []
 right  = ["diagnostics", "workspace-diagnostics", "spacer", "file-type", "selections", "position", "total-line-numbers"]
 
