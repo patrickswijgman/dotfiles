@@ -11,7 +11,7 @@
           "type": "nix-shell",
           "style": "plain",
           "foreground": "yellow",
-          "template": " {{ if ne .Type \"unknown\" }}(nix-{{ .Type }}){{ end }} "
+          "template": "{{ if ne .Type \"unknown\" }} 󱄅 {{ end }}"
         },
         {
           "type": "path",
