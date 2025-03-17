@@ -1,6 +1,6 @@
 set fish_greeting
 
-alias lg lazygit
+abbr lg lazygit
 
 abbr gc 'git checkout'
 abbr ga 'git add .'

@@ -16,8 +16,10 @@ command = "simple-completion-language-server"
 command = "codebook-lsp"
 args    = ["serve"]
 
-[language-server.taplo.config]
-root_dir = [".git", "*.toml"] # Make the LSP also work outside Git repositories.
+[language-server.fish-lsp]
+command     = "fish-lsp"
+args        = ["start"]
+environment = { "fish_lsp_show_client_popups" = "false" }
 
 [[language]]
 name             = "typescript"
@@ -53,6 +55,11 @@ auto-format      = true
 name             = "nix"
 language-servers = ["nixd"]
 formatter        = { command = "nixfmt" }
+auto-format      = true
+
+[[language]]
+name             = "fish"
+language-servers = ["fish-lsp"]
 auto-format      = true
 
 [[language]]
