@@ -3,3 +3,11 @@ window-width = 999
 window-height = 999
 
 keybind = ctrl+tab=unbind
+
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = alt+l=goto_split:right
+
+keybind = ctrl+shift+h=previous_tab
+keybind = ctrl+shift+l=next_tab
