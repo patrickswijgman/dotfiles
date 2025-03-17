@@ -1,13 +1,12 @@
 theme = "catppuccin_mocha"
 
 [editor]
-scrolloff               = 8
-scroll-lines            = 1
-shell                   = ["fish", "-c"]
-cursorline              = true
-bufferline              = "multiple"
-color-modes             = true
-end-of-line-diagnostics = "hint"
+scrolloff    = 8
+scroll-lines = 1
+shell        = ["fish", "-c"]
+cursorline   = true
+bufferline   = "multiple"
+color-modes  = true
 
 [editor.statusline]
 left   = ["mode", "spacer", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
@@ -29,7 +28,7 @@ layout = ["diagnostics", "spacer", "line-numbers", "spacer", "diff", "spacer"]
 enable = true
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
+cursor-line = "hint"
 
 # See a list of all available commands here:
 # https://docs.helix-editor.com/commands.html

@@ -33,7 +33,7 @@ auto-format      = true
 
 [[language]]
 name             = "python"
-language-servers = ["basedpyright", "ruff", "codebook"]
+language-servers = ["pyright", "ruff", "codebook"]
 formatter        = { command = "ruff", args = ["format", "-"] }
 auto-format      = true
 

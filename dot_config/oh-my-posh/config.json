@@ -27,7 +27,8 @@
           "style": "plain",
           "foreground": "green",
           "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}",
+            "{{ if .Working.Changed }}yellow{{ end }}",
+            "{{ if .Staging.Changed }}yellow{{ end }}",
             "{{ if gt .Ahead 0 }}yellow{{ end }}",
             "{{ if gt .Behind 0 }}red{{ end }}"
           ],
