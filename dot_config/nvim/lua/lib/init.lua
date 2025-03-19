@@ -32,14 +32,14 @@ function _G.set_keymaps(keymaps)
     local lhs = keymap[2]
     local rhs = keymap[3]
     local desc = keymap[4]
-    local opts = keymap[5]
-    vim.keymap.set(split(mode), lhs, rhs, merge({ desc = desc }, opts or {}))
+    local opts = keymap[5] or {}
+    vim.keymap.set(split(mode), lhs, rhs, merge({ desc = desc }, opts))
   end
 end
 
-function _G.set_autocmds(cmds)
-  local group = vim.api.nvim_create_augroup("Config", { clear = true })
+local group = vim.api.nvim_create_augroup("Config", { clear = true })
 
+function _G.add_autocmds(cmds)
   for _, cmd in ipairs(cmds) do
     local event = cmd[1]
     local pattern = cmd[2]
@@ -64,7 +64,7 @@ function _G.set_autocmds(cmds)
   end
 end
 
-function _G.set_filetypes(pattern)
+function _G.add_filetypes(pattern)
   vim.filetype.add({ pattern = pattern })
 end
 
@@ -73,7 +73,7 @@ function _G.add_commands(cmds)
     local name = cmd[1]
     local handler = cmd[2]
     local desc = cmd[3]
-    local opts = cmd[4]
-    vim.api.nvim_create_user_command(name, handler, merge({ desc = desc }, opts or {}))
+    local opts = cmd[4] or {}
+    vim.api.nvim_create_user_command(name, handler, merge({ desc = desc }, opts))
   end
 end

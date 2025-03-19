@@ -102,7 +102,7 @@ find.setup()
 set_keymaps({
   { "n",   "<leader>f", ":Find ",                                    "Find file", },
   { "n",   "<leader>/", ":Grep ",                                    "Find content in files", },
-  { "n",   "gd",        lsp.go_to_definition,                        "LSP go to definition", },
+  { "n",   "gd",        "<cmd>lua vim.lsp.buf.definition()<cr>",     "LSP go to definition", },
   { "n",   "gr",        function() vim.lsp.buf.references() end,     "LSP go to references", },
   { "n",   "<leader>r", function() vim.lsp.buf.rename() end,         "LSP rename", },
   { "n",   "<leader>a", function() vim.lsp.buf.code_action() end,    "LSP code action", },
@@ -121,14 +121,14 @@ set_keymaps({
   { "n",   "Q",         "<nop>",                                     "Disable macros" },
 })
 
-set_autocmds({
+add_autocmds({
   { "FileType",     "checkhealth,qf", "set nospell",                                                               "Disable spelling for certain file types" },
   { "TextYankPost", "*",              function() vim.highlight.on_yank() end,                                      "Highlight on yank" },
   { "BufWritePre",  "*",              function() vim.lsp.buf.format() end,                                         "Format on save" },
   { 'BufWritePre',  "*",              function(args) vim.fn.mkdir(vim.fn.fnamemodify(args.file, ':p:h'), 'p') end, "Create folder before creating a file" }
 })
 
-set_filetypes({
+add_filetypes({
   [".env"] = "properties",
   [".env.*"] = "properties",
   [".env.*.local"] = "properties",

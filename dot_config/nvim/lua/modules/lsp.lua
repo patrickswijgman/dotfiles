@@ -10,8 +10,4 @@ function M.setup(language_servers)
   end
 end
 
-function M.go_to_definition()
-  vim.lsp.buf.definition()
-end
-
 return M
