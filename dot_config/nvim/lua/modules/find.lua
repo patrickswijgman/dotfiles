@@ -5,7 +5,7 @@ local function find(args)
 end
 
 local function find_complete(ArgLead)
-  return vim.fn.systemlist("rg --files *" .. ArgLead .. "*")
+  return vim.fn.systemlist("fd --type=file --hidden --exclude='.git' " .. ArgLead)
 end
 
 local function grep(args)

@@ -10,4 +10,32 @@ function M.setup(language_servers)
   end
 end
 
+function M.go_to_definition()
+  vim.lsp.buf.definition()
+end
+
+function M.go_to_references()
+  vim.lsp.buf.references()
+end
+
+function M.rename()
+  vim.lsp.buf.rename()
+end
+
+function M.code_action()
+  vim.lsp.buf.code_action()
+end
+
+function M.signature_help()
+  vim.lsp.buf.signature_help()
+end
+
+function M.diagnostics()
+  vim.diagnostic.setqflist({ open = true })
+end
+
+function M.format()
+  vim.lsp.buf.format()
+end
+
 return M

@@ -26,6 +26,19 @@ function _G.set_global_options(options)
   end
 end
 
+---@class KeymapOpts
+---@field silent? boolean Silence output
+---@field remap? boolean Make the mapping recursive
+
+---@class Keymap
+---@field [1] string Mode (can be comma separated for multiple modes)
+---@field [2] string Keymap (lhs)
+---@field [3] string | fun() Handler (rhs)
+---@field [4] string Description
+---@field [5]? KeymapOpts Opts
+
+---Define keymaps from a list.
+---@param keymaps Keymap[]
 function _G.set_keymaps(keymaps)
   for _, keymap in ipairs(keymaps) do
     local mode = keymap[1]
