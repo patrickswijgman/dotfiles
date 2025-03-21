@@ -36,6 +36,11 @@ function _G.process_buf_content(bufnr, cmd)
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
 end
 
+function _G.undojoin()
+  -- undojoin may fail when joined with another undo, use pcall to ignore the error.
+  pcall(vim.cmd.undojoin)
+end
+
 function _G.set_options(options)
   for key, value in pairs(options) do
     vim.o[key] = value

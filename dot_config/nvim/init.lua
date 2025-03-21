@@ -153,34 +153,42 @@ add_autocmds({
     "Highlight on yank",
   },
   {
-    "FileType",
-    "nix",
-    function()
-      format.nixfmt()
+    "BufWritePre",
+    "*.nix",
+    function(args)
+      format.nixfmt(args.buf)
     end,
     "Format nix files",
   },
   {
-    "FileType",
-    "lua",
-    function()
-      format.stylua()
+    "BufWritePre",
+    "*.lua",
+    function(args)
+      format.stylua(args.buf)
     end,
     "Format lua files",
   },
   {
-    "FileType",
-    "typescript",
-    function()
-      format.prettierd(".ts")
+    "BufWritePre",
+    "*.fish",
+    function(args)
+      lsp.format(args.buf)
+    end,
+    "Format fish files",
+  },
+  {
+    "BufWritePre",
+    "*.ts",
+    function(args)
+      format.prettierd(args.buf, ".ts")
     end,
     "Format typescript files",
   },
   {
-    "FileType",
-    "typescriptreact",
-    function()
-      format.prettierd(".tsx")
+    "BufWritePre",
+    "*.tsx",
+    function(args)
+      format.prettierd(args.buf, ".tsx")
     end,
     "Format TSX files",
   },

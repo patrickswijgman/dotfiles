@@ -40,4 +40,8 @@ function M.show_diagnostics()
   vim.diagnostic.setqflist({ open = true })
 end
 
+function M.format(bufnr)
+  vim.lsp.buf.format({ bufnr = bufnr, async = false })
+end
+
 return M
