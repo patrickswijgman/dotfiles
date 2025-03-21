@@ -37,11 +37,7 @@ set_options({
   expandtab = true,
   autoindent = true,
 
-  completeopt = "menuone,preview",
-
-  path = ".,**",
-
-  grepprg = "rg --vimgrep --smart-case --hidden --glob='!**/.git/*'",
+  completeopt = "menu,menuone,popup",
 
   spell = true,
   spelllang = "en_us",
@@ -102,34 +98,34 @@ lsp.setup({
 find.setup()
 
 set_keymaps({
-  { "n",   "<leader>f", ":Find ",             "Find file", },
-  { "n",   "<leader>/", ":Grep ",             "Find content in files", },
-  { "n",   "<leader>b", ":buffer ",           "Find a buffer", },
-  { "n",   "gd",        lsp.go_to_definition, "LSP go to definition", },
-  { "n",   "gr",        lsp.go_to_references, "LSP go to references", },
-  { "n",   "<leader>d", lsp.diagnostics,      "LSP show diagnostics", },
-  { "n",   "<leader>r", lsp.rename,           "LSP rename", },
-  { "n",   "<leader>a", lsp.code_action,      "LSP code action", },
-  { "n,i", "<c-s>",     lsp.signature_help,   "LSP show function signature", },
-  { "n,v", "<leader>y", [["+y]],              "Yank to system clipboard" },
-  { "n,v", "<leader>p", [["+p]],              "Paste from system clipboard" },
-  { "n",   "<c-h>",     "<c-w>h",             "Go to the left window" },
-  { "n",   "<c-j>",     "<c-w>j",             "Go to the down window" },
-  { "n",   "<c-k>",     "<c-w>k",             "Go to the up window" },
-  { "n",   "<c-l>",     "<c-w>l",             "Go to the right window" },
-  { "n",   "[q",        "<cmd>cprev<cr>",     "Previous quickfix list item" },
-  { "n",   "]q",        "<cmd>cnext<cr>",     "Next quickfix list item" },
-  { "n",   "<leader>q", "<cmd>copen<cr>",     "Open quickfix list" },
-  { "n",   "<esc>",     "<cmd>nohl<cr>",      "Clear search highlight",      { remap = true } },
-  { "n",   "q",         "<nop>",              "Disable macros" },
-  { "n",   "Q",         "<nop>",              "Disable macros" },
+  { "n",   "<leader>f", ":Find ",                "Find file", },
+  { "n",   "<leader>/", ":Grep ",                "Find content in files", },
+  { "n",   "<leader>b", ":buffer ",              "Find a buffer", },
+  { "n",   "gd",        lsp.go_to_definition,    "LSP go to definition", },
+  { "n",   "gr",        lsp.go_to_references,    "LSP go to references", },
+  { "n",   "<leader>d", lsp.show_diagnostics,    "LSP show diagnostics", },
+  { "n",   "<leader>r", lsp.rename,              "LSP rename", },
+  { "n",   "<leader>a", lsp.code_action,         "LSP code action", },
+  { "n,i", "<c-s>",     lsp.show_signature_help, "LSP show function signature", },
+  { "n,v", "<leader>y", [["+y]],                 "Yank to system clipboard" },
+  { "n,v", "<leader>p", [["+p]],                 "Paste from system clipboard" },
+  { "n",   "<c-h>",     "<cmd>tabprev<cr>",      "Previous tab" },
+  { "n",   "<c-l>",     "<cmd>tabnext<cr>",      "Next tab" },
+  { "n",   "<c-n>",     "<cmd>tabnew<cr>",       "New tab" },
+  { "n",   "<c-q>",     "<cmd>tabclose<cr>",     "Close tab" },
+  { "n",   "[q",        "<cmd>cprev<cr>",        "Previous quickfix list item" },
+  { "n",   "]q",        "<cmd>cnext<cr>",        "Next quickfix list item" },
+  { "n",   "<leader>q", "<cmd>copen<cr>",        "Open quickfix list" },
+  { "n",   "<esc>",     "<cmd>nohl<cr>",         "Clear search highlight",      { remap = true } },
+  { "n",   "q",         "<nop>",                 "Disable macros" },
+  { "n",   "Q",         "<nop>",                 "Disable macros" },
 })
 
 add_autocmds({
-  { "FileType",     "checkhealth,qf", "set nospell",                          "Disable spelling for certain file types" },
-  { "TextYankPost", "*",              function() vim.highlight.on_yank() end, "Highlight on yank" },
-  { "BufWritePre",  "*",              lsp.format,                             "Format on save" },
-  { 'BufWritePre',  "*",              fs.make_dirs_from_filepath_autocmd,     "Create the missing directories before creating a file" }
+  { "FileType",     "checkhealth,qf", "set nospell",                      "Disable spelling for certain file types" },
+  { "TextYankPost", "*",              "lua vim.highlight.on_yank()",      "Highlight on yank" },
+  { "BufWritePre",  "*",              lsp.format,                         "Format on save" },
+  { "BufWritePre",  "*",              fs.make_dirs_from_filepath_autocmd, "Create the missing directories before creating a file" },
 })
 
 add_filetypes({

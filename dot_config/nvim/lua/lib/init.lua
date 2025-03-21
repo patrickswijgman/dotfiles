@@ -10,6 +10,22 @@ function _G.split(str)
   return t
 end
 
+function _G.fmt(str, ...)
+  return string.format(str, ...)
+end
+
+function _G.cmd(cmd, ...)
+  vim.cmd(fmt(cmd, ...))
+end
+
+function _G.cmd_system(cmd, ...)
+  return vim.fn.system(fmt(cmd, ...))
+end
+
+function _G.cmd_system_list(cmd, ...)
+  return vim.fn.systemlist(fmt(cmd, ...))
+end
+
 function _G.set_colorscheme(colorscheme)
   vim.cmd.colorscheme(colorscheme)
 end
@@ -26,19 +42,6 @@ function _G.set_global_options(options)
   end
 end
 
----@class KeymapOpts
----@field silent? boolean Silence output
----@field remap? boolean Make the mapping recursive
-
----@class Keymap
----@field [1] string Mode (can be comma separated for multiple modes)
----@field [2] string Keymap (lhs)
----@field [3] string | fun() Handler (rhs)
----@field [4] string Description
----@field [5]? KeymapOpts Opts
-
----Define keymaps from a list.
----@param keymaps Keymap[]
 function _G.set_keymaps(keymaps)
   for _, keymap in ipairs(keymaps) do
     local mode = keymap[1]

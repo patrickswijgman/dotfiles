@@ -1,5 +1,6 @@
 local M = {}
 
+--- Setup Treesitter.
 function M.setup()
   require("nvim-treesitter.configs").setup({
     highlight = {
