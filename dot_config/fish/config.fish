@@ -1,7 +1,5 @@
 set fish_greeting
 
-abbr lg lazygit
-
 abbr gc 'git checkout'
 abbr ga 'git add .'
 abbr gs 'git status'
@@ -24,5 +22,3 @@ abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
 abbr ns 'nix-shell --run fish'
-
-oh-my-posh init fish --config ~/.config/oh-my-posh/config.json | source
