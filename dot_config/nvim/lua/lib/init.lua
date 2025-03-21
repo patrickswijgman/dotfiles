@@ -30,6 +30,12 @@ function _G.set_colorscheme(colorscheme)
   vim.cmd.colorscheme(colorscheme)
 end
 
+function _G.process_buf_content(bufnr, cmd)
+  local input = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local output = vim.fn.systemlist(cmd, input)
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, output)
+end
+
 function _G.set_options(options)
   for key, value in pairs(options) do
     vim.o[key] = value

@@ -4,10 +4,15 @@ function M.setup(language_servers)
   local lspconfig = require("lspconfig")
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+  local function on_attach(client)
+    -- Disable semantic tokens in favor of Treesitter.
+    client.server_capabilities.semanticTokensProvider = nil
+  end
+
   for _, language_server in ipairs(language_servers) do
     local name = language_server[1]
     local opts = language_server[2] or {}
-    lspconfig[name].setup(merge({ capabilities = capabilities }, opts))
+    lspconfig[name].setup(merge({ capabilities = capabilities, on_attach = on_attach }, opts))
   end
 end
 
@@ -33,10 +38,6 @@ end
 
 function M.show_diagnostics()
   vim.diagnostic.setqflist({ open = true })
-end
-
-function M.format()
-  vim.lsp.buf.format({ async = false })
 end
 
 return M
