@@ -20,19 +20,15 @@ end
 --- Replace the text of a buffer with new text.
 function M.text_edit(bufnr, text)
   local end_line = vim.api.nvim_buf_line_count(bufnr)
+
   local edit = {
     range = {
-      ["start"] = {
-        line = 0,
-        character = 0
-      },
-      ["end"] = {
-        line = end_line,
-        character = 0
-      }
+      ["start"] = { line = 0, character = 0 },
+      ["end"] = { line = end_line, character = 0 }
     },
     newText = text
   }
+
   vim.lsp.util.apply_text_edits({ edit }, bufnr, "utf-8")
 end
 
@@ -68,7 +64,8 @@ end
 
 --- Show diagnostics.
 function M.show_diagnostics()
-  vim.diagnostic.setqflist({ open = true })
+  vim.diagnostic.setqflist()
+  open_quickfix_window()
 end
 
 return M

@@ -1,6 +1,5 @@
 require("lib")
 
-local find = require("modules.find")
 local fmt = require("modules.format")
 local fs = require("modules.fs")
 local lsp = require("modules.lsp")
@@ -40,7 +39,7 @@ set_options({
 
   completeopt = "menu,menuone,popup",
 
-  grepprg = "rg --vimgrep --fixed-strings --smart-case --hidden --glob=!**/.git/*",
+  grepprg = "rg --vimgrep --fixed-strings --smart-case --hidden --glob='!**/.git/*'",
 
   spell = true,
   spelllang = "en_us",
@@ -71,6 +70,12 @@ lsp.setup({
             library = {
               vim.env.VIMRUNTIME,
             },
+          },
+          format = {
+            enable = true,
+            defaultConfig = {
+              max_line_length = "999"
+            }
           },
         },
       },
@@ -132,8 +137,28 @@ set_keymaps({
 })
 
 add_commands({
-  { "Find", find.find, "Find file",             { nargs = 1, complete = find.find_complete, } },
-  { "Grep", find.grep, "Find content in files", { nargs = 1, } },
+  {
+    "Find",
+    function(args)
+      cmd("find", args.fargs)
+    end,
+    "Find file",
+    {
+      nargs = 1,
+      complete = fs.list_files,
+    }
+  },
+  {
+    "Grep",
+    function(args)
+      cmd("grep", args.fargs, { bang = true, mods = { silent = true } })
+      open_quickfix_window()
+    end,
+    "Find content in files",
+    {
+      nargs = 1,
+    }
+  },
 })
 
 add_autocmds({

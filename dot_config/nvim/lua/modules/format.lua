@@ -6,6 +6,7 @@ local M = {}
 --- If `cmd` is not given, the LSP's formatter (if it has one) will be used.
 function M.format(bufnr, cmd)
   undojoin()
+
   if cmd == nil then
     lsp.format(bufnr)
   else

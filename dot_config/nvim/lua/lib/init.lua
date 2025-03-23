@@ -36,20 +36,25 @@ function _G.shell_list(cmd, input)
   return split(output, "\n")
 end
 
---- Set colorscheme.
-function _G.set_colorscheme(colorscheme)
-  vim.cmd.colorscheme(colorscheme)
-end
-
---- Execute a command with the buffer's content as stdin.
+--- Execute a shell command with the buffer's content as stdin.
 function _G.process_buf_content(bufnr, cmd)
   return shell(cmd, vim.api.nvim_buf_get_lines(bufnr, 0, -1, false))
+end
+
+--- Open the quickfix list window.
+function _G.open_quickfix_window()
+  cmd("cwindow", {}, { mods = { split = "botright" } })
 end
 
 --- Do not add the next action to the undo stack.
 function _G.undojoin()
   -- undojoin may fail when joined with another undo, use pcall to ignore the error.
   pcall(vim.cmd.undojoin)
+end
+
+--- Set colorscheme.
+function _G.set_colorscheme(colorscheme)
+  vim.cmd.colorscheme(colorscheme)
 end
 
 --- Set one or more options.
