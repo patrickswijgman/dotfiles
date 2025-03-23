@@ -1,36 +1,18 @@
 local M = {}
 
-function M.setup()
-  set_options({
-    grepprg = "rg --vimgrep --fixed-strings --smart-case --hidden --glob='!**/.git/*'",
-  })
+function M.find(args)
+  cmd("find", args.fargs)
+end
 
-  add_commands({
-    {
-      "Find",
-      function(args)
-        cmd("find %s", args.fargs[1])
-      end,
-      "Find file",
-      {
-        nargs = 1,
-        complete = function(input)
-          return cmd_system_list("rg --files --hidden --glob='!**/.git/*' | rg --sort=path --smart-case %s", input ~= "" and input or ".")
-        end,
-      },
-    },
+function M.find_complete(input)
+  local files = shell_list({ "rg", "--files", "--hidden", "--glob=!**/.git/*", })
+  local matches = shell_list({ "rg", "--smart-case", input ~= "" and input or "." }, files)
+  return shell_list({ "sort" }, matches)
+end
 
-    {
-      "Grep",
-      function(args)
-        cmd("silent grep! %s | botright copen", args.fargs[1])
-      end,
-      "Find content in files",
-      {
-        nargs = 1,
-      },
-    },
-  })
+function M.grep(args)
+  cmd("grep", args.fargs, { bang = true, mods = { silent = true } })
+  cmd("cwindow", {}, { mods = { split = "botright" } })
 end
 
 return M

@@ -1,18 +1,19 @@
+local lsp = require("modules.lsp")
+
 local M = {}
 
-function M.nixfmt(bufnr)
+--- Format the buffer.
+--- If `cmd` is not given, the LSP's formatter (if it has one) will be used.
+function M.format(bufnr, cmd)
   undojoin()
-  process_buf_content(bufnr, "nixfmt")
-end
-
-function M.stylua(bufnr)
-  undojoin()
-  process_buf_content(bufnr, "stylua -")
-end
-
-function M.prettierd(bufnr, parser)
-  undojoin()
-  process_buf_content(bufnr, fmt("prettierd %s", parser))
+  if cmd == nil then
+    lsp.format(bufnr)
+  else
+    local output = process_buf_content(bufnr, cmd)
+    if output ~= nil then
+      lsp.text_edit(bufnr, output)
+    end
+  end
 end
 
 return M
