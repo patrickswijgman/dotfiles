@@ -1,6 +1,16 @@
 function fish_prompt
     set last_status $status
 
+    if test -n "$IN_NIX_SHELL"
+        set_color cyan
+        echo -n " 󱄅 $IN_NIX_SHELL"
+    end
+
+    if test -n "$VIRTUAL_ENV"
+        set_color cyan
+        echo -n " 󰌠 venv"
+    end
+
     set cwd (prompt_pwd --dir-length=0)
     set_color blue
     echo -n " 󰝰 $cwd "
