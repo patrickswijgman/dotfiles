@@ -1,11 +1,11 @@
 require("lib")
 
-local fmt = require("modules.format")
-local fs = require("modules.fs")
-local lsp = require("modules.lsp")
-local ts = require("modules.treesitter")
 local find = require("modules.find")
+local format = require("modules.format")
+local fs = require("modules.fs")
 local grep = require("modules.grep")
+local lsp = require("modules.lsp")
+local treesitter = require("modules.treesitter")
 
 set_colorscheme("catppuccin-mocha")
 
@@ -50,7 +50,7 @@ set_global_options({
   mapleader = " ",
 })
 
-ts.setup()
+treesitter.setup()
 
 lsp.setup({
   { "nixd" },
@@ -112,12 +112,12 @@ lsp.setup({
   { "yamlls" },
 })
 
-fmt.setup({
-  ["*.lua"]  = {},
-  ["*.fish"] = {},
-  ["*.nix"]  = { "nixfmt" },
-  ["*.ts"]   = { "prettierd", ".ts" },
-  ["*.tsx"]  = { "prettierd", ".tsx" },
+format.setup({
+  { "*.lua",  {} },
+  { "*.fish", {} },
+  { "*.nix",  { "nixfmt" } },
+  { "*.ts",   { "prettierd", ".ts" } },
+  { "*.tsx",  { "prettierd", ".tsx" } },
 })
 
 find.setup()

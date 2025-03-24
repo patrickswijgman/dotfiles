@@ -3,7 +3,7 @@ local lsp = require("modules.lsp")
 local M = {}
 
 --- Format the buffer. If `cmd` is an empty table, the LSP's formatter (if it has one) will be used.
-local function format(bufnr, cmd)
+local function format_buffer(bufnr, cmd)
   undojoin()
 
   if len(cmd) == 0 then
@@ -19,11 +19,13 @@ end
 
 --- Setup formatters.
 function M.setup(formatters)
-  for pattern, cmd in pairs(formatters) do
-    add_autocmds({
-      { "BufWritePre", pattern, function(args) format(args.buf, cmd) end, string.format("Format %s files", pattern) },
-    })
-  end
+  local autocmds = vim.tbl_map(function(formatter)
+    local pattern = formatter[1]
+    local command = formatter[2]
+    return { "BufWritePre", pattern, function(args) format_buffer(args.buf, command) end, fmt("Format %s files", pattern) }
+  end, formatters)
+
+  add_autocmds(autocmds)
 end
 
 return M

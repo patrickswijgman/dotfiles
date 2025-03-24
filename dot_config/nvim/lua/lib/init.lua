@@ -13,6 +13,11 @@ function _G.len(tbl)
   return vim.tbl_count(tbl)
 end
 
+--- Format a string.
+function _G.fmt(str, args)
+  return string.format(str, args)
+end
+
 --- Execute a Vim command.
 function _G.cmd(cmd, args, opts)
   vim.api.nvim_cmd(merge({ cmd = cmd, args = args }, opts or {}), {})

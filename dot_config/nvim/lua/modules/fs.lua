@@ -1,6 +1,6 @@
 local M = {}
 
---- Get a list of files filtered by the given pattern.
+--- Get a list of files, filtered by the given pattern.
 function M.list_files(pattern)
   local files = shell_list({ "rg", "--files", "--hidden", "--glob=!**/.git/*" })
   local filtered = shell_list({ "rg", pattern }, files)
