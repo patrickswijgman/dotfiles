@@ -3,17 +3,17 @@ function fish_prompt
 
     if test -n "$IN_NIX_SHELL"
         set_color cyan
-        echo -n " 󱄅 $IN_NIX_SHELL"
+        echo -n "󱄅 $IN_NIX_SHELL "
     end
 
     if test -n "$VIRTUAL_ENV"
         set_color cyan
-        echo -n " 󰌠 venv"
+        echo -n "󰌠 venv "
     end
 
     set cwd (prompt_pwd --dir-length=0)
     set_color blue
-    echo -n " 󰝰 $cwd "
+    echo -n "󰝰 $cwd "
 
     set is_inside_git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
 

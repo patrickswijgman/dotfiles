@@ -39,6 +39,10 @@ set_options({
   expandtab = true,
   autoindent = true,
 
+  path = ".,**",
+
+  wildoptions = "pum,tagfile,fuzzy",
+
   completeopt = "menu,menuone,popup",
 
   spell = true,
