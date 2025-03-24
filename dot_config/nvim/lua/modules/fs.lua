@@ -3,7 +3,7 @@ local M = {}
 --- Get a list of files, filtered by the given pattern.
 function M.list_files(pattern)
   local files = shell_list({ "rg", "--files", "--hidden", "--glob=!**/.git/*" })
-  local filtered = shell_list({ "rg", pattern }, files)
+  local filtered = shell_list({ "rg", "--fixed-strings", "--smart-case", pattern }, files)
   local sorted = shell_list({ "sort" }, filtered)
 
   return sorted

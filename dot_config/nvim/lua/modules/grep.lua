@@ -13,7 +13,7 @@ function M.setup()
   })
 
   add_commands({
-    { "Grep", grep, "Find content in files", { nargs = 1, } }
+    { "Grep", grep, "Find content in files", { nargs = 1 } }
   })
 end
 
