@@ -131,6 +131,10 @@ function _G.add_autocmds(cmds)
 end
 
 --- Add one or more filetype associations.
-function _G.add_filetypes(pattern)
-  vim.filetype.add({ pattern = pattern })
+function _G.add_filetypes(filetypes)
+  for _, ft in ipairs(filetypes) do
+    local pattern = ft[1]
+    local filetype = ft[2]
+    vim.filetype.add({ pattern = { [pattern] = filetype } })
+  end
 end

@@ -153,8 +153,8 @@ add_autocmds({
 })
 
 add_filetypes({
-  [".env"] = "properties",
-  [".env.*"] = "properties",
-  [".env.*.local"] = "properties",
-  [".*ignore"] = "gitignore",
+  { ".env",         "properties" },
+  { ".env.*",       "properties" },
+  { ".env.*.local", "properties" },
+  { ".*ignore",     "gitignore" },
 })
