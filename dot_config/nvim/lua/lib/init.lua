@@ -8,6 +8,11 @@ function _G.split(str, delimiter)
   return vim.split(str, delimiter, { plain = true, trimempty = true })
 end
 
+--- Get the length of a table.
+function _G.len(tbl)
+  return vim.tbl_count(tbl)
+end
+
 --- Execute a Vim command.
 function _G.cmd(cmd, args, opts)
   vim.api.nvim_cmd(merge({ cmd = cmd, args = args }, opts or {}), {})

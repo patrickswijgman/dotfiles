@@ -4,6 +4,8 @@ local fmt = require("modules.format")
 local fs = require("modules.fs")
 local lsp = require("modules.lsp")
 local ts = require("modules.treesitter")
+local find = require("modules.find")
+local grep = require("modules.grep")
 
 set_colorscheme("catppuccin-mocha")
 
@@ -38,8 +40,6 @@ set_options({
   autoindent = true,
 
   completeopt = "menu,menuone,popup",
-
-  grepprg = "rg --vimgrep --fixed-strings --smart-case --hidden --glob='!**/.git/*'",
 
   spell = true,
   spelllang = "en_us",
@@ -112,6 +112,17 @@ lsp.setup({
   { "yamlls" },
 })
 
+fmt.setup({
+  ["*.lua"]  = {},
+  ["*.fish"] = {},
+  ["*.nix"]  = { "nixfmt" },
+  ["*.ts"]   = { "prettierd", ".ts" },
+  ["*.tsx"]  = { "prettierd", ".tsx" },
+})
+
+find.setup()
+grep.setup()
+
 set_keymaps({
   { "n",   "<leader>f", ":Find ",                "Find file" },
   { "n",   "<leader>/", ":Grep ",                "Find content in files" },
@@ -136,40 +147,9 @@ set_keymaps({
   { "n",   "Q",         "<nop>",                 "Disable macros" },
 })
 
-add_commands({
-  {
-    "Find",
-    function(args)
-      cmd("find", args.fargs)
-    end,
-    "Find file",
-    {
-      nargs = 1,
-      complete = fs.list_files,
-    }
-  },
-  {
-    "Grep",
-    function(args)
-      cmd("grep", args.fargs, { bang = true, mods = { silent = true } })
-      open_quickfix_window()
-    end,
-    "Find content in files",
-    {
-      nargs = 1,
-    }
-  },
-})
-
 add_autocmds({
-  { "FileType",     "checkhealth,qf", "set nospell",                                                    "Disable spelling for certain file types", },
-  { "TextYankPost", "*",              function() vim.highlight.on_yank() end,                           "Highlight on yank", },
-  { "BufWritePre",  "*.lua",          function(args) fmt.format(args.buf) end,                          "Format lua files", },
-  { "BufWritePre",  "*.fish",         function(args) fmt.format(args.buf) end,                          "Format fish files", },
-  { "BufWritePre",  "*.nix",          function(args) fmt.format(args.buf, { "nixfmt" }) end,            "Format nix files", },
-  { "BufWritePre",  "*.ts",           function(args) fmt.format(args.buf, { "prettierd", ".ts" }) end,  "Format typescript files", },
-  { "BufWritePre",  "*.tsx",          function(args) fmt.format(args.buf, { "prettierd", ".tsx" }) end, "Format TSX files", },
-  { "BufWritePre",  "*",              function(args) fs.make_dirs_from_filepath(args.file) end,         "Create the missing directories before creating a file", },
+  { "FileType",    "checkhealth,qf", "set nospell",                                            "Disable spelling for certain file types", },
+  { "BufWritePre", "*",              function(args) fs.make_dirs_from_filepath(args.file) end, "Create the missing directories before creating a file", },
 })
 
 add_filetypes({
