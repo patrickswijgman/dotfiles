@@ -79,7 +79,7 @@ lsp.setup({
           },
         },
       },
-    },
+    }
   },
   { "fish_lsp" },
   {
@@ -91,7 +91,7 @@ lsp.setup({
           importModuleSpecifierEnding = "js",
         },
       },
-    },
+    }
   },
   { "eslint" },
   { "tailwindcss" },
@@ -103,7 +103,7 @@ lsp.setup({
           pythonPath = ".venv/bin/python",
         },
       },
-    },
+    }
   },
   { "ruff" },
   { "gopls" },
@@ -148,8 +148,9 @@ set_keymaps({
 })
 
 add_autocmds({
-  { "FileType",    "checkhealth,qf", "set nospell",                                            "Disable spelling for certain file types", },
-  { "BufWritePre", "*",              function(args) fs.make_dirs_from_filepath(args.file) end, "Create the missing directories before creating a file", },
+  { "FileType",     "checkhealth,qf", "set nospell",                                            "Disable spelling for certain file types" },
+  { "TextYankPost", "*",              function() vim.highlight.on_yank() end,                   "Highlight on yank" },
+  { "BufWritePre",  "*",              function(args) fs.make_dirs_from_filepath(args.file) end, "Create the missing directories before creating a file" },
 })
 
 add_filetypes({
