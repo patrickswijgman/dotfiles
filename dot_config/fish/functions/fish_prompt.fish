@@ -1,19 +1,17 @@
 function fish_prompt
-    set last_status $status
-
     if test -n "$IN_NIX_SHELL"
         set_color cyan
-        echo -n "󱄅 $IN_NIX_SHELL "
+        echo -n "<nix-shell> "
     end
 
     if test -n "$VIRTUAL_ENV"
         set_color cyan
-        echo -n "󰌠 venv "
+        echo -n "<venv> "
     end
 
     set cwd (prompt_pwd --dir-length=0)
     set_color blue
-    echo -n "󰝰 $cwd "
+    echo -n "$cwd "
 
     set is_inside_git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
 
@@ -27,16 +25,13 @@ function fish_prompt
             set_color green
         end
 
-        echo -n "󰘬 $git_branch "
-    end
+        echo -n "$git_branch "
 
-    if test $last_status != 0
-        set_color red
-        echo -n "󰅗 "
-    else
-        set_color green
-        echo -n "󰧚 "
+        if test -n "$is_dirty"
+            echo -n "[+] "
+        end
     end
 
     set_color normal
+    echo -n "-> "
 end

@@ -5,21 +5,16 @@ function fish_right_prompt
     set remain (math -m floor "$seconds % 60")
 
     set_color --dim white
-    echo -n "󰔛 "
 
     if test $seconds -ge 1
         if test $minutes -ge 1
-            echo -n -s $minutes m $remain s " "
+            echo -n -s $minutes m $remain s
         else
-            echo -n -s $seconds s " "
+            echo -n -s $seconds s
         end
     else
-        echo -n -s $milliseconds ms " "
+        echo -n -s $milliseconds ms
     end
-
-    set time (date +%T)
-    set_color --dim white
-    echo -n "󰅐 $time"
 
     set_color normal
 end
