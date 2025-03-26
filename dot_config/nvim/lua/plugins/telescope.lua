@@ -24,6 +24,7 @@ telescope.setup({
 
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find file" })
 vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Find content (grep)" })
+vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Find buffer" })
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to LSP definitions" })
 vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Go to LSP type definitions" })
 vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "Go to LSP implementations" })
