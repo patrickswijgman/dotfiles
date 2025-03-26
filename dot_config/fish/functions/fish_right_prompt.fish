@@ -1,8 +1,8 @@
 function fish_right_prompt
     set milliseconds $CMD_DURATION
     set seconds (math -s 1 "$milliseconds / 1000")
-    set minutes (math -m floor "$seconds / 60")
-    set remain (math -m floor "$seconds % 60")
+    set minutes (math -s 0 "$seconds / 60")
+    set remain (math -s 0 "$seconds % 60")
 
     set_color --dim white
 

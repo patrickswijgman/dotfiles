@@ -20,5 +20,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.fn.mkdir(vim.fn.fnamemodify(args.file, ":p:h"), "p")
 	end,
 	group = group,
-	desc = "Create the missing directories before creating a file",
+	desc = "Create missing intermediate directories before writing the file",
 })

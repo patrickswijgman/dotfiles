@@ -2,8 +2,9 @@ local cmp = require("cmp")
 
 cmp.setup({
 	snippet = {
+		-- REQUIRED - you must specify a snippet engine.
 		expand = function(args)
-			vim.snippet.expand(args.body)
+			vim.snippet.expand(args.body) -- For native Neovim snippets (Neovim v0.10+).
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -25,21 +26,4 @@ cmp.setup({
 	}, {
 		{ name = "buffer" },
 	}),
-})
-
-cmp.setup.cmdline({ "/", "?" }, {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "buffer" },
-	},
-})
-
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-	matching = { disallow_symbol_nonprefix_matching = false },
 })

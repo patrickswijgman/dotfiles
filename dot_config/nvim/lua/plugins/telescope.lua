@@ -7,6 +7,7 @@ telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
+				-- Show mappings for picker actions with <c-/>.
 				["<c-down>"] = actions.cycle_history_next,
 				["<c-up>"] = actions.cycle_history_prev,
 				["<tab>"] = layout.toggle_preview,
