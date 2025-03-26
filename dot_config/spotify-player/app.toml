@@ -1,7 +1,7 @@
 enable_notify = false
 
 [device]
-volume = 100
+volume        = 100
 normalization = true
 
 [layout]

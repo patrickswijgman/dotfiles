@@ -92,12 +92,8 @@ local group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		local bufnr = args.buf
-
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		if client == nil then
-			return
-		end
 
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP rename" })
 		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP code action" })
