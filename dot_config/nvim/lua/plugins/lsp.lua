@@ -104,7 +104,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = buffer, desc = "LSP rename" })
 		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = buffer, desc = "LSP code action" })
-		vim.keymap.set("i", "<c-s>", vim.lsp.buf.signature_help, { buffer = buffer, desc = "LSP show function signature" })
+		vim.keymap.set({ "n", "i" }, "<c-s>", vim.lsp.buf.signature_help, { buffer = buffer, desc = "LSP show function signature" })
 	end,
 	group = group,
 	desc = "LSP on attach",

@@ -8,7 +8,7 @@ function fish_right_prompt
 
     if test $seconds -ge 1
         if test $minutes -ge 1
-            echo -n -s $minutes m $remain s
+            echo -n -s $minutes m " " $remain s
         else
             echo -n -s $seconds s
         end
