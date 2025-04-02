@@ -1,11 +1,17 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+local function on_init(client)
+	-- Disable semantic tokens in favor of Treesitter.
+	client.server_capabilities.semanticTokensProvider = nil
+end
+
 lspconfig.nixd.setup({
 	capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
+	on_init = on_init,
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -26,6 +32,7 @@ lspconfig.lua_ls.setup({
 })
 
 lspconfig.ts_ls.setup({
+	on_init = on_init,
 	capabilities = capabilities,
 	init_options = {
 		preferences = {
@@ -92,20 +99,6 @@ lspconfig.taplo.setup({
 	capabilities = capabilities,
 })
 
-local group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true })
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-		local buffer = args.buf
-
-		-- Disable semantic tokens in favor of Treesitter.
-		client.server_capabilities.semanticTokensProvider = nil
-
-		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = buffer, desc = "LSP rename" })
-		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { buffer = buffer, desc = "LSP code action" })
-		vim.keymap.set({ "n", "i" }, "<c-s>", vim.lsp.buf.signature_help, { buffer = buffer, desc = "LSP show function signature" })
-	end,
-	group = group,
-	desc = "LSP on attach",
-})
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP rename" })
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP code action" })
+vim.keymap.set({ "n", "i" }, "<c-s>", vim.lsp.buf.signature_help, { desc = "LSP show function signature" })

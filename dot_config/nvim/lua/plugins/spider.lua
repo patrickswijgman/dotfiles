@@ -1,3 +1,9 @@
+require("spider").setup({
+	skipInsignificantPunctuation = false,
+	consistentOperatorPending = false,
+	subwordMovement = true,
+})
+
 -- For dot-repeat to work, you have to call the motions as Ex-commands.
 -- Dot-repeat will not work when using a function as third argument.
 vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<cr>", { desc = "Spider motion w" })

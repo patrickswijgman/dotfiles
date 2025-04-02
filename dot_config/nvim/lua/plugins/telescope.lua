@@ -14,11 +14,11 @@ telescope.setup({
 				["<tab>"] = layout.toggle_preview,
 			},
 		},
-		vimgrep_arguments = { "rg", "--vimgrep", "--hidden", "--glob=!**/.git/*" },
+		vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--hidden", "--glob=!**/.git/*" },
 	},
 	pickers = {
 		find_files = {
-			find_command = { "rg", "--files", "--hidden", "--glob=!**/.git/*" },
+			find_command = { "rg", "--files", "--smart-case", "--hidden", "--glob=!**/.git/*" },
 		},
 	},
 })

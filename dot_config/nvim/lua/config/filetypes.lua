@@ -1,8 +1,9 @@
 vim.filetype.add({
+	extension = {
+		postcss = "css",
+	},
 	pattern = {
-		[".env"] = "properties",
-		[".env.*"] = "properties",
-		[".env.*.local"] = "properties",
+		[".env*"] = "properties",
 		[".*ignore"] = "gitignore",
 	},
 })
