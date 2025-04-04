@@ -5,7 +5,7 @@ vim.o.cursorline = true
 vim.o.signcolumn = "yes"
 vim.o.colorcolumn = ""
 vim.o.scrolloff = 8
-vim.o.wrap = false
+vim.o.wrap = true
 
 vim.o.splitright = true
 vim.o.splitbelow = true

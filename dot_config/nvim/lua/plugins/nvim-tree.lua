@@ -3,13 +3,15 @@ vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
 
 require("nvim-tree").setup({
+	reload_on_bufenter = false,
 	view = {
-		-- A table indicates that the view should be dynamically sized based on the longest line.
-		width = {},
+		width = {}, -- A table indicates that the view should be dynamically sized based on the longest line.
 	},
 	renderer = {
-		-- This will not highlight e.g. README.md.
-		special_files = {},
+		special_files = {}, -- This will not highlight e.g. README.md.
+		indent_markers = {
+			enable = false,
+		},
 	},
 	git = {
 		enable = false,
@@ -19,4 +21,5 @@ require("nvim-tree").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFile<cr>", { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<cr>", { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader>E", "<cmd>NvimTreeFindFile<cr>", { desc = "Open current file in file explorer" })

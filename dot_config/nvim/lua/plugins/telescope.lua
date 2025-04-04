@@ -9,8 +9,8 @@ telescope.setup({
 			i = {
 				-- Show mappings for picker actions with <c-/>.
 				["<esc>"] = actions.close,
-				["<c-down>"] = actions.cycle_history_next,
-				["<c-up>"] = actions.cycle_history_prev,
+				["<up>"] = actions.cycle_history_prev,
+				["<down>"] = actions.cycle_history_next,
 				["<tab>"] = layout.toggle_preview,
 			},
 		},
