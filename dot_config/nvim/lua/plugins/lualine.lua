@@ -1,7 +1,7 @@
 require("lualine").setup({
 	options = {
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		section_separators = "",
+		component_separators = "",
 		disabled_filetypes = {
 			statusline = { "NvimTree", "spectre_panel" },
 		},
@@ -9,8 +9,8 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = {},
-		lualine_c = { "lsp_status", "diagnostics", { "filename", path = 1 } },
-		lualine_x = { "filetype", "progress", "location" },
+		lualine_c = { "diagnostics", { "filename", path = 1 } },
+		lualine_x = { "filetype", "location" },
 		lualine_y = {},
 		lualine_z = {},
 	},

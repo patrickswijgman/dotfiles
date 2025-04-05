@@ -37,13 +37,15 @@ lspconfig.fish_lsp.setup({
 	capabilities = capabilities,
 })
 
-lspconfig.ts_ls.setup({
+lspconfig.vtsls.setup({
 	capabilities = capabilities,
 	on_init = on_init,
 	init_options = {
-		preferences = {
-			importModuleSpecifierPreference = "non-relative",
-			importModuleSpecifierEnding = "js",
+		typescript = {
+			preferences = {
+				importModuleSpecifier = "non-relative",
+				importModuleSpecifierEnding = "js",
+			},
 		},
 	},
 })
@@ -109,6 +111,6 @@ lspconfig.taplo.setup({
 	capabilities = capabilities,
 })
 
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP rename" })
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP code action" })
-vim.keymap.set({ "n", "i" }, "<c-s>", vim.lsp.buf.signature_help, { desc = "LSP show function signature" })
+vim.diagnostic.config({
+	virtual_lines = { current_line = true },
+})
