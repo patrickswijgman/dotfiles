@@ -3,7 +3,7 @@ vim.g.loaded_netrw = true
 vim.g.loaded_netrwPlugin = true
 
 require("nvim-tree").setup({
-	reload_on_bufenter = false,
+	reload_on_bufenter = true,
 	view = {
 		width = {}, -- A table indicates that the view should be dynamically sized based on the longest line.
 	},

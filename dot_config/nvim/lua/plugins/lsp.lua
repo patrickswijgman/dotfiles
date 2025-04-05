@@ -13,8 +13,8 @@ lspconfig.nixd.setup({
 })
 
 lspconfig.lua_ls.setup({
-	on_init = on_init,
 	capabilities = capabilities,
+	on_init = on_init,
 	settings = {
 		Lua = {
 			runtime = {
@@ -38,8 +38,8 @@ lspconfig.fish_lsp.setup({
 })
 
 lspconfig.ts_ls.setup({
-	on_init = on_init,
 	capabilities = capabilities,
+	on_init = on_init,
 	init_options = {
 		preferences = {
 			importModuleSpecifierPreference = "non-relative",
@@ -49,20 +49,15 @@ lspconfig.ts_ls.setup({
 })
 
 lspconfig.eslint.setup({
-	on_attach = function(client, bufnr)
+	capabilities = capabilities,
+	on_attach = function(_, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
+			command = "EslintFixAll",
 			buffer = bufnr,
 			group = group,
-			callback = function()
-				local diagnostics = vim.diagnostic.get(bufnr, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
-				if #diagnostics > 0 then
-					vim.cmd("EslintFixAll")
-				end
-			end,
 			desc = "Fix all eslint issues on save",
 		})
 	end,
-	capabilities = capabilities,
 })
 
 lspconfig.html.setup({
