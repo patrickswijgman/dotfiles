@@ -1,6 +1,6 @@
 set fish_greeting
 
-abbr gc 'git checkout'
+abbr gc 'git switch'
 abbr ga 'git add .'
 abbr gs 'git status'
 abbr gst 'git stash'

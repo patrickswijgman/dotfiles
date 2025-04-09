@@ -1,20 +1,12 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local group = vim.api.nvim_create_augroup("UserLsp", { clear = true })
-
-local function on_init(client)
-	-- Disable semantic tokens in favor of Treesitter.
-	client.server_capabilities.semanticTokensProvider = nil
-end
-
 lspconfig.nixd.setup({
 	capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
-	on_init = on_init,
 	settings = {
 		Lua = {
 			runtime = {
@@ -39,8 +31,7 @@ lspconfig.fish_lsp.setup({
 
 lspconfig.vtsls.setup({
 	capabilities = capabilities,
-	on_init = on_init,
-	init_options = {
+	settings = {
 		typescript = {
 			preferences = {
 				importModuleSpecifier = "non-relative",
@@ -53,6 +44,8 @@ lspconfig.vtsls.setup({
 lspconfig.eslint.setup({
 	capabilities = capabilities,
 	on_attach = function(_, bufnr)
+		local group = vim.api.nvim_create_augroup("UserLspEslint", { clear = true })
+
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			command = "EslintFixAll",
 			buffer = bufnr,
@@ -113,4 +106,24 @@ lspconfig.taplo.setup({
 
 vim.diagnostic.config({
 	virtual_lines = { current_line = true },
+})
+
+local group = vim.api.nvim_create_augroup("UserLsp", { clear = true })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+		-- Auto enable LSP completion.
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+		end
+
+		-- Disable semantic tokens in favor of Treesitter.
+		if client:supports_method("textDocument/semanticTokens") then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
+	end,
+	group = group,
+	desc = "Lsp on attach",
 })

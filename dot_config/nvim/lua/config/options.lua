@@ -29,6 +29,10 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.autoindent = true
 
+vim.o.completeopt = "menuone,popup,noselect,fuzzy"
+
+vim.o.winborder = "rounded"
+
 vim.o.spell = true
 vim.o.spelllang = "en_us"
 vim.o.spelloptions = "camel"
