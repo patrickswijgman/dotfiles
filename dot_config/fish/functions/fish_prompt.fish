@@ -16,7 +16,6 @@ function fish_prompt
     set is_inside_git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
 
     if test -n "$is_inside_git_dir"
-        set git_branch (git symbolic-ref --short HEAD)
         set is_dirty (git status --porcelain)
 
         if test -n "$is_dirty"
@@ -25,7 +24,27 @@ function fish_prompt
             set_color green
         end
 
-        echo -n "$git_branch "
+        #         function __git_rebase_status
+        #     set git_dir (git rev-parse --git-dir ^/dev/null 2>/dev/null)
+        #     if test -d "$git_dir/rebase-merge"
+        #         set step (cat $git_dir/rebase-merge/msgnum 2>/dev/null)
+        #         set total (cat $git_dir/rebase-merge/end 2>/dev/null)
+        #         echo "(rebase $step/$total)"
+        #     else if test -d "$git_dir/rebase-apply"
+        #         set step (cat $git_dir/rebase-apply/next 2>/dev/null)
+        #         set total (cat $git_dir/rebase-apply/last 2>/dev/null)
+        #         echo "(rebase $step/$total)"
+        #     end
+        # end
+        #
+
+        if test -d .git/rebase-merge -o -d .git/rebase-apply
+            set commit (git rev-parse --short HEAD)
+            echo -n "rebase ($commit) "
+        else
+            set branch (git symbolic-ref --short HEAD 2>/dev/null)
+            echo -n "$branch "
+        end
 
         if test -n "$is_dirty"
             echo -n "[+] "
@@ -33,5 +52,5 @@ function fish_prompt
     end
 
     set_color normal
-    echo -n "-> "
+    echo -n "><> "
 end

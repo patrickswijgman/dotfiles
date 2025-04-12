@@ -29,10 +29,9 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.autoindent = true
 
-vim.o.completeopt = "menuone,popup,noselect,fuzzy"
-
 vim.o.winborder = "rounded"
 
-vim.o.spell = true
-vim.o.spelllang = "en_us"
-vim.o.spelloptions = "camel"
+vim.o.path = ".,**"
+vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob='!**/.git/*'"
+vim.o.completeopt = "menu,menuone,popup,noselect,fuzzy"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
