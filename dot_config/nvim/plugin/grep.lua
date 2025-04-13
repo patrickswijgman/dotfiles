@@ -1,11 +1,9 @@
-local function command(args)
-	local pattern = args.fargs[1]
-	vim.cmd("silent grep! " .. pattern)
-	vim.cmd("botright copen")
-	vim.cmd("match Visual /\\c" .. vim.pesc(pattern) .. "/")
+local function command()
+	vim.ui.input({ prompt = "Grep > " }, function(input)
+		if input and input ~= "" then
+			vim.cmd(string.format("silent grep! %s | botright copen | match Visual /\\c%s/", input, vim.pesc(input)))
+		end
+	end)
 end
 
-vim.api.nvim_create_user_command("Grep", command, {
-	nargs = 1,
-	desc = "Grep content with ripgrep",
-})
+vim.api.nvim_create_user_command("Grep", command, { desc = "Grep content" })

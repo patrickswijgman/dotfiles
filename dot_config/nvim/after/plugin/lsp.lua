@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 
 		-- Disable semantic tokens in favor of Treesitter.
-		-- client.server_capabilities.semanticTokensProvider = nil
+		client.server_capabilities.semanticTokensProvider = nil
 	end,
 	group = group,
 	desc = "LSP on attach",

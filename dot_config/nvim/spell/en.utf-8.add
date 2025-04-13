@@ -1,10 +1,14 @@
+cli
 dir
 eslint
+holodeck
 lua
 luajit
 neovim
+resize
 runtime
 voipgrid
 voys
+webphone
 workspace
-resize
+treesitter
