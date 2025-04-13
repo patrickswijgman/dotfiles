@@ -19,8 +19,7 @@ vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clip
 vim.keymap.set({ "n", "x" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "x" }, "<leader>P", [["+P]], { desc = "Paste from system clipboard" })
 
-vim.keymap.set("n", "<leader>f", ":find ", { desc = "Find file" })
-vim.keymap.set("n", "<leader>F", "<cmd>Files<cr>", { desc = "Manage files" })
+vim.keymap.set("n", "<leader>f", "<cmd>Files<cr>", { desc = "Manage files" })
 vim.keymap.set("n", "<leader>/", "<cmd>Grep<cr>", { desc = "Grep content" })
 vim.keymap.set("n", "<leader>b", ":buffer ", { desc = "Open buffer" })
 

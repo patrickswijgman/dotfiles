@@ -1,4 +1,6 @@
-return function(bufnr, cmd)
+local M = {}
+
+function M.format(bufnr, cmd)
 	if cmd then
 		local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
 		local line_count = vim.api.nvim_buf_line_count(bufnr)
@@ -24,3 +26,5 @@ return function(bufnr, cmd)
 		vim.lsp.buf.format({ async = false, bufnr = bufnr })
 	end
 end
+
+return M
