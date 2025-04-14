@@ -5,10 +5,10 @@ vim.keymap.set({ "n", "x" }, "<down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Do
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "<up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
-vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Go to left window", remap = true })
-vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Go to lower window", remap = true })
-vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to upper window", remap = true })
-vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to right window", remap = true })
+vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Go to left window" })
+vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Go to lower window" })
+vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to upper window" })
+vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to right window" })
 
 vim.keymap.set("n", "<c-up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
 vim.keymap.set("n", "<c-down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })

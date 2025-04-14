@@ -1,7 +1,7 @@
 local M = {}
 
-function M.dirname(path)
-	return vim.fn.fnamemodify(path, ":p:h")
+function M.dirname(path, relative)
+	return vim.fn.fnamemodify(path, relative and ":h" or ":p:h")
 end
 
 function M.ensure_dir(path)

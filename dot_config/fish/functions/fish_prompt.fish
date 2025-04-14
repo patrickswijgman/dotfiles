@@ -1,4 +1,6 @@
 function fish_prompt
+    echo -n " "
+
     if test -n "$IN_NIX_SHELL"
         set_color cyan
         echo -n "󱄅 $IN_NIX_SHELL "
