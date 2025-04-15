@@ -1,47 +1,47 @@
 local M = {}
 
-local _query = nil
-local _buf = 0
-local _win = 0
+local query = nil
+local buf = 0
+local win = 0
 
-function M.set_query(query)
-	_query = query
+function M.set_query(new_query)
+	query = new_query
 end
 
 function M.get_query()
-	return _query
+	return query
 end
 
 function M.reset_query()
-	_query = nil
+	query = nil
 end
 
-function M.set_buf(buf)
-	_buf = buf
+function M.set_buf(new_buf)
+	buf = new_buf
 end
 
 function M.get_buf()
-	return _buf
+	return buf
 end
 
-function M.set_win(win)
-	_win = win
+function M.set_win(new_win)
+	win = new_win
 end
 
 function M.get_win()
-	return _win
+	return win
 end
 
 function M.is_current_win()
-	return vim.api.nvim_win_is_valid(_win) and _win == vim.api.nvim_get_current_win()
+	return vim.api.nvim_win_is_valid(win) and win == vim.api.nvim_get_current_win()
 end
 
 function M.is_win_open()
-	return _win > 0
+	return win > 0
 end
 
 function M.reset_win()
-	_win = 0
+	win = 0
 end
 
 return M
