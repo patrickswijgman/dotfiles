@@ -4,9 +4,10 @@ require("config.filetypes")
 require("config.autocmds")
 require("config.lsp")
 
-require("plugins.files")
 require("plugins.grep")
 require("plugins.statusline")
+
+require("plugins.files").setup()
 
 require("plugins.format").setup({
 	lua = { "stylua", "-" },

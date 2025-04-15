@@ -3,7 +3,6 @@ local M = {}
 local _query = nil
 local _buf = 0
 local _win = 0
-local _win_prev = 0
 
 function M.set_query(query)
 	_query = query
@@ -25,31 +24,24 @@ function M.get_buf()
 	return _buf
 end
 
-function M.is_current_buffer()
-	return _buf == vim.api.nvim_get_current_buf()
-end
-
-function M.set_win(win, win_prev)
+function M.set_win(win)
 	_win = win
-	_win_prev = win_prev
 end
 
 function M.get_win()
 	return _win
 end
 
-function M.get_previous_win()
-	return _win_prev
+function M.is_current_win()
+	return vim.api.nvim_win_is_valid(_win) and _win == vim.api.nvim_get_current_win()
 end
 
-function M.is_window_open()
+function M.is_win_open()
 	return _win > 0
 end
 
-function M.reset_handles()
+function M.reset_win()
 	_win = 0
-	_win_prev = 0
-	_buf = 0
 end
 
 return M
