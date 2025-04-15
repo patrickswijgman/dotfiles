@@ -48,7 +48,7 @@ end
 function M.filter()
 	local path = vim.api.nvim_get_current_line()
 
-	vim.ui.input({ prompt = "Filter: ", completion = "file" }, function(input)
+	vim.ui.input({ prompt = "Filter: " }, function(input)
 		if input and input ~= "" then
 			state.set_query(input)
 			M.reload()
