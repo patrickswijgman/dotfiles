@@ -37,8 +37,6 @@ function M.reload()
 		footer = query and string.format("[FILTER: %s]", query) or "",
 		footer_pos = "right",
 	})
-
-	lib.utils.highlight(query)
 end
 
 function M.reveal(pattern)
@@ -105,8 +103,12 @@ function M.delete()
 end
 
 function M.close_window()
-	vim.api.nvim_win_close(state.get_win(), true)
-	state.reset_win()
+	local win = state.get_win()
+
+	if vim.api.nvim_win_is_valid(win) then
+		vim.api.nvim_win_close(win, true)
+		state.reset_win()
+	end
 end
 
 function M.open()

@@ -1,13 +1,9 @@
-local lib = require("lib")
-
 local M = {}
 
 local function command()
 	vim.ui.input({ prompt = "Grep: " }, function(input)
 		if input and input ~= "" then
-			vim.cmd(string.format("silent grep! %s", input))
-			vim.cmd("botright copen")
-			lib.utils.highlight(input)
+			vim.cmd(string.format("silent grep! %s | botright copen", input))
 		end
 	end)
 end
