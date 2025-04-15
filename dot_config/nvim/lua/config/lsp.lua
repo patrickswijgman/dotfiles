@@ -4,7 +4,7 @@ vim.lsp.enable("fish_lsp", true)
 vim.lsp.enable("vtsls", true)
 vim.lsp.enable("eslint", true)
 
-local group = vim.api.nvim_create_augroup("UserLsp", { clear = true })
+local group = vim.api.nvim_create_augroup("ConfigLsp", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)

@@ -1,54 +1,37 @@
-local fs = require("lib.fs")
+require("plugins.files.autocmds")
 
-local win = 0
-local win_prev = 0
-local buf = 0
-
-local namespace = vim.api.nvim_create_namespace("files_highlight")
-
-local query = nil
-
-local function focus(pattern)
-	if pattern and pattern ~= "" then
-		vim.fn.search(vim.fn.escape(pattern, "/"), "w")
-	end
-end
-
-local function highlight(pattern)
-	if pattern and pattern ~= "" then
-		vim.cmd(string.format("match Visual /\\c%s/", vim.fn.escape(pattern, "/")))
-	end
-end
+local lib = require("lib")
+local state = require("plugins.files.state")
 
 local function list_files(pattern)
 	local files = vim.system({ "fd", "--hidden", "--exclude=.git" }, { text = true }):wait().stdout
 
 	if pattern then
-		return vim.system({ "rg", "--smart-case", pattern }, { text = true, stdin = files }):wait().stdout
-	else
-		return files
+		files = vim.system({ "rg", "--smart-case", pattern }, { text = true, stdin = files }):wait().stdout
 	end
-end
 
-local function update_footer()
-	vim.api.nvim_win_set_config(win, {
-		footer = query and string.format("[FILTER: %s]", query) or "",
-		footer_pos = "right",
-	})
+	if not files then
+		return {}
+	end
+
+	return vim.split(files, "\n", { plain = true, trimempty = true })
 end
 
 local function reload()
-	local files = list_files(query)
-	local lines = vim.split(files, "\n", { plain = true, trimempty = true })
+	local buf = state.get_buf()
+	local win = state.get_win()
+	local query = state.get_query()
+	local lines = list_files(query)
 
 	vim.bo[buf].modifiable = true
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 	vim.bo[buf].modifiable = false
 
+	local namespace = vim.api.nvim_create_namespace("files_highlight")
 	vim.api.nvim_buf_clear_namespace(buf, namespace, 0, -1)
 
 	for i, line in ipairs(lines) do
-		if fs.is_dir(line) then
+		if lib.fs.is_dir(line) then
 			vim.api.nvim_buf_set_extmark(buf, namespace, i - 1, 0, {
 				end_line = i,
 				hl_group = "Directory",
@@ -64,38 +47,42 @@ local function reload()
 		end
 	end
 
-	update_footer()
-	highlight(query)
+	vim.api.nvim_win_set_config(win, {
+		footer = query and string.format("[FILTER: %s]", query) or "",
+		footer_pos = "right",
+	})
+
+	lib.utils.match(query)
 end
 
 local function filter()
 	local path = vim.api.nvim_get_current_line()
 
-	vim.ui.input({ prompt = "Filter: " }, function(input)
+	vim.ui.input({ prompt = "Filter: ", completion = "file" }, function(input)
 		if input and input ~= "" then
-			query = input
+			state.set_query(input)
 			reload()
-			focus(path)
+			lib.utils.seek(path)
 		end
 	end)
 end
 
 local function clear()
 	local path = vim.api.nvim_get_current_line()
-	query = nil
+	state.reset_query()
 	reload()
-	focus(path)
+	lib.utils.seek(path)
 end
 
 local function add()
-	local parent = fs.dirname(vim.api.nvim_get_current_line(), true)
+	local parent = lib.fs.dirname(vim.api.nvim_get_current_line(), true)
 	local default = string.format("%s/", parent)
 
 	vim.ui.input({ prompt = "New file/directory: ", default = default }, function(input)
 		if input and input ~= "" then
-			fs.create(input)
+			lib.fs.create(input)
 			reload()
-			focus(input)
+			lib.utils.seek(input)
 		end
 	end)
 end
@@ -104,11 +91,11 @@ local function move()
 	local src = vim.api.nvim_get_current_line()
 	local prompt = string.format("Move: %s -> ", src)
 
-	vim.ui.input({ prompt = prompt, default = src }, function(input)
+	vim.ui.input({ prompt = prompt, default = src, completion = "dir" }, function(input)
 		if input and input ~= "" then
-			fs.move(src, input)
+			lib.fs.move(src, input)
 			reload()
-			focus(input)
+			lib.utils.seek(input)
 		end
 	end)
 end
@@ -119,7 +106,7 @@ local function delete()
 
 	vim.ui.input({ prompt = prompt }, function(input)
 		if input == "y" then
-			fs.remove(path)
+			lib.fs.remove(path)
 			reload()
 		end
 	end)
@@ -128,23 +115,24 @@ end
 local function open()
 	local path = vim.api.nvim_get_current_line()
 
-	if fs.is_dir(path) then
+	if lib.fs.is_dir(path) then
 		return
 	end
 
+	local win_prev = state.get_previous_win()
 	vim.api.nvim_set_current_win(win_prev)
+
 	vim.cmd(string.format("find %s", path))
 end
 
 local function command()
-	if win > 0 then
+	if state.is_window_open() then
 		return
 	end
 
 	local current_file = vim.fn.expand("%")
 
-	win_prev = vim.api.nvim_get_current_win()
-	buf = vim.api.nvim_create_buf(true, true)
+	local buf = vim.api.nvim_create_buf(true, true)
 
 	local max_w = vim.o.columns
 	local max_h = vim.o.lines
@@ -153,21 +141,23 @@ local function command()
 	local x = (max_w - w) / 2
 	local y = (max_h - h) / 2
 
-	win = vim.api.nvim_open_win(buf, true, {
+	local win_prev = vim.api.nvim_get_current_win()
+	local win = vim.api.nvim_open_win(buf, true, {
 		title = " Files ",
 		col = x,
 		row = y,
 		width = w,
 		height = h,
 		relative = "editor",
-		footer = query and string.format("Filter: %s", query) or "",
-		footer_pos = "right",
 	})
 
 	vim.wo[win].spell = false
 
+	state.set_buf(buf)
+	state.set_win(win, win_prev)
+
 	reload()
-	focus(current_file)
+	lib.utils.seek(current_file)
 
 	vim.keymap.set("n", "o", open, { buffer = buf, desc = "Open file" })
 	vim.keymap.set("n", "<cr>", open, { buffer = buf, desc = "Open file" })
@@ -183,18 +173,3 @@ local function command()
 end
 
 vim.api.nvim_create_user_command("Files", command, { desc = "Manage files" })
-
-local group = vim.api.nvim_create_augroup("FilesPlugin", { clear = true })
-
-vim.api.nvim_create_autocmd("BufLeave", {
-	callback = function()
-		if buf == vim.api.nvim_get_current_buf() then
-			vim.api.nvim_buf_delete(buf, {})
-			win = 0
-			win_prev = 0
-			buf = 0
-		end
-	end,
-	group = group,
-	desc = "Clean up after leaving the files plugin buffer",
-})

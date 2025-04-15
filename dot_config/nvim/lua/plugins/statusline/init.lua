@@ -61,7 +61,7 @@ function _G.statusline_inactive()
 	return " %f %m %= %y %l/%L:%c "
 end
 
-local group = vim.api.nvim_create_augroup("UserStatusline", { clear = true })
+local group = vim.api.nvim_create_augroup("PluginStatusline", { clear = true })
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 	command = "setlocal statusline=%!v:lua.statusline_active()",

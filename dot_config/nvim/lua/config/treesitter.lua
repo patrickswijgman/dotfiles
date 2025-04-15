@@ -1,9 +1,9 @@
-local group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true })
+local group = vim.api.nvim_create_augroup("ConfigTreesitter", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		pcall(vim.treesitter.start, args.buf)
 	end,
 	group = group,
-	desc = "Start treesitter for all file types",
+	desc = "Try to start treesitter for all file types",
 })
