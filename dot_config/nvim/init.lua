@@ -15,4 +15,12 @@ require("plugins.format").setup({
 	fish = {},
 	typescript = { "prettierd", ".ts" },
 	typescriptreact = { "prettierd", ".tsx" },
+	javascript = { "prettierd", ".js" },
+	javascriptreact = { "prettierd", ".jsx" },
+	html = { "prettierd", ".html" },
+	css = { "prettierd", ".css" },
+	json = { "prettierd", ".json" },
+	jsonc = { "prettierd", ".jsonc" },
+	yaml = { "prettierd", ".yaml" },
+	markdown = { "prettierd", ".md" },
 })
