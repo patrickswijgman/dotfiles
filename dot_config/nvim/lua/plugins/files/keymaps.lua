@@ -1,6 +1,8 @@
 local core = require("plugins.files.core")
+local state = require("plugins.files.state")
 
-return function(buf)
+return function()
+	local buf = state.get_buf()
 	vim.keymap.set("n", "<cr>", core.open, { buffer = buf, desc = "Open file" })
 	vim.keymap.set("n", "a", core.add, { buffer = buf, desc = "Create new file or directory" })
 	vim.keymap.set("n", "m", core.move, { buffer = buf, desc = "Move file or directory" })
