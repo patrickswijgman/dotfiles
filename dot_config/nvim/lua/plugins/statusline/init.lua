@@ -1,3 +1,5 @@
+local M = {}
+
 local modes = {
 	["n"] = "NORMAL",
 	["no"] = "NORMAL",
@@ -61,16 +63,20 @@ function _G.statusline_inactive()
 	return " %f %m %= %y %l/%L:%c "
 end
 
-local group = vim.api.nvim_create_augroup("PluginStatusline", { clear = true })
+function M.setup()
+	local group = vim.api.nvim_create_augroup("PluginStatusline", { clear = true })
 
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-	command = "setlocal statusline=%!v:lua.statusline_active()",
-	group = group,
-	desc = "Statusline active",
-})
+	vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+		command = "setlocal statusline=%!v:lua.statusline_active()",
+		group = group,
+		desc = "Statusline active",
+	})
 
-vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
-	command = "setlocal statusline=%!v:lua.statusline_inactive()",
-	group = group,
-	desc = "Statusline inactive",
-})
+	vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+		command = "setlocal statusline=%!v:lua.statusline_inactive()",
+		group = group,
+		desc = "Statusline inactive",
+	})
+end
+
+return M

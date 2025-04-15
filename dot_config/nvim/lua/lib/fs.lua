@@ -33,4 +33,12 @@ function M.is_file(path)
 	return not M.is_dir(path)
 end
 
+function M.list_files(pattern)
+	local result = vim.system({ "fd", "--hidden", "--exclude=.git" }, { text = true }):wait()
+	if pattern then
+		result = vim.system({ "rg", "--smart-case", "--fixed-strings", pattern }, { text = true, stdin = result.stdout }):wait()
+	end
+	return vim.split(result.stdout or "", "\n", { plain = true, trimempty = true })
+end
+
 return M

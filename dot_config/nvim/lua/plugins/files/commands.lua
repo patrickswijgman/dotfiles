@@ -1,4 +1,3 @@
-local lib = require("lib")
 local core = require("plugins.files.core")
 local state = require("plugins.files.state")
 
@@ -7,7 +6,7 @@ local function command()
 		return
 	end
 
-	local current_file = vim.fn.expand("%")
+	local current_file = vim.api.nvim_buf_get_name(0)
 
 	local buf = state.get_buf()
 	local max_w = vim.o.columns
@@ -15,7 +14,7 @@ local function command()
 	local w = math.max(100, math.floor(max_w * 0.5))
 	local h = math.max(10, math.floor(max_h * 0.8))
 	local x = (max_w - w) / 2
-	local y = (max_h - h) / 2
+	local y = (max_h - h) / 4
 
 	local win = vim.api.nvim_open_win(buf, true, {
 		title = " Files ",
@@ -31,7 +30,7 @@ local function command()
 	state.set_win(win)
 
 	core.reload()
-	lib.utils.seek(current_file)
+	core.reveal(current_file)
 end
 
 return function()

@@ -1,20 +1,9 @@
 local M = {}
 
-function M.esc(pattern)
-	return vim.pesc(vim.fn.escape(pattern, "/"))
-end
-
-function M.seek(pattern)
+function M.highlight(pattern, hl_group)
+	vim.fn.clearmatches()
 	if pattern and pattern ~= "" then
-		vim.fn.search(vim.fn.escape(pattern, "/"), "w")
-	end
-end
-
-function M.match(pattern)
-	if pattern and pattern ~= "" then
-		vim.cmd(string.format("match Visual /\\c%s/", M.esc(pattern)))
-	else
-		vim.cmd("match none")
+		vim.fn.matchadd(hl_group or "Visual", string.format("\\v\\c%s", pattern))
 	end
 end
 

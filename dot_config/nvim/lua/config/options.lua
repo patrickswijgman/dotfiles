@@ -32,7 +32,7 @@ vim.o.completeopt = "menu,menuone,popup,noselect,fuzzy"
 
 vim.o.path = ".,**"
 
-vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob='!**/.git/*'"
+vim.o.grepprg = "rg --vimgrep --smart-case --fixed-strings --hidden --glob='!**/.git/*'"
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 

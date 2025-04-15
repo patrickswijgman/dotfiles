@@ -27,3 +27,5 @@ vim.keymap.set("n", "<leader>q", "<cmd>botright copen<cr>", { desc = "Open quick
 vim.keymap.set("n", "<leader>Q", "<cmd>cclose<cr>", { desc = "Close quickfix list" })
 
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
+
+vim.keymap.set("n", "q", "<nop>", { desc = "Disable macro recording" })
