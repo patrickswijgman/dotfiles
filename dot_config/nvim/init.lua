@@ -1,11 +1,12 @@
 vim.loader.enable()
 
-require("core.options")
-require("core.keymaps")
-require("core.filetypes")
-require("core.autocmds")
-require("core.statusline")
+require("config.options")
+require("config.keymaps")
+require("config.filetypes")
+require("config.autocmds")
+
 require("core.lsp")
+require("core.statusline")
 require("core.format")
 require("core.find")
 require("core.grep")
