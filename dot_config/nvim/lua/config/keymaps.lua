@@ -1,11 +1,10 @@
 vim.g.mapleader = " "
 
 -- Motions
--- Include wrapped lines with up/down.
-vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "<down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "<up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down (including wrapped lines)", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up (including wrapped lines)", expr = true, silent = true })
+vim.keymap.set("n", "gh", "^", { desc = "Go to start of line" })
+vim.keymap.set("n", "gl", "$", { desc = "Go to end of line" })
 
 -- Windows
 vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Go to left window" })
@@ -36,4 +35,6 @@ vim.keymap.set("n", "<leader>e", "<cmd>Files<cr>", { desc = "Manage files" })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
 
 -- Disabled
-vim.keymap.set("n", "q", "<nop>", { desc = "Disable macro recording" })
+vim.keymap.set("n", "q", "<nop>", { desc = "Disable macros" })
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable macros" })
+

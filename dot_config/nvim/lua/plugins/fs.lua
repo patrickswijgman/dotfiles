@@ -37,7 +37,7 @@ local function remove()
 	end)
 end
 
-vim.api.nvim_create_user_command("FileSystemNew", new, { desc = "New file/directory" })
-vim.api.nvim_create_user_command("FileSystemMove", move, { desc = "Move current file" })
-vim.api.nvim_create_user_command("FileSystemRemove", remove, { desc = "Remove file/directory" })
+vim.api.nvim_create_user_command("New", new, { desc = "New file/directory" })
+vim.api.nvim_create_user_command("Move", move, { desc = "Move current file" })
+vim.api.nvim_create_user_command("Remove", remove, { desc = "Remove file/directory" })
 

@@ -1,7 +1,7 @@
 local state = require("plugins.files.state")
 local core = require("plugins.files.core")
 
-local group = vim.api.nvim_create_augroup("PluginFiles", { clear = true })
+local group = vim.api.nvim_create_augroup("Files", { clear = true })
 
 vim.api.nvim_create_autocmd("WinLeave", {
 	callback = function()

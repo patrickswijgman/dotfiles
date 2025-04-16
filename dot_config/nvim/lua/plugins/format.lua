@@ -35,7 +35,7 @@ local function format(bufnr, cmd)
 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(result.stdout, "\n"))
 end
 
-local group = vim.api.nvim_create_augroup("PluginFormat", { clear = true })
+local group = vim.api.nvim_create_augroup("Format", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function(args)
