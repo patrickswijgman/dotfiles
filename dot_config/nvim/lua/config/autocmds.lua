@@ -1,6 +1,14 @@
-local lib = require("lib")
+local fs = require("lib.fs")
 
 local group = vim.api.nvim_create_augroup("Config", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+	end,
+	group = group,
+	desc = "Try to start treesitter for all file types",
+})
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "checkhealth", "qf" },
@@ -19,8 +27,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function(args)
-		lib.fs.ensure_dir(args.file)
+		fs.ensure_dir(args.file)
 	end,
 	group = group,
 	desc = "Create intermediate directories before writing the buffer",
 })
+

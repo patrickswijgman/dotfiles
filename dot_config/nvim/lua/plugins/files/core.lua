@@ -1,4 +1,4 @@
-local lib = require("lib")
+local fs = require("lib.fs")
 local state = require("plugins.files.state")
 
 local M = {}
@@ -7,7 +7,7 @@ function M.reload()
 	local buf = state.get_buf()
 	local win = state.get_win()
 	local query = state.get_query()
-	local lines = lib.fs.list_files(query)
+	local lines = fs.list_files(query, true)
 
 	vim.bo[buf].modifiable = true
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
@@ -17,7 +17,7 @@ function M.reload()
 	vim.api.nvim_buf_clear_namespace(buf, namespace, 0, -1)
 
 	for i, line in ipairs(lines) do
-		if lib.fs.is_dir(line) then
+		if fs.is_dir(line) then
 			vim.api.nvim_buf_set_extmark(buf, namespace, i - 1, 0, {
 				end_line = i,
 				hl_group = "Directory",
@@ -46,13 +46,11 @@ function M.reveal(pattern)
 end
 
 function M.filter()
-	local path = vim.api.nvim_get_current_line()
-
 	vim.ui.input({ prompt = "Filter: " }, function(input)
 		if input and input ~= "" then
 			state.set_query(input)
 			M.reload()
-			M.reveal(path)
+			vim.api.nvim_win_set_cursor(0, { 1, 0 })
 		end
 	end)
 end
@@ -65,12 +63,12 @@ function M.clear_filter()
 end
 
 function M.add()
-	local parent = lib.fs.dirname(vim.api.nvim_get_current_line(), true)
+	local parent = fs.dirname(vim.api.nvim_get_current_line(), true)
 	local default = string.format("%s/", parent)
 
 	vim.ui.input({ prompt = "New file/directory: ", default = default }, function(input)
 		if input and input ~= "" then
-			lib.fs.create(input)
+			fs.new(input)
 			M.reload()
 			M.reveal(input)
 		end
@@ -83,7 +81,7 @@ function M.move()
 
 	vim.ui.input({ prompt = prompt, default = src, completion = "dir" }, function(input)
 		if input and input ~= "" then
-			lib.fs.move(src, input)
+			fs.move(src, input)
 			M.reload()
 			M.reveal(input)
 		end
@@ -96,7 +94,7 @@ function M.delete()
 
 	vim.ui.input({ prompt = prompt }, function(input)
 		if input == "y" then
-			lib.fs.remove(path)
+			fs.remove(path)
 			M.reload()
 		end
 	end)
@@ -114,10 +112,11 @@ end
 function M.open()
 	local path = vim.api.nvim_get_current_line()
 
-	if lib.fs.is_file(path) then
+	if fs.is_file(path) then
 		M.close_window()
-		vim.cmd(string.format("edit %s", path))
+		vim.cmd.edit(path)
 	end
 end
 
 return M
+

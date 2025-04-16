@@ -15,6 +15,5 @@ local function command()
 	core.reveal(current_file)
 end
 
-return function()
-	vim.api.nvim_create_user_command("Files", command, { desc = "Manage files" })
-end
+vim.api.nvim_create_user_command("Files", command, { desc = "Manage files" })
+
