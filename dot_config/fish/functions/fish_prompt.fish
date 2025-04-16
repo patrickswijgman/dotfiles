@@ -1,6 +1,4 @@
 function fish_prompt
-    echo -n " "
-
     if test -n "$IN_NIX_SHELL"
         set_color cyan
         echo -n "󱄅 $IN_NIX_SHELL "
@@ -25,19 +23,6 @@ function fish_prompt
         else
             set_color green
         end
-
-        # function __git_rebase_status
-        #     set git_dir (git rev-parse --git-dir ^/dev/null 2>/dev/null)
-        #     if test -d "$git_dir/rebase-merge"
-        #         set step (cat $git_dir/rebase-merge/msgnum 2>/dev/null)
-        #         set total (cat $git_dir/rebase-merge/end 2>/dev/null)
-        #         echo "(rebase $step/$total)"
-        #     else if test -d "$git_dir/rebase-apply"
-        #         set step (cat $git_dir/rebase-apply/next 2>/dev/null)
-        #         set total (cat $git_dir/rebase-apply/last 2>/dev/null)
-        #         echo "(rebase $step/$total)"
-        #     end
-        # end
 
         if test -d .git/rebase-merge -o -d .git/rebase-apply
             set commit (git rev-parse --short HEAD)

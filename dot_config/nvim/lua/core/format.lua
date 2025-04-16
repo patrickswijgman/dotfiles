@@ -32,7 +32,8 @@ local function format(bufnr, cmd)
 		return
 	end
 
-	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(result.stdout, "\n"))
+	local new_lines = vim.split(result.stdout, "\n", { trimempty = true })
+	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
 end
 
 local group = vim.api.nvim_create_augroup("Format", { clear = true })
@@ -48,4 +49,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = group,
 	desc = "Format on save",
 })
-

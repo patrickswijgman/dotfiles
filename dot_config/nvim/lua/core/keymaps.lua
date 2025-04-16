@@ -24,6 +24,8 @@ vim.keymap.set({ "n", "x" }, "<leader>P", [["+P]], { desc = "Paste from system c
 -- Quickfix list
 vim.keymap.set("n", "<leader>q", "<cmd>botright copen<cr>", { desc = "Open quickfix list" })
 vim.keymap.set("n", "<leader>Q", "<cmd>cclose<cr>", { desc = "Close quickfix list" })
+vim.keymap.set("n", "<c-n>", "<cmd>cnext<cr>", { desc = "Next quicklist item" })
+vim.keymap.set("n", "<c-p>", "<cmd>cprev<cr>", { desc = "Previous quicklist item" })
 
 -- General
 vim.keymap.set("n", "<leader>f", ":Find ", { desc = "Find file" })
@@ -31,10 +33,12 @@ vim.keymap.set("n", "<leader>/", ":Grep ", { desc = "Grep content" })
 vim.keymap.set("n", "<leader>b", ":buffer ", { desc = "Open buffer" })
 vim.keymap.set("n", "<leader>e", "<cmd>Files<cr>", { desc = "Manage files" })
 
+-- LSP
+vim.keymap.set("i", "<c-space>", vim.lsp.completion.get, { desc = "Get LSP completion" })
+
 -- Misc
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
 
 -- Disabled
 vim.keymap.set("n", "q", "<nop>", { desc = "Disable macros" })
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable macros" })
-

@@ -14,8 +14,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
 		-- Trigger auto completion on every key press.
-		client.server_capabilities.completionProvider.triggerCharacters = chars
-		vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+		if client:supports_method("textDocument/completion") then
+			client.server_capabilities.completionProvider.triggerCharacters = chars
+			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+		end
 
 		-- Disable semantic tokens in favor of Treesitter.
 		client.server_capabilities.semanticTokensProvider = nil
@@ -27,6 +29,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.diagnostic.config({
 	virtual_text = { current_line = true },
 })
-
-vim.keymap.set("i", "<c-space>", vim.lsp.completion.get, { desc = "Get LSP completion" })
-

@@ -3,8 +3,9 @@ local fs = require("lib.fs")
 local function new()
 	local current_file = vim.api.nvim_buf_get_name(0)
 	local dir = fs.dirname(current_file, true)
+	local default = dir ~= "." and dir or ""
 
-	vim.ui.input({ prompt = "New: ", default = dir, completion = "dir" }, function(input)
+	vim.ui.input({ prompt = "New: ", default = default, completion = "dir" }, function(input)
 		if input and input ~= "" then
 			fs.new(input)
 			if fs.is_file(input) then
@@ -16,8 +17,9 @@ end
 
 local function move()
 	local current_file = vim.api.nvim_buf_get_name(0)
+	local prompt = string.format("Move: %s -> ", current_file)
 
-	vim.ui.input({ prompt = "Move: ", default = current_file, completion = "dir" }, function(input)
+	vim.ui.input({ prompt = prompt, default = current_file, completion = "dir" }, function(input)
 		if input and input ~= "" then
 			if fs.is_file(input) then
 				fs.move(current_file, input)
@@ -40,4 +42,3 @@ end
 vim.api.nvim_create_user_command("New", new, { desc = "New file/directory" })
 vim.api.nvim_create_user_command("Move", move, { desc = "Move current file" })
 vim.api.nvim_create_user_command("Remove", remove, { desc = "Remove file/directory" })
-

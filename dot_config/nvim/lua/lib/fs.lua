@@ -2,16 +2,15 @@ local M = {}
 
 local function delete_buffers(pattern)
 	local bufs = vim.api.nvim_list_bufs()
-	local match = string.format("^%s", vim.fn.escape(pattern, "/"))
+	local match = string.format("^%s", vim.pesc(pattern))
 
 	vim.print(bufs, match)
 
 	for _, buf in ipairs(bufs) do
 		local path = vim.api.nvim_buf_get_name(buf)
 
-		vim.print(path)
-
 		if string.match(path, match) then
+			vim.print("DELETE", buf)
 			vim.api.nvim_buf_delete(buf, { force = true })
 		end
 	end
@@ -73,4 +72,3 @@ function M.remove(path)
 end
 
 return M
-

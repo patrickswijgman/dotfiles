@@ -4,7 +4,7 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.o.signcolumn = "yes"
 vim.o.colorcolumn = ""
-vim.o.scrolloff = 9999
+vim.o.scrolloff = 8
 vim.o.wrap = true
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -47,4 +47,3 @@ vim.o.spelloptions = "camel"
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
