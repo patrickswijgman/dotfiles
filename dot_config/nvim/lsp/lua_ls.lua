@@ -1,10 +1,9 @@
-local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 --- @type vim.lsp.Config
 return {
-	capabilities = capabilities,
 	cmd = { "lua-language-server" },
-	filetypes = { "lua" },
+	filetypes = {
+		"lua",
+	},
 	root_markers = {
 		".luarc.json",
 		".stylua.toml",

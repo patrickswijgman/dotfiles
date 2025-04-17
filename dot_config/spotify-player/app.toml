@@ -1,8 +1,0 @@
-enable_notify = false
-
-[device]
-volume        = 100
-normalization = true
-
-[layout]
-playback_window_position = "Bottom"

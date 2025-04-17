@@ -1,11 +1,15 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
+local layout = require("telescope.actions.layout")
 
 telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
+				["<c-up>"] = actions.cycle_history_prev,
+				["<c-down>"] = actions.cycle_history_next,
+				["<tab>"] = layout.toggle_preview,
 				["<esc>"] = actions.close,
 			},
 		},

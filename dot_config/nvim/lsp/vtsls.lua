@@ -1,8 +1,5 @@
-local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 --- @type vim.lsp.Config
 return {
-	capabilities = capabilities,
 	cmd = { "vtsls", "--stdio" },
 	filetypes = {
 		"javascript",

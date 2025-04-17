@@ -13,7 +13,7 @@ require("vague").setup({
 		variables = "none",
 
 		keywords = "none",
-		keyword_return = "italic",
+		keyword_return = "none",
 		keywords_loop = "none",
 		keywords_label = "none",
 		keywords_exception = "none",
