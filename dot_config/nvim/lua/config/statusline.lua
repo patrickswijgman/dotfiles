@@ -74,4 +74,3 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	group = group,
 	desc = "Statusline inactive",
 })
-
