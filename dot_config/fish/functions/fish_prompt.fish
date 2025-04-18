@@ -28,7 +28,7 @@ function fish_prompt
             set commit (git rev-parse --short HEAD)
             echo -n "󱓎 rebase ($commit) "
         else
-            set branch (git symbolic-ref --short HEAD 2>/dev/null)
+            set branch (git symbolic-ref --short HEAD)
             echo -n "󰘬 $branch "
         end
 
