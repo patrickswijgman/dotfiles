@@ -1,0 +1,11 @@
+{
+  "react functional component": {
+    "prefix": "fc",
+    "body": [
+      "import { type FC } from 'react'",
+      "export const $1 = ({ $2 }): FC<$3> => {",
+      "\treturn $0",
+      "}"
+    ]
+  }
+}

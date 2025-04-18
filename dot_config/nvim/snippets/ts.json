@@ -1,0 +1,32 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": ["${1|export,|} function $2($3): $4 {", "\t$0", "}"]
+  },
+  "arrow function": {
+    "prefix": "afn",
+    "body": ["${1|export,|} const $2 = ($3): $4 => {", "\t$0", "}"]
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": ["for (const $1 of $2) {", "\t$0", "}"]
+  },
+  "for loop index": {
+    "prefix": "fori",
+    "body": ["for (let i=$1; i<$2; i++) {", "\t", "}"]
+  },
+  "usecase": {
+    "prefix": "usecase",
+    "body": [
+      "import { inject, injectable } from 'inversify'",
+      "@injectable()",
+      "export class $TM_FILENAME_BASE {",
+      "\tconstructor(@inject($1) private $2: $1) {}",
+      "\n",
+      "\tcall($3): $4 {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ]
+  }
+}
