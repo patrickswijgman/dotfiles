@@ -1,8 +1,13 @@
+vim.lsp.enable("cssls")
 vim.lsp.enable("eslint")
 vim.lsp.enable("fish_lsp")
+vim.lsp.enable("html")
+vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("nixd")
+vim.lsp.enable("tailwindcss")
 vim.lsp.enable("vtsls")
+vim.lsp.enable("yamlls")
 
 local group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
@@ -18,5 +23,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.diagnostic.config({
-	virtual_text = { current_line = true },
+	virtual_lines = true,
 })
