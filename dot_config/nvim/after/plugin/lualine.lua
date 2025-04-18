@@ -1,9 +1,6 @@
 require("lualine").setup({
 	options = {
 		component_separators = "",
-		disabled_filetypes = {
-			statusline = { "spectre_panel" },
-		},
 	},
 	sections = {
 		lualine_a = { "mode" },
