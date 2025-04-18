@@ -9,11 +9,20 @@ require("blink.cmp").setup({
 				auto_insert = true,
 			},
 		},
+		menu = {
+			border = "rounded",
+		},
 		documentation = {
 			auto_show = true,
+			window = {
+				border = "rounded",
+			},
 		},
 	},
 	signature = {
 		enabled = true,
+		window = {
+			border = "rounded",
+		},
 	},
 })

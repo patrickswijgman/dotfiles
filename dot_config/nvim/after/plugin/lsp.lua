@@ -9,6 +9,12 @@ vim.lsp.enable("tailwindcss")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("yamlls")
 
+local function hover()
+	vim.lsp.buf.hover({ border = "rounded" })
+end
+
+vim.keymap.set("n", "K", hover, { desc = "LSP hover", remap = true })
+
 local group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
