@@ -14,6 +14,8 @@ local function hover()
 end
 
 vim.keymap.set("n", "K", hover, { desc = "LSP hover", remap = true })
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP code action" })
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP rename" })
 
 local group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
