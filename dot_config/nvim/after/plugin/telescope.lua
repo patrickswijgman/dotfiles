@@ -5,6 +5,18 @@ local layout = require("telescope.actions.layout")
 
 telescope.setup({
 	defaults = {
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				width = { padding = 0 },
+				height = { padding = 0 },
+				preview_width = 0.5,
+			},
+		},
+		sorting_strategy = "ascending",
+		path_display = {
+			"filename_first",
+		},
 		mappings = {
 			i = {
 				["<c-up>"] = actions.cycle_history_prev,

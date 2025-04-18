@@ -1,7 +1,9 @@
+VoIPGRID
 api
 auth
 cli
 config
+cors
 css
 dir
 dom
