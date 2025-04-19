@@ -38,6 +38,7 @@ vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find file" })
 vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Grep content" })
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Find buffer" })
 vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Find help" })
+vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume previous picker" })
 
 vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "Go to LSP definitions" })
 vim.keymap.set("n", "gy", builtin.lsp_type_definitions, { desc = "Go to LSP type definitions" })

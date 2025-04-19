@@ -4,6 +4,9 @@ dictionaries = ["en_us", "nl"]
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 words = [
+  # General
+  "patrickswijgman",
+
   # Domain
   "usecase",
   "usecases",
@@ -20,7 +23,7 @@ words = [
   "pkgs",
   "pname",
 
-  # Neovim
+  # Lua/Neovim
   "neovim",
   "nvim",
   "augroup",
@@ -30,6 +33,7 @@ words = [
   "keymaps",
   "bufnr",
   "undercurl",
+  "stylua",
 ]
 
 # List of glob patterns for paths to ignore when spell checking
