@@ -1,0 +1,40 @@
+# List of dictionaries to use for spell checking
+dictionaries = ["en_us", "nl"]
+
+# Custom allowlist of words to ignore (case-insensitive)
+# Codebook will add words here when you select "Add to dictionary"
+words = [
+  # Domain
+  "usecase",
+  "usecases",
+  "resgate",
+  "voipgrid",
+  "holodeck",
+  "contactbook",
+  "whatsapp",
+
+  # Nix
+  "nix",
+  "nixos",
+  "nixpkgs",
+  "pkgs",
+  "pname",
+
+  # Neovim
+  "neovim",
+  "nvim",
+  "augroup",
+  "autocmd",
+  "autocmds",
+  "keymap",
+  "keymaps",
+  "bufnr",
+  "undercurl",
+]
+
+# List of glob patterns for paths to ignore when spell checking
+ignore_paths = [".git/**/*", "node_modules/**/*", "dist/**/*"]
+
+# List of regex patterns to ignore when spell checking
+# Useful for domain-specific strings or patterns
+ignore_patterns = []

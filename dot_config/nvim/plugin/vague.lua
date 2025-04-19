@@ -26,3 +26,13 @@ require("vague").setup({
 })
 
 vim.cmd.colorscheme("vague")
+
+vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", {
+	undercurl = true,
+	sp = "#606079",
+})
+
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", {
+	fg = "#606079",
+	italic = true,
+})
