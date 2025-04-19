@@ -26,3 +26,5 @@ abbr dcr 'docker compose run --rm'
 abbr ns 'nix-shell --run fish'
 
 abbr venv 'source .venv/bin/activate.fish'
+
+oh-my-posh init fish --config ~/.config/oh-my-posh/config.json | source
