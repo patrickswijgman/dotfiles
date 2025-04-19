@@ -34,7 +34,8 @@
           ],
           "template": "{{ .HEAD }} ",
           "properties": {
-            "fetch_status": true
+            "fetch_status": true,
+            "branch_icon": "󰘬 "
           }
         },
         {
