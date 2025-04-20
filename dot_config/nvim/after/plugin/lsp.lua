@@ -2,8 +2,14 @@ require("lsp-loader").setup({
   hover = {
     border = "rounded",
   },
+  signature_help = {
+    title = "",
+    border = "rounded",
+  },
   disable_semantic_tokens = true,
+  remove_default_keymaps = true,
+  keymaps = {
+    code_action = "<leader>a",
+    rename = "<leader>r",
+  },
 })
-
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "LSP code action" })
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "LSP rename" })

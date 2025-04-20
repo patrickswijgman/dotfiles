@@ -4,8 +4,15 @@ dictionaries = ["en_us", "nl"]
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 words = [
-  # General
   "patrickswijgman",
+  "neovim",
+  "nvim",
+  "keymap",
+  "keymaps",
+  "autocmd",
+  "autocmds",
+  "augroup",
+  "bufnr",
 
   # Domain
   "usecase",
@@ -26,19 +33,6 @@ words = [
   # Lua
   "ipairs",
   "gsub",
-
-  # Neovim (Lua)
-  "neovim",
-  "nvim",
-  "stdpath",
-  "tbl",
-  "augroup",
-  "autocmd",
-  "autocmds",
-  "keymap",
-  "keymaps",
-  "bufnr",
-  "undercurl",
 ]
 
 # List of glob patterns for paths to ignore when spell checking
