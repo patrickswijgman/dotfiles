@@ -21,12 +21,18 @@
       "import { inject, injectable } from 'inversify'",
       "@injectable()",
       "export class $TM_FILENAME_BASE {",
-      "\tconstructor(@inject($1) private $2: $1) {}",
-      "\n",
-      "\tcall($3): $4 {",
+      "\tconstructor(",
       "\t\t$0",
+      "\t) {}",
+      "\n",
+      "\tcall() {",
+      "\t\t// Implementation",
       "\t}",
       "}"
     ]
+  },
+  "inject dependency": {
+    "prefix": "inj",
+    "body": ["@inject($1) private $2: $1,"]
   }
 }

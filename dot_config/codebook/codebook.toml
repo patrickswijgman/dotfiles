@@ -23,9 +23,15 @@ words = [
   "pkgs",
   "pname",
 
-  # Lua/Neovim
+  # Lua
+  "ipairs",
+  "gsub",
+
+  # Neovim (Lua)
   "neovim",
   "nvim",
+  "stdpath",
+  "tbl",
   "augroup",
   "autocmd",
   "autocmds",
@@ -33,7 +39,6 @@ words = [
   "keymaps",
   "bufnr",
   "undercurl",
-  "stylua",
 ]
 
 # List of glob patterns for paths to ignore when spell checking
