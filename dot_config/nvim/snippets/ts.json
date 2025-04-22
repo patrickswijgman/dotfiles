@@ -1,11 +1,11 @@
 {
   "function": {
     "prefix": "fn",
-    "body": ["${1|export,|} function $2($3): $4 {", "\t$0", "}"]
+    "body": ["export function $1($2): $3 {", "\t$0", "}"]
   },
   "arrow function": {
     "prefix": "afn",
-    "body": ["${1|export,|} const $2 = ($3): $4 => {", "\t$0", "}"]
+    "body": ["export const $1 = ($2): $3 => {", "\t$0", "}"]
   },
   "for loop": {
     "prefix": "for",

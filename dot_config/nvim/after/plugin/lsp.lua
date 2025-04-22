@@ -1,9 +1,9 @@
-require("lsp-loader").setup({
+require("lsp-extra").setup({
+  auto_enable = true,
   hover = {
     border = "rounded",
   },
   signature_help = {
-    title = "",
     border = "rounded",
   },
   disable_semantic_tokens = true,
@@ -11,5 +11,7 @@ require("lsp-loader").setup({
   keymaps = {
     code_action = "<leader>a",
     rename = "<leader>r",
+    signature_help = "<c-s>",
+    hover = "K",
   },
 })
