@@ -33,6 +33,7 @@ words = [
   # Lua
   "ipairs",
   "gsub",
+  "pcall",
 ]
 
 # List of glob patterns for paths to ignore when spell checking
