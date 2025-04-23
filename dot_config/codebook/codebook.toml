@@ -13,6 +13,7 @@ words = [
   "autocmds",
   "augroup",
   "bufnr",
+  "pixelmix",
 
   # Domain
   "usecase",
