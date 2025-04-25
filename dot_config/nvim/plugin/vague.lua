@@ -18,9 +18,9 @@ require("vague").setup({
     keywords_label = "none",
     keywords_exception = "none",
 
-    builtin_constants = "bold",
+    builtin_constants = "none",
     builtin_functions = "none",
-    builtin_types = "bold",
+    builtin_types = "none",
     builtin_variables = "none",
   },
   plugins = {

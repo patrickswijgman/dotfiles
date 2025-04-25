@@ -23,6 +23,7 @@ words = [
   "holodeck",
   "contactbook",
   "whatsapp",
+  "webphone",
 
   # Nix
   "nix",
