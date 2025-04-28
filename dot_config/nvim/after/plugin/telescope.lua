@@ -34,7 +34,17 @@ telescope.setup({
   },
 })
 
+local function find_config_files()
+  builtin.find_files({ cwd = "~/.local/share/chezmoi/dot_config/nvim/" })
+end
+
+local function apply_config()
+  vim.system({ "chezmoi", "apply" }):wait()
+end
+
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find file" })
+vim.keymap.set("n", "<leader>cf", find_config_files, { desc = "Find Neovim config file" })
+vim.keymap.set("n", "<leader>ca", apply_config, { desc = "Apply config" })
 vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Grep content" })
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Find buffer" })
 vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Find help" })
