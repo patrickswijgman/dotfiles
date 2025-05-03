@@ -10,6 +10,12 @@ vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Go to lower window" })
 vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to upper window" })
 vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to right window" })
 
+-- Tabs
+vim.keymap.set("n", "H", "<cmd>tabprev<cr>", { desc = "Go to previous tab" })
+vim.keymap.set("n", "L", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
+vim.keymap.set("n", "T", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "Q", "<cmd>tabclose<cr>", { desc = "Close tab" })
+
 -- Clipboard
 vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "x" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
@@ -20,4 +26,3 @@ vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight",
 
 -- Disabled
 vim.keymap.set("n", "q", "<nop>", { desc = "Disable macros" })
-vim.keymap.set("n", "Q", "<nop>", { desc = "Disable macros" })

@@ -1,13 +1,7 @@
-local oil = require("oil")
-
-oil.setup({
+require("oil").setup({
   view_options = {
     show_hidden = true,
   },
 })
 
-local function open()
-  oil.open(nil, { preview = { vertical = true } })
-end
-
-vim.keymap.set("n", "-", open, { desc = "Open parent directory" })
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })

@@ -12,5 +12,13 @@
       "  return $0",
       "}"
     ]
+  },
+  "react useState hook": {
+    "prefix": "usestate",
+    "body": [
+      "import { useState } from 'react'",
+      "",
+      "const [$1, set$1] = useState<$2>($0)"
+    ]
   }
 }

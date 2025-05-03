@@ -13,17 +13,23 @@ words = [
   "autocmds",
   "augroup",
   "bufnr",
-  "pixelmix",
 
   # Domain
+  "voys",
+  "voipgrid",
+  "holodeck",
   "usecase",
   "usecases",
   "resgate",
-  "voipgrid",
-  "holodeck",
   "contactbook",
   "whatsapp",
   "webphone",
+  "userdestination",
+  "fixeddestination",
+
+  # Game
+  "pixelmix",
+  "anims",
 
   # Nix
   "nix",

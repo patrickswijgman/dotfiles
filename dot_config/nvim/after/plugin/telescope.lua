@@ -35,15 +35,31 @@ telescope.setup({
 })
 
 local function find_config_files()
+  builtin.find_files({ cwd = "~/.local/share/chezmoi/" })
+end
+
+local function find_neovim_files()
   builtin.find_files({ cwd = "~/.local/share/chezmoi/dot_config/nvim/" })
 end
 
+local function find_nix_files()
+  builtin.find_files({ cwd = "~/nix/" })
+end
+
 local function apply_config()
-  vim.system({ "chezmoi", "apply" }):wait()
+  local a = vim.system({ "rm", "-r", "/home/patrick/.config/nvim/" }):wait()
+  local b = vim.system({ "chezmoi", "apply", "--force" }):wait()
+  if a.code == 0 and b.code == 0 then
+    vim.notify("Config applied!", vim.log.levels.INFO)
+  else
+    vim.notify(string.format("%s %s %s", "Error trying to apply config!", a.stderr, b.stderr), vim.log.levels.ERROR)
+  end
 end
 
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find file" })
-vim.keymap.set("n", "<leader>cf", find_config_files, { desc = "Find Neovim config file" })
+vim.keymap.set("n", "<leader>cf", find_config_files, { desc = "Find config file" })
+vim.keymap.set("n", "<leader>cv", find_neovim_files, { desc = "Find Neovim config file" })
+vim.keymap.set("n", "<leader>cn", find_nix_files, { desc = "Find Nix config file" })
 vim.keymap.set("n", "<leader>ca", apply_config, { desc = "Apply config" })
 vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Grep content" })
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Find buffer" })

@@ -2,6 +2,7 @@ set fish_greeting
 
 abbr cl clear
 
+abbr gb 'git branch'
 abbr gc 'git switch'
 abbr ga 'git add .'
 abbr gs 'git status'

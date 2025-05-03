@@ -1,3 +1,21 @@
+local signs = {
+  [vim.diagnostic.severity.ERROR] = "󰅚",
+  [vim.diagnostic.severity.WARN] = "󰀪",
+  [vim.diagnostic.severity.INFO] = "",
+  [vim.diagnostic.severity.HINT] = "",
+}
+
+local icons = {
+  [vim.diagnostic.severity.ERROR] = "󰅚",
+  [vim.diagnostic.severity.WARN] = "󰀪",
+  [vim.diagnostic.severity.INFO] = "󰋽",
+  [vim.diagnostic.severity.HINT] = "󰌶",
+}
+
+local function format(diagnostic)
+  return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
+end
+
 require("lsp-extra").setup({
   auto_enable = true,
   hover = {
@@ -5,6 +23,19 @@ require("lsp-extra").setup({
   },
   signature_help = {
     border = "rounded",
+  },
+  diagnostics = {
+    float = {
+      border = "rounded",
+    },
+    virtual_text = {
+      current_line = true,
+      prefix = "",
+      format = format,
+    },
+    signs = {
+      text = signs,
+    },
   },
   disable_semantic_tokens = true,
   remove_default_keymaps = true,

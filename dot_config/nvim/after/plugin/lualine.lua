@@ -1,5 +1,4 @@
 require("lualine").setup({
-  theme = "vague",
   options = {
     component_separators = "",
   },
