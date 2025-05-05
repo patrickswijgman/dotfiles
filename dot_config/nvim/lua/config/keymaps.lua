@@ -11,10 +11,10 @@ vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to upper window" })
 vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to right window" })
 
 -- Tabs
-vim.keymap.set("n", "H", "<cmd>tabprev<cr>", { desc = "Go to previous tab" })
-vim.keymap.set("n", "L", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
-vim.keymap.set("n", "T", "<cmd>tabnew<cr>", { desc = "New tab" })
-vim.keymap.set("n", "Q", "<cmd>tabclose<cr>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>th", "<cmd>tabprev<cr>", { desc = "Go to previous tab" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Close tab" })
 
 -- Clipboard
 vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
