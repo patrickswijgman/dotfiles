@@ -1,6 +1,3 @@
-# See default configuration of all languages here:
-# https://github.com/helix-editor/helix/blob/25.01.1/languages.toml
-
 [language-server.scls]
 command = "simple-completion-language-server"
 
@@ -11,6 +8,10 @@ args    = ["serve"]
 [language-server.vtsls]
 command = "vtsls"
 args    = ["--stdio"]
+
+[language-server.fish-lsp]
+command = "fish-lsp"
+args    = ["start"]
 
 [language-server.vtsls.config]
 typescript.preferences.importModuleSpecifier       = "non-relative"
@@ -87,4 +88,9 @@ auto-format      = true
 [[language]]
 name             = "toml"
 language-servers = ["taplo", "scls"]
+auto-format      = true
+
+[[language]]
+name             = "fish"
+language-servers = ["fish-lsp"]
 auto-format      = true

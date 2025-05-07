@@ -1,7 +1,7 @@
 theme = "mellow"
 
 [editor]
-scrolloff    = 8
+scrolloff    = 9999
 scroll-lines = 1
 shell        = ["fish", "-c"]
 cursorline   = true

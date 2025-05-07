@@ -1,6 +1,8 @@
 set fish_greeting
+set fish_lsp_show_client_popups false
 
-abbr cl clear
+abbr lg lazygit
+abbr ld lazydocker
 
 abbr gb 'git branch'
 abbr gc 'git switch'
