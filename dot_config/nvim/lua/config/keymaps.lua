@@ -21,6 +21,18 @@ vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clip
 vim.keymap.set({ "n", "x" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "x" }, "<leader>P", [["+P]], { desc = "Paste from system clipboard" })
 
+-- Diagnostics
+local function next_error()
+  vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
+end
+
+local function prev_error()
+  vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = -1 })
+end
+
+vim.keymap.set("n", "[e", prev_error, { desc = "Go to previous error" })
+vim.keymap.set("n", "]e", next_error, { desc = "Go to next error" })
+
 -- Misc
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear search highlight", remap = true })
 

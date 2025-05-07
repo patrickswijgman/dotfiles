@@ -1,0 +1,90 @@
+# See default configuration of all languages here:
+# https://github.com/helix-editor/helix/blob/25.01.1/languages.toml
+
+[language-server.scls]
+command = "simple-completion-language-server"
+
+[language-server.codebook]
+command = "codebook-lsp"
+args    = ["serve"]
+
+[language-server.vtsls]
+command = "vtsls"
+args    = ["--stdio"]
+
+[language-server.vtsls.config]
+typescript.preferences.importModuleSpecifier       = "non-relative"
+typescript.preferences.importModuleSpecifierEnding = "js"
+
+[[language]]
+name             = "typescript"
+language-servers = ["vtsls", "vscode-eslint-language-server", "codebook", "scls"]
+formatter        = { command = "prettierd", args = [".ts"] }
+auto-format      = true
+
+[[language]]
+name             = "tsx"
+language-servers = ["vtsls", "vscode-eslint-language-server", "tailwindcss-ls", "codebook", "scls"]
+formatter        = { command = "prettierd", args = [".tsx"] }
+auto-format      = true
+
+[[language]]
+name             = "python"
+language-servers = ["pyright", "ruff", "scls"]
+formatter        = { command = "ruff", args = ["format", "-"] }
+auto-format      = true
+
+[[language]]
+name             = "go"
+language-servers = ["gopls", "golangci-lint-lsp", "scls"]
+formatter        = { command = "gofmt" }
+auto-format      = true
+
+[[language]]
+name             = "rust"
+language-servers = ["rust-analyzer", "scls"]
+formatter        = { command = "rustfmt", args = ["--emit=stdout"] }
+auto-format      = true
+
+[[language]]
+name             = "nix"
+language-servers = ["nixd"]
+formatter        = { command = "nixfmt" }
+auto-format      = true
+
+[[language]]
+name        = "html"
+formatter   = { command = 'prettierd', args = [".html"] }
+auto-format = true
+
+[[language]]
+name        = "css"
+formatter   = { command = 'prettierd', args = [".css"] }
+auto-format = true
+
+[[language]]
+name        = "json"
+formatter   = { command = 'prettierd', args = [".json"] }
+auto-format = true
+
+[[language]]
+name        = "jsonc"
+formatter   = { command = 'prettierd', args = [".jsonc"] }
+auto-format = true
+
+[[language]]
+name             = "markdown"
+language-servers = ["scls"]
+formatter        = { command = 'prettierd', args = [".md"] }
+auto-format      = true
+
+[[language]]
+name             = "yaml"
+language-servers = ["yaml-language-server", "scls"]
+formatter        = { command = "prettierd", args = [".yaml"] }
+auto-format      = true
+
+[[language]]
+name             = "toml"
+language-servers = ["taplo", "scls"]
+auto-format      = true
