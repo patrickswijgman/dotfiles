@@ -1,21 +1,27 @@
+[language-server.vtsls]
+command = "vtsls"
+args    = ["--stdio"]
+
+[language-server.vtsls.config]
+typescript.preferences.importModuleSpecifier       = "non-relative"
+typescript.preferences.importModuleSpecifierEnding = "js"
+
+# fix: golangci-lint V2 is not properly configured in Helix 25.01.
+[language-server.golangci-lint-lsp.config]
+command = ["golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false", "--issues-exit-code=1"]
+
+# feat: fish-lsp is not in Helix 25.01.
+[language-server.fish-lsp]
+command     = "fish-lsp"
+args        = ["start"]
+environment = { fish_lsp_show_client_popups = "false" }
+
 [language-server.scls]
 command = "simple-completion-language-server"
 
 [language-server.codebook]
 command = "codebook-lsp"
 args    = ["serve"]
-
-[language-server.vtsls]
-command = "vtsls"
-args    = ["--stdio"]
-
-[language-server.fish-lsp]
-command = "fish-lsp"
-args    = ["start"]
-
-[language-server.vtsls.config]
-typescript.preferences.importModuleSpecifier       = "non-relative"
-typescript.preferences.importModuleSpecifierEnding = "js"
 
 [[language]]
 name             = "typescript"
@@ -37,7 +43,7 @@ auto-format      = true
 
 [[language]]
 name             = "go"
-language-servers = ["gopls", "golangci-lint-lsp", "scls"]
+language-servers = ["gopls", "golangci-lint-lsp", "codebook", "scls"]
 formatter        = { command = "gofmt" }
 auto-format      = true
 

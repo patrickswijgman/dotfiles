@@ -29,7 +29,7 @@
           "foreground_templates": [
             "{{ if .Working.Changed }}yellow{{ end }}",
             "{{ if .Staging.Changed }}yellow{{ end }}",
-            "{{ if gt .Ahead 0 }}yellow{{ end }}",
+            "{{ if gt .Ahead 0 }}red{{ end }}",
             "{{ if gt .Behind 0 }}red{{ end }}"
           ],
           "template": "{{ .HEAD }} ",

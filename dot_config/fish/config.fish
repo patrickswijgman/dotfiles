@@ -1,5 +1,4 @@
 set fish_greeting
-set fish_lsp_show_client_popups false
 
 abbr lg lazygit
 abbr ld lazydocker
@@ -24,6 +23,7 @@ abbr grc 'git rebase --continue'
 abbr gra 'git rebase --abort'
 abbr grs 'git restore'
 abbr grss 'git restore --staged'
+abbr grsm 'git restore --source origin/main'
 
 abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
