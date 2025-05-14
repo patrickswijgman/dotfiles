@@ -6,11 +6,6 @@ args    = ["--stdio"]
 typescript.preferences.importModuleSpecifier       = "non-relative"
 typescript.preferences.importModuleSpecifierEnding = "js"
 
-# fix: golangci-lint V2 is not properly configured in Helix 25.01.
-[language-server.golangci-lint-lsp.config]
-command = ["golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false", "--issues-exit-code=1"]
-
-# feat: fish-lsp is not in Helix 25.01.
 [language-server.fish-lsp]
 command     = "fish-lsp"
 args        = ["start"]
@@ -22,6 +17,10 @@ command = "simple-completion-language-server"
 [language-server.codebook]
 command = "codebook-lsp"
 args    = ["serve"]
+
+# fix: golangci-lint V2 is not properly configured in Helix 25.01.
+[language-server.golangci-lint-lsp.config]
+command = ["golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false", "--issues-exit-code=1"]
 
 [[language]]
 name             = "typescript"
@@ -37,7 +36,7 @@ auto-format      = true
 
 [[language]]
 name             = "python"
-language-servers = ["pyright", "ruff", "scls"]
+language-servers = ["pyright", "ruff", "codebook", "scls"]
 formatter        = { command = "ruff", args = ["format", "-"] }
 auto-format      = true
 
@@ -49,13 +48,13 @@ auto-format      = true
 
 [[language]]
 name             = "rust"
-language-servers = ["rust-analyzer", "scls"]
+language-servers = ["rust-analyzer", "codebook", "scls"]
 formatter        = { command = "rustfmt", args = ["--emit=stdout"] }
 auto-format      = true
 
 [[language]]
 name             = "nix"
-language-servers = ["nixd"]
+language-servers = ["nixd", "scls"]
 formatter        = { command = "nixfmt" }
 auto-format      = true
 
@@ -81,7 +80,7 @@ auto-format = true
 
 [[language]]
 name             = "markdown"
-language-servers = ["scls"]
+language-servers = ["marksman", "codebook", "scls"]
 formatter        = { command = 'prettierd', args = [".md"] }
 auto-format      = true
 
@@ -98,5 +97,5 @@ auto-format      = true
 
 [[language]]
 name             = "fish"
-language-servers = ["fish-lsp"]
+language-servers = ["fish-lsp", "scls"]
 auto-format      = true

@@ -1,8 +1,7 @@
-theme = "mellow"
+theme = "rasmus"
 
 [editor]
 scrolloff               = 8
-scroll-lines            = 1
 shell                   = ["fish", "-c"]
 cursorline              = true
 color-modes             = true
@@ -30,9 +29,6 @@ enable = true
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
-
-# See a list of all available commands here:
-# https://docs.helix-editor.com/commands.html
 
 [keys.normal]
 "w"     = "move_next_sub_word_start"
