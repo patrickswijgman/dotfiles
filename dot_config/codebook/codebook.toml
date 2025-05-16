@@ -4,33 +4,33 @@ dictionaries = ["en_us", "nl"]
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 words = [
-  "patrickswijgman",
-  "rtc",
+    "patrickswijgman",
+    "rtc",
 
-  # Domain
-  "voys",
-  "voipgrid",
-  "holodeck",
-  "usecase",
-  "usecases",
-  "resgate",
-  "contactbook",
-  "whatsapp",
-  "webphone",
-  "userdestination",
-  "fixeddestination",
+    # Domain
+    "voys",
+    "voipgrid",
+    "holodeck",
+    "usecase",
+    "usecases",
+    "resgate",
+    "contactbook",
+    "whatsapp",
+    "webphone",
+    "userdestination",
+    "fixeddestination",
 
-  # Game
-  "pixelmix",
-  "anims",
-  "soa",
+    # Game
+    "pixelmix",
+    "anims",
+    "soa",
 
-  # Nix
-  "nix",
-  "nixos",
-  "nixpkgs",
-  "pkgs",
-  "pname",
+    # Nix
+    "nix",
+    "nixos",
+    "nixpkgs",
+    "pkgs",
+    "pname",
 ]
 
 # List of glob patterns for paths to ignore when spell checking

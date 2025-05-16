@@ -1,0 +1,46 @@
+{
+  // Each snippet must have a name and body, but the prefix and description are optional.
+  // The prefix is used to trigger the snippet, but when omitted then the name is used.
+  // Use placeholders like $1, $2 or ${1:defaultValue} to define tab stops.
+  // The $0 determines the final cursor position.
+  // Placeholders with the same value are linked.
+  "console log": {
+    "prefix": "log",
+    "body": ["console.log($0)"]
+  },
+  "function": {
+    "prefix": "fn",
+    "body": ["export function $1($2): $3 {", "$0", "}"]
+  },
+  "arrow function": {
+    "prefix": "afn",
+    "body": ["export const $1 = ($2): $3 => {", "$0", "}"]
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": ["for (const $1 of $2) {", "$0", "}"]
+  },
+  "for loop index": {
+    "prefix": "fori",
+    "body": ["for (let i=$1; i<$2; i++) {", "$0", "}"]
+  },
+  "usecase": {
+    "prefix": "usecase",
+    "body": [
+      "import { inject, injectable } from 'inversify'",
+      "",
+      "@injectable()",
+      "export class $TM_FILENAME_BASE {",
+      "  constructor(",
+      "    $0",
+      "  ) {}",
+      "",
+      "  call(): void {}",
+      "}"
+    ]
+  },
+  "inject dependency": {
+    "prefix": "inj",
+    "body": ["@inject($1) private $2: $1,"]
+  }
+}
