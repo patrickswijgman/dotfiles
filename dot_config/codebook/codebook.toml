@@ -6,6 +6,8 @@ dictionaries = ["en_us", "nl"]
 words = [
     "patrickswijgman",
     "rtc",
+    "keymap",
+    "chezmoi",
 
     # Domain
     "voys",
@@ -19,6 +21,7 @@ words = [
     "webphone",
     "userdestination",
     "fixeddestination",
+    "msgtype",
 
     # Game
     "pixelmix",

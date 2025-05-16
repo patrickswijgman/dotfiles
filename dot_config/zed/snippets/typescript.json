@@ -6,23 +6,23 @@
   // Placeholders with the same value are linked.
   "console log": {
     "prefix": "log",
-    "body": ["console.log($0)"]
+    "body": ["console.log($1)", "$0"]
   },
   "function": {
     "prefix": "fn",
-    "body": ["export function $1($2): $3 {", "$0", "}"]
+    "body": ["export function $1($2): $3 {", "  $0", "}"]
   },
   "arrow function": {
     "prefix": "afn",
-    "body": ["export const $1 = ($2): $3 => {", "$0", "}"]
+    "body": ["export const $1 = ($2): $3 => {", "  $0", "}"]
   },
   "for loop": {
     "prefix": "for",
-    "body": ["for (const $1 of $2) {", "$0", "}"]
+    "body": ["for (const $1 of $2) {", "  $0", "}"]
   },
   "for loop index": {
     "prefix": "fori",
-    "body": ["for (let i=$1; i<$2; i++) {", "$0", "}"]
+    "body": ["for (let i=$1; i<$2; i++) {", "  $0", "}"]
   },
   "usecase": {
     "prefix": "usecase",
@@ -41,6 +41,6 @@
   },
   "inject dependency": {
     "prefix": "inj",
-    "body": ["@inject($1) private $2: $1,"]
+    "body": ["@inject($1) private $0: $1,"]
   }
 }

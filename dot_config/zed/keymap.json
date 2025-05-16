@@ -21,12 +21,6 @@
     "bindings": {}
   },
   {
-    "context": "Pane",
-    "bindings": {
-      "ctrl-q": ["pane::CloseActiveItem", { "close_pinned": false }]
-    }
-  },
-  {
     "context": "Dock",
     "bindings": {
       "ctrl-w h": "workspace::ActivatePaneLeft",

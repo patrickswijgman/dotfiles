@@ -23,7 +23,7 @@
     "body": [
       "import { useState } from 'react'",
       "",
-      "const [$1, set$1] = useState<$2>($0)"
+      "const [$1, set$0$1] = useState<$2>($3)"
     ]
   }
 }
