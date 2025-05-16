@@ -5,10 +5,10 @@
     "command": "chezmoi apply",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
-    "reveal": "no_focus",
+    "reveal": "always",
+    "reveal_target": "dock",
     "hide": "on_success",
-    "shell": "system",
-    "tags": ["chezmoi"]
+    "shell": "system"
   },
   {
     "label": "nix: rebuild work laptop",
@@ -16,10 +16,9 @@
     "cwd": "~/nix",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
-    "reveal": "no_focus",
+    "reveal": "always",
     "reveal_target": "dock",
     "hide": "never",
-    "shell": "system",
-    "tags": ["nix"]
+    "shell": "system"
   }
 ]
