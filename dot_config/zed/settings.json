@@ -26,7 +26,20 @@
   "restore_on_startup": "none",
   "snippet_sort_order": "top",
   "soft_wrap": "editor_width",
-  "wrap_guides": [80, 120],
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "project_panel": {
+    "default_width": 300
+  },
+  "git_panel": {
+    "default_width": 300
+  },
+  "outline_panel": {
+    "default_width": 300
+  },
   "terminal": {
     "font_family": "FiraCode Nerd Font Mono"
   },
