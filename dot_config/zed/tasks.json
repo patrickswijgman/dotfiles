@@ -1,24 +1,44 @@
 // Static tasks configuration.
 [
   {
+    "label": "npm: start",
+    "command": "npm start",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "reveal_target": "dock",
+    "hide": "always",
+    "shell": "system"
+  },
+  {
+    "label": "npm: build",
+    "command": "npm run build",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "reveal_target": "dock",
+    "hide": "on_success",
+    "shell": "system"
+  },
+  {
     "label": "chezmoi: apply",
     "command": "chezmoi apply",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
-    "reveal": "always",
+    "reveal": "never",
     "reveal_target": "dock",
     "hide": "on_success",
     "shell": "system"
   },
   {
     "label": "nix: rebuild work laptop",
-    "command": "sudo nixos-rebuild switch --flake ~/nix#work",
+    "command": "git add . && sudo nixos-rebuild switch --flake ~/nix#work",
     "cwd": "~/nix",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "reveal_target": "dock",
-    "hide": "never",
+    "hide": "on_success",
     "shell": "system"
   }
 ]
