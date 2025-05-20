@@ -37,6 +37,9 @@
     "Markdown": {
       "format_on_save": "on"
     },
+    "TOML": {
+      "format_on_save": "on"
+    },
     "Python": {
       "language_servers": ["!pylsp", "..."] // Use pyright instead of pylsp.
     },
@@ -67,6 +70,7 @@
   },
   "auto_install_extension": {
     "codebook": true,
+    "dart": true,
     "docker-compose": true,
     "dockerfile": true,
     "fish": true,
@@ -75,6 +79,7 @@
     "html": true,
     "ini": true,
     "nix": true,
+    "ruff": true,
     "toml": true
   }
 }

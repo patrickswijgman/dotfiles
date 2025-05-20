@@ -5,9 +5,12 @@ dictionaries = ["en_us", "nl"]
 # Codebook will add words here when you select "Add to dictionary"
 words = [
     "patrickswijgman",
-    "rtc",
     "keymap",
     "chezmoi",
+    "ridder",
+    "snuggy",
+    "ogg",
+    "wav",
 
     # Domain
     "voys",
@@ -22,6 +25,16 @@ words = [
     "userdestination",
     "fixeddestination",
     "msgtype",
+
+    # Web
+    "rtc",
+    "pointerup",
+    "pointerdown",
+    "pointermove",
+    "contextmenu",
+    "canplay",
+    "canplaythrough",
+    "tsc",
 
     # Game
     "pixelmix",

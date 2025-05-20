@@ -5,9 +5,9 @@
     "command": "npm start",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
-    "reveal": "never",
+    "reveal": "no_focus",
     "reveal_target": "dock",
-    "hide": "always",
+    "hide": "never",
     "shell": "system"
   },
   {
@@ -15,7 +15,7 @@
     "command": "npm run build",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
-    "reveal": "never",
+    "reveal": "no_focus",
     "reveal_target": "dock",
     "hide": "on_success",
     "shell": "system"
@@ -25,14 +25,14 @@
     "command": "chezmoi apply",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
-    "reveal": "never",
+    "reveal": "always",
     "reveal_target": "dock",
     "hide": "on_success",
     "shell": "system"
   },
   {
     "label": "nix: rebuild work laptop",
-    "command": "git add . && sudo nixos-rebuild switch --flake ~/nix#work",
+    "command": "sudo nixos-rebuild switch --flake ~/nix#work",
     "cwd": "~/nix",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
