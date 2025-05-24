@@ -27,6 +27,8 @@ words = [
     "msgtype",
 
     # Web
+    "vite",
+    "npx",
     "rtc",
     "pointerup",
     "pointerdown",
@@ -35,6 +37,7 @@ words = [
     "canplay",
     "canplaythrough",
     "tsc",
+    "bundler",
 
     # Game
     "pixelmix",
