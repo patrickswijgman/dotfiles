@@ -1,7 +1,6 @@
-theme = UltraDark
+theme = Pnevma
 window-width = 999
 window-height = 999
-mouse-scroll-multiplier = 0.5
 
 keybind = alt+up=goto_split:up
 keybind = alt+down=goto_split:down

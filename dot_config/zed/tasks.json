@@ -1,59 +1,8 @@
 // Static tasks configuration.
 [
   {
-    "label": "npm: start",
-    "command": "npm start",
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "no_focus",
-    "reveal_target": "dock",
-    "hide": "never",
-    "shell": "system"
-  },
-  {
-    "label": "npm: build",
-    "command": "npm run build",
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "no_focus",
-    "reveal_target": "dock",
-    "hide": "on_success",
-    "shell": "system"
-  },
-  {
-    "label": "npm: publish patch",
-    "command": "npm run build && npm version patch && npm publish",
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "always",
-    "reveal_target": "dock",
-    "hide": "never",
-    "shell": "system"
-  },
-  {
-    "label": "npm: publish minor",
-    "command": "npm run build && npm version minor && npm publish",
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "always",
-    "reveal_target": "dock",
-    "hide": "never",
-    "shell": "system"
-  },
-  {
     "label": "chezmoi: apply",
     "command": "chezmoi apply",
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false,
-    "reveal": "always",
-    "reveal_target": "dock",
-    "hide": "on_success",
-    "shell": "system"
-  },
-  {
-    "label": "nix: rebuild work laptop",
-    "command": "sudo nixos-rebuild switch --flake ~/nix#work",
-    "cwd": "~/nix",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",

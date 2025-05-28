@@ -1,5 +1,7 @@
 set fish_greeting
 
+abbr zed zeditor
+
 abbr lg lazygit
 abbr ld lazydocker
 
@@ -12,6 +14,7 @@ abbr gstl 'git stash list'
 abbr gstp 'git stash pop'
 abbr gm 'git commit -m'
 abbr gma 'git commit --amend'
+abbr gmap 'git commit --amend --no-edit && git push -f'
 abbr gf 'git fetch'
 abbr gp 'git pull'
 abbr gP 'git push'
