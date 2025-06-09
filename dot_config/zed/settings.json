@@ -10,8 +10,8 @@
   "auto_update": false,
   "theme": {
     "mode": "system",
-    "dark": "JetBrains New Dark",
-    "light": "JetBrains New Dark"
+    "dark": "Fleet Dark",
+    "light": "Fleet Light"
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
@@ -50,6 +50,7 @@
     }
   },
   "language_servers": [
+    "vtsls", // Make sure vtsls is first in the list for language server actions.
     "!typescript-language-server", // Use vtsls instead.
     "!biome", // Enabled biome per project.
     "..."
@@ -64,6 +65,17 @@
           }
         }
       }
+    },
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "workspace",
+          "typeCheckingMode": "strict"
+        },
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
     }
   },
   "code_actions_on_format": {
@@ -75,6 +87,7 @@
     "docker-compose": true,
     "dockerfile": true,
     "fish": true,
+    "fleet-themes": true,
     "git-firefly": true,
     "html": true,
     "ini": true,
