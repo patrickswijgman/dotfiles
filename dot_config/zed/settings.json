@@ -10,8 +10,8 @@
   "auto_update": false,
   "theme": {
     "mode": "system",
-    "dark": "Fleet Dark",
-    "light": "Fleet Light"
+    "dark": "One Dark Pro",
+    "light": "One Dark Pro"
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
@@ -87,7 +87,6 @@
     "docker-compose": true,
     "dockerfile": true,
     "fish": true,
-    "fleet-themes": true,
     "git-firefly": true,
     "html": true,
     "ini": true,
