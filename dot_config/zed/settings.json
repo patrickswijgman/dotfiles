@@ -8,13 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "auto_update": false,
-  "theme": {
-    "mode": "system",
-    "dark": "One Dark Pro",
-    "light": "One Dark Pro"
-  },
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "theme": "Fleet Dark",
   "vim_mode": true,
   "vim": {
     "use_multiline_find": true,
@@ -52,7 +46,7 @@
   "language_servers": [
     "vtsls", // Make sure vtsls is first in the list for language server actions.
     "!typescript-language-server", // Use vtsls instead.
-    "!biome", // Enabled biome per project.
+    "!biome", // Enable biome per project.
     "..."
   ],
   "lsp": {
@@ -81,7 +75,7 @@
   "code_actions_on_format": {
     "source.fixAll.eslint": true
   },
-  "auto_install_extension": {
+  "auto_install_extensions": {
     "codebook": true,
     "dart": true,
     "docker-compose": true,
