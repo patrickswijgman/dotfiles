@@ -33,6 +33,7 @@ abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
 abbr ns 'nix-shell --run fish'
+abbr nr 'sudo nixos-rebuild switch --flake ~/nix#default'
 
 abbr venv 'source .venv/bin/activate.fish'
 

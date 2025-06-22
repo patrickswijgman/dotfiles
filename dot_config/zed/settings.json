@@ -75,6 +75,17 @@
   "code_actions_on_format": {
     "source.fixAll.eslint": true
   },
+  "agent": {
+    "model_parameters": [],
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    },
+    "version": "2"
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
   "auto_install_extensions": {
     "codebook": true,
     "dart": true,
