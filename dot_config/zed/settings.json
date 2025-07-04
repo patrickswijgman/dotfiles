@@ -43,21 +43,20 @@
       "format_on_save": "on"
     }
   },
-  "language_servers": [
-    "vtsls", // Make sure vtsls is first in the list for language server actions.
-    "!typescript-language-server", // Use vtsls instead.
-    "!biome", // Enable biome per project.
-    "..."
-  ],
   "lsp": {
     "vtsls": {
       "settings": {
         "typescript": {
           "preferences": {
             "importModuleSpecifier": "non-relative",
-            "importModuleSpecifierEnding": "js"
+            "importModuleSpecifierEnding": "minimal"
           }
         }
+      }
+    },
+    "biome": {
+      "settings": {
+        "require_config_file": true
       }
     },
     "pyright": {
@@ -87,11 +86,13 @@
     "edit_prediction_provider": "copilot"
   },
   "auto_install_extensions": {
+    "biome": true,
     "codebook": true,
     "dart": true,
     "docker-compose": true,
     "dockerfile": true,
     "fish": true,
+    "fleet-themes": true,
     "git-firefly": true,
     "html": true,
     "ini": true,
