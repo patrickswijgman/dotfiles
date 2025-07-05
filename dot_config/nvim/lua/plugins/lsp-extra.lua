@@ -17,7 +17,16 @@ local function format(diagnostic)
 end
 
 require("lsp-extra").setup({
+  hover = {
+    border = "rounded",
+  },
+  signature_help = {
+    border = "rounded",
+  },
   diagnostics = {
+    float = {
+      border = "rounded",
+    },
     virtual_text = {
       current_line = true,
       prefix = "",

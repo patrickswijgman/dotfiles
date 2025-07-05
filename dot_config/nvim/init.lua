@@ -14,3 +14,6 @@ require("plugins.telescope")
 require("plugins.spider")
 require("plugins.autopairs")
 require("plugins.surround")
+require("plugins.leap")
+
+require("plugins.autosession")

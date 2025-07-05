@@ -14,9 +14,6 @@ telescope.setup({
       },
     },
     sorting_strategy = "ascending",
-    path_display = {
-      "filename_first",
-    },
     mappings = {
       i = {
         ["<c-up>"] = actions.cycle_history_prev,
