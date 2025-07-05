@@ -15,5 +15,6 @@ require("plugins.spider")
 require("plugins.autopairs")
 require("plugins.surround")
 require("plugins.leap")
+require("plugins.spectre")
 
 require("plugins.autosession")
