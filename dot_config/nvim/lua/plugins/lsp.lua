@@ -44,6 +44,7 @@ vim.lsp.config("vtsls", {
 vim.lsp.enable("nixd")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("vtsls")
+vim.lsp.enable("biome")
 vim.lsp.enable("codebook", false)
 vim.lsp.enable("taplo")
 vim.lsp.enable("jsonls")

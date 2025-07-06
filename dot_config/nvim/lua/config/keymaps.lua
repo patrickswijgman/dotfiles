@@ -10,12 +10,13 @@ vim.keymap.set("n", "<m-h>", "<c-w>h", { desc = "Go to left window" })
 vim.keymap.set("n", "<m-j>", "<c-w>j", { desc = "Go to lower window" })
 vim.keymap.set("n", "<m-k>", "<c-w>k", { desc = "Go to upper window" })
 vim.keymap.set("n", "<m-l>", "<c-w>l", { desc = "Go to right window" })
+vim.keymap.set("n", "<m-q>", "<c-w>q", { desc = "Close window" })
 
 -- Tabs
-vim.keymap.set("n", "<c-h>", "<cmd>tabprev<cr>", { desc = "Go to previous tab" })
-vim.keymap.set("n", "<c-l>", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
-vim.keymap.set("n", "<c-n>", "<cmd>tabnew<cr>", { desc = "New tab" })
-vim.keymap.set("n", "<c-q>", "<cmd>tabclose<cr>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>th", "<cmd>tabprev<cr>", { desc = "Go to previous tab" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Go to next tab" })
+vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Close tab" })
 
 -- Clipboard
 vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })

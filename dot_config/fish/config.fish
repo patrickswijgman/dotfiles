@@ -40,4 +40,7 @@ abbr venv 'source .venv/bin/activate.fish'
 
 abbr tr 'tree --gitignore --dirsfirst'
 
+babelfish < ~/.nix-profile/etc/profile.d/hm-session-vars.sh | source
+
 oh-my-posh init fish --config ~/.config/oh-my-posh/config.json | source
+
