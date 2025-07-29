@@ -28,7 +28,8 @@ abbr grs 'git restore'
 abbr grss 'git restore --staged'
 abbr grsm 'git restore --source origin/main'
 
-abbr yolo 'git commit --amend --no-edit && git push -f'
+abbr yolo 'git commit --amend --no-edit && git push --force'
+abbr yeet 'git commit --amend --no-edit --no-verify && git push --force --no-verify'
 
 abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'

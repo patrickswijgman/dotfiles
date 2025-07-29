@@ -4,11 +4,11 @@ args    = ["--stdio"]
 
 [language-server.vtsls.config]
 typescript.preferences.importModuleSpecifier       = "non-relative"
-typescript.preferences.importModuleSpecifierEnding = "auto"
+typescript.preferences.importModuleSpecifierEnding = "js"
 
 [language-server.biome]
-command = "biome"
-args    = ["lsp-proxy"]
+command = "npx"
+args    = ["biome", "lsp-proxy"]
 
 [language-server.scls]
 command = "simple-completion-language-server"
@@ -24,7 +24,7 @@ auto-format      = true
 
 [[language]]
 name             = "jsx"
-language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "codebook", "scls"]
+language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "tailwindcss-ls", "codebook", "scls"]
 auto-format      = true
 
 [[language]]
@@ -34,7 +34,7 @@ auto-format      = true
 
 [[language]]
 name             = "tsx"
-language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "codebook", "scls"]
+language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "tailwindcss-ls", "codebook", "scls"]
 auto-format      = true
 
 [[language]]

@@ -29,7 +29,7 @@ vim.lsp.config("vtsls", {
     typescript = {
       preferences = {
         importModuleSpecifier = "non-relative",
-        importModuleSpecifierEnding = "auto",
+        importModuleSpecifierEnding = "js",
       },
       updateImportsOnFileMove = {
         enabled = "always",
@@ -41,11 +41,32 @@ vim.lsp.config("vtsls", {
   },
 })
 
+vim.lsp.config("jsonls", {
+  settings = {
+    json = {
+      schemas = {
+        {
+          fileMatch = { "package.json" },
+          url = "https://www.schemastore.org/package.json",
+        },
+        {
+          fileMatch = { "tsconfig.json" },
+          url = "https://www.schemastore.org/tsconfig.json",
+        },
+      },
+    },
+  },
+})
+
 vim.lsp.enable("nixd")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("vtsls")
 vim.lsp.enable("biome")
-vim.lsp.enable("codebook", false)
+vim.lsp.enable("tailwindcss")
+vim.lsp.enable("codebook")
 vim.lsp.enable("taplo")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("yamlls")
+vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
+vim.lsp.enable("gopls")

@@ -12,7 +12,7 @@ local icons = {
   [vim.diagnostic.severity.HINT] = "󰌶",
 }
 
-local function format(diagnostic)
+local function diagnostic_format(diagnostic)
   return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
 end
 
@@ -30,7 +30,7 @@ require("lsp-extra").setup({
     virtual_text = {
       current_line = true,
       prefix = "",
-      format = format,
+      format = diagnostic_format,
     },
     signs = {
       text = signs,

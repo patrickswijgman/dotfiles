@@ -8,10 +8,13 @@ telescope.setup({
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        width = { padding = 0 },
-        height = { padding = 0 },
+        width = { padding = 8 },
+        height = { padding = 2 },
         preview_width = 0.5,
       },
+    },
+    path_display = {
+      "filename_first",
     },
     sorting_strategy = "ascending",
     mappings = {
@@ -22,7 +25,7 @@ telescope.setup({
         ["<esc>"] = actions.close,
       },
     },
-    vimgrep_arguments = { "rg", "--vimgrep", "--hidden", "--glob=!**/.git/*" },
+    vimgrep_arguments = { "rg", "--vimgrep", "--smart-case", "--hidden", "--glob=!**/.git/*" },
   },
   pickers = {
     find_files = {

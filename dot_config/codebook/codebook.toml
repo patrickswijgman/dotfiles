@@ -1,56 +1,60 @@
 # List of dictionaries to use for spell checking
-dictionaries = ["en_us", "nl"]
+dictionaries = ["en_us"]
 
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 words = [
-    "patrickswijgman",
-    "keymap",
-    "chezmoi",
-    "ridder",
-    "snuggy",
-    "ogg",
-    "wav",
+  "patrickswijgman",
+  "keymap",
+  "chezmoi",
+  "ridder",
+  "snuggy",
+  "ogg",
+  "wav",
 
-    # Domain
-    "voys",
-    "voipgrid",
-    "IPGRID",
-    "holodeck",
-    "usecase",
-    "usecases",
-    "resgate",
-    "contactbook",
-    "whatsapp",
-    "webphone",
-    "userdestination",
-    "fixeddestination",
-    "msgtype",
+  # Domain
+  "voys",
+  "voipgrid",
+  "IPGRID",
+  "holodeck",
+  "usecase",
+  "usecases",
+  "resgate",
+  "contactbook",
+  "whatsapp",
+  "webphone",
+  "userdestination",
+  "fixeddestination",
+  "msgtype",
 
-    # Web
-    "vite",
-    "npx",
-    "rtc",
-    "pointerup",
-    "pointerdown",
-    "pointermove",
-    "contextmenu",
-    "canplay",
-    "canplaythrough",
-    "tsc",
-    "bundler",
+  # Web
+  "vite",
+  "npx",
+  "rtc",
+  "pointerup",
+  "pointerdown",
+  "pointermove",
+  "contextmenu",
+  "canplay",
+  "canplaythrough",
+  "tsc",
+  "bundler",
 
-    # Game
-    "pixelmix",
-    "anims",
-    "soa",
+  # Game
+  "pixelmix",
+  "anims",
+  "soa",
 
-    # Nix
-    "nix",
-    "nixos",
-    "nixpkgs",
-    "pkgs",
-    "pname",
+  # Nix
+  "nix",
+  "nixos",
+  "nixpkgs",
+  "pkgs",
+  "pname",
+
+  # Neovim
+  "neovim",
+  "nvim",
 ]
 
 # List of glob patterns for paths to ignore when spell checking
