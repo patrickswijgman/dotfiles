@@ -17,6 +17,14 @@ command = "simple-completion-language-server"
 command = "codebook-lsp"
 args    = ["serve"]
 
+[[language-server.vscode-json-language-server.config.json.schemas]]
+fileMatch = ["package.json"]
+url       = "https://www.schemastore.org/package.json"
+
+[[language-server.vscode-json-language-server.config.json.schemas]]
+fileMatch = ["tsconfig.json"]
+url       = "https://www.schemastore.org/tsconfig.json"
+
 [[language]]
 name             = "javascript"
 language-servers = [{ name = "vtsls", except-features = ["format"] }, "biome", "codebook", "scls"]
