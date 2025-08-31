@@ -1,3 +1,17 @@
+local signs = {
+  [vim.diagnostic.severity.ERROR] = "󰅚",
+  [vim.diagnostic.severity.WARN] = "󰀪",
+  [vim.diagnostic.severity.INFO] = "",
+  [vim.diagnostic.severity.HINT] = "",
+}
+
+local icons = {
+  [vim.diagnostic.severity.ERROR] = "󰅚",
+  [vim.diagnostic.severity.WARN] = "󰀪",
+  [vim.diagnostic.severity.INFO] = "󰋽",
+  [vim.diagnostic.severity.HINT] = "󰌶",
+}
+
 require("wizard").setup({
   options = {
     mouse = "a",
@@ -110,6 +124,37 @@ require("wizard").setup({
           enabled = true,
           auto_trigger = true,
           hide_during_completion = true,
+        },
+      },
+    },
+    {
+      "lsp-extra",
+      {
+        hover = {
+          border = "rounded",
+        },
+        signature_help = {
+          border = "rounded",
+        },
+        diagnostics = {
+          float = {
+            border = "rounded",
+          },
+          virtual_text = {
+            current_line = true,
+            prefix = "",
+            format = function(diagnostic)
+              return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
+            end,
+          },
+          signs = {
+            text = signs,
+          },
+        },
+        disable_semantic_tokens = true,
+        keymaps = {
+          signature_help = "<c-s>",
+          hover = "K",
         },
       },
     },
