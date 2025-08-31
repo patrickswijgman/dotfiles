@@ -4,11 +4,13 @@ dictionaries = ["en_us"]
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 words = [
+  # General
   "patrickswijgman",
-  "keymap",
   "chezmoi",
-  "ridder",
-  "snuggy",
+  "setter",
+  "setters",
+  "getter",
+  "getters",
   "ogg",
   "wav",
 
@@ -26,6 +28,12 @@ words = [
   "userdestination",
   "fixeddestination",
   "msgtype",
+  "voip",
+  "deskphone",
+  "deskphones",
+  "mxc",
+  "msc",
+  "dtmf",
 
   # Web
   "vite",
@@ -44,6 +52,8 @@ words = [
   "pixelmix",
   "anims",
   "soa",
+  "ridder",
+  "snuggy",
 
   # Nix
   "nix",
@@ -55,6 +65,14 @@ words = [
   # Neovim
   "neovim",
   "nvim",
+  "keymap",
+  "keymaps",
+  "esc",
+  "autocmd",
+  "autocmds",
+  "autocommand",
+  "autocommands",
+  "nop",
 ]
 
 # List of glob patterns for paths to ignore when spell checking

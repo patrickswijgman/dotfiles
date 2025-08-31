@@ -1,7 +1,5 @@
 set fish_greeting
 
-abbr zed zeditor
-
 abbr lg lazygit
 abbr ld lazydocker
 
@@ -27,7 +25,6 @@ abbr gra 'git rebase --abort'
 abbr grs 'git restore'
 abbr grss 'git restore --staged'
 abbr grsm 'git restore --source origin/main'
-
 abbr yolo 'git commit --amend --no-edit && git push --force'
 abbr yeet 'git commit --amend --no-edit --no-verify && git push --force --no-verify'
 
@@ -37,9 +34,9 @@ abbr dcr 'docker compose run --rm'
 abbr ns 'nix-shell --run fish'
 abbr nr 'sudo nixos-rebuild switch --flake ~/nix#default'
 
-abbr venv 'source .venv/bin/activate.fish'
-
 abbr tr 'tree --gitignore --dirsfirst'
+
+abbr venv 'source .venv/bin/activate.fish'
 
 babelfish < ~/.nix-profile/etc/profile.d/hm-session-vars.sh | source
 
