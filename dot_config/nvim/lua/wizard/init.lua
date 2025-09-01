@@ -2,7 +2,7 @@ local M = {}
 
 --- @class wizard.KeymapOpts
 --- @field mode? string|string[] Modes in which the keymap is active. Defaults to "n" (normal mode).
---- @field isExpression? boolean Whether the keymap is an expression.
+--- @field expression? boolean Whether the keymap is a Vim language expression.
 
 --- @class wizard.Keymap
 --- @field [1] string Key combination to map.
@@ -26,12 +26,11 @@ local M = {}
 --- @class wizard.Opts
 --- @field options? table<string, any> Neovim options.
 --- @field global_options? table<string, any> Neovim global options.
---- @field leader? string Leader key to set.
---- @field keymaps? wizard.Keymap[] Keymaps to set.
+--- @field keymaps? wizard.Keymap[] Keymaps to set. By default non-recursive, silent keymaps in normal mode.
 --- @field autocmds? wizard.AutoCmd[] Autocommands to create.
 --- @field lsp? wizard.Lsp[] LSP configurations.
+--- @field diagnostics? vim.diagnostic.Opts Diagnostic options.
 --- @field colorscheme? string Colorscheme to set.
---- @field useExperimentalLoader? boolean Whether to enable the experimental Lua module loader.
 --- @field plugins? wizard.Plugin[] Plugins to load and configure.
 
 --- @param opts wizard.Opts
@@ -61,26 +60,22 @@ function M.setup(opts)
     vim.lsp.enable(lsp[1])
   end
 
-  if opts.colorscheme then
-    vim.cmd.colorscheme(opts.colorscheme)
+  if opts.diagnostics then
+    vim.diagnostic.config(opts.diagnostics)
   end
 
-  if opts.useExperimentalLoader then
-    vim.loader.enable()
+  if opts.colorscheme then
+    vim.cmd.colorscheme(opts.colorscheme)
   end
 
   for _, plugin in ipairs(opts.plugins or {}) do
     require(plugin[1]).setup(plugin[2] or {})
   end
 
-  if opts.leader then
-    vim.g.mapleader = opts.leader
-  end
-
   for _, keymap in ipairs(opts.keymaps or {}) do
     local keymap_opts = keymap[4] or {}
     local keymap_mode = keymap_opts.mode or "n"
-    vim.keymap.set(keymap_mode, keymap[1], keymap[2], { desc = keymap[3], silent = true, noremap = true, expr = keymap_opts.isExpression })
+    vim.keymap.set(keymap_mode, keymap[1], keymap[2], { desc = keymap[3], silent = true, noremap = true, expr = keymap_opts.expression })
   end
 end
 

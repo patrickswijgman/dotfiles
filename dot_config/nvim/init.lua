@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local signs = {
   [vim.diagnostic.severity.ERROR] = "󰅚",
   [vim.diagnostic.severity.WARN] = "󰀪",
@@ -50,12 +52,14 @@ require("wizard").setup({
   },
 
   global_options = {
+    mapleader = " ",
+
     loaded_netrw = 1,
     loaded_netrwPlugin = 1,
   },
 
   colorscheme = "vague",
-  useExperimentalLoader = true,
+
   plugins = {
     {
       "nvim-autopairs",
@@ -124,37 +128,6 @@ require("wizard").setup({
           enabled = true,
           auto_trigger = true,
           hide_during_completion = true,
-        },
-      },
-    },
-    {
-      "lsp-extra",
-      {
-        hover = {
-          border = "rounded",
-        },
-        signature_help = {
-          border = "rounded",
-        },
-        diagnostics = {
-          float = {
-            border = "rounded",
-          },
-          virtual_text = {
-            current_line = true,
-            prefix = "",
-            format = function(diagnostic)
-              return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
-            end,
-          },
-          signs = {
-            text = signs,
-          },
-        },
-        disable_semantic_tokens = true,
-        keymaps = {
-          signature_help = "<c-s>",
-          hover = "K",
         },
       },
     },
@@ -279,10 +252,16 @@ require("wizard").setup({
     },
   },
 
-  leader = " ",
   keymaps = {
-    { "j", "v:count == 0 ? 'gj' : 'j'", "Down (including wrapped lines)", { mode = { "n", "x" }, isExpression = true } },
-    { "k", "v:count == 0 ? 'gk' : 'k'", "Up (including wrapped lines)", { mode = { "n", "x" }, isExpression = true } },
+    { "j", "v:count == 0 ? 'gj' : 'j'", "Down (including wrapped lines)", { mode = { "n", "x" }, expression = true } },
+    { "k", "v:count == 0 ? 'gk' : 'k'", "Up (including wrapped lines)", { mode = { "n", "x" }, expression = true } },
+    {
+      "K",
+      function()
+        vim.lsp.buf.hover({ border = "rounded" })
+      end,
+      "LSP hover",
+    },
     { "w", "<cmd>lua require('spider').motion('w')<cr>", "Next word", { mode = { "n", "o", "x" } } },
     { "e", "<cmd>lua require('spider').motion('e')<cr>", "Next end of word", { mode = { "n", "o", "x" } } },
     { "b", "<cmd>lua require('spider').motion('b')<cr>", "Prev word", { mode = { "n", "o", "x" } } },
@@ -296,6 +275,14 @@ require("wizard").setup({
     { "grr", require("telescope.builtin").lsp_references, "Go to LSP references" },
     { "grs", require("telescope.builtin").lsp_document_symbols, "LSP document symbols" },
     { "grS", require("telescope.builtin").lsp_workspace_symbols, "LSP workspace symbols" },
+    {
+      "<c-s>",
+      function()
+        vim.lsp.buf.signature_help({ border = "rounded" })
+      end,
+      "LSP signature help",
+      { mode = { "n", "i" } },
+    },
     { "<c-h>", "<cmd>tabprev<cr>", "Go to previous tab" },
     { "<c-l>", "<cmd>tabnext<cr>", "Go to next tab" },
     { "<c-t>", "<cmd>tabnew<cr>", "New tab" },
@@ -305,7 +292,7 @@ require("wizard").setup({
     { "<m-k>", "<c-w>k", "Go to upper window" },
     { "<m-l>", "<c-w>l", "Go to right window" },
     { "<m-q>", "<c-w>q", "Close window" },
-    { "<leader>e", require("telescope.builtin").diagnostics, "Diagnostics" },
+    { "<leader>d", require("telescope.builtin").diagnostics, "Diagnostics" },
     { "<leader>f", require("telescope.builtin").find_files, "Find file" },
     { "<leader>/", require("telescope.builtin").live_grep, "Grep content" },
     { "<leader>b", require("telescope.builtin").buffers, "Find buffer" },
@@ -360,6 +347,9 @@ require("wizard").setup({
           },
         },
       },
+      on_attach = function(client)
+        client.server_capabilities.semanticTokensProvider = nil
+      end,
     },
     {
       "vtsls",
@@ -388,6 +378,9 @@ require("wizard").setup({
             },
           },
         },
+        on_attach = function(client)
+          client.server_capabilities.semanticTokensProvider = nil
+        end,
       },
     },
     {
@@ -432,6 +425,22 @@ require("wizard").setup({
     },
     {
       "gopls",
+    },
+  },
+
+  diagnostics = {
+    float = {
+      border = "rounded",
+    },
+    virtual_text = {
+      current_line = true,
+      prefix = "",
+      format = function(diagnostic)
+        return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
+      end,
+    },
+    signs = {
+      text = signs,
     },
   },
 })
