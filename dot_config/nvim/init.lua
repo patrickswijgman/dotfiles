@@ -326,6 +326,22 @@ require("wizard").setup({
     },
   },
 
+  diagnostics = {
+    float = {
+      border = "rounded",
+    },
+    virtual_text = {
+      current_line = true,
+      prefix = "",
+      format = function(diagnostic)
+        return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
+      end,
+    },
+    signs = {
+      text = signs,
+    },
+  },
+
   lsp = {
     {
       "nixd",
@@ -346,10 +362,10 @@ require("wizard").setup({
             },
           },
         },
+        on_attach = function(client)
+          client.server_capabilities.semanticTokensProvider = nil
+        end,
       },
-      on_attach = function(client)
-        client.server_capabilities.semanticTokensProvider = nil
-      end,
     },
     {
       "vtsls",
@@ -425,22 +441,6 @@ require("wizard").setup({
     },
     {
       "gopls",
-    },
-  },
-
-  diagnostics = {
-    float = {
-      border = "rounded",
-    },
-    virtual_text = {
-      current_line = true,
-      prefix = "",
-      format = function(diagnostic)
-        return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
-      end,
-    },
-    signs = {
-      text = signs,
     },
   },
 })
