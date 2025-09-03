@@ -1,19 +1,5 @@
 vim.loader.enable()
 
-local signs = {
-  [vim.diagnostic.severity.ERROR] = "󰅚",
-  [vim.diagnostic.severity.WARN] = "󰀪",
-  [vim.diagnostic.severity.INFO] = "",
-  [vim.diagnostic.severity.HINT] = "",
-}
-
-local icons = {
-  [vim.diagnostic.severity.ERROR] = "󰅚",
-  [vim.diagnostic.severity.WARN] = "󰀪",
-  [vim.diagnostic.severity.INFO] = "󰋽",
-  [vim.diagnostic.severity.HINT] = "󰌶",
-}
-
 require("wizard").setup({
   options = {
     mouse = "a",
@@ -167,11 +153,14 @@ require("wizard").setup({
         git = {
           enable = false,
         },
-        modified = {
-          enable = true,
-        },
         filters = {
-          enable = false,
+          enable = true,
+          custom = {
+            ".git",
+          },
+        },
+        renderer = {
+          special_files = {},
         },
       },
     },
@@ -334,11 +323,23 @@ require("wizard").setup({
       current_line = true,
       prefix = "",
       format = function(diagnostic)
+        local icons = {
+          [vim.diagnostic.severity.ERROR] = "󰅚",
+          [vim.diagnostic.severity.WARN] = "󰀪",
+          [vim.diagnostic.severity.INFO] = "󰋽",
+          [vim.diagnostic.severity.HINT] = "󰌶",
+        }
+
         return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
       end,
     },
     signs = {
-      text = signs,
+      text = {
+        [vim.diagnostic.severity.ERROR] = "󰅚",
+        [vim.diagnostic.severity.WARN] = "󰀪",
+        [vim.diagnostic.severity.INFO] = "",
+        [vim.diagnostic.severity.HINT] = "",
+      },
     },
   },
 

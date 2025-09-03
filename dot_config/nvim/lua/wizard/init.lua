@@ -43,7 +43,7 @@ function M.setup(opts)
     vim.g[key] = value
   end
 
-  local group = vim.api.nvim_create_augroup("WizardConfig", { clear = true })
+  local group = vim.api.nvim_create_augroup("Wizard", { clear = true })
 
   for _, autocmd in ipairs(opts.autocmds or {}) do
     vim.api.nvim_create_autocmd(autocmd[1], {
