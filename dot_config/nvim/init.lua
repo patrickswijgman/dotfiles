@@ -153,12 +153,6 @@ require("wizard").setup({
         git = {
           enable = false,
         },
-        filters = {
-          enable = true,
-          custom = {
-            ".git",
-          },
-        },
         renderer = {
           special_files = {},
         },
@@ -215,6 +209,9 @@ require("wizard").setup({
       },
     },
     {
+      "actions-preview",
+    },
+    {
       "nvim-treesitter.configs",
       {
         highlight = {
@@ -258,12 +255,13 @@ require("wizard").setup({
     { "q", "<nop>", "Disable macros" },
     { "Q", "<nop>", "Disable macros" },
     { "s", "<plug>(leap)", "Leap to word", { mode = { "n", "x", "o" } } },
-    { "grd", require("telescope.builtin").lsp_definitions, "Go to LSP definitions" },
+    { "gra", require("actions-preview").code_actions, "Code action" },
     { "grt", require("telescope.builtin").lsp_type_definitions, "Go to LSP type definitions" },
     { "gri", require("telescope.builtin").lsp_implementations, "Go to LSP implementations" },
     { "grr", require("telescope.builtin").lsp_references, "Go to LSP references" },
-    { "grs", require("telescope.builtin").lsp_document_symbols, "LSP document symbols" },
-    { "grS", require("telescope.builtin").lsp_workspace_symbols, "LSP workspace symbols" },
+    { "grO", require("telescope.builtin").lsp_workspace_symbols, "LSP workspace symbols" },
+    { "gO", require("telescope.builtin").lsp_document_symbols, "LSP document symbols" },
+    { "<c-]>", require("telescope.builtin").lsp_definitions, "Go to LSP definitions" },
     {
       "<c-s>",
       function()
@@ -284,9 +282,10 @@ require("wizard").setup({
     { "<leader>d", require("telescope.builtin").diagnostics, "Diagnostics" },
     { "<leader>f", require("telescope.builtin").find_files, "Find file" },
     { "<leader>/", require("telescope.builtin").live_grep, "Grep content" },
+    { "<leader>?", require("telescope.builtin").grep_string, "Grep word under cursor" },
     { "<leader>b", require("telescope.builtin").buffers, "Find buffer" },
     { "<leader>h", require("telescope.builtin").help_tags, "Find help" },
-    { "<leader>'", require("telescope.builtin").resume, "Resume picker" },
+    { "<leader>'", require("telescope.builtin").resume, "Resume last picker" },
     { "<leader>e", "<cmd>NvimTreeOpen<cr>", "Open file explorer" },
     { "<leader>E", "<cmd>NvimTreeFindFile<cr>", "Open file explorer at current file" },
     { "<leader>s", "<cmd>Spectre<cr>", "Find and replace" },

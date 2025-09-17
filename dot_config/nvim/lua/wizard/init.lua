@@ -2,6 +2,7 @@ local M = {}
 
 --- @class wizard.KeymapOpts
 --- @field mode? string|string[] Modes in which the keymap is active. Defaults to "n" (normal mode).
+--- @field remap? boolean Whether the keymap is recursive. Defaults to false (non-recursive).
 --- @field expression? boolean Whether the keymap is a Vim language expression.
 
 --- @class wizard.Keymap
@@ -75,7 +76,7 @@ function M.setup(opts)
   for _, keymap in ipairs(opts.keymaps or {}) do
     local keymap_opts = keymap[4] or {}
     local keymap_mode = keymap_opts.mode or "n"
-    vim.keymap.set(keymap_mode, keymap[1], keymap[2], { desc = keymap[3], silent = true, noremap = true, expr = keymap_opts.expression })
+    vim.keymap.set(keymap_mode, keymap[1], keymap[2], { desc = keymap[3], silent = true, remap = keymap_opts.remap, expr = keymap_opts.expression })
   end
 end
 
