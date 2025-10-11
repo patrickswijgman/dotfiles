@@ -1,6 +1,4 @@
-theme = UltraDark
-window-width = 999
-window-height = 999
+theme = Ultra Dark
 
 keybind = ctrl+shift+h=previous_tab
 keybind = ctrl+shift+l=next_tab
