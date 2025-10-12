@@ -1,3 +1,5 @@
 [formatting]
-align_entries = true
-column_width  = 999
+align_entries       = true
+allowed_blank_lines = 1
+array_auto_collapse = false
+column_width        = 999
