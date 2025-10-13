@@ -1,8 +1,8 @@
-profile {
-	output "WORK_SCREEN" enable scale 1.5
-	output "eDP-1" disable
+profile work {
+	output "Dell Inc. DELL U2720Q 87RFX83" scale 1.5
+	output eDP-1 disable
 }
 
-profile {
-	output "eDP-1" enable
+profile laptop {
+	output eDP-1 enable
 }

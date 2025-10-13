@@ -1,1 +1,1 @@
-swaylock -f --screenshots --effect-blur 5x2
+swaylock -f --screenshots --effect-blur 7x5

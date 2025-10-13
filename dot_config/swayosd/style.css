@@ -1,0 +1,42 @@
+window#osd {
+  border-radius: 12px;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px #00000022;
+  margin: 8px;
+}
+
+window#osd #container {
+  margin: 16px;
+}
+
+window#osd image,
+window#osd label {
+  color: #1e1e1e;
+}
+
+window#osd progressbar:disabled,
+window#osd image:disabled {
+  opacity: 0.5;
+}
+
+window#osd progressbar {
+  min-height: 6px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+}
+
+window#osd trough {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: #00000022;
+}
+
+window#osd progress {
+  min-height: inherit;
+  border-radius: inherit;
+  border: none;
+  background: #1e1e1e;
+}
