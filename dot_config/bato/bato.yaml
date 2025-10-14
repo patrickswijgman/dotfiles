@@ -1,0 +1,51 @@
+# tick_rate: u32, default: 5
+#
+# The refresh rate in second of bato.
+#
+tick_rate: 30
+
+# critical_level: String, required
+#
+# The critical level of the battery, as a percentage.
+#
+critical_level: 10
+
+# low_level: String, required
+#
+# The low level of the battery, as a percentage.
+#
+low_level: 20
+
+# full_design: bool, default: true
+#
+# Whether or not the current level is calculated based on the full design value.
+#
+full_design: true
+
+# They are all optional. If you omit one, the corresponding notification is disabled.
+
+# charging:
+#   summary: Battery
+#   body: Charging
+#   icon: battery-good-charging
+
+# discharging:
+#   summary: Battery
+#   body: Discharging
+#   icon: battery-good
+
+full:
+  summary: Battery
+  body: Full
+  icon: battery-level-100-symbolic
+
+low:
+  summary: Battery
+  body: Low
+  icon: battery-level-20-symbolic
+
+critical:
+  summary: Battery
+  body: Critical!
+  icon: battery-level-10-symbolic
+  urgency: Critical

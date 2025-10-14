@@ -369,26 +369,16 @@ require("wizard").setup({
       "vtsls",
       {
         settings = {
-          complete_function_calls = true,
-          vtsls = {
-            enableMoveToFileCodeAction = true,
-            autoUseWorkspaceTsdk = true,
-            experimental = {
-              completion = {
-                enableServerSideFuzzyMatch = true,
-              },
+          javascript = {
+            preferences = {
+              importModuleSpecifier = "non-relative",
+              importModuleSpecifierEnding = "js",
             },
           },
           typescript = {
             preferences = {
               importModuleSpecifier = "non-relative",
               importModuleSpecifierEnding = "js",
-            },
-            updateImportsOnFileMove = {
-              enabled = "always",
-            },
-            suggest = {
-              completeFunctionCalls = true,
             },
           },
         },
@@ -440,6 +430,9 @@ require("wizard").setup({
     },
     {
       "gopls",
+    },
+    {
+      "fish_lsp",
     },
   },
 })
