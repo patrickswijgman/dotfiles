@@ -1,6 +1,6 @@
 set fish_greeting
 
-set -gx FZF_DEFAULT_OPTS "\
+set -x FZF_DEFAULT_OPTS "\
   --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
   --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
   --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
@@ -44,8 +44,7 @@ abbr nr 'sudo nixos-rebuild switch --flake ~/nix#default'
 abbr tr 'tree --gitignore --dirsfirst'
 
 abbr venv 'source .venv/bin/activate.fish'
-
-babelfish < ~/.nix-profile/etc/profile.d/hm-session-vars.sh | source
+abbr venvd 'source .venv/bin/deactivate.fish'
 
 oh-my-posh init fish --config ~/.config/oh-my-posh/config.json | source
 

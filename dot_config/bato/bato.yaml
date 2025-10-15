@@ -24,28 +24,23 @@ full_design: true
 
 # They are all optional. If you omit one, the corresponding notification is disabled.
 
-# charging:
-#   summary: Battery
-#   body: Charging
-#   icon: battery-good-charging
+charging:
+  summary: Battery
+  body: Charging
 
-# discharging:
-#   summary: Battery
-#   body: Discharging
-#   icon: battery-good
+discharging:
+  summary: Battery
+  body: Discharging
 
 full:
   summary: Battery
   body: Full
-  icon: battery-level-100-symbolic
 
 low:
   summary: Battery
   body: Low
-  icon: battery-level-20-symbolic
 
 critical:
   summary: Battery
   body: Critical!
-  icon: battery-level-10-symbolic
   urgency: Critical

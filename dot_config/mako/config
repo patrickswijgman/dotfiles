@@ -1,7 +1,7 @@
 anchor=top-right
 layer=overlay
 
-font=sans 12
+font=sans 10
 background-color=#ffffffff
 border-color=#00000022
 border-radius=12
@@ -12,5 +12,4 @@ height=200
 padding=20
 border-size=3
 margin=10
-
 outer-margin=20

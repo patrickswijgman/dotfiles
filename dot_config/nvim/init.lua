@@ -231,7 +231,7 @@ require("wizard").setup({
       "zen-mode",
       {
         window = {
-          width = 1,
+          width = 200,
           height = 1,
         },
       },
