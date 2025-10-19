@@ -1,2 +1,5 @@
 font=sans
-font-size=12
+color=000000
+screenshots
+effect-blur=7x5
+daemonize

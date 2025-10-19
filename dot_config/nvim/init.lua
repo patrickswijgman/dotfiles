@@ -1,6 +1,10 @@
 vim.loader.enable()
 
 require("wizard").setup({
+  --------------------
+  -- Editor options --
+  --------------------
+
   options = {
     mouse = "a",
     number = true,
@@ -44,7 +48,15 @@ require("wizard").setup({
     loaded_netrwPlugin = 1,
   },
 
+  -----------------
+  -- Colorscheme --
+  -----------------
+
   colorscheme = "catppuccin",
+
+  -------------
+  -- Plugins --
+  -------------
 
   plugins = {
     {
@@ -238,6 +250,10 @@ require("wizard").setup({
     },
   },
 
+  -------------
+  -- Keymaps --
+  -------------
+
   keymaps = {
     { "j", "v:count == 0 ? 'gj' : 'j'", "Down (including wrapped lines)", { mode = { "n", "x" }, expression = true } },
     { "k", "v:count == 0 ? 'gk' : 'k'", "Up (including wrapped lines)", { mode = { "n", "x" }, expression = true } },
@@ -255,12 +271,14 @@ require("wizard").setup({
     { "q", "<nop>", "Disable macros" },
     { "Q", "<nop>", "Disable macros" },
     { "s", "<plug>(leap)", "Leap to word", { mode = { "n", "x", "o" } } },
+
     { "gra", require("actions-preview").code_actions, "Code action" },
     { "grt", require("telescope.builtin").lsp_type_definitions, "Go to LSP type definitions" },
     { "gri", require("telescope.builtin").lsp_implementations, "Go to LSP implementations" },
     { "grr", require("telescope.builtin").lsp_references, "Go to LSP references" },
     { "grO", require("telescope.builtin").lsp_workspace_symbols, "LSP workspace symbols" },
     { "gO", require("telescope.builtin").lsp_document_symbols, "LSP document symbols" },
+
     { "<c-]>", require("telescope.builtin").lsp_definitions, "Go to LSP definitions" },
     {
       "<c-s>",
@@ -274,11 +292,13 @@ require("wizard").setup({
     { "<c-l>", "<cmd>tabnext<cr>", "Go to next tab" },
     { "<c-t>", "<cmd>tabnew<cr>", "New tab" },
     { "<c-q>", "<cmd>tabclose<cr>", "Close tab" },
+
     { "<m-h>", "<c-w>h", "Go to left window" },
     { "<m-j>", "<c-w>j", "Go to lower window" },
     { "<m-k>", "<c-w>k", "Go to upper window" },
     { "<m-l>", "<c-w>l", "Go to right window" },
     { "<m-q>", "<c-w>q", "Close window" },
+
     { "<leader>d", require("telescope.builtin").diagnostics, "Diagnostics" },
     { "<leader>f", require("telescope.builtin").find_files, "Find file" },
     { "<leader>/", require("telescope.builtin").live_grep, "Grep content" },
@@ -294,8 +314,13 @@ require("wizard").setup({
     { "<leader>p", '"+p', "Paste from system clipboard", { mode = { "n", "x" } } },
     { "<leader>P", '"+P', "Paste from system clipboard", { mode = { "n", "x" } } },
     { "<leader>R", '"+p', "Replace with text from system clipboard", { mode = "x" } },
+
     { "<esc>", "<cmd>nohl<cr>", "Clear search highlight" },
   },
+
+  -------------------
+  -- Auto commands --
+  -------------------
 
   autocmds = {
     {
@@ -314,26 +339,25 @@ require("wizard").setup({
     },
   },
 
+  -----------------
+  -- Diagnostics --
+  -----------------
+
   diagnostics = {
     float = {
       border = "rounded",
     },
     virtual_text = {
       current_line = true,
-      prefix = "",
-      format = function(diagnostic)
-        local icons = {
-          [vim.diagnostic.severity.ERROR] = "󰅚",
-          [vim.diagnostic.severity.WARN] = "󰀪",
-          [vim.diagnostic.severity.INFO] = "󰋽",
-          [vim.diagnostic.severity.HINT] = "󰌶",
-        }
-
-        return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
-      end,
+      icons = {
+        [vim.diagnostic.severity.ERROR] = "󰅚",
+        [vim.diagnostic.severity.WARN] = "󰀪",
+        [vim.diagnostic.severity.INFO] = "󰋽",
+        [vim.diagnostic.severity.HINT] = "󰌶",
+      },
     },
     signs = {
-      text = {
+      icons = {
         [vim.diagnostic.severity.ERROR] = "󰅚",
         [vim.diagnostic.severity.WARN] = "󰀪",
         [vim.diagnostic.severity.INFO] = "",
@@ -341,6 +365,10 @@ require("wizard").setup({
       },
     },
   },
+
+  ----------------------------
+  -- Language servers (LSP) --
+  ----------------------------
 
   lsp = {
     {
