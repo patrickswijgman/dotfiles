@@ -1,9 +1,7 @@
 window#osd {
-  border-radius: 12px;
-  border: none;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px #00000022;
-  margin: 8px;
+  background: #{{ .theme.background }};
+  border-radius: {{ .theme.border_radius }}px;
+  border: {{ .theme.border_width }}px solid #{{ .theme.border }};
 }
 
 window#osd #container {
@@ -12,7 +10,7 @@ window#osd #container {
 
 window#osd image,
 window#osd label {
-  color: #1e1e1e;
+  color: #{{ .theme.text }};
 }
 
 window#osd progressbar:disabled,
@@ -31,12 +29,12 @@ window#osd trough {
   min-height: inherit;
   border-radius: inherit;
   border: none;
-  background: #00000022;
+  background: rgba(0, 0, 0, 0.25);
 }
 
 window#osd progress {
   min-height: inherit;
   border-radius: inherit;
   border: none;
-  background: #1e1e1e;
+  background: #{{ .theme.text }};
 }

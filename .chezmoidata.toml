@@ -1,0 +1,11 @@
+[theme]
+background    = "5e7380"
+text          = "e6e9eb"
+border        = "465866"
+border_radius = 12
+border_width  = 3
+
+[theme.danger]
+background = "c13c3c"
+text       = "f2dcdc"
+border     = "9a2f2f"

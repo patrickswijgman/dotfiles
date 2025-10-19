@@ -1,0 +1,30 @@
+[main]
+font=sans:size=8
+use-bold=yes
+line-height=16
+icons-enabled=no
+scaling-filter=linear
+prompt="󰅂  "
+placeholder="Search..."
+horizontal-pad=30
+vertical-pad=20
+inner-pad=10
+dpi-aware=yes
+
+[border]
+width={{ .theme.border_width }}
+radius={{ .theme.border_radius }}
+selection-radius={{ div .theme.border_radius 2 }}
+
+[colors]
+background={{ .theme.background }}ff
+border={{ .theme.border }}ff
+text={{ .theme.text }}ff
+prompt={{ .theme.text }}ff
+placeholder={{ .theme.text }}66
+input={{ .theme.text }}ff
+match={{ .theme.text }}ff
+selection={{ .theme.text }}ff
+selection-text={{ .theme.background }}ff
+selection-match={{ .theme.background }}ff
+counter={{ .theme.text }}ff

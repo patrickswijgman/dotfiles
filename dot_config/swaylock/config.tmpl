@@ -1,0 +1,49 @@
+font=sans
+color=000000
+screenshots
+effect-blur=7x5
+daemonize
+indicator
+clock
+timestr=%H:%M
+
+indicator-thickness={{ mul .theme.border_width 2 }}
+indicator-radius=80
+
+text-color={{ .theme.text }}
+inside-color={{ .theme.background }}
+ring-color={{ .theme.border }}
+line-color={{ .theme.border }}
+separator-color={{ .theme.border }}
+
+key-hl-color={{ .theme.text }}
+bs-hl-color={{ .theme.text }}
+
+# Clear
+text-clear=:)
+text-clear-color={{ .theme.text }}
+inside-clear-color={{ .theme.background }}
+ring-clear-color={{ .theme.border }}
+line-clear-colo={{ .theme.border }}
+
+# Caps Lock
+text-caps-lock=CAPS
+text-caps-lock-color={{ .theme.text }}
+inside-caps-lock-color={{ .theme.background }}
+ring-caps-lock-color={{ .theme.border }}
+line-caps-lock-color={{ .theme.border }}
+
+# Verifying
+text-ver=...
+text-ver-color={{ .theme.text }}
+inside-ver-color={{ .theme.background }}
+ring-ver-color={{ .theme.border }}
+line-ver-color={{ .theme.border }}
+
+# Wrong
+text-wrong=x
+text-wrong-color={{ .theme.danger.text }}
+inside-wrong-color={{ .theme.danger.background }}
+ring-wrong-color={{ .theme.danger.border }}
+line-wrong-color={{ .theme.danger.border }}
+
