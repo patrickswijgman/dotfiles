@@ -1,11 +1,14 @@
+# https://catppuccin.com/palette/
+
 [theme]
-background    = "5e7380"
-text          = "e6e9eb"
-border        = "465866"
+background    = "eff1f5"
+text          = "4c4f69"
+border        = "dce0e8"
 border_radius = 12
 border_width  = 3
+accent        = "7287fd"
 
 [theme.danger]
-background = "c13c3c"
-text       = "f2dcdc"
-border     = "9a2f2f"
+background = "e64553"
+text       = "eff1f5"
+border     = "d20f39"
