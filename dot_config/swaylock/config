@@ -5,6 +5,7 @@ effect-blur=7x5
 daemonize
 indicator
 clock
+timestr=%H:%M
 
 indicator-thickness=10
 indicator-radius=80
