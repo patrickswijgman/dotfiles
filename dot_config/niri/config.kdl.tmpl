@@ -131,7 +131,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 3
+        width {{ .theme.border_width }}
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -139,13 +139,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#ffffff"
+        active-color "#{{ .theme.text }}"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#ffffff44"
+        inactive-color "#{{ .theme.text }}44"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -290,17 +290,17 @@ window-rule {
     }
     border {
         on
-        width 3
-        active-color "#00000022"
+        width {{ mul .theme.border_width 2 }}
+        active-color "#00000044"
         inactive-color "#00000022"
-        urgent-color "#ff000066"
+        urgent-color "#{{ .theme.danger.background }}"
     }
 }
 
 // Make unfocused floating windows a bit transparent.
 window-rule {
     match is-floating=true is-focused=false
-    opacity 0.5
+    opacity 0.8
 }
 
 binds {
