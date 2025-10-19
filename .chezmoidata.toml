@@ -4,6 +4,7 @@
 wallpaper     = "000000"
 background    = "eff1f5"
 text          = "4c4f69"
+text_dim      = "6c6f85"
 border        = "dce0e8"
 border_radius = 12
 border_width  = 3
