@@ -3,3 +3,45 @@ color=000000
 screenshots
 effect-blur=7x5
 daemonize
+indicator
+clock
+
+indicator-thickness=10
+indicator-radius=80
+
+inside-color=ffffff
+ring-color=ffffff
+line-color=ffffff
+text-color=1e1e1e
+separator-color=ffffff
+key-hl-color=1e1e1e
+bs-hl-color=1e1e1e
+
+# Clear
+text-clear=Cleared
+text-clear-color=1e1e1e
+inside-clear-color=ffffff
+ring-clear-color=ffffff
+line-clear-colo=ffffff
+
+# Caps Lock
+text-caps-lock=CAPS
+text-caps-lock-color=1e1e1e
+inside-caps-lock-color=ffffff
+ring-caps-lock-color=ffffff
+line-caps-lock-color=ffffff
+
+# Verifying
+text-ver=...
+text-ver-color=1e1e1e
+inside-ver-color=ffffff
+ring-ver-color=ffffff
+line-ver-color=ffffff
+
+# Wrong
+text-wrong=x
+text-wrong-color=ffffff
+inside-wrong-color=ef233c
+ring-wrong-color=ef233c
+line-wrong-color=ef233c
+
