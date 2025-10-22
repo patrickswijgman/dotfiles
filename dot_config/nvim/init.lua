@@ -354,7 +354,7 @@ require("wizard").setup({
           }
 
           local code_actions = {
-            biome = { "source.fixAll.biome" },
+            biome = { "source.fixAll.biome", "source.organizeImports.biome" },
           }
 
           local clients = vim.lsp.get_clients({ bufnr = args.buf })
