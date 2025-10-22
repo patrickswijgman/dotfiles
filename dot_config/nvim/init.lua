@@ -518,6 +518,7 @@ require("wizard").setup({
       [".*config%.tmpl"] = "properties",
       [".*%.kdl%.tmpl"] = "kdl",
       [".*%.ini%.tmpl"] = "dosini",
+      [".*%.css%.tmpl"] = "css",
     },
   },
 })
