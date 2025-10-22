@@ -340,7 +340,6 @@ require("wizard").setup({
         desc = "Create intermediate directories before writing the buffer",
       },
     },
-    -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#run-lsp-commands-before-formatting
     {
       "BufWritePre",
       {
