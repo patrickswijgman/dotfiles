@@ -347,19 +347,24 @@ require("wizard").setup({
         pattern = "*",
         callback = function(args)
           local conform = require("conform")
-          local conform_opts = { bufnr = args.buf, lsp_format = "fallback", timeout_ms = 2000 }
+
+          local conform_opts = {
+            bufnr = args.buf,
+            lsp_format = "fallback",
+            timeout_ms = 2000,
+          }
+
+          local code_actions = {
+            biome = { "source.fixAll.biome" },
+          }
 
           local clients = vim.lsp.get_clients({ bufnr = args.buf })
 
           for _, client in ipairs(clients) do
-            if client.name == "biome" then
-              vim.lsp.buf.code_action({
-                context = {
-                  only = { "source.fixAll.biome" },
-                  diagnostics = {},
-                },
-                apply = true,
-              })
+            local client_code_actions = code_actions[client.name]
+
+            if client_code_actions then
+              vim.lsp.buf.code_action({ context = { only = client_code_actions, diagnostics = {} }, apply = true })
             end
           end
 
