@@ -510,8 +510,11 @@ require("wizard").setup({
   ---------------------------
 
   filetypes = {
-    [".*%.env.*"] = "properties",
-    [".*config"] = "properties",
-    [".*%.kdl%.tmpl"] = "kdl",
+    pattern = {
+      [".*%.env.*"] = "properties",
+      [".*config"] = "properties",
+      [".*config%.tmpl"] = "properties",
+      [".*%.kdl%.tmpl"] = "kdl",
+    },
   },
 })
