@@ -113,10 +113,6 @@ require("wizard").setup({
           toml = { "taplo" },
           _ = { "trim_whitespace" },
         },
-        format_on_save = {
-          timeout_ms = 2000,
-          lsp_format = "fallback",
-        },
       },
     },
     {
@@ -255,67 +251,70 @@ require("wizard").setup({
   -------------
 
   keymaps = {
-    { "j", "v:count == 0 ? 'gj' : 'j'", "Down (including wrapped lines)", { mode = { "n", "x" }, expression = true } },
-    { "k", "v:count == 0 ? 'gk' : 'k'", "Up (including wrapped lines)", { mode = { "n", "x" }, expression = true } },
+    -- Normal mode
     {
+      "n",
       "K",
       function()
         vim.lsp.buf.hover({ border = "rounded" })
       end,
-      "LSP hover",
     },
-    { "w", "<cmd>lua require('spider').motion('w')<cr>", "Next word", { mode = { "n", "o", "x" } } },
-    { "e", "<cmd>lua require('spider').motion('e')<cr>", "Next end of word", { mode = { "n", "o", "x" } } },
-    { "b", "<cmd>lua require('spider').motion('b')<cr>", "Prev word", { mode = { "n", "o", "x" } } },
-    { "R", '"0p', "Replace with last yanked text", { mode = "x" } },
-    { "q", "<nop>", "Disable macros" },
-    { "Q", "<nop>", "Disable macros" },
-    { "s", "<plug>(leap)", "Leap to word", { mode = { "n", "x", "o" } } },
+    { "n", "gra", require("actions-preview").code_actions },
+    { "n", "grt", require("telescope.builtin").lsp_type_definitions },
+    { "n", "gri", require("telescope.builtin").lsp_implementations },
+    { "n", "grr", require("telescope.builtin").lsp_references },
+    { "n", "grO", require("telescope.builtin").lsp_workspace_symbols },
+    { "n", "gO", require("telescope.builtin").lsp_document_symbols },
+    { "n", "<c-]>", require("telescope.builtin").lsp_definitions },
+    { "n", "<c-h>", "<cmd>tabprev<cr>" },
+    { "n", "<c-l>", "<cmd>tabnext<cr>" },
+    { "n", "<c-t>", "<cmd>tabnew<cr>" },
+    { "n", "<c-q>", "<cmd>tabclose<cr>" },
+    { "n", "<m-h>", "<c-w>h" },
+    { "n", "<m-j>", "<c-w>j" },
+    { "n", "<m-k>", "<c-w>k" },
+    { "n", "<m-l>", "<c-w>l" },
+    { "n", "<m-q>", "<c-w>q" },
+    { "n", "<leader>d", require("telescope.builtin").diagnostics },
+    { "n", "<leader>f", require("telescope.builtin").find_files },
+    { "n", "<leader>/", require("telescope.builtin").live_grep },
+    { "n", "<leader>?", require("telescope.builtin").grep_string },
+    { "n", "<leader>b", require("telescope.builtin").buffers },
+    { "n", "<leader>h", require("telescope.builtin").help_tags },
+    { "n", "<leader>'", require("telescope.builtin").resume },
+    { "n", "<leader>e", "<cmd>NvimTreeOpen<cr>" },
+    { "n", "<leader>E", "<cmd>NvimTreeFindFile<cr>" },
+    { "n", "<leader>s", "<cmd>Spectre<cr>" },
+    { "n", "<leader>z", "<cmd>ZenMode<cr>" },
+    { "n", "<esc>", "<cmd>nohl<cr>" },
+    { "n", "q", "<nop>" },
+    { "n", "Q", "<nop>" },
 
-    { "gra", require("actions-preview").code_actions, "Code action" },
-    { "grt", require("telescope.builtin").lsp_type_definitions, "Go to LSP type definitions" },
-    { "gri", require("telescope.builtin").lsp_implementations, "Go to LSP implementations" },
-    { "grr", require("telescope.builtin").lsp_references, "Go to LSP references" },
-    { "grO", require("telescope.builtin").lsp_workspace_symbols, "LSP workspace symbols" },
-    { "gO", require("telescope.builtin").lsp_document_symbols, "LSP document symbols" },
-
-    { "<c-]>", require("telescope.builtin").lsp_definitions, "Go to LSP definitions" },
+    -- Normal and insert modes
     {
+      { "n", "i" },
       "<c-s>",
       function()
         vim.lsp.buf.signature_help({ border = "rounded" })
       end,
-      "LSP signature help",
-      { mode = { "n", "i" } },
     },
-    { "<c-h>", "<cmd>tabprev<cr>", "Go to previous tab" },
-    { "<c-l>", "<cmd>tabnext<cr>", "Go to next tab" },
-    { "<c-t>", "<cmd>tabnew<cr>", "New tab" },
-    { "<c-q>", "<cmd>tabclose<cr>", "Close tab" },
 
-    { "<m-h>", "<c-w>h", "Go to left window" },
-    { "<m-j>", "<c-w>j", "Go to lower window" },
-    { "<m-k>", "<c-w>k", "Go to upper window" },
-    { "<m-l>", "<c-w>l", "Go to right window" },
-    { "<m-q>", "<c-w>q", "Close window" },
+    -- Visual mode
+    { "x", "R", '"0p' },
+    { "x", "<leader>R", '"+p' },
 
-    { "<leader>d", require("telescope.builtin").diagnostics, "Diagnostics" },
-    { "<leader>f", require("telescope.builtin").find_files, "Find file" },
-    { "<leader>/", require("telescope.builtin").live_grep, "Grep content" },
-    { "<leader>?", require("telescope.builtin").grep_string, "Grep word under cursor" },
-    { "<leader>b", require("telescope.builtin").buffers, "Find buffer" },
-    { "<leader>h", require("telescope.builtin").help_tags, "Find help" },
-    { "<leader>'", require("telescope.builtin").resume, "Resume last picker" },
-    { "<leader>e", "<cmd>NvimTreeOpen<cr>", "Open file explorer" },
-    { "<leader>E", "<cmd>NvimTreeFindFile<cr>", "Open file explorer at current file" },
-    { "<leader>s", "<cmd>Spectre<cr>", "Find and replace" },
-    { "<leader>z", "<cmd>ZenMode<cr>", "Toggle Zen mode" },
-    { "<leader>y", '"+y', "Yank to system clipboard", { mode = { "n", "x" } } },
-    { "<leader>p", '"+p', "Paste from system clipboard", { mode = { "n", "x" } } },
-    { "<leader>P", '"+P', "Paste from system clipboard", { mode = { "n", "x" } } },
-    { "<leader>R", '"+p', "Replace with text from system clipboard", { mode = "x" } },
+    -- Normal and visual modes
+    { { "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true } },
+    { { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true } },
+    { { "n", "x" }, "<leader>y", '"+y' },
+    { { "n", "x" }, "<leader>p", '"+p' },
+    { { "n", "x" }, "<leader>P", '"+P' },
 
-    { "<esc>", "<cmd>nohl<cr>", "Clear search highlight" },
+    -- Normal, operator-pending, and visual modes
+    { { "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<cr>" },
+    { { "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<cr>" },
+    { { "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<cr>" },
+    { { "n", "o", "x" }, "s", "<plug>(leap)" },
   },
 
   -------------------
@@ -325,17 +324,51 @@ require("wizard").setup({
   autocmds = {
     {
       "TextYankPost",
-      function()
-        vim.hl.on_yank()
-      end,
-      "Highlight on yank",
+      {
+        callback = function()
+          vim.hl.on_yank()
+        end,
+        desc = "Highlight on yank",
+      },
     },
     {
       "BufWritePre",
-      function(args)
-        vim.fn.mkdir(vim.fn.fnamemodify(args.file, ":h:p"), "p")
-      end,
-      "Create intermediate directories before writing the buffer",
+      {
+        callback = function(args)
+          vim.fn.mkdir(vim.fn.fnamemodify(args.file, ":h:p"), "p")
+        end,
+        desc = "Create intermediate directories before writing the buffer",
+      },
+    },
+    -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#run-lsp-commands-before-formatting
+    {
+      "BufWritePre",
+      {
+        pattern = "*",
+        callback = function(args)
+          local conform = require("conform")
+          local conform_opts = { bufnr = args.buf, lsp_format = "fallback", timeout_ms = 2000 }
+
+          local clients = vim.lsp.get_clients({ bufnr = args.buf })
+
+          for _, client in ipairs(clients) do
+            if client.name == "biome" then
+              local request_result = client:request_sync("workspace/executeCommand", {
+                command = "source.fixAll.biome",
+                arguments = { vim.api.nvim_buf_get_name(args.buf) },
+              })
+
+              if request_result and request_result.err then
+                vim.notify(request_result.err.message, vim.log.levels.ERROR)
+                return
+              end
+            end
+          end
+
+          conform.format(conform_opts)
+        end,
+        desc = "Format before save",
+      },
     },
   },
 
@@ -347,17 +380,24 @@ require("wizard").setup({
     float = {
       border = "rounded",
     },
+
     virtual_text = {
       current_line = true,
-      icons = {
-        [vim.diagnostic.severity.ERROR] = "󰅚",
-        [vim.diagnostic.severity.WARN] = "󰀪",
-        [vim.diagnostic.severity.INFO] = "󰋽",
-        [vim.diagnostic.severity.HINT] = "󰌶",
-      },
+      prefix = "",
+      format = function(diagnostic)
+        local icons = {
+          [vim.diagnostic.severity.ERROR] = "󰅚",
+          [vim.diagnostic.severity.WARN] = "󰀪",
+          [vim.diagnostic.severity.INFO] = "󰋽",
+          [vim.diagnostic.severity.HINT] = "󰌶",
+        }
+
+        return string.format("%s %s", icons[diagnostic.severity], diagnostic.message)
+      end,
     },
+
     signs = {
-      icons = {
+      text = {
         [vim.diagnostic.severity.ERROR] = "󰅚",
         [vim.diagnostic.severity.WARN] = "󰀪",
         [vim.diagnostic.severity.INFO] = "",
@@ -390,7 +430,9 @@ require("wizard").setup({
             },
           },
         },
-        disable_semantic_tokens = true,
+        on_attach = function(client)
+          client.server_capabilities.semanticTokensProvider = nil
+        end,
       },
     },
     {
@@ -410,14 +452,13 @@ require("wizard").setup({
             },
           },
         },
-        disable_semantic_tokens = true,
+        on_attach = function(client)
+          client.server_capabilities.semanticTokensProvider = nil
+        end,
       },
     },
     {
       "biome",
-      {
-        code_actions_on_save = { "source.fixAll.biome", "source.organizeImports.biome" },
-      },
     },
     {
       "tailwindcss",
@@ -462,5 +503,15 @@ require("wizard").setup({
     {
       "fish_lsp",
     },
+  },
+
+  ---------------------------
+  -- Filetype associations --
+  ---------------------------
+
+  filetypes = {
+    [".*%.env.*"] = "properties",
+    [".*config"] = "properties",
+    [".*%.kdl%.tmpl"] = "kdl",
   },
 })

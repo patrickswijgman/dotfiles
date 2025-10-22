@@ -69,6 +69,10 @@ input {
     // focus-follows-mouse // max-scroll-amount="0%"
 }
 
+workspace "browsers"
+workspace "terminals"
+workspace "misc"
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
@@ -244,7 +248,14 @@ spawn-at-startup "swayidle"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "gammastep"
 spawn-at-startup "bato"
+spawn-at-startup "blueman-applet"
 spawn-at-startup "wayland-pipewire-idle-inhibit"
+
+// Start apps that open in workspaces
+spawn-at-startup "zen-beta"
+spawn-at-startup "alacritty"
+spawn-at-startup "alacritty"
+spawn-at-startup "spotify"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -266,15 +277,85 @@ prefer-no-csd
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
+    // You can also put "off" into each individual animation to disable it.
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+
+    // Individual animations.
+
+    workspace-switch {
+        off
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
+
+window-rule {
+   match app-id="zen-beta"
+   open-on-workspace "browsers"
+   open-maximized true
+}
+
+window-rule {
+   match app-id="chromium-browser"
+   open-on-workspace "browsers"
+   open-maximized true
+}
+
+window-rule {
+   match app-id="Alacritty"
+   open-on-workspace "terminals"
+}
+
+window-rule {
+   match app-id="Slack"
+   open-on-workspace "misc"
+}
+
+window-rule {
+   match app-id="spotify"
+   open-on-workspace "misc"
+}
 
 // Enable rounded corners for all windows.
 window-rule {
@@ -290,7 +371,7 @@ window-rule {
     }
     border {
         on
-        width {{ mul .theme.border_width 2 }}
+        width {{ .theme.border_width }}
         active-color "#00000044"
         inactive-color "#00000022"
         urgent-color "#{{ .theme.danger.background }}"
