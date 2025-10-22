@@ -353,15 +353,13 @@ require("wizard").setup({
 
           for _, client in ipairs(clients) do
             if client.name == "biome" then
-              local request_result = client:request_sync("workspace/executeCommand", {
-                command = "source.fixAll.biome",
-                arguments = { vim.api.nvim_buf_get_name(args.buf) },
+              vim.lsp.buf.code_action({
+                context = {
+                  only = { "source.fixAll.biome" },
+                  diagnostics = {},
+                },
+                apply = true,
               })
-
-              if request_result and request_result.err then
-                vim.notify(request_result.err.message, vim.log.levels.ERROR)
-                return
-              end
             end
           end
 
@@ -515,6 +513,7 @@ require("wizard").setup({
       [".*config"] = "properties",
       [".*config%.tmpl"] = "properties",
       [".*%.kdl%.tmpl"] = "kdl",
+      [".*%.ini%.tmpl"] = "dosini",
     },
   },
 })
