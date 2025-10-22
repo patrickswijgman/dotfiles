@@ -251,7 +251,7 @@ require("wizard").setup({
   -------------
 
   keymaps = {
-    -- Normal mode
+    -- normal mode
     {
       "n",
       "K",
@@ -290,7 +290,7 @@ require("wizard").setup({
     { "n", "q", "<nop>" },
     { "n", "Q", "<nop>" },
 
-    -- Normal and insert modes
+    -- normal and insert modes
     {
       { "n", "i" },
       "<c-s>",
@@ -299,18 +299,18 @@ require("wizard").setup({
       end,
     },
 
-    -- Visual mode
+    -- visual mode
     { "x", "R", '"0p' },
     { "x", "<leader>R", '"+p' },
 
-    -- Normal and visual modes
+    -- normal and visual modes
     { { "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true } },
     { { "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true } },
     { { "n", "x" }, "<leader>y", '"+y' },
     { { "n", "x" }, "<leader>p", '"+p' },
     { { "n", "x" }, "<leader>P", '"+P' },
 
-    -- Normal, operator-pending, and visual modes
+    -- normal, operator-pending, and visual modes
     { { "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<cr>" },
     { { "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<cr>" },
     { { "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<cr>" },
