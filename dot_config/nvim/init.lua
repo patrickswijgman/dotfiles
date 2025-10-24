@@ -60,7 +60,7 @@ require("wizard").setup({
 
   plugins = {
     {
-      "nvim-autopairs",
+      "actions-preview",
     },
     {
       "blink.cmp",
@@ -153,6 +153,12 @@ require("wizard").setup({
       },
     },
     {
+      "nvim-autopairs",
+    },
+    {
+      "nvim-surround",
+    },
+    {
       "nvim-tree",
       {
         view = {
@@ -163,6 +169,14 @@ require("wizard").setup({
         },
         renderer = {
           special_files = {},
+        },
+      },
+    },
+    {
+      "nvim-treesitter.configs",
+      {
+        highlight = {
+          enable = true,
         },
       },
     },
@@ -179,9 +193,6 @@ require("wizard").setup({
         consistentOperatorPending = false,
         subwordMovement = true,
       },
-    },
-    {
-      "nvim-surround",
     },
     {
       "telescope",
@@ -213,17 +224,6 @@ require("wizard").setup({
           find_files = {
             find_command = { "fd", "--type=file", "--hidden", "--exclude=.git" },
           },
-        },
-      },
-    },
-    {
-      "actions-preview",
-    },
-    {
-      "nvim-treesitter.configs",
-      {
-        highlight = {
-          enable = true,
         },
       },
     },
@@ -520,10 +520,8 @@ require("wizard").setup({
   filetypes = {
     pattern = {
       [".*%.env.*"] = "properties",
-      [".*config"] = "properties",
-      [".*config%.tmpl"] = "properties",
-      [".*%.kdl%.tmpl"] = "kdl",
-      [".*%.ini%.tmpl"] = "dosini",
+      [".*%.tmpl"] = "gotmpl",
+      [".*%.kdl%.tmpl"] = { "kdl", { priority = 10 } },
     },
   },
 })

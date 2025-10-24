@@ -2,7 +2,7 @@
 #
 # The refresh rate in second of bato.
 #
-tick_rate: 30
+tick_rate: 5
 
 # critical_level: String, required
 #

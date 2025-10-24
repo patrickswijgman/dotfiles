@@ -1,2 +1,2 @@
 # List of glob patterns for paths to ignore when spell checking
-ignore_paths = [".git/**/*", "node_modules/**/*", "dist/**/*", "**/*.lua"]
+ignore_paths = [".git/**/*", "node_modules/**/*", "dist/**/*"]
