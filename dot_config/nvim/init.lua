@@ -65,6 +65,9 @@ require("wizard").setup({
     {
       "blink.cmp",
       {
+        keymap = {
+          preset = "enter",
+        },
         completion = {
           menu = {
             border = "rounded",
@@ -80,6 +83,22 @@ require("wizard").setup({
             auto_show_delay_ms = 50,
             window = {
               border = "rounded",
+            },
+          },
+        },
+        cmdline = {
+          keymap = {
+            preset = "cmdline",
+          },
+          completion = {
+            menu = {
+              auto_show = true,
+            },
+            list = {
+              selection = {
+                preselect = false,
+                auto_insert = true,
+              },
             },
           },
         },
@@ -519,6 +538,7 @@ require("wizard").setup({
 
   filetypes = {
     pattern = {
+      [".*config"] = "conf",
       [".*%.env.*"] = "properties",
       [".*%.tmpl"] = "gotmpl",
       [".*%.kdl%.tmpl"] = { "kdl", { priority = 10 } },

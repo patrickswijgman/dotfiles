@@ -39,7 +39,8 @@ abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
 abbr ns 'nix-shell --run fish'
-abbr nr 'sudo nixos-rebuild switch --flake ~/nix#default'
+abbr nr 'nix run nixpkgs#'
+abbr nb 'sudo nixos-rebuild switch --flake ~/nix#default'
 
 abbr tr 'tree --gitignore --dirsfirst'
 
