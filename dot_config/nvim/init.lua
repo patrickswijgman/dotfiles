@@ -14,7 +14,7 @@ require("wizard").setup({
     colorcolumn = "",
     scrolloff = 8,
     wrap = true,
-    splitright = true,
+    splitright = false,
     splitbelow = true,
     updatetime = 50,
 
@@ -541,7 +541,7 @@ require("wizard").setup({
       [".*config"] = "conf",
       [".*%.env.*"] = "properties",
       [".*%.tmpl"] = "gotmpl",
-      [".*%.kdl%.tmpl"] = { "kdl", { priority = 10 } },
+      [".*/hypr/.*%.conf%.tmpl"] = { "hyprlang", { priority = 10 } },
     },
   },
 })

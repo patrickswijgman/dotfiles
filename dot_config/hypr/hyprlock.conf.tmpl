@@ -1,0 +1,90 @@
+# For more configuration options, refer https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock
+#
+# rendered text in all widgets supports pango markup (e.g. <b> or <i> tags)
+# ref. https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/#general-remarks
+
+$font = Sans
+
+general {
+    hide_cursor = true
+}
+
+# uncomment to enable fingerprint authentication
+# auth {
+#     fingerprint {
+#         enabled = true
+#         ready_message = Scan fingerprint to unlock
+#         present_message = Scanning...
+#         retry_delay = 250 # in milliseconds
+#     }
+# }
+
+animations {
+    enabled = true
+    bezier = linear, 1, 1, 0, 0
+    animation = fadeIn, 1, 5, linear
+    animation = fadeOut, 1, 5, linear
+    animation = inputFieldColors, 1, 2, linear
+    animation = inputFieldDots, 1, 2, linear
+}
+
+background {
+    monitor =
+    path = screenshot
+    blur_passes = 3
+}
+
+input-field {
+    monitor =
+    size = 20%, 5%
+
+    outline_thickness = {{ .theme.border_width }}
+    rounding = {{ .theme.border_radius }}
+
+    inner_color = rgba(0, 0, 0, 0.0) # no fill
+    outer_color = rgb({{ .theme.border }})
+    check_color = rgb({{ .theme.border }})
+    fail_color = rgb({{ .theme.danger.border }})
+
+    font_family = $font
+    font_color = rgb({{ .theme.text }})
+
+    fade_on_empty = false
+
+    placeholder_text = Enter Password
+    fail_text = Wrong!
+
+    dots_size = 0.25
+    dots_spacing = 0.4
+
+    position = 0, 0
+    halign = center
+    valign = center
+}
+
+# TIME
+label {
+    monitor =
+    text = $TIME # ref. https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/#variable-substitution
+    font_size = 64
+    font_family = $font
+    color = rgb({{ .theme.text }})
+
+    position = 0, 180
+    halign = center
+    valign = center
+}
+
+# DATE
+label {
+    monitor =
+    text = cmd[update:60000] date +"%A, %d %B %Y" # update every 60 seconds
+    font_size = 24
+    font_family = $font
+    color = rgb({{ .theme.text }})
+
+    position = 0, 100
+    halign = center
+    valign = center
+}
+

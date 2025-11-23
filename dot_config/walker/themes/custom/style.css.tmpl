@@ -1,0 +1,199 @@
+* {
+  all: unset;
+}
+
+popover {
+  background: #{{ .theme.background }};
+  border: 1px solid #{{ .theme.border }};
+  border-radius: {{ .theme.border_radius }}px;
+  padding: 10px;
+}
+
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
+
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+scrollbar {
+  opacity: 0;
+}
+
+.box-wrapper {
+  background: #{{ .theme.background }};
+  padding: 20px;
+  border-radius: {{ .theme.border_radius }}px;
+  border: 1px solid #{{ .theme.border }};
+}
+
+.preview-box,
+.elephant-hint,
+.placeholder {
+  color: #{{ .theme.text }};
+}
+
+.box {
+}
+
+.search-container {
+  border-radius: {{ .theme.border_radius }}px;
+}
+
+.input placeholder {
+  opacity: 0.5;
+}
+
+.input selection {
+  background: #{{ .theme.accent }};
+}
+
+.input {
+  caret-color: #{{ .theme.text }};
+  background: #{{ .theme.surface }};
+  padding: 10px;
+  color: #{{ .theme.text }};
+}
+
+
+.input:focus,
+.input:active {
+}
+
+.content-container {
+}
+
+.placeholder {
+}
+
+.scroll {
+}
+
+.list {
+  color: #{{ .theme.text }};
+}
+
+child {
+}
+
+.item-box {
+  border-radius: {{ .theme.border_radius }}px;
+  padding: 10px;
+}
+
+.item-quick-activation {
+  background: #{{ .theme.accent }};
+  color: #{{ .theme.background }};
+  border-radius: {{ div .theme.border_radius 2 }}px;
+  padding: 10px;
+}
+
+/* child:hover .item-box, */
+child:selected .item-box {
+  background: #{{ .theme.surface }};
+}
+
+.item-text-box {
+}
+
+.item-subtext {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.providerlist .item-subtext {
+  font-size: unset;
+  opacity: 0.75;
+}
+
+.item-image-text {
+  font-size: 28px;
+}
+
+.preview {
+  border: 1px solid #{{ .theme.border }};
+  border-radius: {{ .theme.border_radius }}px;
+  color: #{{ .theme.text }};
+}
+
+.calc .item-text {
+  font-size: 24px;
+}
+
+.calc .item-subtext {
+}
+
+.symbols .item-image {
+  font-size: 24px;
+}
+
+.todo.done .item-text-box {
+  opacity: 0.25;
+}
+
+.todo.urgent {
+  font-size: 24px;
+}
+
+.todo.active {
+  font-weight: bold;
+}
+
+.bluetooth.disconnected {
+  opacity: 0.5;
+}
+
+.preview .large-icons {
+  -gtk-icon-size: 64px;
+}
+
+.keybinds {
+  padding-top: 10px;
+  border-top: 1px solid #{{ .theme.border }};
+  font-size: 12px;
+  color: #{{ .theme.text }};
+}
+
+.global-keybinds {
+}
+
+.item-keybinds {
+}
+
+.keybind {
+}
+
+.keybind-button {
+  opacity: 0.75;
+}
+
+.keybind-button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.keybind-bind {
+  text-transform: lowercase;
+  opacity: 0.5;
+}
+
+.keybind-label {
+  padding: 4px 8px;
+  border-radius: {{ div .theme.border_radius 2 }}px;
+  border: 1px solid #{{ .theme.border }};
+}
+
+.error {
+  padding: 10px;
+  background: #{{ .theme.danger.background }};
+  color: #{{ .theme.danger.text }};
+}
+
+:not(.calc).current {
+  font-style: italic;
+}
+
+.preview-content.archlinuxpkgs {
+  font-family: monospace;
+}
