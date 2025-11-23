@@ -1,0 +1,68 @@
+{
+  "spacing": 4,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "wireplumber",
+    "network",
+    "cpu",
+    "memory",
+    "disk",
+    "backlight",
+    "battery",
+    "clock",
+  ],
+  "clock": {
+    "format": "󰅐  {:%H:%M}",
+    "tooltip-format": "{:%A %d %B}",
+  },
+  "backlight": {
+    "format": "{icon}  {percent}%",
+    "format-icons": ["󰃠", "󰃟", "󰃞"],
+    "tooltip": false,
+  },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10,
+    },
+    "format": "{icon}  {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "󰂄  {capacity}%",
+    "format-plugged": "󰂄  {capacity}%",
+    "format-full": "󰂄  {capacity}%",
+  },
+  "wireplumber": {
+    "format": "{icon}  {volume}%",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "format-muted": "󰝟  Muted",
+    "tooltip-format": "{node_name}",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "scroll-step": 5,
+  },
+  "cpu": {
+    "format": "󰘚  {usage}%",
+  },
+  "memory": {
+    "format": "󰍛  {percentage}%",
+    "tooltip-format": "Usage: {used} / {total} GB",
+  },
+  "disk": {
+    "format": "󰋊  {percentage_used}%",
+    "tooltip-format": "Usage: {specific_used:0.2f} / {specific_total:0.2f} GB\nFree: {specific_free:0.2f} GB",
+    "unit": "GiB",
+  },
+  "network": {
+    "format-wifi": "{icon} ",
+    "format-ethernet": "{icon} ",
+    "format-disconnected": "{icon}  Disconnected",
+    "format-icons": {
+      "wifi": ["󰤟", "󰤢", "󰤥", "󰤨"],
+      "ethernet": ["󰛳"],
+      "disconnected": ["󰲜"],
+    },
+    "tooltip-format-wifi": "SSID: {essid}\nStrength: {signalStrength}%",
+    "tooltip-format-ethernet": "IP: {ipaddr}\nSpeed: {speed} Mbps",
+    "tooltip-format-disconnected": "No network connection",
+  },
+}

@@ -1,3 +1,8 @@
+profile home {
+	output "Samsung Electric Company LS24D60xU HNAY800630" scale 1.0
+	output eDP-1 disable
+}
+
 profile work {
 	output "Dell Inc. DELL U2720Q 87RFX83" scale 1.5
 	output eDP-1 disable
