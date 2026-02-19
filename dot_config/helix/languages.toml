@@ -1,0 +1,45 @@
+[language-server.typescript-language-server.config]
+preferences.importModuleSpecifierPreference = "non-relative"
+preferences.importModuleSpecifierEnding = "js"
+
+[[language]]
+name = "nix"
+language-servers = ["nixd"]
+formatter = { command = "nixfmt" }
+auto-format = true
+
+[[language]]
+name = "toml"
+roots = ["."]
+auto-format = true
+
+[[language]]
+name = "javascript"
+formatter = { command = "prettierd", args = [".js"] }
+auto-format = true
+
+[[language]]
+name = "typescript"
+formatter = { command = "prettierd", args = [".ts"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+formatter = { command = "prettierd", args = [".jsx"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+formatter = { command = "prettierd", args = [".tsx"] }
+auto-format = true
+
+[[language]]
+name = "html"
+formatter = { command = "prettierd", args = [".html"] }
+auto-format = true
+
+[[language]]
+name = "css"
+file-types = ["css", "postcss"]
+formatter = { command = "prettierd", args = [".css"] }
+auto-format = true
