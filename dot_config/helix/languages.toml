@@ -7,6 +7,10 @@ args = ["serve"]
 [language-server.efm]
 command = "efm-langserver"
 
+[language-server.biome]
+command = "npx"
+args = ["biome", "lsp-proxy"]
+
 # Language servers configuration
 
 [language-server.typescript-language-server.config]
