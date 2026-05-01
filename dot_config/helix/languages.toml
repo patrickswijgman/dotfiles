@@ -68,7 +68,7 @@ auto-format = true
 
 [[language]]
 name = "yaml"
-language-servers = [{ name = "yaml-language-server", except-features = ["format"] }, "efm", "codebook"]
+language-servers = [{ name = "yaml-language-server", except-features = ["format"] }, "efm"]
 auto-format = true
 
 [[language]]
@@ -94,6 +94,6 @@ auto-format = true
 
 [[language]]
 name = "toml"
-language-servers = ["taplo", "codebook"]
+language-servers = ["taplo"]
 auto-format = true
 roots = ["."]
