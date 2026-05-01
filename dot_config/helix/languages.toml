@@ -1,6 +1,85 @@
+# Language servers definition
+
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+[language-server.efm]
+command = "efm-langserver"
+
+# Language servers configuration
+
+[language-server.typescript-language-server.config]
+preferences.importModuleSpecifierPreference = "non-relative"
+preferences.importModuleSpecifierEnding = "js"
+
 [language-server.vscode-json-language-server.config]
-json.schemas = [{ fileMatch = ["package.json"], url = "https://json.schemastore.org/package.json" }, { fileMatch = ["tsconfig.json", "tsconfig.*.json"], url = "https://json.schemastore.org/tsconfig.json" }]
 json.validate.enable = true
+
+[[language-server.vscode-json-language-server.config.json.schemas]]
+fileMatch = ["package.json"]
+url = "https://json.schemastore.org/package.json"
+
+[[language-server.vscode-json-language-server.config.json.schemas]]
+fileMatch = ["tsconfig.json", "tsconfig.*.json"]
+url = "https://json.schemastore.org/tsconfig.json"
+
+# Languages configuration
+
+[[language]]
+name = "javascript"
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "typescript"
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "css"
+language-servers = [{ name = "vscode-css-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "scss"
+language-servers = [{ name = "vscode-css-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "html"
+language-servers = [{ name = "vscode-html-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "json"
+language-servers = [{ name = "vscode-json-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "yaml"
+language-servers = [{ name = "yaml-language-server", except-features = ["format"] }, "efm"]
+auto-format = true
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "efm"]
+auto-format = true
+
+[[language]]
+name = "python"
+language-servers = [{ name = "pylsp", except-features = ["format"] }, "ruff"]
+auto-format = true
 
 [[language]]
 name = "nix"
