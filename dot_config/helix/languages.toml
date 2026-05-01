@@ -28,22 +28,22 @@ url = "https://json.schemastore.org/tsconfig.json"
 
 [[language]]
 name = "javascript"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm", "codebook"]
 auto-format = true
 
 [[language]]
 name = "typescript"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm", "codebook"]
 auto-format = true
 
 [[language]]
 name = "jsx"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm", "codebook"]
 auto-format = true
 
 [[language]]
 name = "tsx"
-language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "typescript-language-server", except-features = ["format"] }, "efm", "codebook"]
 auto-format = true
 
 [[language]]
@@ -68,17 +68,22 @@ auto-format = true
 
 [[language]]
 name = "yaml"
-language-servers = [{ name = "yaml-language-server", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "yaml-language-server", except-features = ["format"] }, "efm", "codebook"]
 auto-format = true
 
 [[language]]
 name = "markdown"
-language-servers = ["marksman", "efm"]
+language-servers = ["marksman", "efm", "codebook"]
 auto-format = true
 
 [[language]]
 name = "python"
-language-servers = [{ name = "pylsp", except-features = ["format"] }, "ruff"]
+language-servers = [{ name = "pylsp", except-features = ["format"] }, "ruff", "codebook"]
+auto-format = true
+
+[[language]]
+name = "go"
+language-servers = ["gopls", "golangci-lint-lsp", "codebook"]
 auto-format = true
 
 [[language]]
@@ -89,6 +94,6 @@ auto-format = true
 
 [[language]]
 name = "toml"
-language-servers = ["taplo"]
+language-servers = ["taplo", "codebook"]
 auto-format = true
 roots = ["."]
