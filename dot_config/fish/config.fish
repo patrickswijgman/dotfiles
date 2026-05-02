@@ -1,5 +1,10 @@
 set fish_greeting
 
+set hydro_color_pwd blue
+set hydro_color_git normal
+set hydro_color_prompt green
+set hydro_color_duration normal --dim
+
 abbr gb 'git branch'
 abbr gc 'git switch'
 abbr ga 'git add .'
@@ -36,3 +41,5 @@ abbr nq --set-cursor 'nix-store -q --requisites /nix/store/%'
 
 abbr venv 'source .venv/bin/activate.fish'
 abbr venvd 'source .venv/bin/deactivate.fish'
+
+fzf --fish | source
