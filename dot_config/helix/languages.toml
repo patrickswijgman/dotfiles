@@ -1,25 +1,27 @@
-###############################
-# Language servers definition #
-###############################
+# Codebook
 
 [language-server.codebook]
 command = "codebook-lsp"
 args = ["serve"]
 
+# EFM language server
+
 [language-server.efm]
 command = "efm-langserver"
+
+# Biome
 
 [language-server.biome]
 command = "npx"
 args = ["biome", "lsp-proxy"]
 
-##################################
-# Language servers configuration #
-##################################
+# Typescript language server
 
 [language-server.typescript-language-server.config]
 preferences.importModuleSpecifierPreference = "non-relative"
 preferences.importModuleSpecifierEnding = "js"
+
+# JSON language server
 
 [language-server.vscode-json-language-server.config]
 json.validate.enable = true
@@ -32,9 +34,7 @@ url = "https://json.schemastore.org/package.json"
 fileMatch = ["tsconfig.json", "tsconfig.*.json"]
 url = "https://json.schemastore.org/tsconfig.json"
 
-###########################
-# Languages configuration #
-###########################
+# Language configuration
 
 [[language]]
 name = "javascript"

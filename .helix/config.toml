@@ -1,2 +1,0 @@
-[keys.normal."\\"]
-a = [":sh chezmoi apply --force", ":config-reload"]

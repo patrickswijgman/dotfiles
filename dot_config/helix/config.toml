@@ -11,9 +11,6 @@ select = "underline"
 [editor.file-picker]
 hidden = false
 
-[editor.soft-wrap]
-enable = true
-
 [keys.normal]
 w = "move_next_sub_word_start"
 e = "move_next_sub_word_end"
