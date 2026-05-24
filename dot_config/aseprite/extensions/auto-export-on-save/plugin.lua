@@ -6,15 +6,12 @@ function init()
       local basePath = path:match("^(.+)%..+$") or path
 
       app.command.ExportSpriteSheet({
+        ui = false,
+        askOverwrite = false,
         type = SpriteSheetType.PACKED,
         textureFilename = basePath .. ".png",
         dataFilename = basePath .. ".json",
         dataFormat = SpriteSheetDataFormat.JSON_ARRAY,
-        listTags = true,
-        listLayers = true,
-        listSlices = true,
-        ui = false,
-        askOverwrite = false,
       })
     end
   end)
