@@ -4,7 +4,7 @@
 command = "codebook-lsp"
 args = ["serve"]
 
-# EFM language server
+# EFM
 
 [language-server.efm]
 command = "efm-langserver"
@@ -107,3 +107,7 @@ name = "toml"
 language-servers = ["taplo"]
 auto-format = true
 roots = ["."]
+
+[[language]]
+name = "lua"
+auto-format = true
