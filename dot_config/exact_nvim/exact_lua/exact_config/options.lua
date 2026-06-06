@@ -4,7 +4,6 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.signcolumn = "yes"
-vim.o.colorcolumn = ""
 vim.o.scrolloff = 8
 vim.o.wrap = true
 vim.o.splitright = false

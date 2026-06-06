@@ -1,10 +1,5 @@
 set fish_greeting
 
-set hydro_color_pwd blue
-set hydro_color_git brblue
-set hydro_color_prompt green
-set hydro_color_duration normal --dim
-
 abbr gb 'git branch'
 abbr gc 'git switch'
 abbr ga 'git add .'

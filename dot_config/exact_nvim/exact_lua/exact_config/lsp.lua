@@ -7,7 +7,10 @@ vim.lsp.enable({
   'vtsls',
 })
 
-local code_actions = {
+-- Disable semantic tokens in favor of treesitter.
+vim.lsp.semantic_tokens.enable(false)
+
+local CODE_ACTIONS = {
   biome = { "source.fixAll.biome" },
 }
 
@@ -30,7 +33,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     local clients = vim.lsp.get_clients({ bufnr = ev.buf })
 
     for _, client in ipairs(clients) do
-      local client_code_actions = code_actions[client.name] or {}
+      local client_code_actions = CODE_ACTIONS[client.name] or {}
 
       for _, code_action in ipairs(client_code_actions) do
         local params = {
