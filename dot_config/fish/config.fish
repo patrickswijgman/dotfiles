@@ -37,7 +37,6 @@ abbr ns 'nix-shell --run fish'
 abbr nc 'sudo nix-collect-garbage -d'
 abbr nb --set-cursor 'sudo nixos-rebuild switch --flake ~/nix#%'
 abbr nr --set-cursor 'nix run nixpkgs#%'
-abbr nq --set-cursor 'nix-store -q --requisites /nix/store/%'
 
 abbr venv 'source .venv/bin/activate.fish'
 abbr venvd 'source .venv/bin/deactivate.fish'

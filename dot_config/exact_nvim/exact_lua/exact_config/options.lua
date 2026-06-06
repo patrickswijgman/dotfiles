@@ -35,6 +35,9 @@ vim.o.autoindent = true
 vim.o.autocomplete = true
 vim.o.completeopt = 'menuone,noselect,popup'
 
+-- Windows
+vim.o.winborder = 'rounded'
+
 -- Leader key
 vim.g.mapleader = " "
 
