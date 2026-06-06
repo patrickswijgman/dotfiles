@@ -7,11 +7,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = "Highlight on yank",
   group = group,
 })
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = function(ev)
-    vim.fn.mkdir(vim.fn.fnamemodify(ev.file, ":h:p"), "p")
-  end,
-  desc = "Create intermediate directories before writing the buffer",
-  group = group,
-})
