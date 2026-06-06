@@ -17,7 +17,7 @@ vim.o.backup = false
 
 -- Searching
 vim.o.smartcase = true
-vim.o.ignorecase = true
+vim.o.ignorecase = false
 vim.o.showmatch = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
