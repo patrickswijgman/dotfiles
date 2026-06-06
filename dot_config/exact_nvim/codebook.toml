@@ -12,6 +12,7 @@ words = [
     "ignorecase",
     "inccommand",
     "incsearch",
+    "keymaps",
     "mapleader",
     "menuone",
     "netrw",
