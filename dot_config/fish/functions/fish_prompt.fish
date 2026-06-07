@@ -24,7 +24,7 @@ function fish_prompt
 
     set pwd (set_color blue)'󰉋' (prompt_pwd --dir-length=0)
     set git (set_color brblue)'󰘬' (fish_git_prompt '%s')
-    set end (set_color white)'󰈺'
+    set sym (set_color white)'󰈺'
 
-    echo $pwd $git $end (set_color --reset)
+    echo $pwd $git $sym (set_color --reset)
 end
