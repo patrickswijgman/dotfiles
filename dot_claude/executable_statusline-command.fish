@@ -1,4 +1,3 @@
-#!/usr/bin/env fish
 set input (cat)
 
 set model (echo $input | jq -r '.model.display_name')
