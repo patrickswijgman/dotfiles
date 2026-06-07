@@ -1,7 +1,7 @@
-local utils = require("config.grep.utils")
+local lib = require("config.grep.lib")
 
 vim.api.nvim_create_user_command('Grep', function(opts)
-  local lines = utils.get_grep_lines(opts.args)
+  local lines = lib.grep(opts.args)
 
   if #lines == 0 then
     vim.notify(("No matches found for '%s'"):format(opts.args), vim.log.levels.WARN)
@@ -9,13 +9,10 @@ vim.api.nvim_create_user_command('Grep', function(opts)
   end
 
   local title = ("Grep results for '%s'"):format(opts.args)
-  local list = vim.fn.getqflist({ efm = "%f:%l:%c:%m", lines = lines })
-
-  vim.fn.setloclist(0, {}, "r", { title = title, items = list.items })
-  vim.cmd.lopen()
+  lib.show_results(title, lines)
 end, {
   complete = function(arglead)
-    return utils.get_words_in_buffer(arglead)
+    return lib.get_words_in_current_buffer(arglead)
   end,
   nargs = 1,
   desc = "Grep in files",

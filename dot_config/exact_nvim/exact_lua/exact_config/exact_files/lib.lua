@@ -1,4 +1,5 @@
 local consts = require("config.files.consts")
+local utils = require("config.shared.utils")
 
 local M = {}
 
@@ -20,25 +21,14 @@ function M.get_files(pattern, type)
 
   table.insert(cmd, pattern)
 
-  local result = vim.system(cmd, { text = true }):wait()
-
-  if result.code ~= 0 then
-    vim.notify(("Command failed with error:\n\n%s"):format(result.stderr), vim.log.levels.ERROR)
-    return {}
-  end
-
-  local files = vim.split(result.stdout, "\n", { trimempty = true })
-
-  table.sort(files, function(a, b)
-    local a_dir = a:lower():match("^(.*)/") or ""
-    local b_dir = b:lower():match("^(.*)/") or ""
-    if a_dir ~= b_dir then
-      return a_dir < b_dir
-    end
-    return a:lower() < b:lower()
-  end)
+  local files = utils.cmd_list(cmd)
+  utils.sort_on_file_path(files)
 
   return files
+end
+
+function M.show_results(title, files)
+  utils.set_loc_list(title, files, "%f")
 end
 
 return M
