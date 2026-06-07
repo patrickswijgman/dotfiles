@@ -5,7 +5,7 @@ function M.get_grep_lines(pattern)
 
   local result = vim.system(cmd, { text = true }):wait()
 
-  if result.code == 2 then
+  if result.code ~= 0 and result.code ~= 1 then
     vim.notify(("Command failed with error:\n\n%s"):format(result.stderr), vim.log.levels.ERROR)
     return {}
   end
