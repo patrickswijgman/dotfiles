@@ -1,19 +1,21 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'npx', 'biome', 'lsp-proxy' },
+  cmd = { 'efm-langserver' },
   filetypes = {
-    'astro',
     'css',
     'graphql',
     'html',
     'javascript',
     'javascriptreact',
     'json',
-    'jsonc',
-    'svelte',
+    'markdown',
+    'scss',
     'typescript',
     'typescriptreact',
-    'vue',
+    'yaml',
   },
-  root_markers = { 'biome.json', 'biome.jsonc' },
+  root_markers = { '.git' },
+  init_options = {
+    documentFormatting = true,
+  },
 }

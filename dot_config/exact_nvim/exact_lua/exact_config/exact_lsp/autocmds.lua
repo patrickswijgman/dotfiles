@@ -1,5 +1,4 @@
 local utils = require('config.lsp.utils')
-local consts = require('config.lsp.consts')
 
 local group = vim.api.nvim_create_augroup('UserLspConfig', { clear = true })
 
@@ -8,23 +7,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     local clients = vim.lsp.get_clients({ bufnr = ev.buf })
 
     for _, client in ipairs(clients) do
-      local client_code_actions = consts.CODE_ACTIONS[client.name] or {}
+      local client_code_actions = utils.get_code_actions(client.name)
 
       for _, code_action in ipairs(client_code_actions) do
-        local params = {
-          textDocument = {
-            uri = vim.uri_from_bufnr(ev.buf)
-          },
-          range = {
-            ["start"] = { line = 0, character = 0 },
-            ["end"] = { line = 0, character = 0 },
-          },
-          context = {
-            only = { code_action },
-            diagnostics = {}
-          },
-        }
-
+        local params = utils.get_code_action_params(code_action, ev.buf)
         local actions = utils.client_request(client, "textDocument/codeAction", params, ev.buf) or {}
 
         for _, action in ipairs(actions) do
@@ -49,7 +35,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(ev)
-    vim.lsp.buf.format({ bufnr = ev.buf })
+    vim.lsp.buf.format({
+      bufnr = ev.buf,
+      name = utils.get_preferred_formatter(ev.buf),
+    })
   end,
   desc = "Format before writing the buffer",
   group = group,
