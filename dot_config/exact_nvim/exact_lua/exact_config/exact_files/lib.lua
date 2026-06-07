@@ -1,4 +1,3 @@
-local consts = require("config.files.consts")
 local utils = require("config.utils")
 
 local M = {}
@@ -6,9 +5,9 @@ local M = {}
 function M.get_files(pattern, types)
   local cmd = { "fd", "--full-path", "--hidden", "--exclude", ".git" }
 
-  for _, t in ipairs(types) do
+  for _, type in ipairs(types) do
     table.insert(cmd, "--type")
-    table.insert(cmd, t)
+    table.insert(cmd, type)
   end
 
   table.insert(cmd, pattern)
