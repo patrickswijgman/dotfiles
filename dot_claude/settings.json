@@ -1,7 +1,7 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "bash /home/patrick/.claude/statusline-command.sh"
+    "command": "fish /home/patrick/.claude/statusline-command.fish"
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,

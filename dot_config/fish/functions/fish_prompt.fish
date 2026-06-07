@@ -11,7 +11,7 @@ function fish_prompt
     set -g __fish_git_prompt_char_invalidstate '󰲶'
     set -g __fish_git_prompt_char_stagedstate '󰐕'
     set -g __fish_git_prompt_char_stashstate '󰏗'
-    set -g __fish_git_prompt_char_untrackedfiles '󰻭'
+    set -g __fish_git_prompt_char_untrackedfiles '󰝒'
     set -g __fish_git_prompt_char_upstream_ahead '󰁝'
     set -g __fish_git_prompt_char_upstream_behind '󰁅'
     set -g __fish_git_prompt_char_upstream_diverged '󰹹'
@@ -27,5 +27,5 @@ function fish_prompt
     set git (set_color brblue)'󰘬' (fish_git_prompt '%s')
     set end (set_color white)'󰈺'
 
-    echo $pwd $git $end (set_color normal)
+    echo $pwd $git $end (set_color --reset)
 end
