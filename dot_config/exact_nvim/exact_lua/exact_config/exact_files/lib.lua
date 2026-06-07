@@ -1,5 +1,5 @@
 local consts = require("config.files.consts")
-local utils = require("config.shared.utils")
+local utils = require("config.utils")
 
 local M = {}
 

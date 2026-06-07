@@ -1,4 +1,4 @@
-local utils = require("config.shared.utils")
+local utils = require("config.utils")
 
 local M = {}
 
