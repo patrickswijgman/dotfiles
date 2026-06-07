@@ -1,6 +1,6 @@
 local M = {}
 
-function M.grep(pattern)
+function M.get_grep_lines(pattern)
   local cmd = { "rg", "--vimgrep", "--hidden", "--glob", "!.git", pattern }
 
   local result = vim.system(cmd, { text = true }):wait()

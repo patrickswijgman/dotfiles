@@ -1,7 +1,7 @@
 local utils = require("config.grep.utils")
 
 vim.api.nvim_create_user_command('Grep', function(opts)
-  local lines = utils.grep(opts.args)
+  local lines = utils.get_grep_lines(opts.args)
 
   if #lines == 0 then
     vim.notify(("No matches found for '%s'"):format(opts.args), vim.log.levels.WARN)

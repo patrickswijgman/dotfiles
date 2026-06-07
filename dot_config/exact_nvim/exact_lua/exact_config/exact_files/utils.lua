@@ -22,7 +22,7 @@ function M.get_files(pattern, type)
 
   local result = vim.system(cmd, { text = true }):wait()
 
-  if result.code ~= 0 then
+  if result.code == 2 then
     vim.notify(("Command failed with error:\n\n%s"):format(result.stderr), vim.log.levels.ERROR)
     return {}
   end
