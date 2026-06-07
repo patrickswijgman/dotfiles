@@ -3,20 +3,12 @@ local utils = require("config.utils")
 
 local M = {}
 
-function M.get_files(pattern, type)
+function M.get_files(pattern, types)
   local cmd = { "fd", "--full-path", "--hidden", "--exclude", ".git" }
 
-  if type == consts.command_type.FILES then
+  for _, t in ipairs(types) do
     table.insert(cmd, "--type")
-    table.insert(cmd, "file")
-  elseif type == consts.command_type.DIRS then
-    table.insert(cmd, "--type")
-    table.insert(cmd, "dir")
-  elseif type == consts.command_type.FILES_AND_DIRS then
-    table.insert(cmd, "--type")
-    table.insert(cmd, "file")
-    table.insert(cmd, "--type")
-    table.insert(cmd, "dir")
+    table.insert(cmd, t)
   end
 
   table.insert(cmd, pattern)

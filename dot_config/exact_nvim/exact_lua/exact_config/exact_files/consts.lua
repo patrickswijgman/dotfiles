@@ -1,9 +1,9 @@
 local M = {}
 
 M.command_type = {
-  FILES = 0,
-  DIRS = 1,
-  FILES_AND_DIRS = 2,
+  FILES = { "file" },
+  DIRS = { "dir" },
+  FILES_AND_DIRS = { "file", "dir" },
 }
 
 return M
