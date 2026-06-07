@@ -24,8 +24,8 @@ function fish_prompt
     set -g __fish_git_prompt_color_upstream yellow
 
     set pwd (set_color blue)'󰉋' $PWD
-    set end (set_color normal)'󰈺'
     set git (set_color brblue)'󰘬' (fish_git_prompt '%s')
+    set end (set_color normal)'󰈺'
 
     echo $pwd $git $end (set_color normal)
 end
