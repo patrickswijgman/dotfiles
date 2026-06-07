@@ -20,6 +20,7 @@ words = [
     "netrw",
     "nohl",
     "noselect",
+    "quickfixtextfunc",
     "relativenumber",
     "scrolloff",
     "shiftwidth",
