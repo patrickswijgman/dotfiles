@@ -1,6 +1,7 @@
 vim.lsp.enable({
   'biome',
   'codebook',
+  'fish_lsp',
   'jsonls',
   'lua_ls',
   'nixd',
