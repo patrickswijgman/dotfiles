@@ -1,3 +1,4 @@
 require("config.core")
 require("config.lsp")
 require("config.treesitter")
+require("config.files")

@@ -1,4 +1,5 @@
 words = [
+    "arglead",
     "autocmds",
     "autoindent",
     "autotrigger",
@@ -15,6 +16,7 @@ words = [
     "keymaps",
     "mapleader",
     "menuone",
+    "nargs",
     "netrw",
     "nohl",
     "noselect",
@@ -29,6 +31,7 @@ words = [
     "splitright",
     "swapfile",
     "tabstop",
+    "trimempty",
     "undofile",
     "updatetime",
     "winborder",
