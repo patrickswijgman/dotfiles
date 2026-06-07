@@ -23,7 +23,7 @@ function fish_prompt
     set -g __fish_git_prompt_color_upstream red
 
     set cwd (set_color blue)'󰉋' (prompt_pwd --dir-length=0)
-    set git (set_color brblue)'󰘬' (fish_git_prompt '%s')
+    set git (set_color brblue)(fish_git_prompt '󰘬 %s')
     set sym (set_color white)'󰈺'
 
     echo $cwd $git $sym (set_color --reset)
