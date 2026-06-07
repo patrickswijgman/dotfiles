@@ -24,4 +24,23 @@ function M.get_grep_lines(pattern)
   return lines
 end
 
+function M.get_words_in_buffer(prefix)
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local seen = {}
+  local words = {}
+
+  for _, line in ipairs(lines) do
+    for word in line:gmatch("%w+") do
+      if not seen[word] and vim.startswith(word, prefix) then
+        seen[word] = true
+        words[#words + 1] = word
+      end
+    end
+  end
+
+  table.sort(words)
+
+  return words
+end
+
 return M

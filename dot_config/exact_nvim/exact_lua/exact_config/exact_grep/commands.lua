@@ -14,6 +14,9 @@ vim.api.nvim_create_user_command('Grep', function(opts)
   vim.fn.setloclist(0, {}, "r", { title = title, items = list.items })
   vim.cmd.lopen()
 end, {
+  complete = function(arglead)
+    return utils.get_words_in_buffer(arglead)
+  end,
   nargs = 1,
   desc = "Grep in files",
 })
