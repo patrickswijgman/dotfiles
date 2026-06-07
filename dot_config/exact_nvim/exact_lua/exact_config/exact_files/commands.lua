@@ -17,7 +17,7 @@ vim.api.nvim_create_user_command('Files', function(opts)
   local title = ("Files found with pattern '%s'"):format(opts.args)
   local items = vim.tbl_map(function(f) return { filename = f } end, files)
 
-  vim.fn.setqflist({}, "r", { title = title, items = items, })
+  vim.fn.setqflist({}, "r", { title = title, items = items })
   vim.cmd.copen()
 end, {
   complete = function(arglead)
