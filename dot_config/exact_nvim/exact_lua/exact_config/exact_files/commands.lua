@@ -5,7 +5,7 @@ vim.api.nvim_create_user_command('Files', function(opts)
   local files = utils.get_files(opts.args, consts.command_type.FILES)
 
   if #files == 0 then
-    vim.notify(("Files: no files found with pattern '%s'"):format(opts.args), vim.log.levels.WARN)
+    vim.notify(("No files found with pattern '%s'"):format(opts.args), vim.log.levels.WARN)
     return
   end
 
