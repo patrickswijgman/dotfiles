@@ -2,7 +2,6 @@ function fish_prompt
     set -g __fish_git_prompt_show_informative_status true
     set -g __fish_git_prompt_showuntrackedfiles true
     set -g __fish_git_prompt_showdirtystate true
-    set -g __fish_git_prompt_showupstream informative
     set -g __fish_git_prompt_showstashstate true
 
     set -g __fish_git_prompt_char_stateseparator ''
@@ -21,9 +20,9 @@ function fish_prompt
     set -g __fish_git_prompt_color_stagedstate green
     set -g __fish_git_prompt_color_untrackedfiles red
     set -g __fish_git_prompt_color_stashstate magenta
-    set -g __fish_git_prompt_color_upstream yellow
+    set -g __fish_git_prompt_color_upstream red
 
-    set pwd (set_color blue)'󰉋' $PWD
+    set pwd (set_color blue)'󰉋' (prompt_pwd --dir-length=0)
     set git (set_color brblue)'󰘬' (fish_git_prompt '%s')
     set end (set_color white)'󰈺'
 
