@@ -10,7 +10,18 @@ function M.get_grep_lines(pattern)
     return {}
   end
 
-  return vim.split(result.stdout, "\n", { trimempty = true })
+  local lines = vim.split(result.stdout, "\n", { trimempty = true })
+
+  table.sort(lines, function(a, b)
+    local a_dir = a:lower():match("^(.*)/") or ""
+    local b_dir = b:lower():match("^(.*)/") or ""
+    if a_dir ~= b_dir then
+      return a_dir < b_dir
+    end
+    return a:lower() < b:lower()
+  end)
+
+  return lines
 end
 
 return M
