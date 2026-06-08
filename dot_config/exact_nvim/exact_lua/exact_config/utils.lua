@@ -21,9 +21,11 @@ function M.sort_on_file_path(lines)
   table.sort(lines, function(a, b)
     local a_dir = a:lower():match("^(.*)/") or ""
     local b_dir = b:lower():match("^(.*)/") or ""
+
     if a_dir ~= b_dir then
       return a_dir < b_dir
     end
+
     return a:lower() < b:lower()
   end)
 end
