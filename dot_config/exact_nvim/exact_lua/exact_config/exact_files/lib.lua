@@ -2,12 +2,12 @@ local utils = require("config.utils")
 
 local M = {}
 
-function M.get_files(pattern, types)
-  local cmd = { "fd", "--full-path", "--hidden", "--exclude", ".git" }
+function M.get_files(pattern, include_dirs)
+  local cmd = { "fd", "--type", "file", "--full-path", "--hidden", "--exclude", ".git" }
 
-  for _, type in ipairs(types) do
+  if include_dirs then
     table.insert(cmd, "--type")
-    table.insert(cmd, type)
+    table.insert(cmd, "dir")
   end
 
   table.insert(cmd, pattern)

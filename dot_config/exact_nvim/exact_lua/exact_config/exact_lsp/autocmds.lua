@@ -21,26 +21,16 @@ vim.api.nvim_create_autocmd('BufWritePre', {
           if action.edit then
             vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
           end
-
-          if action.command then
-            lib.client_request(client, "workspace/executeCommand", action.command, ev.buf)
-          end
         end
       end
     end
-  end,
-  desc = "Execute code actions before writing the buffer",
-  group = group,
-})
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = function(ev)
     vim.lsp.buf.format({
       bufnr = ev.buf,
       name = lib.get_preferred_formatter(ev.buf),
     })
   end,
-  desc = "Format before writing the buffer",
+  desc = "Apply code actions and format before writing the buffer",
   group = group,
 })
 

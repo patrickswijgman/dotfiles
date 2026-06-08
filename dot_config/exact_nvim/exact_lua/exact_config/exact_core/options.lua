@@ -6,7 +6,7 @@ vim.o.cursorline = true
 vim.o.signcolumn = "yes"
 vim.o.scrolloff = 8
 vim.o.wrap = true
-vim.o.splitright = false
+vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.updatetime = 50
 
