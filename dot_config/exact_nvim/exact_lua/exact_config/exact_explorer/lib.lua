@@ -42,7 +42,7 @@ end
 
 local function enter()
   local path = ("%s/%s"):format(cwd, vim.api.nvim_get_current_line())
-  if vim.fn.isdirectory(path) == 1 then
+  if vim.endswith(path, "/") then
     navigate(path)
   else
     close()
@@ -61,8 +61,8 @@ local function back()
 end
 
 local function add()
-  local src = ("%s/"):format(cwd)
-  local input = vim.fn.input({ prompt = "New: ", default = src, completion = "file" })
+  local dir = ("%s/"):format(cwd)
+  local input = vim.fn.input({ prompt = "New: ", default = dir, completion = "file" })
   if input == "" then
     return
   end
@@ -82,8 +82,9 @@ end
 local function delete()
   local line = vim.api.nvim_get_current_line()
   local path = ("%s/%s"):format(cwd, line)
-  local confirm = vim.fn.input(("Delete %s? [y/N] "):format(line))
-  if confirm:lower() ~= "y" then return end
+  if vim.fn.confirm(("Delete %s?"):format(line), "&Yes\n&No", 2) ~= 1 then
+    return
+  end
   vim.fn.delete(path, "rf")
   load_files()
   set_buf_lines()
@@ -93,7 +94,9 @@ local function move()
   local line = vim.api.nvim_get_current_line()
   local src = ("%s/%s"):format(cwd, line)
   local dst = vim.fn.input({ prompt = "Move to: ", default = src, completion = "file" })
-  if dst == "" or dst == src then return end
+  if dst == "" or dst == src then
+    return
+  end
   vim.fn.mkdir(vim.fn.fnamemodify(dst, ":h"), "p")
   vim.uv.fs_rename(src, dst)
   load_files()
@@ -160,6 +163,17 @@ function M.toggle()
     border = "rounded",
     title = " " .. cwd .. " ",
     title_pos = "center",
+    footer = {
+      { " <cr>", "Special" }, { " open  ", "Comment" },
+      { "<bs>",  "Special" }, { " back  ", "Comment" },
+      { "a", "Special" }, { " add  ", "Comment" },
+      { "d", "Special" }, { " delete  ", "Comment" },
+      { "m", "Special" }, { " move  ", "Comment" },
+      { "f", "Special" }, { " filter  ", "Comment" },
+      { "R", "Special" }, { " refresh  ", "Comment" },
+      { "q", "Special" }, { " close ", "Comment" },
+    },
+    footer_pos = "center",
   })
 
   vim.wo[win].cursorline = true
