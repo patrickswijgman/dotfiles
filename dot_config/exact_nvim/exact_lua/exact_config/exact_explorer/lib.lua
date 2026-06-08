@@ -98,7 +98,7 @@ local function move()
     return
   end
   vim.fn.mkdir(vim.fn.fnamemodify(dst, ":h"), "p")
-  vim.uv.fs_rename(src, dst)
+  vim.fn.rename(src, dst)
   load_files()
   set_buf_lines()
 end
