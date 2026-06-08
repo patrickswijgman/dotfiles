@@ -23,6 +23,7 @@ words = [
     "nohl",
     "noselect",
     "nowait",
+    "pumborder",
     "quickfixtextfunc",
     "relativenumber",
     "scrolloff",

@@ -37,6 +37,9 @@ vim.o.completeopt = 'menuone,noselect,popup'
 -- Windows
 vim.o.winborder = 'rounded'
 
+-- Popup menu
+vim.o.pumborder = 'rounded'
+
 -- Leader key
 vim.g.mapleader = " "
 
