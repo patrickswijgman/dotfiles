@@ -1,7 +1,3 @@
--- Pickers
-vim.keymap.set('n', '<leader>f', ':Files ', { desc = "Search for files" })
-vim.keymap.set('n', '<leader>g', ':Grep ', { desc = "Grep in files" })
-
 -- Clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = "Paste from system clipboard" })

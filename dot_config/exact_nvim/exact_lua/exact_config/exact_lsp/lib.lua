@@ -1,31 +1,9 @@
+local consts = require('config.lsp.consts')
+
 local M = {}
 
-local ENABLED_LANGUAGE_SERVERS = {
-  'biome',
-  'codebook',
-  'efm',
-  'fish_lsp',
-  'jsonls',
-  'lua_ls',
-  'nixd',
-  'vtsls',
-}
-
-local CODE_ACTIONS = {
-  biome = { "source.fixAll.biome" },
-}
-
-local FORMATTER_PRIORITY = { 'biome', 'efm' }
-
-local REQUEST_TIMEOUT = 3000
-
-function M.setup()
-  vim.lsp.enable(ENABLED_LANGUAGE_SERVERS)
-  vim.lsp.semantic_tokens.enable(false)
-end
-
 function M.client_request(client, method, params, bufnr)
-  local result = client:request_sync(method, params, REQUEST_TIMEOUT, bufnr)
+  local result = client:request_sync(method, params, consts.REQUEST_TIMEOUT, bufnr)
 
   if result == nil then
     vim.notify(("[LSP] %s: %s failed"):format(client.name, method), vim.log.levels.ERROR)
@@ -37,7 +15,7 @@ function M.client_request(client, method, params, bufnr)
 end
 
 function M.get_code_actions(name)
-  return CODE_ACTIONS[name] or {}
+  return consts.CODE_ACTIONS[name] or {}
 end
 
 function M.get_code_action_params(code_action, bufnr)
@@ -57,10 +35,8 @@ function M.get_code_action_params(code_action, bufnr)
 end
 
 function M.get_preferred_formatter(bufnr)
-  for _, name in ipairs(FORMATTER_PRIORITY) do
-    local client = vim.lsp.get_clients({ bufnr = bufnr, name = name, method = 'textDocument/formatting' })[1]
-
-    if client then
+  for _, name in ipairs(consts.FORMATTER_PRIORITY) do
+    if vim.lsp.get_clients({ bufnr = bufnr, name = name, method = 'textDocument/formatting' })[1] then
       return name
     end
   end

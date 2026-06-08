@@ -2,12 +2,6 @@ local utils = require("config.utils")
 
 local M = {}
 
-M.command_type = {
-  FILES = { "file" },
-  DIRS = { "dir" },
-  FILES_AND_DIRS = { "file", "dir" },
-}
-
 function M.get_files(pattern, types)
   local cmd = { "fd", "--full-path", "--hidden", "--exclude", ".git" }
 
