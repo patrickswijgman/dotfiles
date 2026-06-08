@@ -1,4 +1,4 @@
-local utils = require("config.lib.utils")
+local utils = require("config.utils")
 
 local M = {}
 
