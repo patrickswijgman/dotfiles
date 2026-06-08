@@ -60,6 +60,46 @@ local function back()
   end
 end
 
+local function add()
+  local src = ("%s/"):format(cwd)
+  local input = vim.fn.input({ prompt = "New: ", default = src, completion = "file" })
+  if input == "" then
+    return
+  end
+  if vim.endswith(input, "/") then
+    vim.fn.mkdir(input, "p")
+    load_files()
+    set_buf_lines()
+  else
+    close()
+    if prev_win and vim.api.nvim_win_is_valid(prev_win) then
+      vim.api.nvim_set_current_win(prev_win)
+    end
+    vim.cmd.edit(input)
+  end
+end
+
+local function delete()
+  local line = vim.api.nvim_get_current_line()
+  local path = ("%s/%s"):format(cwd, line)
+  local confirm = vim.fn.input(("Delete %s? [y/N] "):format(line))
+  if confirm:lower() ~= "y" then return end
+  vim.fn.delete(path, "rf")
+  load_files()
+  set_buf_lines()
+end
+
+local function move()
+  local line = vim.api.nvim_get_current_line()
+  local src = ("%s/%s"):format(cwd, line)
+  local dst = vim.fn.input({ prompt = "Move to: ", default = src, completion = "file" })
+  if dst == "" or dst == src then return end
+  vim.fn.mkdir(vim.fn.fnamemodify(dst, ":h"), "p")
+  vim.uv.fs_rename(src, dst)
+  load_files()
+  set_buf_lines()
+end
+
 local function filter()
   local input = vim.fn.input("Filter: ", query or "")
   query = (input ~= "") and input or nil
@@ -94,6 +134,9 @@ function M.toggle()
     local keymap_opts = { buffer = buf, nowait = true }
     vim.keymap.set("n", "<cr>", enter, keymap_opts)
     vim.keymap.set("n", "<bs>", back, keymap_opts)
+    vim.keymap.set("n", "a", add, keymap_opts)
+    vim.keymap.set("n", "d", delete, keymap_opts)
+    vim.keymap.set("n", "m", move, keymap_opts)
     vim.keymap.set("n", "f", filter, keymap_opts)
     vim.keymap.set("n", "R", refresh, keymap_opts)
     vim.keymap.set("n", "q", close, keymap_opts)
