@@ -6,8 +6,8 @@ function M.set_loc_list(title, lines, format)
   vim.cmd.lopen()
 end
 
-function M.cmd_list(cmd)
-  local result = vim.system(cmd, { text = true }):wait()
+function M.cmd_list(cmd, cwd)
+  local result = vim.system(cmd, { text = true, cwd = cwd }):wait()
 
   if result.code ~= 0 and result.code ~= 1 then
     vim.notify(("Command failed with error:\n\n%s"):format(result.stderr), vim.log.levels.ERROR)
