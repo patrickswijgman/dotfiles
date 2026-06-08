@@ -6,7 +6,14 @@ function M.grep(pattern)
   local cmd = { "rg", "--vimgrep", "--hidden", "--glob", "!.git", pattern }
   local lines = utils.cmd_list(cmd)
   utils.sort_on_file_path(lines)
-  return lines
+
+  if #lines == 0 then
+    vim.notify(("No matches found for '%s'"):format(pattern), vim.log.levels.WARN)
+    return
+  end
+
+  local title = ("Grep results for '%s'"):format(pattern)
+  utils.set_loc_list(title, lines, "%f:%l:%c:%m")
 end
 
 function M.get_words_in_current_buffer(prefix)
@@ -26,10 +33,6 @@ function M.get_words_in_current_buffer(prefix)
   table.sort(words)
 
   return words
-end
-
-function M.show_results(title, lines)
-  utils.set_loc_list(title, lines, "%f:%l:%c:%m")
 end
 
 return M
