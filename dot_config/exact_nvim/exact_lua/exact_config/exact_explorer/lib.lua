@@ -2,10 +2,10 @@ local utils = require("config.utils")
 
 local M = {}
 
-local buf, win, prev_win, cursor, files, cwd
+local buf, win, prev_win, cursor, files, cwd, query
 
 local function load_files()
-  local cmd = { "fd", "--type", "file", "--type", "dir", "--hidden", "--exclude", ".git" }
+  local cmd = { "fd", "--type", "file", "--type", "dir", "--hidden", "--exclude", ".git", "--full-path", query }
   local list = utils.cmd_list(cmd, cwd)
   utils.sort_on_file_path(list)
   files = list
@@ -19,7 +19,8 @@ end
 
 local function update_title()
   if win and vim.api.nvim_win_is_valid(win) then
-    vim.api.nvim_win_set_config(win, { title = (" %s "):format(cwd), title_pos = "center" })
+    local title = (query and query ~= "") and (" %s [%s] "):format(cwd, query) or (" %s "):format(cwd)
+    vim.api.nvim_win_set_config(win, { title = title, title_pos = "center" })
   end
 end
 
@@ -59,9 +60,19 @@ local function back()
   end
 end
 
-local function refresh()
+local function filter()
+  local input = vim.fn.input("Filter: ", query or "")
+  query = (input ~= "") and input or nil
   load_files()
   set_buf_lines()
+  update_title()
+end
+
+local function refresh()
+  query = nil
+  load_files()
+  set_buf_lines()
+  update_title()
 end
 
 function M.toggle()
@@ -75,15 +86,15 @@ function M.toggle()
     load_files()
 
     buf = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, files)
-    vim.bo[buf].modifiable = false
     vim.bo[buf].buftype = "nofile"
+    set_buf_lines()
 
     cursor = nil
 
     local keymap_opts = { buffer = buf, nowait = true }
     vim.keymap.set("n", "<cr>", enter, keymap_opts)
     vim.keymap.set("n", "<bs>", back, keymap_opts)
+    vim.keymap.set("n", "f", filter, keymap_opts)
     vim.keymap.set("n", "R", refresh, keymap_opts)
     vim.keymap.set("n", "q", close, keymap_opts)
     vim.keymap.set("n", "<esc>", close, keymap_opts)
@@ -109,7 +120,8 @@ function M.toggle()
   })
 
   vim.wo[win].cursorline = true
-  vim.fn.matchadd("Directory", ".*/", 10, -1, { window = win })
+  vim.fn.matchadd("Directory", ".*/", -1, -1, { window = win })
+  update_title()
 
   if cursor then
     vim.api.nvim_win_set_cursor(win, cursor)
