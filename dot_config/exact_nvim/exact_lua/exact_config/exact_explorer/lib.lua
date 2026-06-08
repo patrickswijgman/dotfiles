@@ -41,7 +41,7 @@ local function navigate(dir)
 end
 
 local function enter()
-  local path = cwd .. "/" .. vim.api.nvim_get_current_line()
+  local path = ("%s/%s"):format(cwd, vim.api.nvim_get_current_line())
   if vim.fn.isdirectory(path) == 1 then
     navigate(path)
   else
