@@ -15,7 +15,9 @@ return {
     "typescriptreact",
     "yaml",
   },
-  root_markers = { ".git" },
+  root_markers = {
+    ".git",
+  },
   init_options = {
     documentFormatting = true,
   },

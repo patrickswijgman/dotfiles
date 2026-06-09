@@ -2,8 +2,8 @@ local utils = require("config.utils")
 
 local M = {}
 
+local history = {}
 local cursors = {}
-
 local buf, win, prev_win, files, cwd, query
 
 local function load_files()
@@ -13,7 +13,7 @@ local function load_files()
   files = list
 end
 
-local function set_buf_lines()
+local function update_buffer()
   vim.bo[buf].modifiable = true
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, files)
   vim.bo[buf].modifiable = false
@@ -26,45 +26,55 @@ local function update_title()
   end
 end
 
-local function close()
+local function save_cursor()
   if win and vim.api.nvim_win_is_valid(win) then
     cursors[cwd] = vim.api.nvim_win_get_cursor(win)
+  end
+end
+
+local function restore_cursor()
+  local cursor = cursors[cwd] or { 1, 0 }
+  local row = utils.clamp(cursor[1], 1, #files)
+  local col = cursor[2]
+  if win and vim.api.nvim_win_is_valid(win) then
+    vim.api.nvim_win_set_cursor(win, { row, col })
+  end
+end
+
+local function close()
+  save_cursor()
+  if win and vim.api.nvim_win_is_valid(win) then
     vim.api.nvim_win_close(win, true)
     win = nil
+  end
+  if prev_win and vim.api.nvim_win_is_valid(prev_win) then
+    vim.api.nvim_set_current_win(prev_win)
   end
 end
 
 local function navigate(dir)
-  if win and vim.api.nvim_win_is_valid(win) then
-    cursors[cwd] = vim.api.nvim_win_get_cursor(win)
-    cwd = dir:gsub("/$", "")
-    load_files()
-    set_buf_lines()
-    update_title()
-    local cursor = cursors[cwd]
-    if cursor then
-      vim.api.nvim_win_set_cursor(win, cursor)
-    end
-  end
+  save_cursor()
+  cwd = dir:gsub("/$", "")
+  load_files()
+  update_buffer()
+  restore_cursor()
+  update_title()
 end
 
 local function enter()
   local path = ("%s/%s"):format(cwd, vim.api.nvim_get_current_line())
   if vim.endswith(path, "/") then
+    table.insert(history, cwd)
     navigate(path)
   else
     close()
-    if prev_win and vim.api.nvim_win_is_valid(prev_win) then
-      vim.api.nvim_set_current_win(prev_win)
-    end
     vim.cmd.edit(path)
   end
 end
 
 local function back()
-  local parent = vim.fn.fnamemodify(cwd, ":h")
-  if parent ~= cwd then
-    navigate(parent)
+  if #history > 0 then
+    navigate(table.remove(history))
   end
 end
 
@@ -77,12 +87,9 @@ local function add()
   if vim.endswith(input, "/") then
     vim.fn.mkdir(input, "p")
     load_files()
-    set_buf_lines()
+    update_buffer()
   else
     close()
-    if prev_win and vim.api.nvim_win_is_valid(prev_win) then
-      vim.api.nvim_set_current_win(prev_win)
-    end
     vim.cmd.edit(input)
   end
 end
@@ -95,7 +102,7 @@ local function delete()
   end
   vim.fn.delete(path, "rf")
   load_files()
-  set_buf_lines()
+  update_buffer()
 end
 
 local function move()
@@ -108,21 +115,21 @@ local function move()
   vim.fn.mkdir(vim.fn.fnamemodify(dst, ":h"), "p")
   vim.fn.rename(src, dst)
   load_files()
-  set_buf_lines()
+  update_buffer()
 end
 
 local function filter()
   local input = vim.fn.input("Filter: ", query or "")
   query = (input ~= "") and input or nil
   load_files()
-  set_buf_lines()
+  update_buffer()
   update_title()
 end
 
 local function refresh()
   query = nil
   load_files()
-  set_buf_lines()
+  update_buffer()
   update_title()
 end
 
@@ -132,13 +139,13 @@ function M.toggle()
     return
   end
 
-  if not buf or not vim.api.nvim_buf_is_valid(buf) then
+  if not buf or not vim.api.nvim_buf_is_valid(buf) or not vim.api.nvim_buf_is_loaded(buf) then
     cwd = vim.fn.getcwd()
     load_files()
 
     buf = vim.api.nvim_create_buf(false, true)
     vim.bo[buf].buftype = "nofile"
-    set_buf_lines()
+    update_buffer()
 
     local keymap_opts = { buffer = buf, nowait = true }
     vim.keymap.set("n", "<cr>", enter, keymap_opts)
@@ -193,11 +200,7 @@ function M.toggle()
   vim.wo[win].cursorline = true
   vim.fn.matchadd("Directory", ".*/", -1, -1, { window = win })
   update_title()
-
-  local cursor = cursors[cwd]
-  if cursor then
-    vim.api.nvim_win_set_cursor(win, cursor)
-  end
+  restore_cursor()
 end
 
 return M

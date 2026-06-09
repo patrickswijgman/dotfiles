@@ -25,5 +25,9 @@ return {
     "typescriptreact",
     "zig",
   },
-  root_markers = { "codebook.toml", ".codebook.toml", ".git" },
+  root_markers = {
+    "codebook.toml",
+    ".codebook.toml",
+    ".git",
+  },
 }

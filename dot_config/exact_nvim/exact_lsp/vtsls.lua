@@ -10,7 +10,10 @@ return {
     "typescript",
     "typescriptreact",
   },
-  root_markers = { "package-lock.json", ".git" },
+  root_markers = {
+    "package-lock.json",
+    ".git",
+  },
   settings = {
     javascript = {
       preferences = {

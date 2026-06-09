@@ -8,12 +8,10 @@ end
 
 function M.cmd_list(cmd, cwd)
   local result = vim.system(cmd, { text = true, cwd = cwd }):wait()
-
   if result.code ~= 0 and result.code ~= 1 then
     vim.notify(("Command failed with error:\n\n%s"):format(result.stderr), vim.log.levels.ERROR)
     return {}
   end
-
   return vim.split(result.stdout, "\n", { trimempty = true })
 end
 
@@ -26,6 +24,10 @@ function M.sort_on_file_path(lines)
     end
     return a:lower() < b:lower()
   end)
+end
+
+function M.clamp(value, min, max)
+  return math.min(max, math.max(value, min))
 end
 
 return M
