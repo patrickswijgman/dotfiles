@@ -100,7 +100,11 @@ local function navigate(dir)
 end
 
 local function enter()
-  local path = ("%s/%s"):format(cwd, vim.api.nvim_get_current_line())
+  local line = vim.api.nvim_get_current_line()
+  if line == "" then
+    return
+  end
+  local path = ("%s/%s"):format(cwd, line)
   if vim.endswith(path, "/") then
     table.insert(history, cwd)
     navigate(path)
@@ -122,6 +126,7 @@ local function filter()
   load_files()
   update_buf()
   update_win()
+  restore_cursor()
 end
 
 local function refresh()
@@ -172,9 +177,7 @@ local function move()
 end
 
 function M.resize()
-  if win and vim.api.nvim_win_is_valid(win) then
-    vim.api.nvim_win_set_config(win, get_win_config())
-  end
+  update_win()
 end
 
 function M.toggle()
