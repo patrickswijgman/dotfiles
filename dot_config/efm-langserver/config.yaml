@@ -2,7 +2,7 @@ version: 2
 
 tools:
   prettierd: &prettierd
-    format-command: "prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd} --config-precedence=prefer-file"
+    format-command: "prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd}"
     format-stdin: true
 
   stylua: &stylua
