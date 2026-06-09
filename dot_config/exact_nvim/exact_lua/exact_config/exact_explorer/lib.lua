@@ -2,10 +2,12 @@ local utils = require("config.utils")
 
 local M = {}
 
+local cursors = {}
+
 local buf, win, prev_win, cursor, files, cwd, query
 
 local function load_files()
-  local cmd = { "fd", "--type", "file", "--type", "dir", "--hidden", "--exclude", ".git", "--full-path", query }
+  local cmd = { "fd", "--type", "file", "--type", "dir", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules", query }
   local list = utils.cmd_list(cmd, cwd)
   utils.sort_on_file_path(list)
   files = list
@@ -33,11 +35,17 @@ local function close()
 end
 
 local function navigate(dir)
-  cwd = dir:gsub("/$", "")
-  cursor = nil
-  load_files()
-  set_buf_lines()
-  update_title()
+  if win and vim.api.nvim_win_is_valid(win) then
+    cursors[cwd] = vim.api.nvim_win_get_cursor(win)
+    cwd = dir:gsub("/$", "")
+    cursor = cursors[cwd]
+    load_files()
+    set_buf_lines()
+    update_title()
+    if cursor then
+      vim.api.nvim_win_set_cursor(win, cursor)
+    end
+  end
 end
 
 local function enter()
@@ -164,14 +172,22 @@ function M.toggle()
     title = " " .. cwd .. " ",
     title_pos = "center",
     footer = {
-      { " <cr>", "Special" }, { " open  ", "Comment" },
-      { "<bs>",  "Special" }, { " back  ", "Comment" },
-      { "a", "Special" }, { " add  ", "Comment" },
-      { "d", "Special" }, { " delete  ", "Comment" },
-      { "m", "Special" }, { " move  ", "Comment" },
-      { "f", "Special" }, { " filter  ", "Comment" },
-      { "R", "Special" }, { " refresh  ", "Comment" },
-      { "q", "Special" }, { " close ", "Comment" },
+      { " <cr>", "Special" },
+      { " open  ", "Comment" },
+      { "<bs>", "Special" },
+      { " back  ", "Comment" },
+      { "a", "Special" },
+      { " add  ", "Comment" },
+      { "d", "Special" },
+      { " delete  ", "Comment" },
+      { "m", "Special" },
+      { " move  ", "Comment" },
+      { "f", "Special" },
+      { " filter  ", "Comment" },
+      { "R", "Special" },
+      { " refresh  ", "Comment" },
+      { "q", "Special" },
+      { " close ", "Comment" },
     },
     footer_pos = "center",
   })

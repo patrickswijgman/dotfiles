@@ -1,4 +1,5 @@
 words = [
+    "JIT",
     "arglead",
     "autocmds",
     "autoindent",
@@ -16,6 +17,7 @@ words = [
     "inccommand",
     "incsearch",
     "keymaps",
+    "luarc",
     "mapleader",
     "menuone",
     "nargs",

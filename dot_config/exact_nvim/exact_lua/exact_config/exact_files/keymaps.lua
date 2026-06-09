@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<leader>f', ':Files ', { desc = "Search for files" })
+vim.keymap.set("n", "<leader>f", ":Files ", { desc = "Search for files" })

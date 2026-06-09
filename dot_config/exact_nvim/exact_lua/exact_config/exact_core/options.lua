@@ -16,8 +16,8 @@ vim.o.swapfile = false
 vim.o.backup = false
 
 -- Searching
-vim.o.ignorecase = false
-vim.o.smartcase = false
+vim.o.ignorecase = true
+vim.o.smartcase = true
 vim.o.showmatch = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
@@ -32,13 +32,13 @@ vim.o.autoindent = true
 
 -- Autocomplete
 vim.o.autocomplete = true
-vim.o.completeopt = 'menuone,noselect,popup'
+vim.o.completeopt = "menuone,noselect,popup"
 
 -- Windows
-vim.o.winborder = 'rounded'
+vim.o.winborder = "rounded"
 
--- Popup menu
-vim.o.pumborder = 'rounded'
+-- Popup menus
+vim.o.pumborder = "rounded"
 
 -- Leader key
 vim.g.mapleader = " "

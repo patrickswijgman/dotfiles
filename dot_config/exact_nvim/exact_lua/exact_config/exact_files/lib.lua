@@ -19,19 +19,22 @@ function M.files(pattern)
   utils.set_loc_list(title, files, "%f")
 end
 
-function M.get_files(pattern, include_dirs)
-  local cmd = { "fd", "--type", "file", "--full-path", "--hidden", "--exclude", ".git" }
-
-  if include_dirs then
-    table.insert(cmd, "--type")
-    table.insert(cmd, "dir")
-  end
-
-  table.insert(cmd, pattern)
-
+function M.get_files(pattern)
+  local cmd = {
+    "fd",
+    "--type",
+    "file",
+    "--full-path",
+    "--hidden",
+    "--no-ignore",
+    "--exclude",
+    ".git",
+    "--exclude",
+    "node_modules",
+    pattern,
+  }
   local files = utils.cmd_list(cmd)
   utils.sort_on_file_path(files)
-
   return files
 end
 

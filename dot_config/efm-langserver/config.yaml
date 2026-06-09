@@ -2,7 +2,11 @@ version: 2
 
 tools:
   prettierd: &prettierd
-    format-command: prettierd ${INPUT}
+    format-command: "prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd} --config-precedence=prefer-file"
+    format-stdin: true
+
+  stylua: &stylua
+    format-command: "stylua --color Never --search-parent-directories ${--range-start:charStart} ${--range-end:charEnd} -"
     format-stdin: true
 
 languages:
@@ -28,3 +32,5 @@ languages:
     - <<: *prettierd
   graphql:
     - <<: *prettierd
+  lua:
+    - <<: *stylua

@@ -1,4 +1,4 @@
-local consts = require('config.lsp.consts')
+local consts = require("config.lsp.consts")
 
 local M = {}
 
@@ -21,7 +21,7 @@ end
 function M.get_code_action_params(code_action, bufnr)
   return {
     textDocument = {
-      uri = vim.uri_from_bufnr(bufnr)
+      uri = vim.uri_from_bufnr(bufnr),
     },
     range = {
       ["start"] = { line = 0, character = 0 },
@@ -29,14 +29,14 @@ function M.get_code_action_params(code_action, bufnr)
     },
     context = {
       only = { code_action },
-      diagnostics = {}
+      diagnostics = {},
     },
   }
 end
 
 function M.get_preferred_formatter(bufnr)
   for _, name in ipairs(consts.FORMATTER_PRIORITY) do
-    if vim.lsp.get_clients({ bufnr = bufnr, name = name, method = 'textDocument/formatting' })[1] then
+    if vim.lsp.get_clients({ bufnr = bufnr, name = name, method = "textDocument/formatting" })[1] then
       return name
     end
   end

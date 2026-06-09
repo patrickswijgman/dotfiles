@@ -1,8 +1,8 @@
-local lib = require('config.lsp.lib')
+local lib = require("config.lsp.lib")
 
-local group = vim.api.nvim_create_augroup('UserLspConfig', { clear = true })
+local group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
+vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(ev)
     local clients = vim.lsp.get_clients({ bufnr = ev.buf })
 
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   group = group,
 })
 
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 

@@ -1,6 +1,6 @@
 local lib = require("config.grep.lib")
 
-vim.api.nvim_create_user_command('Grep', function(opts)
+vim.api.nvim_create_user_command("Grep", function(opts)
   lib.grep(opts.args)
 end, {
   complete = function(arglead)

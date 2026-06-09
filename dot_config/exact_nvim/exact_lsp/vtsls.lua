@@ -1,16 +1,16 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { 'vtsls', '--stdio' },
+  cmd = { "vtsls", "--stdio" },
   init_options = {
-    hostInfo = 'neovim',
+    hostInfo = "neovim",
   },
   filetypes = {
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
   },
-  root_markers = { 'package-lock.json', '.git' },
+  root_markers = { "package-lock.json", ".git" },
   settings = {
     javascript = {
       preferences = {
