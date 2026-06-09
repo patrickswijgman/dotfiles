@@ -95,8 +95,8 @@ local function navigate(dir)
   query = nil
   load_files()
   update_buf()
-  restore_cursor()
   update_win()
+  restore_cursor()
 end
 
 local function enter()
