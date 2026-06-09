@@ -133,6 +133,47 @@ local function refresh()
   update_title()
 end
 
+local function get_win_config()
+  local width = math.floor(vim.o.columns * 0.8)
+  local height = math.floor(vim.o.lines * 0.8)
+  local row = math.floor((vim.o.lines - height) / 2)
+  local col = math.floor((vim.o.columns - width) / 2)
+  return {
+    width = width,
+    height = height,
+    row = row,
+    col = col,
+    relative = "editor",
+    style = "minimal",
+    border = "rounded",
+    footer = {
+      { " <cr>", "Special" },
+      { " open  ", "Comment" },
+      { "<bs>", "Special" },
+      { " back  ", "Comment" },
+      { "a", "Special" },
+      { " add  ", "Comment" },
+      { "d", "Special" },
+      { " delete  ", "Comment" },
+      { "m", "Special" },
+      { " move  ", "Comment" },
+      { "f", "Special" },
+      { " filter  ", "Comment" },
+      { "R", "Special" },
+      { " refresh  ", "Comment" },
+      { "q", "Special" },
+      { " close ", "Comment" },
+    },
+    footer_pos = "center",
+  }
+end
+
+function M.resize()
+  if win and vim.api.nvim_win_is_valid(win) then
+    vim.api.nvim_win_set_config(win, get_win_config())
+  end
+end
+
 function M.toggle()
   if win and vim.api.nvim_win_is_valid(win) then
     close()
@@ -160,42 +201,7 @@ function M.toggle()
 
   prev_win = vim.api.nvim_get_current_win()
 
-  local width = math.floor(vim.o.columns * 0.8)
-  local height = math.floor(vim.o.lines * 0.8)
-  local row = math.floor((vim.o.lines - height) / 2)
-  local col = math.floor((vim.o.columns - width) / 2)
-
-  win = vim.api.nvim_open_win(buf, true, {
-    relative = "editor",
-    width = width,
-    height = height,
-    row = row,
-    col = col,
-    style = "minimal",
-    border = "rounded",
-    title = " " .. cwd .. " ",
-    title_pos = "center",
-    footer = {
-      { " <cr>", "Special" },
-      { " open  ", "Comment" },
-      { "<bs>", "Special" },
-      { " back  ", "Comment" },
-      { "a", "Special" },
-      { " add  ", "Comment" },
-      { "d", "Special" },
-      { " delete  ", "Comment" },
-      { "m", "Special" },
-      { " move  ", "Comment" },
-      { "f", "Special" },
-      { " filter  ", "Comment" },
-      { "R", "Special" },
-      { " refresh  ", "Comment" },
-      { "q", "Special" },
-      { " close ", "Comment" },
-    },
-    footer_pos = "center",
-  })
-
+  win = vim.api.nvim_open_win(buf, true, get_win_config())
   vim.wo[win].cursorline = true
   vim.fn.matchadd("Directory", ".*/", -1, -1, { window = win })
   update_title()
