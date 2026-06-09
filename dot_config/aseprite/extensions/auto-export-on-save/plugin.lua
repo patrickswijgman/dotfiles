@@ -17,5 +17,4 @@ function init()
   end)
 end
 
-function exit()
-end
+function exit() end

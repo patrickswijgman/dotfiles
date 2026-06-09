@@ -271,198 +271,196 @@ json = {}
 
 ---@enum (exact) Align https://www.aseprite.org/api/align
 Align = {
-    LEFT = 0,
-    CENTER = 1,
-    RIGHT = 2,
-    TOP = 3,
-    BOTTOM = 4,
+  LEFT = 0,
+  CENTER = 1,
+  RIGHT = 2,
+  TOP = 3,
+  BOTTOM = 4,
 }
 
 ---@enum (exact) AniDir https://www.aseprite.org/api/anidir
 AniDir = {
-    FORWARD = 0,
-    REVERSE = 1,
-    PING_PONG = 2,
-    PING_PONG_REVERSE = 3,
+  FORWARD = 0,
+  REVERSE = 1,
+  PING_PONG = 2,
+  PING_PONG_REVERSE = 3,
 }
 
 ---@enum (exact) BlendMode https://www.aseprite.org/api/blendmode
 BlendMode = {
-    NORMAL = 0,
-    SRC = 1,
-    MULTIPLY = 2,
-    SCREEN = 3,
-    OVERLAY = 4,
-    DARKEN = 5,
-    LIGHTEN = 6,
-    COLOR_DODGE = 7,
-    COLOR_BURN = 8,
-    HARD_LIGHT = 9,
-    SOFT_LIGHT = 10,
-    DIFFERENCE = 11,
-    EXCLUSION = 12,
-    HSL_HUE = 13,
-    HSL_SATURATION = 14,
-    HSL_COLOR = 15,
-    HSL_LUMINOSITY = 16,
-    ADDITION = 17,
-    SUBTRACT = 18,
-    DIVIDE = 19,
+  NORMAL = 0,
+  SRC = 1,
+  MULTIPLY = 2,
+  SCREEN = 3,
+  OVERLAY = 4,
+  DARKEN = 5,
+  LIGHTEN = 6,
+  COLOR_DODGE = 7,
+  COLOR_BURN = 8,
+  HARD_LIGHT = 9,
+  SOFT_LIGHT = 10,
+  DIFFERENCE = 11,
+  EXCLUSION = 12,
+  HSL_HUE = 13,
+  HSL_SATURATION = 14,
+  HSL_COLOR = 15,
+  HSL_LUMINOSITY = 16,
+  ADDITION = 17,
+  SUBTRACT = 18,
+  DIVIDE = 19,
 }
 
 ---@enum (exact) BrushPattern https://www.aseprite.org/api/brishpattern
 BrushPattern = {
-    NONE = 0,
-    ORIGIN = 1,
-    TARGET = 2,
+  NONE = 0,
+  ORIGIN = 1,
+  TARGET = 2,
 }
 
 ---@enum (exact) BrushType https://www.aseprite.org/api/brushtype
 BrushType = {
-    CIRCLE = 0,
-    SQUARE = 1,
-    LINE = 2,
-    IMAGE = 3,
+  CIRCLE = 0,
+  SQUARE = 1,
+  LINE = 2,
+  IMAGE = 3,
 }
 
 ---@enum (exact) ColorMode https://www.aseprite.org/api/colormode
 ColorMode = {
-    RGB = 0,
-    GRAY = 1,
-    INDEXED = 2,
-    TILEMAP = 3,
+  RGB = 0,
+  GRAY = 1,
+  INDEXED = 2,
+  TILEMAP = 3,
 }
 
 ---@enum (exact) FilterChannels https://www.aseprite.org/api/filterchannels
 FilterChannels = {
-    RED = 0,
-    GREEN = 1,
-    BLUE = 2,
-    ALPHA = 3,
-    GRAY = 4,
-    INDEX = 5,
-    RGB = 6,
-    RGBA = 7,
-    GRAYA = 8,
+  RED = 0,
+  GREEN = 1,
+  BLUE = 2,
+  ALPHA = 3,
+  GRAY = 4,
+  INDEX = 5,
+  RGB = 6,
+  RGBA = 7,
+  GRAYA = 8,
 }
 
 ---@enum (exact) FlipType https://www.aseprite.org/api/fliptype
 FlipType = {
-    HORIZONTAL = 0,
-    VERTICAL = 1,
-    DIAGONAL = 2,
+  HORIZONTAL = 0,
+  VERTICAL = 1,
+  DIAGONAL = 2,
 }
 
 ---@enum (exact) Ink https://www.aseprite.org/api/ink
 Ink = {
-    SIMPLE = 0,
-    ALPHA_COMPOSITING = 1,
-    COPY_COLOR = 2,
-    LOCK_ALPHA = 3,
-    SHADING = 4,
+  SIMPLE = 0,
+  ALPHA_COMPOSITING = 1,
+  COPY_COLOR = 2,
+  LOCK_ALPHA = 3,
+  SHADING = 4,
 }
 
 ---@enum (exact) MouseButton https://www.aseprite.org/api/mousebutton
 MouseButton = {
-    NONE = 0,
-    LEFT = 1,
-    RIGHT = 2,
-    MIDDLE = 3,
-    X1 = 4,
-    X2 = 5,
+  NONE = 0,
+  LEFT = 1,
+  RIGHT = 2,
+  MIDDLE = 3,
+  X1 = 4,
+  X2 = 5,
 }
 
 ---@enum (exact) MouseCursor https://www.aseprite.org/api/mousecursor
 MouseCursor = {
-    NONE = 0,
-    ARROW = 1,
-    CROSSHAIR = 2,
-    POINTER = 3,
-    NOT_ALLOWED = 4,
-    GRAB = 5,
-    GRABBING = 6,
-    MOVE = 7,
-    NS_RESIZE = 8,
-    WE_RESIZE = 9,
-    N_RESIZE = 10,
-    NE_RESIZE = 11,
-    E_RESIZE = 12,
-    SE_RESIZE = 13,
-    S_RESIZE = 14,
-    SW_RESIZE = 15,
-    W_RESIZE = 16,
-    NW_RESIZE = 17,
+  NONE = 0,
+  ARROW = 1,
+  CROSSHAIR = 2,
+  POINTER = 3,
+  NOT_ALLOWED = 4,
+  GRAB = 5,
+  GRABBING = 6,
+  MOVE = 7,
+  NS_RESIZE = 8,
+  WE_RESIZE = 9,
+  N_RESIZE = 10,
+  NE_RESIZE = 11,
+  E_RESIZE = 12,
+  SE_RESIZE = 13,
+  S_RESIZE = 14,
+  SW_RESIZE = 15,
+  W_RESIZE = 16,
+  NW_RESIZE = 17,
 }
 
 ---@enum (exact) RangeType https://www.aseprite.org/api/rangetype
 RangeType = {
-    EMPTY = 0,
-    LAYERS = 1,
-    FRAMES = 2,
-    CELS = 3,
+  EMPTY = 0,
+  LAYERS = 1,
+  FRAMES = 2,
+  CELS = 3,
 }
 
 ---@enum (exact) SelectionMode https://www.aseprite.org/api/selectionmode
 SelectionMode = {
-    REPLACE = 0,
-    ADD = 1,
-    SUBTRACT = 2,
-    INTERSECT = 3,
+  REPLACE = 0,
+  ADD = 1,
+  SUBTRACT = 2,
+  INTERSECT = 3,
 }
 
 ---@enum (exact) SpriteSheetDataFormat https://www.aseprite.org/api/spritesheetdataformat
 SpriteSheetDataFormat = {
-    JSON_HASH = 0,
-    JSON_ARRAY = 1,
+  JSON_HASH = 0,
+  JSON_ARRAY = 1,
 }
 
 ---@enum (exact) SpriteSheetType https://www.aseprite.org/api/spritesheettype
 SpriteSheetType = {
-    HORIZONTAL = 0,
-    VERTICAL = 1,
-    ROWS = 2,
-    COLUMNS = 3,
-    PACKED = 4,
+  HORIZONTAL = 0,
+  VERTICAL = 1,
+  ROWS = 2,
+  COLUMNS = 3,
+  PACKED = 4,
 }
 
 ---@enum (exact) TilemapMode
 TilemapMode = {
-    PIXELS = 0,
-    TILES = 1,
+  PIXELS = 0,
+  TILES = 1,
 }
 
 ---@enum (exact) TilesetMode
 TilesetMode = {
-    MANUAL = 0,
-    AUTO = 1,
-    STACK = 2,
+  MANUAL = 0,
+  AUTO = 1,
+  STACK = 2,
 }
 
 ---@enum (exact) WebSocketMessageType https://www.aseprite.org/api/websocketmessagetype
 WebSocketMessageType = {
-    TEXT = 0,
-    BINARY = 1,
-    OPEN = 2,
-    CLOSE = 3,
-    PING = 4,
-    PONG = 5,
-    FRAGMENT = 6,
+  TEXT = 0,
+  BINARY = 1,
+  OPEN = 2,
+  CLOSE = 3,
+  PING = 4,
+  PONG = 5,
+  FRAGMENT = 6,
 }
 
 ---@enum (exact) FormatSupport
 FormatSupport = {
-    RGB = 0x0004,
-    RGBA = 0x0008,
-    GRAY = 0x0010,
-    GRAYA = 0x0020,
-    INDEXED = 0x0040,
-    LAYER = 0x00080,
-    FRAME = 0x00100,
-    PALETTE = 0x2200, -- FILE_SUPPORT_PALETTES | FILE_SUPPORT_BIG_PALETTES
-    PALETTE_ALPHA = 0x4000,
-    DEFAULT = FormatSupport.RGB | FormatSupport.RGBA |
-        FormatSupport.GRAY | FormatSupport.GRAYA |
-        FormatSupport.INDEXED
+  RGB = 0x0004,
+  RGBA = 0x0008,
+  GRAY = 0x0010,
+  GRAYA = 0x0020,
+  INDEXED = 0x0040,
+  LAYER = 0x00080,
+  FRAME = 0x00100,
+  PALETTE = 0x2200, -- FILE_SUPPORT_PALETTES | FILE_SUPPORT_BIG_PALETTES
+  PALETTE_ALPHA = 0x4000,
+  DEFAULT = FormatSupport.RGB | FormatSupport.RGBA | FormatSupport.GRAY | FormatSupport.GRAYA | FormatSupport.INDEXED,
 }
 
 -- Classes/objects
