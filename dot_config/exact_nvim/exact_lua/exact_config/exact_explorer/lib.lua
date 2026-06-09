@@ -55,6 +55,7 @@ end
 local function navigate(dir)
   save_cursor()
   cwd = dir:gsub("/$", "")
+  query = nil
   load_files()
   update_buffer()
   restore_cursor()

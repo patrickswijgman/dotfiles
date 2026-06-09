@@ -3,7 +3,7 @@ local utils = require("config.utils")
 local M = {}
 
 function M.grep(pattern)
-  local cmd = { "rg", "--vimgrep", "--smart-case", "--hidden", "--glob", "!.git", pattern }
+  local cmd = { "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", pattern }
   local lines = utils.cmd_list(cmd)
   utils.sort_on_file_path(lines)
 
