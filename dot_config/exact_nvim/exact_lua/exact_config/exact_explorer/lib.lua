@@ -4,7 +4,7 @@ local M = {}
 
 local cursors = {}
 
-local buf, win, prev_win, cursor, files, cwd, query
+local buf, win, prev_win, files, cwd, query
 
 local function load_files()
   local cmd = { "fd", "--type", "file", "--type", "dir", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules", query }
@@ -28,7 +28,7 @@ end
 
 local function close()
   if win and vim.api.nvim_win_is_valid(win) then
-    cursor = vim.api.nvim_win_get_cursor(win)
+    cursors[cwd] = vim.api.nvim_win_get_cursor(win)
     vim.api.nvim_win_close(win, true)
     win = nil
   end
@@ -38,10 +38,10 @@ local function navigate(dir)
   if win and vim.api.nvim_win_is_valid(win) then
     cursors[cwd] = vim.api.nvim_win_get_cursor(win)
     cwd = dir:gsub("/$", "")
-    cursor = cursors[cwd]
     load_files()
     set_buf_lines()
     update_title()
+    local cursor = cursors[cwd]
     if cursor then
       vim.api.nvim_win_set_cursor(win, cursor)
     end
@@ -140,8 +140,6 @@ function M.toggle()
     vim.bo[buf].buftype = "nofile"
     set_buf_lines()
 
-    cursor = nil
-
     local keymap_opts = { buffer = buf, nowait = true }
     vim.keymap.set("n", "<cr>", enter, keymap_opts)
     vim.keymap.set("n", "<bs>", back, keymap_opts)
@@ -196,6 +194,7 @@ function M.toggle()
   vim.fn.matchadd("Directory", ".*/", -1, -1, { window = win })
   update_title()
 
+  local cursor = cursors[cwd]
   if cursor then
     vim.api.nvim_win_set_cursor(win, cursor)
   end

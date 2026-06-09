@@ -1,3 +1,6 @@
 vim.pack.add({
-  "https://github.com/felipeagc/fleet-theme-nvim",
+  {
+    name = "catppuccin",
+    src = "https://github.com/catppuccin/nvim",
+  },
 })
