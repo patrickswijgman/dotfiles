@@ -156,7 +156,6 @@ function M.toggle()
     vim.keymap.set("n", "f", filter, keymap_opts)
     vim.keymap.set("n", "R", refresh, keymap_opts)
     vim.keymap.set("n", "q", close, keymap_opts)
-    vim.keymap.set("n", "<esc>", close, keymap_opts)
   end
 
   prev_win = vim.api.nvim_get_current_win()
