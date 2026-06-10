@@ -7,7 +7,7 @@ local cursors = {}
 local buf, win, prev_win, files, cwd, query
 
 local function load_files()
-  local fd = utils.cmd({ "fd", "--type", "file", "--type", "dir", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules" }, { cwd = cwd })
+  local fd = utils.cmd({ "fd", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules" }, { cwd = cwd })
   local fd_lines = utils.split_lines(fd)
   utils.sort_on_file_path(fd_lines)
   local fzf = utils.cmd({ "fzf", "--scheme", "path", "--tiebreak", "pathname", "--filter", query or "" }, { stdin = fd_lines })
