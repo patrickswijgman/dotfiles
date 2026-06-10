@@ -1,4 +1,3 @@
--- Setup
 vim.lsp.enable({
   "biome",
   "codebook",
@@ -12,18 +11,14 @@ vim.lsp.enable({
 
 vim.lsp.semantic_tokens.enable(false)
 
--- Consts
 local CODE_ACTIONS = {
   biome = { "source.fixAll.biome" },
 }
 
 local FORMATTER_PRIORITY = { "biome", "efm" }
 
-local REQUEST_TIMEOUT = 3000
-
--- Lib
 local function client_request(client, method, params, bufnr)
-  local result = client:request_sync(method, params, REQUEST_TIMEOUT, bufnr)
+  local result = client:request_sync(method, params, 3000, bufnr)
 
   if result == nil then
     vim.notify(("[LSP] %s: %s failed"):format(client.name, method), vim.log.levels.ERROR)
