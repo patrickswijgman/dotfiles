@@ -12,6 +12,7 @@ words = [
     "efm",
     "esc",
     "expandtab",
+    "fzf",
     "hlsearch",
     "ignorecase",
     "inccommand",

@@ -3,8 +3,8 @@ local utils = require("config.utils")
 local M = {}
 
 function M.grep(pattern)
-  local cmd = { "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", pattern }
-  local lines = utils.cmd_list(cmd)
+  local output = utils.cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", pattern })
+  local lines = utils.split_lines(output)
   utils.sort_on_file_path(lines)
 
   if #lines == 0 then
@@ -13,7 +13,7 @@ function M.grep(pattern)
   end
 
   local title = ("Grep results for '%s'"):format(pattern)
-  utils.set_loc_list(title, lines, "%f:%l:%c:%m")
+  utils.set_qf_list(title, lines, "%f:%l:%c:%m")
 end
 
 function M.get_words_in_current_buffer(prefix)

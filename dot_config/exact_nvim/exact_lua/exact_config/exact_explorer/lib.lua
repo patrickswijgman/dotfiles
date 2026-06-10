@@ -7,10 +7,11 @@ local cursors = {}
 local buf, win, prev_win, files, cwd, query
 
 local function load_files()
-  local cmd = { "fd", "--type", "file", "--type", "dir", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules", query }
-  local list = utils.cmd_list(cmd, cwd)
-  utils.sort_on_file_path(list)
-  files = list
+  local fd = utils.cmd({ "fd", "--type", "file", "--type", "dir", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules", query }, { cwd = cwd })
+  local fzf = utils.cmd({ "fzf", "--filter", query or "" }, { stdin = fd })
+  local lines = utils.split_lines(fzf)
+  utils.sort_on_file_path(lines)
+  files = lines
 end
 
 local function update_buf()
@@ -26,6 +27,9 @@ local function save_cursor()
 end
 
 local function restore_cursor()
+  if #files == 0 then
+    return
+  end
   local cursor = cursors[cwd] or { 1, 0 }
   local row = utils.clamp(cursor[1], 1, #files)
   local col = cursor[2]

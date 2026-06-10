@@ -10,20 +10,15 @@ function M.files(pattern)
     return
   end
 
-  if #files == 1 then
-    vim.cmd.edit(files[1])
-    return
-  end
-
-  local title = ("Files found with pattern '%s'"):format(pattern)
-  utils.set_loc_list(title, files, "%f")
+  vim.cmd.edit(files[1])
 end
 
 function M.get_files(pattern)
-  local cmd = { "fd", "--type", "file", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules", pattern }
-  local files = utils.cmd_list(cmd)
-  utils.sort_on_file_path(files)
-  return files
+  local fd = utils.cmd({ "fd", "--type", "file", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules" })
+  local fzf = utils.cmd({ "fzf", "--filter", pattern or "" }, { stdin = fd })
+  local lines = utils.split_lines(fzf)
+  utils.sort_on_file_path(lines)
+  return lines
 end
 
 return M
