@@ -1,21 +1,37 @@
-local lib = require("config.lsp.lib")
+local lsp = require("config.lsp")
 
-local group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
+local group = vim.api.nvim_create_augroup("UserConfig", { clear = true })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.hl.on_yank()
+  end,
+  desc = "Highlight on yank",
+  group = group,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+  desc = "Enable treesitter highlighting",
+  group = group,
+})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(ev)
     local clients = vim.lsp.get_clients({ bufnr = ev.buf })
 
     for _, client in ipairs(clients) do
-      local client_code_actions = lib.get_code_actions(client.name)
+      local client_code_actions = lsp.get_code_actions(client.name)
 
       for _, code_action in ipairs(client_code_actions) do
-        local params = lib.get_code_action_params(code_action, ev.buf)
-        local actions = lib.client_request(client, "textDocument/codeAction", params, ev.buf) or {}
+        local params = lsp.get_code_action_params(code_action, ev.buf)
+        local actions = lsp.client_request(client, "textDocument/codeAction", params, ev.buf) or {}
 
         for _, action in ipairs(actions) do
           if not action.edit and not action.command and action.data then
-            action = lib.client_request(client, "codeAction/resolve", action, ev.buf) or action
+            action = lsp.client_request(client, "codeAction/resolve", action, ev.buf) or action
           end
 
           if action.edit then
@@ -27,7 +43,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
     vim.lsp.buf.format({
       bufnr = ev.buf,
-      name = lib.get_preferred_formatter(ev.buf),
+      name = lsp.get_preferred_formatter(ev.buf),
     })
   end,
   desc = "Apply code actions and format before writing the buffer",

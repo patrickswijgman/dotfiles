@@ -1,2 +1,1 @@
-require("pack")
 require("config")
