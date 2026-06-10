@@ -189,7 +189,7 @@ end
 local function delete()
   local line = vim.api.nvim_get_current_line()
   local path = ("%s/%s"):format(cwd, line)
-  if vim.fn.confirm(("Delete %s?"):format(line), "&Yes\n&No", 2) == 1 then
+  if vim.fn.confirm(("Delete %s ?"):format(path), "&Yes\n&No", 2) == 1 then
     utils.cmd({ "rm", "-rf", path })
     load_files()
     update_buf()
