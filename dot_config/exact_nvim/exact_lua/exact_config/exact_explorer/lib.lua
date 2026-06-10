@@ -61,10 +61,12 @@ local function get_win_config()
       { " back  ", "Comment" },
       { "a", "Special" },
       { " add  ", "Comment" },
-      { "d", "Special" },
-      { " delete  ", "Comment" },
       { "m", "Special" },
       { " move  ", "Comment" },
+      { "c", "Special" },
+      { " copy  ", "Comment" },
+      { "d", "Special" },
+      { " delete  ", "Comment" },
       { "f", "Special" },
       { " filter  ", "Comment" },
       { "R", "Special" },
@@ -147,24 +149,13 @@ local function add()
     return
   end
   if vim.endswith(input, "/") then
-    vim.fn.mkdir(input, "p")
+    utils.cmd({ "mkdir", "-p", input })
     load_files()
     update_buf()
   else
     close_win()
     vim.cmd.edit(input)
   end
-end
-
-local function delete()
-  local line = vim.api.nvim_get_current_line()
-  local path = ("%s/%s"):format(cwd, line)
-  if vim.fn.confirm(("Delete %s?"):format(line), "&Yes\n&No", 2) ~= 1 then
-    return
-  end
-  vim.fn.delete(path, "rf")
-  load_files()
-  update_buf()
 end
 
 local function move()
@@ -174,10 +165,35 @@ local function move()
   if dst == "" or dst == src then
     return
   end
-  vim.fn.mkdir(vim.fn.fnamemodify(dst, ":h"), "p")
-  vim.fn.rename(src, dst)
+  local dir = vim.fn.fnamemodify(dst, ":h")
+  utils.cmd({ "mkdir", "-p", dir })
+  utils.cmd({ "mv", src, dst })
   load_files()
   update_buf()
+end
+
+local function copy()
+  local line = vim.api.nvim_get_current_line()
+  local src = ("%s/%s"):format(cwd, line)
+  local dst = vim.fn.input({ prompt = "Copy to: ", default = src, completion = "file" })
+  if dst == "" or dst == src then
+    return
+  end
+  local dir = vim.fn.fnamemodify(dst, ":h")
+  utils.cmd({ "mkdir", "-p", dir })
+  utils.cmd({ "cp", "-r", src, dst })
+  load_files()
+  update_buf()
+end
+
+local function delete()
+  local line = vim.api.nvim_get_current_line()
+  local path = ("%s/%s"):format(cwd, line)
+  if vim.fn.confirm(("Delete %s?"):format(line), "&Yes\n&No", 2) == 1 then
+    utils.cmd({ "rm", "-rf", path })
+    load_files()
+    update_buf()
+  end
 end
 
 function M.resize()
@@ -202,8 +218,9 @@ function M.toggle()
     vim.keymap.set("n", "<cr>", enter, keymap_opts)
     vim.keymap.set("n", "<bs>", back, keymap_opts)
     vim.keymap.set("n", "a", add, keymap_opts)
-    vim.keymap.set("n", "d", delete, keymap_opts)
     vim.keymap.set("n", "m", move, keymap_opts)
+    vim.keymap.set("n", "c", copy, keymap_opts)
+    vim.keymap.set("n", "d", delete, keymap_opts)
     vim.keymap.set("n", "f", filter, keymap_opts)
     vim.keymap.set("n", "R", refresh, keymap_opts)
     vim.keymap.set("n", "q", close_win, keymap_opts)
