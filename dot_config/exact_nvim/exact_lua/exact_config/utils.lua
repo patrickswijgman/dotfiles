@@ -26,6 +26,19 @@ function M.split_lines(output)
   return vim.split(output, "\n", { trimempty = true })
 end
 
+function M.sort_on_file_path(lines)
+  table.sort(lines, function(_a, _b)
+    local a = _a:lower()
+    local b = _b:lower()
+    local a_dir = a:match("^(.*)/") or ""
+    local b_dir = b:match("^(.*)/") or ""
+    if a_dir ~= b_dir then
+      return a_dir < b_dir
+    end
+    return a < b
+  end)
+end
+
 function M.clamp(value, min, max)
   return math.min(max, math.max(value, min))
 end

@@ -8,9 +8,11 @@ local buf, win, prev_win, files, cwd, query
 
 local function load_files()
   local fd = utils.cmd({ "fd", "--type", "file", "--type", "dir", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules" }, { cwd = cwd })
-  local fzf = utils.cmd({ "fzf", "--scheme", "path", "--tiebreak", "pathname", "--filter", query or "" }, { stdin = fd })
-  local lines = utils.split_lines(fzf)
-  files = lines
+  local fd_lines = utils.split_lines(fd)
+  utils.sort_on_file_path(fd_lines)
+  local fzf = utils.cmd({ "fzf", "--scheme", "path", "--tiebreak", "pathname", "--filter", query or "" }, { stdin = fd_lines })
+  local fzf_lines = utils.split_lines(fzf)
+  files = fzf_lines
 end
 
 local function update_buf()
