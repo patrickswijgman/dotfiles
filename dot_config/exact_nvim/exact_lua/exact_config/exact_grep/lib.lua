@@ -3,9 +3,8 @@ local utils = require("config.utils")
 local M = {}
 
 function M.grep(pattern)
-  local output = utils.cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", pattern })
+  local output = utils.cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--sort=path", "--no-ignore", "--glob=!.git", "--glob=!node_modules", pattern })
   local lines = utils.split_lines(output)
-  utils.sort_on_file_path(lines)
 
   if #lines == 0 then
     vim.notify(("No matches found for '%s'"):format(pattern), vim.log.levels.WARN)

@@ -14,11 +14,9 @@ function M.files(pattern)
 end
 
 function M.get_files(pattern)
-  local fd = utils.cmd({ "fd", "--type", "file", "--full-path", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules" })
-  local fzf = utils.cmd({ "fzf", "--filter", pattern or "" }, { stdin = fd })
-  local lines = utils.split_lines(fzf)
-  utils.sort_on_file_path(lines)
-  return lines
+  local fd = utils.cmd({ "fd", "--type=file", "--full-path", "--hidden", "--no-ignore", "--exclude=.git", "--exclude=node_modules" })
+  local fzf = utils.cmd({ "fzf", "--scheme=path", "--tiebreak=pathname", "--filter", pattern or "" }, { stdin = fd })
+  return utils.split_lines(fzf)
 end
 
 return M
