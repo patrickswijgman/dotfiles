@@ -3,6 +3,18 @@
     "catppuccin": {
       "rev": "0303a7208dba448c459767486a38a6ec05c4216b",
       "src": "https://github.com/catppuccin/nvim"
+    },
+    "explorer": {
+      "rev": "463359fec3f0214ab1f3b4fe253bcd643a76f9d2",
+      "src": "https://github.com/patrickswijgman/explorer.nvim"
+    },
+    "files": {
+      "rev": "35337013256c4d9fd00ca7ec47681eb7a701b782",
+      "src": "https://github.com/patrickswijgman/files.nvim"
+    },
+    "grep": {
+      "rev": "ffa98f868dc96386c582990f795274fd668b7c86",
+      "src": "https://github.com/patrickswijgman/grep.nvim"
     }
   }
 }

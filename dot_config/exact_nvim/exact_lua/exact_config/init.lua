@@ -1,6 +1,3 @@
 require("config.core")
 require("config.lsp")
 require("config.treesitter")
-require("config.files")
-require("config.grep")
-require("config.explorer")
