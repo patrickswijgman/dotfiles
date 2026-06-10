@@ -3,7 +3,7 @@ local utils = require("config.utils")
 local M = {}
 
 function M.grep(pattern)
-  local output = utils.cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--sort=path", "--no-ignore", "--glob=!.git", "--glob=!node_modules", pattern })
+  local output = utils.cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--sort", "path", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", pattern })
   local lines = utils.split_lines(output)
 
   if #lines == 0 then
