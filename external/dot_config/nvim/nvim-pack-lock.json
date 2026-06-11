@@ -5,15 +5,15 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "explorer": {
-      "rev": "463359fec3f0214ab1f3b4fe253bcd643a76f9d2",
+      "rev": "0cc3c7d86c082349d67d15a0d38d5df9fa6d8c32",
       "src": "https://github.com/patrickswijgman/explorer.nvim"
     },
     "files": {
-      "rev": "35337013256c4d9fd00ca7ec47681eb7a701b782",
+      "rev": "beb044664946bd16c25054c152c41b9aeddd8aa8",
       "src": "https://github.com/patrickswijgman/files.nvim"
     },
     "grep": {
-      "rev": "ffa98f868dc96386c582990f795274fd668b7c86",
+      "rev": "69226420c1bad8db3a01134d7d32aeed833e02ad",
       "src": "https://github.com/patrickswijgman/grep.nvim"
     }
   }
