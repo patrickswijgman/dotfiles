@@ -1,7 +1,3 @@
-require("config.pack")
-require("config.colorscheme")
 require("config.options")
 require("config.keymaps")
-require("config.lsp")
-require("config.treesitter")
 require("config.autocmds")

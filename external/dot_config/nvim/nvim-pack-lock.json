@@ -5,16 +5,24 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "explorer": {
-      "rev": "d67700f84119997395d12d4ca6425bafbf4850e1",
+      "rev": "d05590898b0311f0917c1c47ad0bcfcc9c9d66de",
       "src": "https://github.com/patrickswijgman/explorer.nvim"
     },
     "files": {
-      "rev": "beb044664946bd16c25054c152c41b9aeddd8aa8",
+      "rev": "53cdb2814df54c0897415ad7021434beac0baa33",
       "src": "https://github.com/patrickswijgman/files.nvim"
     },
     "grep": {
-      "rev": "69226420c1bad8db3a01134d7d32aeed833e02ad",
+      "rev": "3496df112747526c201ac2d3d62532e511e05d5b",
       "src": "https://github.com/patrickswijgman/grep.nvim"
+    },
+    "lsp": {
+      "rev": "ce81ddb22e3742206a852444e0a42c380500be27",
+      "src": "https://github.com/patrickswijgman/lsp.nvim"
+    },
+    "treesitter": {
+      "rev": "bd41ea1d516c2ddacdae5c13fe15173f03a0c88b",
+      "src": "https://github.com/patrickswijgman/treesitter.nvim"
     }
   }
 }

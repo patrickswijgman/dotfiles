@@ -15,4 +15,12 @@ vim.pack.add({
     name = "explorer",
     src = "https://github.com/patrickswijgman/explorer.nvim",
   },
+  {
+    name = "lsp",
+    src = "https://github.com/patrickswijgman/lsp.nvim",
+  },
+  {
+    name = "treesitter",
+    src = "https://github.com/patrickswijgman/treesitter.nvim",
+  },
 })
