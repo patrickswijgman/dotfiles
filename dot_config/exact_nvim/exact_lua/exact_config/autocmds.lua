@@ -7,3 +7,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight on yank",
   group = group,
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  command = [[%s/\s\+$//e]],
+  desc = "Remove trailing whitespaces before writing the buffer",
+  group = group,
+})

@@ -6,7 +6,7 @@ tools:
     format-stdin: true
 
   stylua: &stylua
-    format-command: "stylua --color Never --search-parent-directories ${--range-start:charStart} ${--range-end:charEnd} -"
+    format-command: "stylua ${--range-start:charStart} ${--range-end:charEnd} -"
     format-stdin: true
 
 languages:

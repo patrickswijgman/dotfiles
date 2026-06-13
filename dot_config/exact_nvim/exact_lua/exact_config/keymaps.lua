@@ -6,7 +6,12 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipbo
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard" })
 
+vim.keymap.set("n", "<leader>q", ":copen<cr>", { desc = "Open quickfix list" })
+
 vim.keymap.set("v", "R", '"_dP', { desc = "Replace selection with yanked text" })
 vim.keymap.set("v", "<leader>R", '"_d"+P', { desc = "Replace selection with system clipboard" })
 
-vim.keymap.set("n", "<esc>", ":nohl<cr>", { desc = "Clear highlight" })
+vim.keymap.set("n", "<esc>", ":nohl<cr>", { desc = "Clear highlight", silent = true })
+
+vim.keymap.set("n", "q", "<nop>", { desc = "Disable recording" })
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable recording" })

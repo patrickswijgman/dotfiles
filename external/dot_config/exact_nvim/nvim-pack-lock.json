@@ -5,11 +5,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "explorer": {
-      "rev": "147b3e49419244a4854ad2c9cfa5eb9638d206d1",
+      "rev": "043aef1b65a42decb0205d7538b26f5f430becd5",
       "src": "https://github.com/patrickswijgman/explorer.nvim"
     },
     "files": {
-      "rev": "53cdb2814df54c0897415ad7021434beac0baa33",
+      "rev": "31b182ff48a8b269b89044eb34751026fe943d90",
       "src": "https://github.com/patrickswijgman/files.nvim"
     },
     "grep": {
