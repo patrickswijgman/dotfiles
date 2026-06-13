@@ -21,4 +21,5 @@ require("lsp").setup({
   semantic_tokens = false,
   auto_complete = true,
   auto_complete_auto_trigger = true,
+  timeout_ms = 1000,
 })
