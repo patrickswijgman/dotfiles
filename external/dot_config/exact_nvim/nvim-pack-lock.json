@@ -13,15 +13,15 @@
       "src": "https://github.com/patrickswijgman/files.nvim"
     },
     "grep": {
-      "rev": "3496df112747526c201ac2d3d62532e511e05d5b",
+      "rev": "ef42130892c6c0f343d554dfebe29970386c90f3",
       "src": "https://github.com/patrickswijgman/grep.nvim"
     },
     "lsp": {
-      "rev": "ce81ddb22e3742206a852444e0a42c380500be27",
+      "rev": "2519e4bdf79dc18935d61a6cebfe7f1a00f873f9",
       "src": "https://github.com/patrickswijgman/lsp.nvim"
     },
     "treesitter": {
-      "rev": "bd41ea1d516c2ddacdae5c13fe15173f03a0c88b",
+      "rev": "5509b8c0670d4d66e6f10dfd3672330c838946b6",
       "src": "https://github.com/patrickswijgman/treesitter.nvim"
     }
   }

@@ -30,7 +30,5 @@ languages:
     - <<: *prettierd
   markdown:
     - <<: *prettierd
-  graphql:
-    - <<: *prettierd
   lua:
     - <<: *stylua
