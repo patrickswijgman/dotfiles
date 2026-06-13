@@ -23,5 +23,6 @@ vim.keymap.set("v", "<leader>R", '"_d"+P', { desc = "Replace selection with syst
 
 vim.keymap.set("n", "<esc>", ":nohl<cr>", { desc = "Clear highlight", silent = true })
 
-vim.keymap.set("n", "q", "<nop>", { desc = "Disable recording" })
-vim.keymap.set("n", "Q", "<nop>", { desc = "Disable recording" })
+vim.keymap.set("n", "q", "<nop>", { desc = "Disable record macro" })
+vim.keymap.set("n", "Q", "<nop>", { desc = "Disable record macro" })
+vim.keymap.set("n", "U", "<nop>", { desc = "Disable undo line changes" })
