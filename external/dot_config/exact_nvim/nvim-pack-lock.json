@@ -5,7 +5,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "explorer": {
-      "rev": "f77a943b6554474b64930beb3bc737ce51494537",
+      "rev": "2bc1af96b05de9fce921f6ad9a7f6f952e2ccf18",
       "src": "https://github.com/patrickswijgman/explorer.nvim"
     },
     "files": {
