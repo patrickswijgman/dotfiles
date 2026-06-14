@@ -32,7 +32,6 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.autoindent = true
 
-vim.o.autocomplete = true
 vim.o.completeopt = "menuone,noselect,popup"
 
 vim.o.winborder = "rounded"
