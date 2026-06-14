@@ -1,11 +1,11 @@
 {
   "plugins": {
     "catppuccin": {
-      "rev": "0303a7208dba448c459767486a38a6ec05c4216b",
+      "rev": "49a926655a2f5579e9c276470fc300baaa49e524",
       "src": "https://github.com/catppuccin/nvim"
     },
     "explorer": {
-      "rev": "043aef1b65a42decb0205d7538b26f5f430becd5",
+      "rev": "f77a943b6554474b64930beb3bc737ce51494537",
       "src": "https://github.com/patrickswijgman/explorer.nvim"
     },
     "files": {

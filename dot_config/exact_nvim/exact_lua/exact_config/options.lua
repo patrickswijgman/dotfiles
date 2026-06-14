@@ -1,7 +1,7 @@
 vim.o.mouse = "a"
 vim.o.cursorline = true
 vim.o.signcolumn = "yes"
-vim.o.scrolloff = 8
+vim.o.scrolloff = 10
 
 vim.o.number = true
 vim.o.relativenumber = true

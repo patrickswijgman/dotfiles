@@ -1,5 +1,11 @@
 local group = vim.api.nvim_create_augroup("Config", { clear = true })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  command = "colorscheme catppuccin-nvim",
+  desc = "Set colorscheme",
+  group = group,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.hl.on_yank()
