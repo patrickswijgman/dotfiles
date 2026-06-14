@@ -1,6 +1,11 @@
 theme = Wombat
 maximize = true
 
+# Inherit working directory
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
+split-inherit-working-directory = true
+
 # Navigate tabs
 keybind = ctrl+shift+h=previous_tab
 keybind = ctrl+shift+l=next_tab
