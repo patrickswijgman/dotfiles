@@ -8,6 +8,7 @@ vim.o.relativenumber = true
 
 vim.o.wrap = true
 vim.o.breakindent = true
+vim.o.showbreak = "↪ "
 
 vim.o.splitright = true
 vim.o.splitbelow = true
