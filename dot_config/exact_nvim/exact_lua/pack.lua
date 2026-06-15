@@ -4,6 +4,10 @@ vim.pack.add({
     src = "https://github.com/catppuccin/nvim",
   },
   {
+    name = "vague",
+    src = "https://github.com/vague-theme/vague.nvim",
+  },
+  {
     name = "files",
     src = "https://github.com/patrickswijgman/files.nvim",
   },

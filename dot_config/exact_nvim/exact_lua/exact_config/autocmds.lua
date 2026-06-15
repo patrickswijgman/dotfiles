@@ -1,7 +1,7 @@
 local group = vim.api.nvim_create_augroup("Config", { clear = true })
 
 vim.api.nvim_create_autocmd("VimEnter", {
-  command = "colorscheme catppuccin-nvim",
+  command = "colorscheme vague",
   desc = "Set colorscheme",
   group = group,
 })

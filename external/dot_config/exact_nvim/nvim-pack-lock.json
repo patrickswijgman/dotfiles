@@ -23,6 +23,10 @@
     "treesitter": {
       "rev": "4189129e6184b12d368b6054b7fc4e8a041076ef",
       "src": "https://github.com/patrickswijgman/treesitter.nvim"
+    },
+    "vague": {
+      "rev": "49fe06ad33d8847b931ba4279197bda222374cd1",
+      "src": "https://github.com/vague-theme/vague.nvim"
     }
   }
 }
