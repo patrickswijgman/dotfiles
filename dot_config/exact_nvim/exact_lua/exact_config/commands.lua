@@ -16,7 +16,3 @@ end, {
   nargs = "+",
   desc = "Delete plugins",
 })
-
-vim.api.nvim_create_user_command("ChezmoiApply", "execute '!chezmoi apply' | restart", {
-  desc = "Apply chezmoi dotfiles",
-})
