@@ -9,6 +9,7 @@ require("lsp").setup({
     "nixd",
     "vtsls",
   },
+  format = true,
   formatter_priority = {
     "biome",
     "efm",
