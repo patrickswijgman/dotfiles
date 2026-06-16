@@ -1,0 +1,8 @@
+[general]
+import = ["./themes/vague.toml"]
+
+[window]
+dynamic_padding = true
+
+[font]
+size = 12

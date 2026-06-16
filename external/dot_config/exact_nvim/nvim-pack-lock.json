@@ -21,7 +21,7 @@
       "src": "https://github.com/patrickswijgman/lsp.nvim"
     },
     "treesitter": {
-      "rev": "4189129e6184b12d368b6054b7fc4e8a041076ef",
+      "rev": "84841a001d795158ba2353489bb55b35d88b32a8",
       "src": "https://github.com/patrickswijgman/treesitter.nvim"
     },
     "vague": {
