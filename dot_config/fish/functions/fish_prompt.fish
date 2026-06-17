@@ -22,9 +22,13 @@ function fish_prompt
     set -g __fish_git_prompt_color_stashstate magenta
     set -g __fish_git_prompt_color_upstream red
 
-    set cwd (set_color blue)'󰉋' (prompt_pwd --dir-length=0)
-    set git (set_color brblue)(fish_git_prompt '󰘬 %s')
-    set sym (set_color white)'󰈺'
+    if test -n "$IN_NIX_SHELL"
+        set nix (set_color bryellow)"󱄅 $IN_NIX_SHELL "
+    end
 
-    echo $cwd $git $sym (set_color --reset)
+    set dir (set_color blue)"󰉋 $(prompt_pwd --dir-length=0) "
+    set git (set_color brblue)(fish_git_prompt "󰘬 %s ")
+    set sym (set_color white)"󰈺 "
+
+    echo -s $nix $dir $git $sym (set_color --reset)
 end

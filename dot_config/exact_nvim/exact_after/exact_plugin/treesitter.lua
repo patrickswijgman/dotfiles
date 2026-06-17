@@ -1,5 +1,7 @@
+local path = os.getenv("TREESITTER_PATH")
+
 require("treesitter").setup({
-  path = os.getenv("TREESITTER_PATH"),
+  path = path,
   registrations = {
     { "tsx", "typescriptreact" },
   },

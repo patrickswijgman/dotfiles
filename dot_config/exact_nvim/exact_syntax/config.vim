@@ -19,6 +19,6 @@ hi def link configComment Comment
 hi def link configValue   String
 hi def link configBrace   Delimiter
 hi def link configEquals  Operator
-hi def link configVar     Identifier
+hi def link configVar     Keyword
 
 let b:current_syntax = "config"
