@@ -13,6 +13,7 @@ set $menu wmenu-run
 exec mako
 exec kanshi
 exec swayidle -w
+exec pomodoro 30 5
 
 ### Output configuration
 

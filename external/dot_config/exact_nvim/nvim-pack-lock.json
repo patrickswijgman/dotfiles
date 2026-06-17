@@ -5,7 +5,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "explorer": {
-      "rev": "cf8d78a82082f82c97ea08018dacfe6fadc7ab04",
+      "rev": "82cb6d75b66b5763ab31986609b9eb10d14b6a6a",
       "src": "https://github.com/patrickswijgman/explorer.nvim"
     },
     "files": {
@@ -17,11 +17,11 @@
       "src": "https://github.com/patrickswijgman/grep.nvim"
     },
     "lsp": {
-      "rev": "5039ab8ee3367486fb9bb2a6df9f58ba3334ffeb",
+      "rev": "0c705a48f4c8202e1896d30ae42cc24b6d69d394",
       "src": "https://github.com/patrickswijgman/lsp.nvim"
     },
     "treesitter": {
-      "rev": "84841a001d795158ba2353489bb55b35d88b32a8",
+      "rev": "b77a68c4d4c2c06f4acd449420700ea05f6087fa",
       "src": "https://github.com/patrickswijgman/treesitter.nvim"
     },
     "vague": {
