@@ -1,22 +1,22 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "efm-langserver" },
+  cmd = { "emmet-language-server", "--stdio" },
   filetypes = {
+    "astro",
     "css",
+    "eruby",
     "html",
-    "javascript",
+    "htmlangular",
+    "htmldjango",
     "javascriptreact",
-    "json",
-    "markdown",
+    "less",
+    "sass",
     "scss",
-    "typescript",
+    "svelte",
     "typescriptreact",
-    "yaml",
+    "vue",
   },
   root_markers = {
     ".git",
-  },
-  init_options = {
-    documentFormatting = true,
   },
 }

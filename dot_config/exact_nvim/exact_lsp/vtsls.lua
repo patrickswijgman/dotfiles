@@ -9,6 +9,10 @@ return {
   },
   root_markers = {
     "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml",
+    "bun.lockb",
+    "bun.lock",
     ".git",
   },
   init_options = {

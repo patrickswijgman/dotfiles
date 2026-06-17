@@ -8,6 +8,9 @@ return {
   root_markers = {
     ".git",
   },
+  init_options = {
+    provideFormatter = false,
+  },
   settings = {
     json = {
       schemas = {

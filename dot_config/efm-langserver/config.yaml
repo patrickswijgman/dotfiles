@@ -5,10 +5,6 @@ tools:
     format-command: "prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd}"
     format-stdin: true
 
-  stylua: &stylua
-    format-command: "stylua ${--range-start:charStart} ${--range-end:charEnd} -"
-    format-stdin: true
-
 languages:
   javascript:
     - <<: *prettierd
@@ -30,5 +26,3 @@ languages:
     - <<: *prettierd
   markdown:
     - <<: *prettierd
-  lua:
-    - <<: *stylua
