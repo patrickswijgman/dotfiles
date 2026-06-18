@@ -15,6 +15,7 @@ require("lsp").setup({
     "jinja_lsp",
     "jsonls",
     "lua_ls",
+    "marksman",
     "pylsp",
     "ruff",
     "rust_analyzer",
@@ -25,18 +26,18 @@ require("lsp").setup({
     "vtsls",
     "yamlls",
   },
-  format = true,
-  formatter_priority = {
-    "biome",
-    "efm",
+  semantic_tokens = true,
+  auto_complete = {
+    enable = true,
+    auto_trigger = true,
+    auto_trigger_on_all_chars = true,
   },
-  code_actions = {
-    biome = {
-      "source.fixAll.biome",
+  format = {
+    enable = true,
+    priority = { "biome", "efm" },
+    code_actions = {
+      biome = { "source.fixAll.biome" },
     },
+    timeout_ms = 1000,
   },
-  semantic_tokens = false,
-  auto_complete = true,
-  auto_complete_auto_trigger = true,
-  timeout_ms = 1000,
 })

@@ -29,10 +29,14 @@ abbr yeet 'git commit --amend --no-edit --no-verify && git push --force --no-ver
 abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
-abbr ns 'nix-shell --run fish'
-abbr nc 'sudo nix-collect-garbage -d'
-abbr nb --set-cursor 'sudo nixos-rebuild switch --flake ~/nix#%'
-abbr nr --set-cursor 'nix run nixpkgs#%'
+abbr nsh 'nix-shell --run fish'
+abbr ncg 'sudo nix-collect-garbage -d 3d'
+abbr nrs --set-cursor 'sudo nixos-rebuild switch --flake ~/nix#%'
+abbr nrb --set-cursor 'sudo nixos-rebuild boot --flake ~/nix#%'
+abbr npr --set-cursor 'nix run nixpkgs#%'
+
+abbr ccd 'chezmoi cd'
+abbr ca 'chezmoi apply'
 
 abbr venv 'source .venv/bin/activate.fish'
 abbr venvd 'source .venv/bin/deactivate.fish'
