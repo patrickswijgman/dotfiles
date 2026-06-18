@@ -16,17 +16,17 @@ require("lsp").setup({
     "jsonls",
     "lua_ls",
     "marksman",
+    "nixd",
     "pylsp",
     "ruff",
     "rust_analyzer",
     "spectral",
-    "nixd",
     "stylua",
     "taplo",
     "vtsls",
     "yamlls",
   },
-  semantic_tokens = true,
+  semantic_tokens = false,
   auto_complete = {
     enable = true,
     auto_trigger = true,
@@ -34,7 +34,10 @@ require("lsp").setup({
   },
   format = {
     enable = true,
-    priority = { "biome", "efm" },
+    priority = {
+      "biome",
+      "efm",
+    },
     code_actions = {
       biome = { "source.fixAll.biome" },
     },

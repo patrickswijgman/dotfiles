@@ -17,7 +17,7 @@
       "src": "https://github.com/patrickswijgman/grep.nvim"
     },
     "lsp": {
-      "rev": "96eaa6a09c886b51b01df1379465f6e0dbee3053",
+      "rev": "a6ae1521f47bfaa46d535e7a7f983e30afaef4d6",
       "src": "https://github.com/patrickswijgman/lsp.nvim"
     },
     "treesitter": {
