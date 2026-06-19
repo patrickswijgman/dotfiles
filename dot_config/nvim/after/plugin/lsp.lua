@@ -2,7 +2,6 @@ require("lsp").setup({
   enabled = {
     "biome",
     "codebook",
-    "css_variables",
     "cssls",
     "cssmodules_ls",
     "docker_language_server",
@@ -17,6 +16,7 @@ require("lsp").setup({
     "nixd",
     "pylsp",
     "ruff",
+    "rust_analyzer",
     "stylua",
     "taplo",
     "vtsls",

@@ -7,3 +7,8 @@ dynamic_padding = true
 
 [font]
 size = 12
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Super|Shift"
+action = "SpawnNewInstance"

@@ -41,4 +41,8 @@ abbr ca 'chezmoi apply'
 abbr venv 'source .venv/bin/activate.fish'
 abbr venvd 'source .venv/bin/deactivate.fish'
 
+# Start SSH agent
+keychain --eval --quiet --quick | source
+
+# Enable FZF shell integrations
 fzf --fish | source
