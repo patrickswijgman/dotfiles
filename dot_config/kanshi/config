@@ -1,3 +1,15 @@
+# Home desktop
 profile {
   output "AOC Q24G4 VH0R7HA002360" mode 2560x1440@180.002Hz
+}
+
+# Work laptop
+profile {
+  output eDP-1
+}
+
+# Work laptop desk 45
+profile {
+  output eDP-1 disable
+  output "Dell Inc. DELL U2715H GH85D7C600JL" mode 2560x1440@60.000Hz
 }
