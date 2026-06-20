@@ -7,7 +7,9 @@ return {
     "yaml.gitlab",
     "yaml.helm-values",
   },
-  root_markers = { ".git" },
+  root_markers = {
+    ".git",
+  },
   settings = {
     redhat = {
       telemetry = {

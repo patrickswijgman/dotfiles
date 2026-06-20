@@ -1,5 +1,2 @@
-# Dictionaries to use for spell checking.
 dictionaries = ["en_us", "nl_nl"]
-
-# List of glob patterns for paths to ignore when spell checking
 ignore_paths = [".git/**/*", "node_modules/**/*", "dist/**/*"]

@@ -1,28 +1,19 @@
 theme = Vague
 maximize = true
 
-# Inherit working directory
-window-inherit-working-directory = false
-tab-inherit-working-directory = false
-split-inherit-working-directory = true
-
-# Navigate tabs
 keybind = ctrl+shift+h=previous_tab
 keybind = ctrl+shift+l=next_tab
 
-# New splits
 keybind = ctrl+shift+alt+h=new_split:left
 keybind = ctrl+shift+alt+j=new_split:down
 keybind = ctrl+shift+alt+k=new_split:up
 keybind = ctrl+shift+alt+l=new_split:right
 
-# Navigate splits
 keybind = ctrl+alt+h=goto_split:left
 keybind = ctrl+alt+j=goto_split:down
 keybind = ctrl+alt+k=goto_split:up
 keybind = ctrl+alt+l=goto_split:right
 
-# Disabled
 keybind = ctrl+tab=unbind
 keybind = ctrl+shift+e=unbind
 keybind = ctrl+shift+o=unbind

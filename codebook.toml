@@ -3,6 +3,7 @@ words = [
     "JIT",
     "Pipfile",
     "adt",
+    "aftercommand",
     "arglead",
     "astro",
     "autocmds",
