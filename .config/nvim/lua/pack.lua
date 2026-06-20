@@ -1,11 +1,7 @@
 vim.pack.add({
   {
-    name = "catppuccin",
-    src = "https://github.com/catppuccin/nvim",
-  },
-  {
     name = "vague",
-    src = "https://github.com/vague-theme/vague.nvim",
+    src = "https://github.com/patrickswijgman/vague.nvim",
   },
   {
     name = "files",
