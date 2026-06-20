@@ -22,11 +22,11 @@ function fish_prompt
     set -g __fish_git_prompt_color_stashstate magenta
     set -g __fish_git_prompt_color_upstream red
 
-    if set -q $VIRTUAL_ENV
+    if set -q VIRTUAL_ENV
         set vnv (set_color bryellow)"󰌠 $(basename (dirname $VIRTUAL_ENV)) "
     end
 
-    if set -q $IN_NIX_SHELL
+    if set -q IN_NIX_SHELL
         set nix (set_color bryellow)"󱄅 $IN_NIX_SHELL "
     end
 

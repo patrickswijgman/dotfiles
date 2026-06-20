@@ -38,6 +38,11 @@ abbr npr --set-cursor 'nix run nixpkgs#%'
 abbr va 'source .venv/bin/activate.fish'
 abbr vd 'source .venv/bin/deactivate.fish'
 
-keychain --eval --quiet --quick | source
+keychain --quiet --quick
+
+set keychain_file ~/.keychain/(hostname)-fish
+if test -f $keychain_file
+    source $keychain_file
+end
 
 fzf --fish | source
