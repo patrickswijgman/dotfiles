@@ -12,3 +12,8 @@ size = 12
 key = "Return"
 mods = "Super|Shift"
 action = "SpawnNewInstance"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\n"
