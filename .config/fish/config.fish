@@ -35,11 +35,8 @@ abbr nrs --set-cursor 'sudo nixos-rebuild switch --flake ~/nix#%'
 abbr nrb --set-cursor 'sudo nixos-rebuild boot --flake ~/nix#%'
 abbr npr --set-cursor 'nix run nixpkgs#%'
 
-abbr ccd 'chezmoi cd'
-abbr ca 'chezmoi apply'
-
-abbr venv 'source .venv/bin/activate.fish'
-abbr venvd 'source .venv/bin/deactivate.fish'
+abbr va 'source .venv/bin/activate.fish'
+abbr vd 'source .venv/bin/deactivate.fish'
 
 keychain --eval --quiet --quick | source
 
