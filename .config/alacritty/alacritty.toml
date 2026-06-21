@@ -2,7 +2,7 @@
 import = ["./themes/vague.toml"]
 
 [window]
-padding = { x = 4, y = 2 }
+padding = { x = 4, y = 0 }
 dynamic_padding = true
 
 [font]

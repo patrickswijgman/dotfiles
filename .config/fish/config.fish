@@ -30,7 +30,7 @@ abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
 abbr nsh 'nix-shell --run fish'
-abbr ncg 'sudo nix-collect-garbage -d 3d'
+abbr ncg 'sudo nix-collect-garbage --delete-older-than 5d'
 abbr nrs --set-cursor 'sudo nixos-rebuild switch --flake ~/nix#%'
 abbr nrb --set-cursor 'sudo nixos-rebuild boot --flake ~/nix#%'
 abbr npr --set-cursor 'nix run nixpkgs#%'
