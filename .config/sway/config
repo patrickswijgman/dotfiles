@@ -8,6 +8,7 @@ exec mako
 exec kanshi
 exec swayidle -w
 exec pomodoro 30 5
+exec gammastep
 exec_always kanshictl reload
 
 input type:pointer {
@@ -102,6 +103,7 @@ smart_borders on
 bar {
   position bottom
   tray_output none
+  pango_markup enabled
   status_command swayline
 }
 
