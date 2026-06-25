@@ -25,6 +25,7 @@ words = [
     "cssls",
     "cssmodules",
     "cursorline",
+    "dfold",
     "dockercompose",
     "editorconfig",
     "efm",

@@ -2,7 +2,7 @@ function dotlink --description "Symlink ~/dotfiles into home directory"
     set repo $HOME/dotfiles
     set ignore .git README.md
 
-    set fd_args --base-directory $repo --type file --hidden
+    set fd_args --base-directory $repo --type file --type symlink --hidden
     for pattern in $ignore
         set fd_args $fd_args --exclude $pattern
     end
