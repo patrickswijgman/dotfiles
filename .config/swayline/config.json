@@ -1,4 +1,12 @@
 {
+  "modules": [
+    "battery",
+    "brightness",
+    "network",
+    "bluetooth",
+    "audio",
+    "clock"
+  ],
   "blockSeparator": " ",
   "moduleSeparator": " | "
 }

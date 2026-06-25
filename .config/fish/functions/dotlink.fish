@@ -16,7 +16,7 @@ function dotlink --description "Symlink ~/dotfiles into home directory"
         mkdir -p (dirname $dst)
         ln -sf $src $dst
 
-        echo $src "→" $dst
+        echo $file
     end
 end
 
