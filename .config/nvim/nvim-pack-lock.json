@@ -1,28 +1,8 @@
 {
   "plugins": {
-    "explorer": {
-      "rev": "c37f057097493cc8e350a64e2ec8321ddaf6a89f",
-      "src": "https://github.com/patrickswijgman/explorer.nvim"
-    },
-    "files": {
-      "rev": "44d909ec7cece9cd83ee076e8d37a097851ceb03",
-      "src": "https://github.com/patrickswijgman/files.nvim"
-    },
-    "grep": {
-      "rev": "ef42130892c6c0f343d554dfebe29970386c90f3",
-      "src": "https://github.com/patrickswijgman/grep.nvim"
-    },
-    "lsp": {
-      "rev": "ada5e42dea4d455a7b0b63ae3b7b62e0992e5335",
-      "src": "https://github.com/patrickswijgman/lsp.nvim"
-    },
-    "treesitter": {
-      "rev": "da32b65451702fcfc18acc00daa57c2f14468326",
-      "src": "https://github.com/patrickswijgman/treesitter.nvim"
-    },
     "vague": {
-      "rev": "ee0d915fe3689b33f2e5aa4716b210c7e9c5c1a5",
-      "src": "https://github.com/patrickswijgman/vague.nvim"
+      "rev": "49fe06ad33d8847b931ba4279197bda222374cd1",
+      "src": "https://github.com/vague-theme/vague.nvim"
     }
   }
 }
