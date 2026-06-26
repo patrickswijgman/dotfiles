@@ -77,7 +77,7 @@ for _, reg in ipairs(registrations) do
   vim.treesitter.language.register(reg[1], reg[2])
 end
 
-local group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true })
+local group = vim.api.nvim_create_augroup("Treesitter", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
   callback = start,

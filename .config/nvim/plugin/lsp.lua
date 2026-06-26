@@ -115,7 +115,7 @@ end
 vim.lsp.enable(enabled)
 vim.lsp.semantic_tokens.enable(false)
 
-local group = vim.api.nvim_create_augroup("UserLsp", { clear = true })
+local group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = format,
