@@ -113,7 +113,7 @@ local function auto_complete(ev)
 end
 
 vim.lsp.enable(enabled)
-vim.lsp.semantic_tokens.enable(true)
+vim.lsp.semantic_tokens.enable(false)
 
 local group = vim.api.nvim_create_augroup("UserLsp", { clear = true })
 
