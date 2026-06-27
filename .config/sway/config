@@ -8,6 +8,7 @@ exec mako
 exec kanshi
 exec swayidle -w
 exec gammastep
+exec fish -c hyperfocus
 
 exec_always kanshictl reload
 
