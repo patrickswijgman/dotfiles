@@ -36,25 +36,7 @@ local function sort_items(items)
   end)
 end
 
-local function grep(opts)
-  local output = cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", "--", opts.args })
-  local lines = split_lines(output)
-
-  if #lines == 0 then
-    vim.notify(("No matches found for '%s'"):format(opts.args), vim.log.levels.WARN)
-    return
-  end
-
-  local title = ("Grep results for '%s'"):format(opts.args)
-  local format = "%f:%l:%c:%m"
-  local list = vim.fn.getqflist({ efm = format, lines = lines })
-  sort_items(list.items)
-
-  vim.fn.setqflist({}, "r", { title = title, items = list.items })
-  vim.cmd.copen()
-end
-
-local function get_words_in_current_buffer(arglead)
+function COMPLETE_GREP(arglead)
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
   local seen = {}
   local words = {}
@@ -73,4 +55,27 @@ local function get_words_in_current_buffer(arglead)
   return words
 end
 
-vim.api.nvim_create_user_command("Grep", grep, { complete = get_words_in_current_buffer, nargs = 1, desc = "Grep in files" })
+local function grep()
+  local pattern = vim.fn.input({ prompt = "Grep > ", completion = "customlist,v:lua.COMPLETE_GREP" })
+  if pattern == "" then
+    return
+  end
+
+  local output = cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", "--", pattern })
+  local lines = split_lines(output)
+
+  if #lines == 0 then
+    vim.notify(("No matches found for '%s'"):format(pattern), vim.log.levels.WARN)
+    return
+  end
+
+  local title = ("Grep results for '%s'"):format(pattern)
+  local format = "%f:%l:%c:%m"
+  local list = vim.fn.getqflist({ efm = format, lines = lines })
+  sort_items(list.items)
+
+  vim.fn.setqflist({}, "r", { title = title, items = list.items })
+  vim.cmd.copen()
+end
+
+vim.api.nvim_create_user_command("Grep", grep, { desc = "Grep in files" })

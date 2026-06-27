@@ -35,6 +35,7 @@ words = [
     "cssls",
     "cssmodules",
     "cursorline",
+    "customlist",
     "devicetree",
     "dfold",
     "dockercompose",
