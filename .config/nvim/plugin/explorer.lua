@@ -30,7 +30,7 @@ local function sort_lines(lines)
 end
 
 local function get_parent_dir(path)
-  return vim.fn.fnamemodify(path, ":h")
+  return vim.fn.fnamemodify(path:gsub("/+$", ""), ":h")
 end
 
 local function is_directory(path, is_on_disk)
@@ -241,12 +241,7 @@ local function move()
     return
   end
 
-  if is_directory(dst) then
-    cmd({ "mkdir", "-p", dst })
-  else
-    cmd({ "mkdir", "-p", get_parent_dir(dst) })
-  end
-
+  cmd({ "mkdir", "-p", get_parent_dir(dst) })
   cmd({ "mv", "-n", src, dst })
 
   update_buf()
@@ -257,16 +252,11 @@ local function copy()
   local src = vim.api.nvim_get_current_line()
   local dst = vim.fn.input({ prompt = "Copy: ", default = src, completion = "file" })
 
-  if dst ~= "" then
+  if dst == "" then
     return
   end
 
-  if is_directory(dst) then
-    cmd({ "mkdir", "-p", dst })
-  else
-    cmd({ "mkdir", "-p", get_parent_dir(dst) })
-  end
-
+  cmd({ "mkdir", "-p", get_parent_dir(dst) })
   cmd({ "cp", "-rn", src, dst })
 
   update_buf()
