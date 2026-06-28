@@ -1,1 +1,35 @@
+ignore-empty-password
+
+# Appearance
+indicator-radius=60
+indicator-thickness=8
+
+# Background
 color=141415
+
+# Ring
+ring-color=141415
+ring-clear-color=f3be7c
+ring-ver-color=6e94b2
+ring-wrong-color=d8647e
+inside-color=1c1c24
+inside-clear-color=1c1c24
+inside-ver-color=1c1c24
+inside-wrong-color=1c1c24
+
+# Text
+text-color=cdcdcd
+text-clear-color=cdcdcd
+text-ver-color=cdcdcd
+text-wrong-color=cdcdcd
+
+# Key feedback
+key-hl-color=7fa563
+bs-hl-color=d8647e
+separator-color=00000000
+
+# Hide lines
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
