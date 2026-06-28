@@ -135,8 +135,8 @@ bindsym $mod+v splith
 bindsym $mod+s splitv
 
 # Switch the current container between different layout styles
-bindsym $mod+e layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+e layout stacking
+# bindsym $mod+w layout tabbed
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -197,8 +197,9 @@ set $urgent #d8647e
 set $statusline #cdcdcd
 set $bg #141415
 set $text #878787
-set $active_bg #252530
-set $active_text #cdcdcd
+set $focus_bg #252530
+set $focus_text #cdcdcd
+set $focus_inactive #606079
 
 #
 # Layout:
@@ -216,10 +217,10 @@ smart_gaps on
 #
 
 # <title_border> <title_background> <title_text> <split_indicator> <border>
-client.unfocused $bg $bg $text $bg $bg
-client.focused $active_bg $active_bg $active_text $accent $accent
-client.focused_inactive $bg $bg $text $bg $bg
-client.urgent $urgent $urgent $bg $urgent $urgent
+client.unfocused $bg $bg $text $focus_bg $focus_bg
+client.focused $focus_bg $focus_bg $focus_text $accent $accent
+client.focused_inactive $bg $bg $text $focus_inactive $focus_inactive
+client.urgent $bg $bg $text $urgent $urgent
 
 #
 # Cursor:
@@ -240,7 +241,7 @@ bar {
     background $bg
     statusline $statusline
     # <border> <background> <text>
-    focused_workspace $active_bg $active_bg $active_text
+    focused_workspace $focus_bg $focus_bg $focus_text
     inactive_workspace $bg $bg $text
     urgent_workspace $urgent $urgent $bg
   }
