@@ -62,7 +62,7 @@ bindsym $mod+Delete exec $lock
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec $term
+bindsym $mod+d exec $menu
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -192,22 +192,13 @@ bindsym Print exec still -c 'slurp | grim -g- -' | wl-copy
 # Variables:
 #
 
+set $accent #7e98e8
+set $urgent #d8647e
+set $statusline #cdcdcd
 set $bg #141415
 set $text #878787
-set $border #252530
-set $statusline #cdcdcd
-
-set $active_bg #90a0b5
-set $active_text #141415
-set $active_border #90a0b5
-
-set $inactive_bg #1c1c24
-set $inactive_text #cdcdcd
-set $inactive_border #252530
-
-set $urgent_bg #d8647e
-set $urgent_text #141415
-set $urgent_border #d8647e
+set $active_bg #252530
+set $active_text #cdcdcd
 
 #
 # Layout:
@@ -225,10 +216,10 @@ smart_gaps on
 #
 
 # <title_border> <title_background> <title_text> <split_indicator> <border>
-client.unfocused $bg $bg $text $border $border
-client.focused $active_bg $active_bg $active_text $active_border $active_border
-client.focused_inactive $inactive_bg $inactive_bg $inactive_text $inactive_border $inactive_border
-client.urgent $urgent_bg $urgent_bg $urgent_text $urgent_border $urgent_border
+client.unfocused $bg $bg $text $bg $bg
+client.focused $active_bg $active_bg $active_text $accent $accent
+client.focused_inactive $bg $bg $text $bg $bg
+client.urgent $urgent $urgent $bg $urgent $urgent
 
 #
 # Cursor:
@@ -251,7 +242,7 @@ bar {
     # <border> <background> <text>
     focused_workspace $active_bg $active_bg $active_text
     inactive_workspace $bg $bg $text
-    urgent_workspace $urgent_bg $urgent_bg $urgent_text
+    urgent_workspace $urgent $urgent $bg
   }
 }
 
