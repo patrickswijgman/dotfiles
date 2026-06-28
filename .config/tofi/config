@@ -1,6 +1,5 @@
-fuzzy-match=true
 drun-launch=true
-terminal=alacritty -e
+fuzzy-match=true
 
 # Appearance
 anchor=bottom
