@@ -1,4 +1,5 @@
 words = [
+    "ATCG",
     "Alacritty",
     "JIT",
     "Pipfile",

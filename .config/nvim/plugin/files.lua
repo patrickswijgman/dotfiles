@@ -19,7 +19,7 @@ function COMPLETE_FILES(arglead)
   return split_lines(fzf)
 end
 
-local function exe()
+local function open()
   local path = vim.fn.input({ prompt = "Files > ", completion = "customlist,v:lua.COMPLETE_FILES" })
   if path == "" then
     return
@@ -28,4 +28,4 @@ local function exe()
   vim.cmd.edit(path)
 end
 
-vim.api.nvim_create_user_command("Files", exe, { desc = "Search for files" })
+vim.api.nvim_create_user_command("Files", open, { desc = "Search for files" })
