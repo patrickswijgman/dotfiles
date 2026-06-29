@@ -98,6 +98,10 @@ local function format(ev)
     end
   end
 
+  if #vim.lsp.get_clients({ bufnr = ev.buf, method = "textDocument/formatting" }) == 0 then
+    return
+  end
+
   vim.lsp.buf.format({
     bufnr = ev.buf,
     name = get_preferred_formatter(ev.buf),

@@ -5,6 +5,7 @@ set fish_greeting
 abbr gb 'git branch'
 abbr gc 'git switch'
 abbr ga 'git add'
+abbr gaa 'git add .'
 abbr gs 'git status'
 abbr gst 'git stash'
 abbr gsts 'git stash show'

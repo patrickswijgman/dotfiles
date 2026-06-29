@@ -2,6 +2,10 @@ ignore-empty-password
 
 ### Appearance
 
+# Text
+font=monospace
+font-size=15
+
 # Indicator
 indicator-radius=60
 indicator-thickness=8

@@ -63,9 +63,7 @@ local function grep()
 
   local output = cmd({ "rg", "--vimgrep", "--smart-case", "--hidden", "--no-ignore", "--glob", "!.git", "--glob", "!node_modules", "--", pattern })
   local lines = split_lines(output)
-
   if #lines == 0 then
-    vim.notify(("No matches found for '%s'"):format(pattern), vim.log.levels.WARN)
     return
   end
 

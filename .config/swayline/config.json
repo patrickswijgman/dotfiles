@@ -4,9 +4,10 @@
     "brightness",
     "network",
     "bluetooth",
-    "audio",
+    "speaker",
+    "volume",
+    "date",
     "clock"
   ],
-  "blockSeparator": " ",
-  "moduleSeparator": " | "
+  "separator": "    "
 }
