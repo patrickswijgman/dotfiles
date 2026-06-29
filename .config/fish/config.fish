@@ -56,4 +56,5 @@ end
 # <ctrl-r> search command history
 # <ctrl-t> search file
 # <alt-c> change directory
+# <shift-tab> search command or function
 fzf --fish | source
