@@ -185,7 +185,7 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
 # Special key to take a screenshot within a given region and copy to clipboard
 bindsym Print exec still -c 'slurp | grim -g- -' | wl-copy
 
-### Theme
+### Appearance
 #
 # Variables:
 #
