@@ -13,4 +13,3 @@ end
 vim.api.nvim_create_user_command("PackUpdate", update_plugins, { desc = "Update plugins" })
 vim.api.nvim_create_user_command("PackList", list_plugins, { desc = "List plugins" })
 vim.api.nvim_create_user_command("PackDel", delete_plugins, { nargs = "+", desc = "Delete plugins" })
-vim.api.nvim_create_user_command("PackInfo", "checkhealth vim.pack", { desc = "Package manager information" })

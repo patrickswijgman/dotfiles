@@ -4,7 +4,6 @@ local enabled = {
   "cssls",
   "cssmodules_ls",
   "docker_language_server",
-  "efm",
   "emmet_language_server",
   "fish_lsp",
   "golangci_lint_server",
@@ -15,8 +14,6 @@ local enabled = {
   "nixd",
   "pylsp",
   "ruff",
-  "rust_analyzer",
-  "stylua",
   "taplo",
   "vtsls",
   "yamlls",
@@ -105,11 +102,11 @@ vim.lsp.semantic_tokens.enable(false)
 
 local group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = format,
-  desc = "Apply LSP code actions and format before writing the buffer",
-  group = group,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   callback = format,
+--   desc = "Apply LSP code actions and format before writing the buffer",
+--   group = group,
+-- })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = auto_complete,

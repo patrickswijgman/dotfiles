@@ -1,3 +1,4 @@
+local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local layout = require("telescope.actions.layout")
 
@@ -5,10 +6,12 @@ require("telescope").setup({
   defaults = {
     mappings = {
       i = {
-        ["<c-down>"] = actions.cycle_history_next,
         ["<c-up>"] = actions.cycle_history_prev,
-        ["<esc>"] = actions.close,
+        ["<c-down>"] = actions.cycle_history_next,
+        ["<c-s>"] = actions.select_horizontal,
+        ["<c-v>"] = actions.select_vertical,
         ["<m-p>"] = layout.toggle_preview,
+        ["<esc>"] = actions.close,
       },
     },
     vimgrep_arguments = {
@@ -27,6 +30,7 @@ require("telescope").setup({
     find_files = {
       find_command = {
         "fd",
+        "--type=file",
         "--hidden",
         "--no-ignore",
         "--exclude=.git",
@@ -37,19 +41,15 @@ require("telescope").setup({
   },
 })
 
-local builtin = require("telescope.builtin")
-
 local function find_sibling_files()
   builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
 end
 
 local function grep()
   local input = vim.fn.input({ prompt = "Grep > ", default = vim.fn.expand("<cWORD>") })
-  if input == "" then
-    return
+  if input ~= "" then
+    builtin.grep_string({ search = input })
   end
-
-  builtin.grep_string({ search = input })
 end
 
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Telescope find files" })
