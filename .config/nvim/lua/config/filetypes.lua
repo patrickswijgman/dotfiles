@@ -1,5 +1,5 @@
 vim.filetype.add({
-	pattern = {
-		[".*/config"] = { "config", { priority = 10 } },
-	},
+  pattern = {
+    [".*/config"] = { "config", { priority = 10 } },
+  },
 })

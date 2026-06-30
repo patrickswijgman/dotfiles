@@ -1,15 +1,9 @@
-local function update_plugins()
+vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
-end
-
-local function list_plugins()
+end, { desc = "Update plugins" })
+vim.api.nvim_create_user_command("PackList", function()
   vim.pack.update(nil, { offline = true })
-end
-
-local function delete_plugins(opts)
+end, { desc = "List plugins" })
+vim.api.nvim_create_user_command("PackDel", function(opts)
   vim.pack.del(opts.fargs)
-end
-
-vim.api.nvim_create_user_command("PackUpdate", update_plugins, { desc = "Update plugins" })
-vim.api.nvim_create_user_command("PackList", list_plugins, { desc = "List plugins" })
-vim.api.nvim_create_user_command("PackDel", delete_plugins, { nargs = "+", desc = "Delete plugins" })
+end, { nargs = "+", desc = "Delete plugins" })
