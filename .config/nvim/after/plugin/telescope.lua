@@ -53,7 +53,7 @@ local function grep()
 end
 
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>.", find_sibling_files, { desc = "Telescope find sibling files " })
+vim.keymap.set("n", "<leader>.", find_sibling_files, { desc = "Telescope find sibling files" })
 vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>G", grep, { desc = "Telescope grep string" })
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Telescope buffers" })
