@@ -22,7 +22,6 @@ local enabled = {
   "yamlls",
 }
 
-local formatter_priority = { "biome", "efm" }
 local code_actions = { biome = { "source.fixAll.biome" } }
 local timeout_ms = 1000
 
@@ -62,16 +61,6 @@ local function get_code_action_params(code_action, bufnr)
   }
 end
 
-local function get_preferred_formatter(bufnr)
-  for _, name in ipairs(formatter_priority) do
-    local client = vim.lsp.get_clients({ bufnr = bufnr, name = name, method = "textDocument/formatting" })[1]
-
-    if client then
-      return name
-    end
-  end
-end
-
 local function format(ev)
   local clients = vim.lsp.get_clients({ bufnr = ev.buf, method = "textDocument/codeAction" })
 
@@ -98,20 +87,13 @@ local function format(ev)
     end
   end
 
-  if #vim.lsp.get_clients({ bufnr = ev.buf, method = "textDocument/formatting" }) == 0 then
-    return
+  if #vim.lsp.get_clients({ bufnr = ev.buf, method = "textDocument/formatting" }) ~= 0 then
+    vim.lsp.buf.format({ bufnr = ev.buf, timeout_ms = timeout_ms })
   end
-
-  vim.lsp.buf.format({
-    bufnr = ev.buf,
-    name = get_preferred_formatter(ev.buf),
-    timeout_ms = timeout_ms,
-  })
 end
 
 local function auto_complete(ev)
   local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
   if client and client:supports_method("textDocument/completion") then
     client.server_capabilities.completionProvider.triggerCharacters = chars
     vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
@@ -120,9 +102,6 @@ end
 
 vim.lsp.enable(enabled)
 vim.lsp.semantic_tokens.enable(false)
-
-vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", { desc = "LSP information" })
-vim.api.nvim_create_user_command("LspLog", "edit /home/patrick/.local/state/nvim/lsp.log", { desc = "LSP logs" })
 
 local group = vim.api.nvim_create_augroup("Lsp", { clear = true })
 
