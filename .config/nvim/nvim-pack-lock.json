@@ -1,7 +1,7 @@
 {
   "plugins": {
     "butter.nvim": {
-      "rev": "8df33f79650d4cda6ae13083b91b84fb95022ce1",
+      "rev": "cbdc66375fcc4c21f223f77a59e51286299491db",
       "src": "https://github.com/patrickswijgman/butter.nvim"
     },
     "conform.nvim": {
@@ -19,6 +19,10 @@
     "nvim-treesitter-textobjects": {
       "rev": "851e865342e5a4cb1ae23d31caf6e991e1c99f1e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+    },
+    "nvim-web-devicons": {
+      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
