@@ -7,6 +7,5 @@ vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
   "https://github.com/patrickswijgman/butter.nvim",
   "https://github.com/stevearc/conform.nvim",
-  "https://github.com/stevearc/oil.nvim",
   "https://github.com/vague-theme/vague.nvim",
 })
