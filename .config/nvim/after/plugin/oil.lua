@@ -1,10 +1,10 @@
-require("oil").setup({
-  view_options = {
-    show_hidden = true,
-    is_hidden_file = function(name)
-      return vim.startswith(name, ".git")
-    end,
-  },
-})
-
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+-- require("oil").setup({
+--   view_options = {
+--     show_hidden = true,
+--     is_hidden_file = function(name)
+--       return vim.startswith(name, ".git")
+--     end,
+--   },
+-- })
+--
+-- vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
