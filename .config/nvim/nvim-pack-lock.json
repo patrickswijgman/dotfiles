@@ -1,11 +1,15 @@
 {
   "plugins": {
+    "butter.nvim": {
+      "rev": "8df33f79650d4cda6ae13083b91b84fb95022ce1",
+      "src": "https://github.com/patrickswijgman/butter.nvim"
+    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "3371bf298c1f56efc26771ee961f461176958fb5",
+      "rev": "dd1c9b802c943278179a5d819369cda085b79d45",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-spider": {
