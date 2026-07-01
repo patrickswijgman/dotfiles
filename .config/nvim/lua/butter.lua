@@ -1,8 +1,31 @@
+---@class Opts
+---@field show_hidden? boolean show hidden files
+---@field no_ignore? boolean don't use ignore files such as .gitignore
+---@field exclude? string[] exclude a file or directory
+---@field sort? boolean custom sort function `function (a, b) end
+---@field auto_open? boolean auto open when neovim is invoked with a directory e.g. `nvim .`
+
 local M = {}
 
+local opts ---@type Opts
 local buf
-local ns = vim.api.nvim_create_namespace("explorer")
+local ns = vim.api.nvim_create_namespace("butter")
 
+---@type Opts
+local default_opts = {
+  show_hidden = false,
+  no_ignore = false,
+  exclude = {},
+  sort = nil,
+  auto_open = false,
+}
+
+---Run a system command synchronously
+---
+---@param command string[] command and args
+---@param stdin? string|string[] optional input for the command
+---
+---@return string # command output or empty string on error
 local function cmd(command, stdin)
   local result = vim.system(command, { text = true, stdin = stdin }):wait()
 
@@ -14,21 +37,33 @@ local function cmd(command, stdin)
   return result.stdout
 end
 
-local function split_lines(output)
-  return vim.split(output, "\n", { trimempty = true })
+---Split string on new lines
+---
+---@param str string input string
+---
+---@return string[]
+local function split_lines(str)
+  return vim.split(str, "\n", { trimempty = true })
 end
 
-local function sort_lines(lines)
-  table.sort(lines, function(a, b)
-    local a_path = a:lower()
-    local b_path = b:lower()
-    local a_dir = a_path:match("^(.*)/") or ""
-    local b_dir = b_path:match("^(.*)/") or ""
-    if a_dir ~= b_dir then
-      return a_dir < b_dir
-    end
-    return a_path < b_path
-  end)
+---Sort given lines directory first
+---
+---@param a string
+---@param b string
+---@return boolean
+local function sort_lines(a, b)
+  local a_path = a:lower()
+  local b_path = b:lower()
+  local a_dir = a_path:match("^(.*)/") or ""
+  local b_dir = b_path:match("^(.*)/") or ""
+  if a_dir ~= b_dir then
+    return a_dir < b_dir
+  end
+  return a_path < b_path
+end
+
+local function get_current_file()
+  return vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
 end
 
 local function get_parent_dir(path)
@@ -39,9 +74,12 @@ local function is_directory(path)
   return vim.endswith(path, "/")
 end
 
--- Create the directory that must exist before mv/cp `src` to `dst`.
--- A file going into `b/` needs `b` created; a dir renamed to `b/` must NOT
--- have `b` pre-created, or mv would nest it as `b/<src>` instead of renaming.
+---Create the directory that must exist before mv/cp `src` to `dst`.
+---A file going into `b/` needs `b` created; a dir renamed to `b/` must NOT
+---have `b` pre-created, or mv would nest it as `b/<src>` instead of renaming
+---
+---@param src string source file or directory
+---@param dst string destination file or directory
 local function ensure_dir(src, dst)
   local dir
   if is_directory(dst) and not is_directory(src) then
@@ -52,10 +90,33 @@ local function ensure_dir(src, dst)
   cmd({ "mkdir", "-p", dir })
 end
 
+---Construct the `fd` command with arguments and execute
+---it to retrieve a sorted list of files and or directories.
 local function get_files()
-  local output = cmd({ "fd", "--hidden", "--no-ignore", "--exclude", ".git", "--exclude", "node_modules", "--exclude", "dist" })
+  local command = { "fd" }
+
+  if opts.show_hidden then
+    table.insert(command, "--hidden")
+  end
+
+  if opts.no_ignore then
+    table.insert(command, "--no-ignore")
+  end
+
+  for _, exclude in ipairs(opts.exclude) do
+    table.insert(command, "--exclude")
+    table.insert(command, exclude)
+  end
+
+  local output = cmd(command)
   local files = split_lines(output)
-  sort_lines(files)
+
+  if opts.sort then
+    table.sort(files, opts.sort(files))
+  else
+    table.sort(files, sort_lines)
+  end
+
   return files
 end
 
@@ -169,40 +230,45 @@ local function delete()
 end
 
 local function set_buf_keymaps()
-  local opts = { buffer = buf, nowait = true }
-  vim.keymap.set("n", "<cr>", open, opts)
-  vim.keymap.set("n", "a", add, opts)
-  vim.keymap.set("n", "m", move, opts)
-  vim.keymap.set("n", "c", copy, opts)
-  vim.keymap.set("n", "d", delete, opts)
+  local keymap_opts = { buffer = buf, nowait = true }
+  vim.keymap.set("n", "<cr>", open, keymap_opts)
+  vim.keymap.set("n", "a", add, keymap_opts)
+  vim.keymap.set("n", "m", move, keymap_opts)
+  vim.keymap.set("n", "c", copy, keymap_opts)
+  vim.keymap.set("n", "d", delete, keymap_opts)
 end
 
-local function explorer()
-  local file = vim.fn.fnamemodify(vim.fn.expand("%"), ":.")
+local function open_butter()
+  local file = get_current_file()
   create_buf_in_current_win()
   set_buf_keymaps()
   update_buf()
   jump_to(file)
 end
 
-local function open_on_enter()
+local function auto_open_butter()
   local arg = vim.fn.argv()[1]
   if arg ~= "" and vim.fn.isdirectory(arg) == 1 then
     vim.cmd.cd(arg)
-    explorer()
+    open_butter()
   end
 end
 
-function M.setup()
-  vim.api.nvim_create_user_command("Explorer", explorer, { desc = "Open Explorer buffer" })
+---@param user_opts? Opts user options
+function M.setup(user_opts)
+  opts = vim.tbl_deep_extend("force", {}, default_opts, user_opts or {}) ---@type Opts
 
-  local group = vim.api.nvim_create_augroup("Explorer", { clear = true })
+  vim.api.nvim_create_user_command("Butter", open_butter, { desc = "Open Butter" })
 
-  vim.api.nvim_create_autocmd("VimEnter", {
-    callback = open_on_enter,
-    desc = "Open Explorer when Neovim is opened with a directory",
-    group = group,
-  })
+  local group = vim.api.nvim_create_augroup("Butter", { clear = true })
+
+  if opts.auto_open then
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = auto_open_butter,
+      desc = "Open Butter when Neovim is opened with a directory",
+      group = group,
+    })
+  end
 end
 
 return M
