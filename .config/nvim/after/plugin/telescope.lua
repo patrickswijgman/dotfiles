@@ -41,21 +41,19 @@ require("telescope").setup({
   },
 })
 
-local function find_sibling_files()
-  builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
-end
-
-local function grep()
-  local input = vim.fn.input({ prompt = "Grep > ", default = vim.fn.expand("<cWORD>") })
-  if input ~= "" then
-    builtin.grep_string({ search = input })
-  end
-end
-
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>.", find_sibling_files, { desc = "Telescope find sibling files" })
 vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<leader>G", grep, { desc = "Telescope grep string" })
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Telescope help tags" })
 vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Telescope resume last picker" })
+
+vim.keymap.set("n", "grd", builtin.lsp_definitions, { desc = "Telescope LSP definitions" })
+vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "Telescope LSP references" })
+vim.keymap.set("n", "gri", builtin.lsp_implementations, { desc = "Telescope LSP implementations" })
+vim.keymap.set("n", "gre", builtin.diagnostics, { desc = "Telescope diagnostics" })
+vim.keymap.set("n", "grO", builtin.lsp_workspace_symbols, { desc = "Telescope LSP workspace symbols" })
+vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { desc = "Telescope LSP document symbols" })
+
+vim.keymap.set("n", "gitc", builtin.git_commits, { desc = "Telescope git commits" })
+vim.keymap.set("n", "gitb", builtin.git_bcommits, { desc = "Telescope git commits of current file" })
+vim.keymap.set("v", "gitb", builtin.git_bcommits_range, { desc = "Telescope git commits of selected lines" })

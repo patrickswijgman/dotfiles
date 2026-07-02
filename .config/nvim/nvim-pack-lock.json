@@ -1,7 +1,11 @@
 {
   "plugins": {
+    "birb.nvim": {
+      "rev": "73115164fc535e97c7d81b7fd403ab13c0285663",
+      "src": "https://github.com/patrickswijgman/birb.nvim"
+    },
     "butter.nvim": {
-      "rev": "4fa018879e5e6e88c671ed1749f1a557dd08a0df",
+      "rev": "e225e4985c31b6caaf0571a2e839342c4feecfa2",
       "src": "https://github.com/patrickswijgman/butter.nvim"
     },
     "conform.nvim": {

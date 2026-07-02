@@ -4,11 +4,9 @@ local select = require("nvim-treesitter-textobjects.select")
 
 require("nvim-treesitter-textobjects").setup({
   select = {
-    -- Automatically jump forward to textobject
     lookahead = true,
   },
   move = {
-    -- Whether to set jumps in the jumplist
     set_jumps = true,
   },
 })
@@ -46,11 +44,8 @@ select_or_move_to_textobject("l", "loop")
 select_or_move_to_textobject("r", "return")
 select_or_move_to_textobject("/", "comment")
 
--- Repeat movement with ; and ,
 vim.keymap.set({ "n", "x", "o" }, ";", repeatable.repeat_last_move)
 vim.keymap.set({ "n", "x", "o" }, ",", repeatable.repeat_last_move_opposite)
-
--- Optionally, make builtin f, F, t, T also repeatable with ; and ,
 vim.keymap.set({ "n", "x", "o" }, "f", repeatable.builtin_f_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "F", repeatable.builtin_F_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "t", repeatable.builtin_t_expr, { expr = true })
