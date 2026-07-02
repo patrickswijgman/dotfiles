@@ -39,11 +39,6 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.autoindent = true
 
--- Folds
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.o.foldmethod = "expr"
-vim.o.foldlevelstart = 99
-
 -- Completion
 vim.o.completeopt = "menuone,noselect,popup,fuzzy"
 
