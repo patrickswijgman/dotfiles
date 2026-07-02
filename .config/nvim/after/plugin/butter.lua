@@ -5,4 +5,4 @@ require("butter").setup({
   auto_open = true,
 })
 
-vim.keymap.set("n", "<leader>e", "<cmd>Butter<cr>", { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader>e", "<cmd>Butter<cr>", { desc = "Open Butter" })

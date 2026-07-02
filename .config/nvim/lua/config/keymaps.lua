@@ -1,26 +1,17 @@
-local function toggle_quickfix_list()
-  local list = vim.fn.getqflist({ winid = 0 })
-
-  if list.winid ~= 0 then
-    vim.cmd("cclose")
-  else
-    vim.cmd("copen")
-  end
-end
+-- Windows
+vim.keymap.set("n", "<c-h>", "<c-w>h", { desc = "Go to left window" })
+vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Go to below window" })
+vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to upper window" })
+vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to right window" })
 
 -- Tabs
-vim.keymap.set("n", "<c-h>", "<cmd>tabprev<cr>", { desc = "Previous tab" })
-vim.keymap.set("n", "<c-l>", "<cmd>tabnext<cr>", { desc = "Next tab" })
-vim.keymap.set("n", "<c-n>", "<cmd>tabnew<cr>", { desc = "New tab" })
-vim.keymap.set("n", "<c-q>", "<cmd>tabclose<cr>", { desc = "Close tab" })
+vim.keymap.set("n", "H", "<cmd>tabprev<cr>", { desc = "Previous tab" })
+vim.keymap.set("n", "L", "<cmd>tabnext<cr>", { desc = "Next tab" })
 
 -- Clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard" })
-
--- Quickfix list
-vim.keymap.set("n", "<leader>q", toggle_quickfix_list, { desc = "Toggle quickfix list" })
 
 -- Replace
 vim.keymap.set("v", "R", '"_dp', { desc = "Replace selection with yanked text" })

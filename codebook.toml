@@ -81,6 +81,7 @@ words = [
     "jumplist",
     "keymaps",
     "langserver",
+    "lclose",
     "lockb",
     "lspconfig",
     "luarc",

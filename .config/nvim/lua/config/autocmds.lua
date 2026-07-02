@@ -8,17 +8,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   group = group,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  command = [[%s/\s\+$//e]],
-  desc = "Remove trailing whitespaces before writing the buffer",
-  group = group,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
   callback = function(ev)
-    vim.keymap.set("n", "q", "<cmd>cclose<cr>", { buffer = ev.buf, desc = "Close quickfix list" })
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = ev.buf, desc = "Close list window" })
   end,
-  desc = "Quickfix list keymaps",
+  desc = "Keymaps for quickfix and location list",
   group = group,
 })
