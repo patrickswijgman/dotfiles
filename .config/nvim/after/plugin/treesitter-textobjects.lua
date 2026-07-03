@@ -36,7 +36,7 @@ local function set_keymap_for_textobject(char, textobject, opts)
 end
 
 set_keymap_for_textobject("f", "function")
-set_keymap_for_textobject("p", "parameter", { move_inside = true })
+set_keymap_for_textobject("a", "parameter", { move_inside = true })
 set_keymap_for_textobject("c", "call")
 set_keymap_for_textobject("k", "class")
 set_keymap_for_textobject("i", "conditional")
