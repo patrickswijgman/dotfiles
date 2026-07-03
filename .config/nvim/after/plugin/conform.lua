@@ -12,12 +12,29 @@ require("conform").setup({
     jsonc = { "biome", "prettierd", stop_after_first = true },
     yaml = { "prettierd" },
     markdown = { "prettierd" },
-    go = { "gofmt" },
     python = { "ruff" },
+    go = { "gofmt" },
     _ = { "trim_whitespace" },
   },
-  format_on_save = {
-    timeout_ms = 500,
+})
+
+local function format(ev)
+  require("bulb").code_action({
+    bufnr = ev.buf,
+    kinds = { "source.fixAll.biome" },
+  })
+
+  require("conform").format({
+    bufnr = ev.buf,
     lsp_format = "fallback",
-  },
+    timeout_ms = 1000,
+  })
+end
+
+local group = vim.api.nvim_create_augroup("FormatConfig", { clear = true })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = format,
+  desc = "Format before save",
+  group = group,
 })

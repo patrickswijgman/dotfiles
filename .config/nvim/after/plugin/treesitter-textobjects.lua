@@ -11,7 +11,7 @@ require("nvim-treesitter-textobjects").setup({
   },
 })
 
-local function select_or_move_to_textobject(char, textobject, opts)
+local function set_keymap_for_textobject(char, textobject, opts)
   opts = opts or {}
 
   local select_around = ("a%s"):format(char)
@@ -35,14 +35,14 @@ local function select_or_move_to_textobject(char, textobject, opts)
   end)
 end
 
-select_or_move_to_textobject("f", "function")
-select_or_move_to_textobject("p", "parameter", { move_inside = true })
-select_or_move_to_textobject("c", "call")
-select_or_move_to_textobject("k", "class")
-select_or_move_to_textobject("i", "conditional")
-select_or_move_to_textobject("l", "loop")
-select_or_move_to_textobject("r", "return")
-select_or_move_to_textobject("/", "comment")
+set_keymap_for_textobject("f", "function")
+set_keymap_for_textobject("p", "parameter", { move_inside = true })
+set_keymap_for_textobject("c", "call")
+set_keymap_for_textobject("k", "class")
+set_keymap_for_textobject("i", "conditional")
+set_keymap_for_textobject("l", "loop")
+set_keymap_for_textobject("r", "return")
+set_keymap_for_textobject("/", "comment")
 
 vim.keymap.set({ "n", "x", "o" }, ";", repeatable.repeat_last_move)
 vim.keymap.set({ "n", "x", "o" }, ",", repeatable.repeat_last_move_opposite)

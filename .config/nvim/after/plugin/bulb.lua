@@ -1,0 +1,28 @@
+require("bulb").setup({
+  servers = {
+    "biome",
+    "codebook",
+    "cssls",
+    "cssmodules_ls",
+    "docker_language_server",
+    "emmet_language_server",
+    "fish_lsp",
+    "golangci_lint_server",
+    "gopls",
+    "jinja_lsp",
+    "jsonls",
+    "lua_ls",
+    "nixd",
+    "pylsp",
+    "ruff",
+    "taplo",
+    "vtsls",
+    "yamlls",
+  },
+  semantic_tokens = false,
+  completion = {
+    enable = true,
+    auto_trigger = true,
+    auto_trigger_all_chars = true,
+  },
+})
