@@ -5,7 +5,7 @@
       "src": "https://github.com/patrickswijgman/birb.nvim"
     },
     "butter.nvim": {
-      "rev": "6e9bfd834169286aac3e95194fd4ab23a060b2fc",
+      "rev": "c1c50bf786ad8ac5b4231b9b365bf02f0992f139",
       "src": "https://github.com/patrickswijgman/butter.nvim"
     },
     "conform.nvim": {
