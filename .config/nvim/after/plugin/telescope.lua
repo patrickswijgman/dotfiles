@@ -53,7 +53,3 @@ vim.keymap.set("n", "gri", builtin.lsp_implementations, { desc = "Telescope LSP 
 vim.keymap.set("n", "gre", builtin.diagnostics, { desc = "Telescope diagnostics" })
 vim.keymap.set("n", "grO", builtin.lsp_workspace_symbols, { desc = "Telescope LSP workspace symbols" })
 vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { desc = "Telescope LSP document symbols" })
-
-vim.keymap.set("n", "gitc", builtin.git_commits, { desc = "Telescope git commits" })
-vim.keymap.set("n", "gitb", builtin.git_bcommits, { desc = "Telescope git commits of current file" })
-vim.keymap.set("v", "gitb", builtin.git_bcommits_range, { desc = "Telescope git commits of selected lines" })

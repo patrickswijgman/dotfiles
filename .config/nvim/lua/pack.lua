@@ -1,7 +1,9 @@
 vim.pack.add({
   "https://github.com/chrisgrieser/nvim-spider",
+  "https://github.com/kylechui/nvim-surround",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
   "https://github.com/nvim-tree/nvim-web-devicons",
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
@@ -10,4 +12,5 @@ vim.pack.add({
   "https://github.com/patrickswijgman/butter.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/vague-theme/vague.nvim",
+  "https://github.com/windwp/nvim-autopairs",
 })

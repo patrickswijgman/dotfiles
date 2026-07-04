@@ -1,7 +1,5 @@
 require("conform").setup({
   formatters_by_ft = {
-    lua = { "stylua" },
-    nix = { "nixfmt" },
     javascript = { "biome", "prettierd", stop_after_first = true },
     typescript = { "biome", "prettierd", stop_after_first = true },
     javascriptreact = { "biome", "prettierd", stop_after_first = true },
@@ -12,8 +10,11 @@ require("conform").setup({
     jsonc = { "biome", "prettierd", stop_after_first = true },
     yaml = { "prettierd" },
     markdown = { "prettierd" },
+    toml = { "taplo" },
     python = { "ruff" },
     go = { "gofmt" },
+    lua = { "stylua" },
+    nix = { "nixfmt" },
     _ = { "trim_whitespace" },
   },
 })
