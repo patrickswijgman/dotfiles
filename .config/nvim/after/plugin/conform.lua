@@ -18,7 +18,7 @@ require("conform").setup({
   },
 })
 
-local function format(ev)
+local function apply_code_actions_and_format(ev)
   require("bulb").code_action({
     bufnr = ev.buf,
     kinds_by_server = { biome = { "source.fixAll.biome" } },
@@ -35,7 +35,7 @@ end
 local group = vim.api.nvim_create_augroup("FormatConfig", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = format,
+  callback = apply_code_actions_and_format,
   desc = "Format before save",
   group = group,
 })
