@@ -6,3 +6,18 @@
 
 [user]
   name = Patrick
+
+[core]
+  editor = nvim
+
+[diff]
+  tool = nvimdiff
+
+[difftool]
+  prompt = false
+
+[merge]
+  tool = nvimdiff
+
+[mergetool]
+  prompt = false

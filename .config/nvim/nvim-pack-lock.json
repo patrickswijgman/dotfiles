@@ -1,15 +1,15 @@
 {
   "plugins": {
     "birb.nvim": {
-      "rev": "ddf27f3fd4549b1aa809c5c34f1a329b7c12c83f",
+      "rev": "f32320ee2910a15b4c47f70417eacfd5027a4a9f",
       "src": "https://github.com/patrickswijgman/birb.nvim"
     },
     "bulb.nvim": {
-      "rev": "66918bbb37bf3ad5bd65456252a351aa327f5c2e",
+      "rev": "9d07633504353dca73ba2a645ce4ecda619ad501",
       "src": "https://github.com/patrickswijgman/bulb.nvim"
     },
     "butter.nvim": {
-      "rev": "a35d1aa1c56d2a85e29080e4d15bcaac9ac7271c",
+      "rev": "3a904593c726951cd74b777a8b180c25270ddfd9",
       "src": "https://github.com/patrickswijgman/butter.nvim"
     },
     "conform.nvim": {
@@ -17,7 +17,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "292f44408498103c47996ff5c18fd366293840d8",
+      "rev": "d224a1920728ba129880efc700d4a0180ac4ecbb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-spider": {

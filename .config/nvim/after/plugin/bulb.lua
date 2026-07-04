@@ -22,7 +22,7 @@ require("bulb").setup({
   semantic_tokens = false,
   completion = {
     enable = true,
-    auto_trigger = true,
-    auto_trigger_all_chars = true,
+    autotrigger = true,
+    autotrigger_chars = require("bulb").all_chars,
   },
 })

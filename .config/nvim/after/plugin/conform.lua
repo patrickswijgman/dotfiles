@@ -21,7 +21,8 @@ require("conform").setup({
 local function format(ev)
   require("bulb").code_action({
     bufnr = ev.buf,
-    kinds = { "source.fixAll.biome" },
+    kinds_by_server = { biome = { "source.fixAll.biome" } },
+    timeout_ms = 1000,
   })
 
   require("conform").format({

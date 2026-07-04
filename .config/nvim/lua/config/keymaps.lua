@@ -14,7 +14,7 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system cli
 vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard" })
 
 -- Replace
-vim.keymap.set("v", "R", '"_dp', { desc = "Replace selection with yanked text" })
+vim.keymap.set("v", "R", '"_dP', { desc = "Replace selection with yanked text" })
 vim.keymap.set("v", "<leader>R", '"_d"+p', { desc = "Replace selection with system clipboard" })
 
 -- Misc
