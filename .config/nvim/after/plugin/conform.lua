@@ -36,6 +36,6 @@ local group = vim.api.nvim_create_augroup("FormatConfig", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = apply_code_actions_and_format,
-  desc = "Format before save",
+  desc = "Apply code actions and format before save",
   group = group,
 })
