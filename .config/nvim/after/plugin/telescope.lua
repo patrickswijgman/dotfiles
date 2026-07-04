@@ -48,8 +48,9 @@ vim.keymap.set("n", "<leader>h", builtin.help_tags, { desc = "Telescope help tag
 vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Telescope resume last picker" })
 
 vim.keymap.set("n", "grd", builtin.lsp_definitions, { desc = "Telescope LSP definitions" })
-vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "Telescope LSP references" })
 vim.keymap.set("n", "gri", builtin.lsp_implementations, { desc = "Telescope LSP implementations" })
+vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "Telescope LSP references" })
+vim.keymap.set("n", "grt", builtin.lsp_type_definitions, { desc = "Telescope LSP type definitions" })
 vim.keymap.set("n", "gre", builtin.diagnostics, { desc = "Telescope diagnostics" })
 vim.keymap.set("n", "grO", builtin.lsp_workspace_symbols, { desc = "Telescope LSP workspace symbols" })
 vim.keymap.set("n", "gO", builtin.lsp_document_symbols, { desc = "Telescope LSP document symbols" })
