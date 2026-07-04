@@ -5,15 +5,38 @@ require("lualine").setup({
   sections = {
     lualine_a = { "mode" },
     lualine_b = {},
-    lualine_c = { { "filename", path = 1 } },
-    lualine_x = { "diagnostics", "searchcount", "filetype", "location" },
+    lualine_c = {
+      {
+        "filename",
+        path = 1,
+      },
+    },
+    lualine_x = {
+      {
+        "diagnostics",
+        symbols = {
+          error = "󰅚",
+          warn = "󰀪",
+          info = "󰋽",
+          hint = "󰌶",
+        },
+      },
+      "searchcount",
+      "filetype",
+      "location",
+    },
     lualine_y = {},
     lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { { "filename", path = 1 } },
+    lualine_c = {
+      {
+        "filename",
+        path = 1,
+      },
+    },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
