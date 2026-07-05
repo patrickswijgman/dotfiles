@@ -3,7 +3,9 @@ require("lualine").setup({
     component_separators = "",
   },
   sections = {
-    lualine_a = { "mode" },
+    lualine_a = {
+      "mode",
+    },
     lualine_b = {},
     lualine_c = {
       {

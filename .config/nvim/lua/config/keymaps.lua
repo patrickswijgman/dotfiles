@@ -4,10 +4,6 @@ vim.keymap.set("n", "<c-j>", "<c-w>j", { desc = "Go to below window" })
 vim.keymap.set("n", "<c-k>", "<c-w>k", { desc = "Go to upper window" })
 vim.keymap.set("n", "<c-l>", "<c-w>l", { desc = "Go to right window" })
 
--- Tabs
-vim.keymap.set("n", "H", "<cmd>tabprev<cr>", { desc = "Previous tab" })
-vim.keymap.set("n", "L", "<cmd>tabnext<cr>", { desc = "Next tab" })
-
 -- Clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
