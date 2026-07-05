@@ -2,10 +2,12 @@ layer=overlay
 
 # Appearance
 anchor=top-center
-background-color=#7e98e8
-text-color=#141415
-border-size=0
-padding=20,30
-width=500
+background-color=#1c1c24
+text-color=#cdcdcd
+border-color=#252530
+border-size=2
+padding=20
+width=400
+height=300
 margin=20
 outer-margin=20

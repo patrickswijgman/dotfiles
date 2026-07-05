@@ -1,0 +1,27 @@
+---@type vim.lsp.Config
+return {
+  filetypes = {
+    "c",
+    "css",
+    "gitcommit",
+    "go",
+    "haskell",
+    "html",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "lua",
+    "markdown",
+    "nix",
+    "php",
+    "python",
+    "ruby",
+    "rust",
+    "swift",
+    "text",
+    "toml",
+    "typescript",
+    "typescriptreact",
+    "zig",
+  },
+}
