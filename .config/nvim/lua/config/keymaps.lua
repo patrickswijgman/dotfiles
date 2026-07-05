@@ -11,7 +11,7 @@ vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system cli
 
 -- Replace
 vim.keymap.set("v", "R", '"_dP', { desc = "Replace selection with yanked text" })
-vim.keymap.set("v", "<leader>R", '"_d"+p', { desc = "Replace selection with system clipboard" })
+vim.keymap.set("v", "<leader>R", '"_d"+P', { desc = "Replace selection with system clipboard" })
 
 -- Misc
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { desc = "Clear highlight", silent = true })
