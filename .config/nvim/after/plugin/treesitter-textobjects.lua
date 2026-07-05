@@ -58,6 +58,7 @@ set_keymap_for_textobject("/", "comment")
 
 vim.keymap.set({ "n", "x", "o" }, ";", repeatable.repeat_last_move, { desc = "Repeat last move" })
 vim.keymap.set({ "n", "x", "o" }, ",", repeatable.repeat_last_move_opposite, { desc = "Repeat last move (opposite)" })
+
 vim.keymap.set({ "n", "x", "o" }, "f", repeatable.builtin_f_expr, { expr = true, desc = "Find" })
 vim.keymap.set({ "n", "x", "o" }, "F", repeatable.builtin_F_expr, { expr = true, desc = "Find (opposite)" })
 vim.keymap.set({ "n", "x", "o" }, "t", repeatable.builtin_t_expr, { expr = true, desc = "Find until" })
