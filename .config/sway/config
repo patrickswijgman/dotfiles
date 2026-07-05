@@ -1,43 +1,38 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
+
 set $mod Mod4
-# Home row direction keys, like vim
 set $up k
 set $down j
 set $left h
 set $right l
-# Your preferred terminal emulator
 set $term alacritty
-# Your preferred application launcher
 set $menu tofi-drun
-# Your preferred screen lock utility
 set $lock swaylock
 
-# Executes shell command with sh.
-#
+### Start programs
+
 exec mako
 exec kanshi
 exec swayidle -w
 exec gammastep
 exec fish -c hyperfocus
 
-# Execute shell command with sh, but the shell command will be executed again after reload.
-#
 exec_always kanshictl reload
 
 ### Output configuration
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Read `man 5 sway-output` for more information about this section.
+
 output * bg #141415 solid_color
 
 ### Input configuration
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
+
 input type:pointer {
   accel_profile flat
   pointer_accel 0
@@ -49,20 +44,11 @@ input type:touchpad {
 }
 
 ### Key bindings
-#
-# Basics:
-#
 
-# Start a terminal
 bindsym $mod+Return exec $term
-
-# Lock screen
 bindsym $mod+Delete exec $lock
-
-# Kill focused window
 bindsym $mod+Shift+q kill
-
-# Start your launcher
+bindsym $mod+Shift+c reload
 bindsym $mod+d exec $menu
 
 # Drag floating windows by holding down $mod and left mouse button.
@@ -72,33 +58,16 @@ bindsym $mod+d exec $menu
 # mouse button for dragging.
 floating_modifier $mod normal
 
-# Reload the configuration file
-bindsym $mod+Shift+c reload
-
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
-#
-# Moving around:
-#
-
-# Move your focus around
 bindsym $mod+$up focus up
 bindsym $mod+$down focus down
 bindsym $mod+$left focus left
 bindsym $mod+$right focus right
 
-# Move the focused window with the same, but add Shift
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$right move right
 
-#
-# Workspaces:
-#
-
-# Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -109,15 +78,10 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-
-# Jump between alternate workspace
 bindsym $mod+Tab workspace back_and_forth
-
-# Cycle through workspaces
 bindsym $mod+Ctrl+h workspace prev
 bindsym $mod+Ctrl+l workspace next
 
-# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -128,12 +92,6 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
-# Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
-
-#
-# Layout stuff:
-#
 
 # Split container (Vim style)
 bindsym $mod+v splith
@@ -155,10 +113,6 @@ bindsym $mod+space focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 
-#
-# Resizing containers:
-#
-
 mode "resize" {
   bindsym $up resize shrink height 5ppt
   bindsym $down resize grow height 5ppt
@@ -169,33 +123,22 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Utilities:
-#
-
-# Special keys to adjust volume via PulseAudio
 bindsym --locked XF86AudioRaiseVolume exec pamixer --increase 5
 bindsym --locked XF86AudioLowerVolume exec pamixer --decrease 5
 bindsym --locked XF86AudioMute exec pamixer --toggle-mute
 
-# Special keys to control media via playerctl
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 bindsym --locked XF86AudioPause exec playerctl play-pause
 bindsym --locked XF86AudioNext exec playerctl next
 bindsym --locked XF86AudioPrev exec playerctl previous
 bindsym --locked XF86AudioStop exec playerctl stop
 
-# Special keys to adjust brightness via brightnessctl
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
 
-# Special key to take a screenshot within a given region and copy to clipboard
 bindsym Print exec still -c 'slurp | grim -g- -' | wl-copy
 
 ### Appearance
-#
-# Variables:
-#
 
 set $accent #7e98e8
 set $urgent #d8647e
@@ -206,10 +149,6 @@ set $focus_bg #252530
 set $focus_text #cdcdcd
 set $focus_inactive #606079
 
-#
-# Layout:
-#
-
 title_align center
 default_border pixel 2
 default_floating_border pixel 2
@@ -217,20 +156,13 @@ gaps inner 10
 smart_borders on
 smart_gaps on
 
-#
-# Containers:
-#
-
 # <title_border> <title_background> <title_text> <split_indicator> <border>
 client.unfocused $bg $bg $text $focus_bg $focus_bg
 client.focused $focus_bg $focus_bg $focus_text $accent $accent
 client.focused_inactive $bg $bg $text $focus_inactive $focus_inactive
 client.urgent $bg $bg $text $urgent $urgent
 
-#
-# Cursor:
-#
-
+# Set wayland cursor and set XCURSOR environment variables.
 seat "*" xcursor_theme Adwaita 24
 
 ### Status Bar
@@ -251,6 +183,5 @@ bar {
     urgent_workspace $urgent $urgent $bg
   }
 }
-
 
 include /etc/sway/config.d/*
