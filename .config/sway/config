@@ -19,6 +19,7 @@ exec swayidle -w
 exec gammastep
 exec fish -c hyperfocus
 exec foot --server
+exec swayopacity
 
 exec_always kanshictl reload
 
@@ -46,11 +47,11 @@ input type:touchpad {
 
 ### Key bindings
 
+bindsym $mod+d exec $menu
 bindsym $mod+Return exec $term
 bindsym $mod+Delete exec $lock
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+d exec $menu
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -79,7 +80,9 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+
 bindsym $mod+Tab workspace back_and_forth
+
 bindsym $mod+Ctrl+h workspace prev
 bindsym $mod+Ctrl+l workspace next
 
@@ -94,7 +97,7 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# Split container (Vim style)
+# Split container Vim style
 bindsym $mod+v splith
 bindsym $mod+s splitv
 
@@ -145,7 +148,7 @@ bindsym Print exec still -c 'slurp | grim -g- -' | wl-copy
 
 ### Appearance
 
-set $accent #7e98e8
+set $accent #cdcdcd
 set $urgent #d8647e
 set $statusline #cdcdcd
 set $bg #141415
@@ -157,9 +160,9 @@ set $focus_inactive #606079
 title_align center
 default_border pixel 2
 default_floating_border pixel 2
-gaps inner 10
-smart_borders on
-smart_gaps on
+gaps inner 20
+smart_borders off
+smart_gaps off
 
 # <title_border> <title_background> <title_text> <split_indicator> <border>
 client.unfocused $bg $bg $text $focus_bg $focus_bg
@@ -167,7 +170,7 @@ client.focused $focus_bg $focus_bg $focus_text $accent $accent
 client.focused_inactive $bg $bg $text $focus_inactive $focus_inactive
 client.urgent $bg $bg $text $urgent $urgent
 
-# Set wayland cursor and set XCURSOR environment variables.
+# Set XCURSOR environment variables.
 seat "*" xcursor_theme Adwaita 24
 
 ### Status Bar

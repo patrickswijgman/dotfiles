@@ -1,5 +1,7 @@
 drun-launch=true
 fuzzy-match=true
+ascii-input=true
+num-results=20
 
 # Appearance
 anchor=bottom
