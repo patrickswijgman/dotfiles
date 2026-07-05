@@ -8,21 +8,10 @@ require("lualine").setup({
     },
     lualine_b = {},
     lualine_c = {
-      {
-        "filename",
-        path = 1,
-      },
+      { "filename", path = 1 },
     },
     lualine_x = {
-      {
-        "diagnostics",
-        symbols = {
-          error = "󰅚 ",
-          warn = "󰀪 ",
-          info = "󰋽 ",
-          hint = "󰌶 ",
-        },
-      },
+      { "diagnostics", symbols = { error = "󰅚 ", warn = "󰀪 ", info = "󰋽 ", hint = "󰌶 " } },
       "searchcount",
       "filetype",
       "location",
@@ -34,10 +23,7 @@ require("lualine").setup({
     lualine_a = {},
     lualine_b = {},
     lualine_c = {
-      {
-        "filename",
-        path = 1,
-      },
+      { "filename", path = 1 },
     },
     lualine_x = {},
     lualine_y = {},
