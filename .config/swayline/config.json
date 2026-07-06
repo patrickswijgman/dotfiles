@@ -2,10 +2,10 @@
   "modules": [
     "battery",
     "brightness",
-    "network",
-    "bluetooth",
-    "speaker",
     "volume",
+    "speaker",
+    "bluetooth",
+    "network",
     "date",
     "clock"
   ],
