@@ -28,7 +28,7 @@ exec_always kanshictl reload
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Read `man 5 sway-output` for more information about this section.
 
-output * bg #141415 solid_color
+output * bg ~/wallpapers/birds.jpg fill
 
 ### Input configuration
 #
@@ -148,27 +148,24 @@ bindsym Print exec still -c 'slurp | grim -g- -' | wl-copy
 
 ### Appearance
 
-set $accent #cdcdcd
-set $urgent #d8647e
-set $statusline #cdcdcd
-set $bg #141415
-set $text #878787
-set $focus_bg #252530
-set $focus_text #cdcdcd
-set $focus_inactive #606079
 
 title_align center
-default_border pixel 2
-default_floating_border pixel 2
+default_border none
+default_floating_border none
 gaps inner 20
-smart_borders off
-smart_gaps off
+
+set $bg #000000
+set $text #ffffff
+set $focus_bg #000000
+set $focus_text #ffffff
+set $urgent_bg #ff8080
+set $urgent_text #000000
 
 # <title_border> <title_background> <title_text> <split_indicator> <border>
-client.unfocused $bg $bg $text $focus_bg $focus_bg
-client.focused $focus_bg $focus_bg $focus_text $accent $accent
-client.focused_inactive $bg $bg $text $focus_inactive $focus_inactive
-client.urgent $bg $bg $text $urgent $urgent
+client.unfocused $bg $bg $text $bg $bg
+client.focused $focus_bg $focus_bg $focus_text $focus_bg $focus_bg
+client.focused_inactive $bg $bg $text $bg $bg
+client.urgent $urgent_bg $urgent_bg $urgent_text $urgent_bg $urgent_bg
 
 # Set XCURSOR environment variables.
 seat "*" xcursor_theme Adwaita 24
@@ -177,18 +174,28 @@ seat "*" xcursor_theme Adwaita 24
 #
 # Read `man 5 sway-bar` for more information about this section.
 
+set $bar_bg #ffffffaa
+set $bar_text #000000
+set $workspace_bg #ffffffaa
+set $workspace_text #000000aa
+set $workspace_focus_bg #ffffff
+set $workspace_focus_text #000000
+set $workspace_urgent_bg #ff8080bb
+set $workspace_urgent_text #000000
+
 bar {
-  position bottom
+  position top
   status_command swayline
   tray_output none
+  gaps 10
 
   colors {
-    background $bg
-    statusline $statusline
+    background $bar_bg
+    statusline $bar_text
     # <border> <background> <text>
-    focused_workspace $focus_bg $focus_bg $focus_text
-    inactive_workspace $bg $bg $text
-    urgent_workspace $urgent $urgent $bg
+    focused_workspace $workspace_focus_bg $workspace_focus_bg $workspace_focus_text
+    inactive_workspace $workspace_bg $workspace_bg $workspace_text
+    urgent_workspace $workspace_urgent_bg $workspace_urgent_bg $workspace_urgent_text
   }
 }
 
