@@ -2,6 +2,7 @@
 return {
   filetypes = {
     "c",
+    "config",
     "css",
     "gitcommit",
     "go",
