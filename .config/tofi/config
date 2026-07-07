@@ -17,6 +17,7 @@ prompt-padding=12
 prompt-color=#ffffff
 placeholder-text="_"
 placeholder-color=#ffffff80
+input-color=#ffffff
 selection-color=#ffffff
 selection-match-color=#ffffff
 width=100%

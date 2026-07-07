@@ -28,7 +28,8 @@ exec_always kanshictl reload
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Read `man 5 sway-output` for more information about this section.
 
-output * bg ~/wallpapers/current fill
+# output * bg ~/wallpapers/current fill
+output * bg #000000 solid_color
 
 ### Input configuration
 #
