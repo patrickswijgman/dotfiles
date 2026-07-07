@@ -150,7 +150,6 @@ bindsym Print exec still -c 'slurp | grim -g- -' | wl-copy
 
 default_border none
 default_floating_border none
-smart_borders on
 gaps inner 20
 
 set $bg #000000
