@@ -182,7 +182,7 @@ set $workspace_urgent_bg #ff8080
 set $workspace_urgent_text #000000
 
 bar {
-  position top
+  position bottom
   status_command swayline
   tray_output none
 
