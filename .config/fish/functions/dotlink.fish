@@ -1,17 +1,17 @@
 function dotlink --description "Symlink ~/dotfiles into home directory"
     set repo $HOME/dotfiles
     set ignore .git README.md
-    set delete .config/nvim
+    set delete $HOME/.config/nvim
 
     set fd_args --base-directory $repo --type file --type symlink --hidden
     for pattern in $ignore
         set fd_args $fd_args --exclude $pattern
     end
 
-    echo "Deleting in home folder:"
+    echo "Deleting files and directories:"
 
     for path in $delete
-        rm -rf $HOME/$path
+        rm -rf $path
         echo $path
     end
 
@@ -28,8 +28,4 @@ function dotlink --description "Symlink ~/dotfiles into home directory"
 
     echo ""
     echo "Done!"
-end
-
-if not status is-interactive
-    dotlink
 end

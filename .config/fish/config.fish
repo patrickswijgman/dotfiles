@@ -1,4 +1,3 @@
-# Disable default fish greeting
 set fish_greeting
 
 # Git abbreviations
@@ -33,6 +32,7 @@ abbr yolo 'git commit --amend --no-edit && git push --force'
 abbr yeet 'git commit --amend --no-edit --no-verify && git push --force --no-verify'
 
 # Docker abbreviations
+abbr dc 'docker compose'
 abbr dcu 'docker compose up'
 abbr dcr 'docker compose run --rm'
 
@@ -48,6 +48,7 @@ abbr va 'source .venv/bin/activate.fish'
 abbr vd 'source .venv/bin/deactivate.fish'
 
 # Start SSH agent (reuse if already running)
+# Read from file instead of sourcing it directly which prevents an error in nix shell
 keychain --quiet --quick
 set keychain_file ~/.keychain/(hostname)-fish
 if test -f $keychain_file
