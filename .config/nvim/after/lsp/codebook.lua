@@ -4,6 +4,7 @@ return {
     "c",
     "config",
     "css",
+    "fish",
     "gitcommit",
     "go",
     "haskell",
