@@ -88,7 +88,7 @@ riverctl map normal None Print spawn "still -c 'slurp | grim -g- -' | wl-copy"
 
 ### Appearance
 
-set bg 0x222e2e
+set bg 0x1e1e1e
 set text 0xcdcdcd
 set border $bg
 set focus_bg $text
@@ -96,7 +96,7 @@ set focus_text $bg
 set focus_border $text
 
 riverctl background-color 0x000000
-riverctl spawn 'swaybg -i ~/wallpapers/snowy-mountain.jpg -m fill'
+riverctl spawn 'swaybg -i ~/wallpapers/house-autumn.jpg -m fill'
 
 riverctl border-width 2
 riverctl border-color-focused $focus_border
