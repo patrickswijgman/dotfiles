@@ -105,7 +105,7 @@ riverctl xcursor-theme Adwaita 24
 
 ### Rules
 
-# To get a river border; force service-side-decorations for all applications.
+# To get a river border; force server-side-decorations for all applications.
 riverctl rule-add -app-id "*" ssd
 
 ### Bar
