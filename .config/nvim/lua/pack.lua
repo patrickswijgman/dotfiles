@@ -3,7 +3,6 @@ vim.pack.add({
   { src = "https://github.com/kylechui/nvim-surround" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/nvim-lua/plenary.nvim" },
-  { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },

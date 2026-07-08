@@ -15,7 +15,7 @@ dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT
 ### Start programs
 
 riverctl spawn 'foot --server'
-riverctl spawn 'fnott'
+riverctl spawn 'mako'
 riverctl spawn 'kanshi'
 riverctl spawn 'swayidle -w'
 riverctl spawn 'gammastep'
@@ -95,7 +95,9 @@ set focus_bg $text
 set focus_text $bg
 set focus_border $text
 
+riverctl background-color 0x000000
 riverctl spawn 'swaybg -i ~/wallpapers/snowy-mountain.jpg -m fill'
+
 riverctl border-width 2
 riverctl border-color-focused $focus_border
 riverctl border-color-unfocused $border
