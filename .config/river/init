@@ -116,4 +116,4 @@ riverctl spawn "swayline | creek -hg 24 -fn monospace:size=12 -nf $text -nb $bg 
 
 riverctl default-layout rivertile
 
-exec rivertile -main-location right
+exec rivertile -main-location right -main-ratio 0.635
