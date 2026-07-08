@@ -89,7 +89,7 @@ riverctl map normal None Print spawn "still -c 'slurp | grim -g- -' | wl-copy"
 ### Appearance
 
 set bg 0x1e1e1e
-set text 0xcdcdcd
+set text 0xe2e2e2
 set border $bg
 set focus_bg $text
 set focus_text $bg

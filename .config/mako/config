@@ -3,7 +3,7 @@ layer=overlay
 # Appearance
 font=monospace 11
 anchor=bottom-right
-background-color=#cdcdcd
+background-color=#e2e2e2
 text-color=#1e1e1e
 border-size=0
 width=400
