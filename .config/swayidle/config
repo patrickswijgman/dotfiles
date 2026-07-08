@@ -1,4 +1,4 @@
 timeout 170 'brightnessctl -s set $(($(brightnessctl get) / 2))' resume 'brightnessctl -r'
 timeout 180 'swaylock -f'
-timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+timeout 300 'wlopm --off "*"' resume 'wlopm --on "*"'
 before-sleep 'swaylock -f'

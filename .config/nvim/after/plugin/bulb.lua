@@ -23,6 +23,6 @@ require("bulb").setup({
   completion = {
     enable = true,
     autotrigger = true,
-    autotrigger_chars = require("bulb").all_chars,
+    trigger_characters = require("bulb").all_chars,
   },
 })
