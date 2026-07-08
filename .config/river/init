@@ -1,0 +1,117 @@
+#!/usr/bin/env fish
+# River init — run on startup. Must be executable (chmod +x).
+# See `man riverctl` / `man rivertile`.
+
+set mod Super
+
+### Environment
+
+# Push the Wayland env into the D-Bus/systemd-user session so dbus-activated
+# services (e.g. xdg-desktop-portal-gtk, which backs Firefox file dialogs) can
+# reach the display. Without this they start with no WAYLAND_DISPLAY and crash.
+# XDG_CURRENT_DESKTOP=river makes the portal load river-portals.conf.
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=river
+
+### Start programs
+
+riverctl spawn 'foot --server'
+riverctl spawn 'fnott'
+riverctl spawn 'kanshi'
+riverctl spawn 'swayidle -w'
+riverctl spawn 'gammastep'
+riverctl spawn 'fish -c hyperfocus'
+
+### Input
+
+riverctl input 'pointer-*' accel-profile flat
+riverctl input 'pointer-*' pointer-accel 0
+riverctl input 'pointer-*' tap enabled
+riverctl input 'pointer-*' disable-while-typing enabled
+
+### Key bindings
+
+# Tools
+riverctl map normal $mod Return spawn 'footclient'
+riverctl map normal $mod Delete spawn 'swaylock'
+riverctl map normal $mod D      spawn 'tofi-drun'
+
+# Windows
+riverctl map normal $mod F       toggle-fullscreen
+riverctl map normal $mod Z       zoom
+riverctl map normal $mod+Shift Q close
+
+# Focus / swap
+riverctl map normal $mod H       focus-view left
+riverctl map normal $mod J       focus-view down
+riverctl map normal $mod K       focus-view up
+riverctl map normal $mod L       focus-view right
+riverctl map normal $mod+Shift H swap left
+riverctl map normal $mod+Shift J swap down
+riverctl map normal $mod+Shift K swap up
+riverctl map normal $mod+Shift L swap right
+
+# Tags (workspaces)
+for tag in (seq 1 9)
+  set tags (math "2 ^ ($tag - 1)")
+  riverctl map normal $mod       $tag set-focused-tags $tags
+  riverctl map normal $mod+Shift $tag set-view-tags    $tags
+end
+
+# Controls
+for mode in normal locked
+  # Volume
+  riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer --increase 5'
+  riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer --decrease 5'
+  riverctl map $mode None XF86AudioMute        spawn 'pamixer --toggle-mute'
+  riverctl map $mode $mod equal                spawn 'pamixer --increase 5'
+  riverctl map $mode $mod minus                spawn 'pamixer --decrease 5'
+
+  # Media
+  riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
+  riverctl map $mode None XF86AudioPause spawn 'playerctl play-pause'
+  riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
+  riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
+  riverctl map $mode None XF86AudioStop  spawn 'playerctl stop'
+  riverctl map $mode $mod bracketright   spawn 'playerctl next'
+  riverctl map $mode $mod bracketleft    spawn 'playerctl previous'
+  riverctl map $mode $mod backslash      spawn 'playerctl play-pause'
+
+  # Brightness
+  riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set 10%+'
+  riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 10%-'
+  riverctl map $mode $mod plus                  spawn 'brightnessctl set 10%+'
+  riverctl map $mode $mod underscore            spawn 'brightnessctl set 10%-'
+end
+
+# Screenshot
+riverctl map normal None Print spawn "still -c 'slurp | grim -g- -' | wl-copy"
+
+### Appearance
+
+set bg 0x222e2e
+set text 0xcdcdcd
+set border $bg
+set focus_bg $text
+set focus_text $bg
+set focus_border $text
+
+riverctl spawn 'swaybg -i ~/wallpapers/snowy-mountain.jpg -m fill'
+riverctl border-width 2
+riverctl border-color-focused $focus_border
+riverctl border-color-unfocused $border
+riverctl xcursor-theme Adwaita 24
+
+### Rules
+
+# To get a river border; force service-side-decorations for all applications.
+riverctl rule-add -app-id "*" ssd
+
+### Bar
+
+riverctl spawn "swayline | creek -hg 24 -fn monospace:size=12 -nf $text -nb $bg -ff $focus_text -fb $focus_bg"
+
+### Layout
+
+riverctl default-layout rivertile
+
+exec rivertile -main-location right

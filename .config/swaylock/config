@@ -1,40 +1,7 @@
+no-unlock-indicator
 ignore-empty-password
-
 font=monospace
-font-size=15
+font-size=12
+image=~/wallpapers/snowy-mountain.jpg
+scaling=fill
 
-# base
-color=#000000
-inside-color=#00000000
-ring-color=#00000000
-line-color=#00000000
-text-color=#ffffff
-separator-color=#00000000
-key-hl-color=#00000000
-bs-hl-color=#00000000
-
-# clear
-inside-clear-color=#00000000
-ring-clear-color=#00000000
-line-clear-color=#00000000
-text-clear-color=#ffffff
-
-# verifying
-inside-ver-color=#00000000
-ring-ver-color=#00000000
-line-ver-color=#00000000
-text-ver-color=#ffffff
-
-# wrong
-inside-wrong-color=#00000000
-ring-wrong-color=#00000000
-line-wrong-color=#00000000
-text-wrong-color=#ff8080
-
-# caps-lock
-inside-caps-lock-color=#00000000
-ring-caps-lock-color=#00000000
-line-caps-lock-color=#00000000
-text-caps-lock-color=#ffffff
-caps-lock-key-hl-color=#00000000
-caps-lock-bs-hl-color=#00000000
