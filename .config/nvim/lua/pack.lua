@@ -20,4 +20,5 @@ vim.pack.add({
   { src = "https://github.com/sainnhe/gruvbox-material" },
   { src = "https://github.com/sainnhe/everforest" },
   { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+  { src = "https://github.com/ellisonleao/gruvbox.nvim" },
 })
