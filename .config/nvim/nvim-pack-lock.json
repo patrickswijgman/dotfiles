@@ -12,6 +12,10 @@
       "rev": "3a904593c726951cd74b777a8b180c25270ddfd9",
       "src": "https://github.com/patrickswijgman/butter.nvim"
     },
+    "catppuccin": {
+      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
+      "src": "https://github.com/catppuccin/nvim"
+    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"

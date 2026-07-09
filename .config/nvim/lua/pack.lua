@@ -19,4 +19,5 @@ vim.pack.add({
   { src = "https://github.com/bluz71/vim-moonfly-colors" },
   { src = "https://github.com/sainnhe/gruvbox-material" },
   { src = "https://github.com/sainnhe/everforest" },
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 })
