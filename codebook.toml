@@ -109,6 +109,7 @@ words = [
     "keymaps",
     "langserver",
     "lclose",
+    "libnotify",
     "lockb",
     "lspconfig",
     "lualine",

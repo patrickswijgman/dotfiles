@@ -3,11 +3,11 @@ layer=overlay
 # Appearance
 font=monospace 11
 anchor=bottom-right
-background-color=#e2e2e2
-text-color=#1e1e1e
+background-color=#fbf1c7
+text-color=#654735
 border-size=0
-width=400
-height=400
+width=320
+height=320
 padding=20
 margin=20,10
 outer-margin=40,20
