@@ -170,6 +170,7 @@ words = [
     "splitv",
     "sqp",
     "sshconfig",
+    "sso",
     "starlark",
     "statusline",
     "stylua",
