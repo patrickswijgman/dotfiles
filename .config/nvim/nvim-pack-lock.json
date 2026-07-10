@@ -12,29 +12,13 @@
       "rev": "3a904593c726951cd74b777a8b180c25270ddfd9",
       "src": "https://github.com/patrickswijgman/butter.nvim"
     },
-    "catppuccin": {
-      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
-      "src": "https://github.com/catppuccin/nvim"
-    },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
-    "everforest": {
-      "rev": "85a86eb62409e3ec88713bff3d1b9d7374e112e4",
-      "src": "https://github.com/sainnhe/everforest"
-    },
     "gruvbox-material": {
       "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
       "src": "https://github.com/sainnhe/gruvbox-material"
-    },
-    "gruvbox.nvim": {
-      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
-      "src": "https://github.com/ellisonleao/gruvbox.nvim"
-    },
-    "nordic.nvim": {
-      "rev": "9fb62116b891184049c50ca6ffb0d3bc100a1a6e",
-      "src": "https://github.com/AlexvZyl/nordic.nvim"
     },
     "nvim-autopairs": {
       "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
@@ -71,14 +55,6 @@
     "telescope.nvim": {
       "rev": "427b576c16792edad01a92b89721d923c19ad60f",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
-    },
-    "vague.nvim": {
-      "rev": "49fe06ad33d8847b931ba4279197bda222374cd1",
-      "src": "https://github.com/vague-theme/vague.nvim"
-    },
-    "vim-moonfly-colors": {
-      "rev": "261664f92ed51cf0c077555b2d4b2530307eac17",
-      "src": "https://github.com/bluz71/vim-moonfly-colors"
     }
   }
 }

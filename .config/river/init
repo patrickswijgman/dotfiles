@@ -33,7 +33,7 @@ riverctl input 'pointer-*' disable-while-typing enabled
 # Tools
 riverctl map normal $mod Return spawn 'footclient'
 riverctl map normal $mod Delete spawn 'swaylock'
-riverctl map normal $mod D      spawn "river spawn $(tofi-run)"
+riverctl map normal $mod D      spawn 'tofi-run | xargs -r riverctl spawn'
 
 # Windows
 riverctl map normal $mod F       toggle-fullscreen

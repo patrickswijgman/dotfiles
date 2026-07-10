@@ -1,6 +1,6 @@
 config.load_autoconfig(False)
 
-config.source('themes/gruvbox.py')
+config.source('themes/gruvbox-material.py')
 
 c.auto_save.session = True
 c.colors.webpage.preferred_color_scheme = "dark"
