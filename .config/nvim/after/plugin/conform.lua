@@ -11,7 +11,7 @@ require("conform").setup({
     yaml = { "prettierd" },
     markdown = { "prettierd" },
     toml = { "taplo" },
-    python = { "ruff" },
+    python = { "ruff_organize_imports", "ruff_format" },
     go = { "gofmt" },
     lua = { "stylua" },
     nix = { "nixfmt" },
