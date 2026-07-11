@@ -2,15 +2,44 @@
 # River init — run on startup. Must be executable (chmod +x).
 # See `man riverctl` / `man rivertile`.
 
-set mod Super
+set -g mod Super
+
+### Helpers
+
+function get_tag_mask --argument-names tag
+  math "2 ^ ($tag - 1)"
+end
+
+function bind_tag --argument-names key mask
+  riverctl map normal $mod       $key set-focused-tags $mask
+  riverctl map normal $mod+Shift $key set-view-tags    $mask
+end
+
+set tag_workspace_1 (get_tag_mask 1)
+set tag_workspace_2 (get_tag_mask 2)
+set tag_workspace_3 (get_tag_mask 3)
+set tag_workspace_4 (get_tag_mask 4)
+set tag_music       (get_tag_mask 10)
+set tag_work        (get_tag_mask 11)
 
 ### Environment
 
 # Push the Wayland env into the D-Bus/systemd-user session so dbus-activated
 # services (e.g. xdg-desktop-portal-gtk, which backs Firefox file dialogs) can
 # reach the display.
-set -x XDG_CURRENT_DESKTOP river
 dbus-update-activation-environment --systemd --all
+
+### Settings
+
+riverctl focus-follows-cursor "normal"
+riverctl hide-cursor timeout 2000
+riverctl set-repeat 25 300
+
+### Rules
+
+riverctl rule-add ssd
+riverctl rule-add -app-id 'spotify' tags $tag_music
+riverctl rule-add -app-id 'slack'   tags $tag_work
 
 ### Start programs
 
@@ -21,6 +50,7 @@ riverctl spawn 'mako'
 riverctl spawn 'swayidle -w'
 riverctl spawn 'gammastep'
 riverctl spawn 'fish -c hyperfocus'
+riverctl spawn 'spotify'
 
 ### Input
 
@@ -31,33 +61,29 @@ riverctl input 'pointer-*' disable-while-typing enabled
 
 ### Key bindings
 
-# Tools
-riverctl map normal $mod Return spawn 'footclient'
-riverctl map normal $mod Delete spawn 'swaylock'
-riverctl map normal $mod D      spawn 'tofi-run | xargs -r riverctl spawn'
-riverctl map normal $mod W      spawn 'librewolf'
-
-# Windows
+riverctl map normal $mod Return  spawn 'footclient'
+riverctl map normal $mod Delete  spawn 'swaylock'
+riverctl map normal $mod D       spawn 'tofi-run | xargs -r riverctl spawn'
+riverctl map normal $mod W       spawn 'librewolf'
 riverctl map normal $mod F       toggle-fullscreen
 riverctl map normal $mod Z       zoom
-riverctl map normal $mod+Shift Q close
-
-# Focus / swap
 riverctl map normal $mod H       focus-view left
 riverctl map normal $mod J       focus-view down
 riverctl map normal $mod K       focus-view up
 riverctl map normal $mod L       focus-view right
+riverctl map normal $mod Tab     focus-previous-tags
 riverctl map normal $mod+Shift H swap left
 riverctl map normal $mod+Shift J swap down
 riverctl map normal $mod+Shift K swap up
 riverctl map normal $mod+Shift L swap right
+riverctl map normal $mod+Shift Q close
 
-# Tags (workspaces)
-for tag in (seq 1 9)
-  set tags (math "2 ^ ($tag - 1)")
-  riverctl map normal $mod       $tag set-focused-tags $tags
-  riverctl map normal $mod+Shift $tag set-view-tags    $tags
-end
+bind_tag 1 $tag_workspace_1
+bind_tag 2 $tag_workspace_2
+bind_tag 3 $tag_workspace_3
+bind_tag 4 $tag_workspace_4
+bind_tag M $tag_music
+bind_tag N $tag_work
 
 for mode in normal locked
   # Volume
@@ -66,6 +92,7 @@ for mode in normal locked
   riverctl map $mode None XF86AudioMute        spawn 'pamixer --toggle-mute'
   riverctl map $mode $mod equal                spawn 'pamixer --increase 5'
   riverctl map $mode $mod minus                spawn 'pamixer --decrease 5'
+  riverctl map $mode $mod 0                    spawn 'pamixer --toggle-mute'
 
   # Mediaplayer
   riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
@@ -75,7 +102,7 @@ for mode in normal locked
   riverctl map $mode None XF86AudioStop  spawn 'playerctl stop'
   riverctl map $mode $mod bracketright   spawn 'playerctl next'
   riverctl map $mode $mod bracketleft    spawn 'playerctl previous'
-  riverctl map $mode $mod backslash      spawn 'playerctl play-pause'
+  riverctl map $mode $mod P              spawn 'playerctl play-pause'
 
   # Brightness
   riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set 10%+'
@@ -104,20 +131,9 @@ riverctl border-color-urgent $urgent_border
 riverctl border-width 2
 riverctl xcursor-theme Adwaita 24
 
-### Settings
-
-riverctl focus-follows-cursor "normal"
-riverctl hide-cursor timeout 2000
-riverctl set-repeat 25 300
-
-### Rules
-
-# Required to display borders on all windows.
-riverctl rule-add ssd
-
 ### Bar
 
-riverctl spawn "swayline | creek -hg 24 -fn monospace:size=12 -nf $text -nb $bg -ff $focus_text -fb $focus_bg"
+# riverctl spawn "swayline | creek -hg 24 -fn monospace:size=12 -nf $text -nb $bg -ff $focus_text -fb $focus_bg"
 
 ### Layout
 
