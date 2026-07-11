@@ -7,6 +7,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
+  { src = "https://github.com/olrtg/nvim-emmet" },
   { src = "https://github.com/patrickswijgman/birb.nvim" },
   { src = "https://github.com/patrickswijgman/bulb.nvim" },
   { src = "https://github.com/patrickswijgman/butter.nvim" },

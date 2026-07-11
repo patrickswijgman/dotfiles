@@ -1,7 +1,7 @@
 require("spider").setup({
   subwordMovement = true,
-  skipInsignificantPunctuation = true,
-  consistentOperatorPending = true,
+  skipInsignificantPunctuation = false,
+  consistentOperatorPending = false,
 })
 
 vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<cr>", { desc = "Move to subword start" })

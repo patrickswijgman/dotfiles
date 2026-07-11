@@ -8,15 +8,16 @@ set mod Super
 
 # Push the Wayland env into the D-Bus/systemd-user session so dbus-activated
 # services (e.g. xdg-desktop-portal-gtk, which backs Firefox file dialogs) can
-# reach the display. Without this they start with no WAYLAND_DISPLAY and crash.
-# XDG_CURRENT_DESKTOP=river makes the portal load river-portals.conf.
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=river
+# reach the display.
+set -x XDG_CURRENT_DESKTOP river
+dbus-update-activation-environment --systemd --all
 
 ### Start programs
 
+riverctl spawn 'swaybg -i ~/wallpapers/house-autumn.jpg -m fill'
 riverctl spawn 'foot --server'
-riverctl spawn 'mako'
 riverctl spawn 'kanshi'
+riverctl spawn 'mako'
 riverctl spawn 'swayidle -w'
 riverctl spawn 'gammastep'
 riverctl spawn 'fish -c hyperfocus'
@@ -34,6 +35,7 @@ riverctl input 'pointer-*' disable-while-typing enabled
 riverctl map normal $mod Return spawn 'footclient'
 riverctl map normal $mod Delete spawn 'swaylock'
 riverctl map normal $mod D      spawn 'tofi-run | xargs -r riverctl spawn'
+riverctl map normal $mod W      spawn 'librewolf'
 
 # Windows
 riverctl map normal $mod F       toggle-fullscreen
@@ -57,7 +59,6 @@ for tag in (seq 1 9)
   riverctl map normal $mod+Shift $tag set-view-tags    $tags
 end
 
-# Controls
 for mode in normal locked
   # Volume
   riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer --increase 5'
@@ -66,7 +67,7 @@ for mode in normal locked
   riverctl map $mode $mod equal                spawn 'pamixer --increase 5'
   riverctl map $mode $mod minus                spawn 'pamixer --decrease 5'
 
-  # Media
+  # Mediaplayer
   riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
   riverctl map $mode None XF86AudioPause spawn 'playerctl play-pause'
   riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
@@ -88,25 +89,31 @@ riverctl map normal None Print spawn "still -c 'slurp | grim -g- -' | wl-copy"
 
 ### Appearance
 
-set bg 0x282828
-set text 0xd4be98
+set bg 0x1e1e1e
+set text 0xe2e2e2
 set border $bg
 set focus_bg $text
 set focus_text $bg
 set focus_border $text
+set urgent_border 0xff8080
 
 riverctl background-color 0x000000
-riverctl spawn 'swaybg -i ~/wallpapers/house-autumn.jpg -m fill'
-
-riverctl border-width 2
 riverctl border-color-focused $focus_border
 riverctl border-color-unfocused $border
+riverctl border-color-urgent $urgent_border
+riverctl border-width 2
 riverctl xcursor-theme Adwaita 24
+
+### Settings
+
+riverctl focus-follows-cursor "normal"
+riverctl hide-cursor timeout 2000
+riverctl set-repeat 25 300
 
 ### Rules
 
-# To get a river border; force server-side-decorations for all applications.
-riverctl rule-add -app-id "*" ssd
+# Required to display borders on all windows.
+riverctl rule-add ssd
 
 ### Bar
 

@@ -1,2 +1,0 @@
-builtins = ["c", "config"]
-line-length = 320
