@@ -2,13 +2,14 @@
 # River init — run on startup. Must be executable (chmod +x).
 # See `man riverctl` / `man rivertile`.
 
-set mod             Super
-set workspace_1     1
-set workspace_2     2
-set workspace_3     4
-set workspace_4     8
-set workspace_music 16
-set workspace_work  32
+set mod Super
+
+# Tag masks
+set workspace_1 1
+set workspace_2 2
+set workspace_3 4
+set workspace_4 8
+set workspace_5 16
 
 ### Environment
 
@@ -26,8 +27,8 @@ riverctl set-repeat 25 300
 ### Rules
 
 riverctl rule-add ssd
-riverctl rule-add -app-id 'spotify' tags $workspace_music
-riverctl rule-add -app-id 'slack'   tags $workspace_work
+riverctl rule-add -app-id 'spotify' tags $workspace_4
+riverctl rule-add -app-id 'slack'   tags $workspace_5
 
 ### Start programs
 
@@ -38,7 +39,12 @@ riverctl spawn 'mako'
 riverctl spawn 'swayidle -w'
 riverctl spawn 'gammastep'
 riverctl spawn 'fish -c hyperfocus'
+riverctl spawn 'librewolf'
 riverctl spawn 'spotify'
+
+if string match -q '*work' (hostname)
+  riverctl spawn 'slack'
+end
 
 ### Input
 
@@ -64,8 +70,7 @@ riverctl map normal $mod       1      set-focused-tags $workspace_1
 riverctl map normal $mod       2      set-focused-tags $workspace_2
 riverctl map normal $mod       3      set-focused-tags $workspace_3
 riverctl map normal $mod       4      set-focused-tags $workspace_4
-riverctl map normal $mod       M      set-focused-tags $workspace_music
-riverctl map normal $mod       N      set-focused-tags $workspace_work
+riverctl map normal $mod       5      set-focused-tags $workspace_5
 riverctl map normal $mod+Shift Q      close
 riverctl map normal $mod+Shift H      swap left
 riverctl map normal $mod+Shift J      swap down
@@ -74,7 +79,6 @@ riverctl map normal $mod+Shift L      swap right
 riverctl map normal $mod+Shift 1      set-view-tags $workspace_1
 riverctl map normal $mod+Shift 2      set-view-tags $workspace_2
 riverctl map normal $mod+Shift 3      set-view-tags $workspace_3
-riverctl map normal $mod+Shift 4      set-view-tags $workspace_4
 
 for mode in normal locked
   # Volume
@@ -107,24 +111,16 @@ riverctl map normal None Print spawn "still -c 'slurp | grim -g- -' | wl-copy"
 
 ### Appearance
 
-set bg 0x1e1e1e
-set text 0xe2e2e2
-set border $bg
-set focus_bg $text
-set focus_text $bg
-set focus_border $text
-set urgent_border 0xff8080
+set border 0x1e1e1e
+set border_focus 0xe2e2e2
+set border_urgent 0xff8080
 
 riverctl background-color 0x000000
-riverctl border-color-focused $focus_border
+riverctl border-color-focused $border_focus
 riverctl border-color-unfocused $border
-riverctl border-color-urgent $urgent_border
+riverctl border-color-urgent $border_urgent
 riverctl border-width 2
 riverctl xcursor-theme Adwaita 24
-
-### Bar
-
-# riverctl spawn "swayline | creek -hg 24 -fn monospace:size=12 -nf $text -nb $bg -ff $focus_text -fb $focus_bg"
 
 ### Layout
 
