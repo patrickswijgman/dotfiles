@@ -16,6 +16,10 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "fleet-theme-nvim": {
+      "rev": "45c300c31485def326db00d9c857760d50e5c728",
+      "src": "https://github.com/felipeagc/fleet-theme-nvim"
+    },
     "gruvbox-material": {
       "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
       "src": "https://github.com/sainnhe/gruvbox-material"

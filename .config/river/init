@@ -21,7 +21,7 @@ dbus-update-activation-environment --systemd --all
 ### Settings
 
 riverctl focus-follows-cursor "normal"
-riverctl hide-cursor timeout 2000
+riverctl hide-cursor timeout 5000
 riverctl set-repeat 25 300
 
 ### Rules
@@ -32,7 +32,6 @@ riverctl rule-add -app-id 'slack'   tags $workspace_5
 
 ### Start programs
 
-riverctl spawn 'swaybg -i ~/wallpapers/house-autumn.jpg -m fill'
 riverctl spawn 'foot --server'
 riverctl spawn 'kanshi'
 riverctl spawn 'mako'
@@ -126,4 +125,4 @@ riverctl xcursor-theme Adwaita 24
 
 riverctl default-layout rivertile
 
-exec rivertile -main-location right -main-ratio 0.635
+exec rivertile -main-location right -main-ratio 0.635 -view-padding 0 -outer-padding 0

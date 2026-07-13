@@ -11,7 +11,10 @@ vim.pack.add({
   { src = "https://github.com/patrickswijgman/birb.nvim" },
   { src = "https://github.com/patrickswijgman/bulb.nvim" },
   { src = "https://github.com/patrickswijgman/butter.nvim" },
-  { src = "https://github.com/sainnhe/gruvbox-material" },
   { src = "https://github.com/stevearc/conform.nvim" },
   { src = "https://github.com/windwp/nvim-autopairs" },
+
+  -- Colorschemes
+  { src = "https://github.com/sainnhe/gruvbox-material" },
+  { src = "https://github.com/felipeagc/fleet-theme-nvim" },
 })
