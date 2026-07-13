@@ -2,9 +2,7 @@
 # River init — run on startup. Must be executable (chmod +x).
 # See `man riverctl` / `man rivertile`.
 
-set mod Super
-
-# Tag masks
+set mod         Super
 set workspace_1 1
 set workspace_2 2
 set workspace_3 4
@@ -22,7 +20,7 @@ dbus-update-activation-environment --systemd --all
 
 riverctl focus-follows-cursor "normal"
 riverctl hide-cursor timeout 5000
-riverctl set-repeat 25 300
+riverctl set-repeat 30 300
 
 ### Rules
 
@@ -34,7 +32,7 @@ riverctl rule-add -app-id 'slack'   tags $workspace_5
 
 riverctl spawn 'foot --server'
 riverctl spawn 'kanshi'
-riverctl spawn 'mako'
+riverctl spawn 'fnott'
 riverctl spawn 'swayidle -w'
 riverctl spawn 'gammastep'
 riverctl spawn 'fish -c hyperfocus'
@@ -54,6 +52,7 @@ riverctl input 'pointer-*' disable-while-typing enabled
 
 ### Key bindings
 
+riverctl map normal None       Print  spawn 'still -c "slurp | grim -g- -" | wl-copy'
 riverctl map normal $mod       Return spawn 'footclient'
 riverctl map normal $mod       Delete spawn 'swaylock'
 riverctl map normal $mod       D      spawn 'tofi-run | xargs -r riverctl spawn'
@@ -80,39 +79,33 @@ riverctl map normal $mod+Shift 2      set-view-tags $workspace_2
 riverctl map normal $mod+Shift 3      set-view-tags $workspace_3
 
 for mode in normal locked
-  # Volume
-  riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer --increase 5'
-  riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer --decrease 5'
-  riverctl map $mode None XF86AudioMute        spawn 'pamixer --toggle-mute'
-  riverctl map $mode $mod equal                spawn 'pamixer --increase 5'
-  riverctl map $mode $mod minus                spawn 'pamixer --decrease 5'
-  riverctl map $mode $mod 0                    spawn 'pamixer --toggle-mute'
+  riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer --increase 5'
+  riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer --decrease 5'
+  riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
+  riverctl map $mode $mod equal                 spawn 'pamixer --increase 5'
+  riverctl map $mode $mod minus                 spawn 'pamixer --decrease 5'
+  riverctl map $mode $mod 0                     spawn 'pamixer --toggle-mute'
 
-  # Mediaplayer
-  riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
-  riverctl map $mode None XF86AudioPause spawn 'playerctl play-pause'
-  riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
-  riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
-  riverctl map $mode None XF86AudioStop  spawn 'playerctl stop'
-  riverctl map $mode $mod bracketright   spawn 'playerctl next'
-  riverctl map $mode $mod bracketleft    spawn 'playerctl previous'
-  riverctl map $mode $mod P              spawn 'playerctl play-pause'
+  riverctl map $mode None XF86AudioPlay         spawn 'playerctl play-pause'
+  riverctl map $mode None XF86AudioPause        spawn 'playerctl play-pause'
+  riverctl map $mode None XF86AudioNext         spawn 'playerctl next'
+  riverctl map $mode None XF86AudioPrev         spawn 'playerctl previous'
+  riverctl map $mode None XF86AudioStop         spawn 'playerctl stop'
+  riverctl map $mode $mod bracketright          spawn 'playerctl next'
+  riverctl map $mode $mod bracketleft           spawn 'playerctl previous'
+  riverctl map $mode $mod P                     spawn 'playerctl play-pause'
 
-  # Brightness
   riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set 10%+'
   riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 10%-'
   riverctl map $mode $mod plus                  spawn 'brightnessctl set 10%+'
   riverctl map $mode $mod underscore            spawn 'brightnessctl set 10%-'
 end
 
-# Screenshot
-riverctl map normal None Print spawn "still -c 'slurp | grim -g- -' | wl-copy"
-
 ### Appearance
 
-set border 0x1e1e1e
-set border_focus 0xe2e2e2
-set border_urgent 0xff8080
+set border 0x000000
+set border_focus 0xffffff
+set border_urgent 0xff0000
 
 riverctl background-color 0x000000
 riverctl border-color-focused $border_focus

@@ -17,4 +17,5 @@ vim.pack.add({
   -- Colorschemes
   { src = "https://github.com/sainnhe/gruvbox-material" },
   { src = "https://github.com/felipeagc/fleet-theme-nvim" },
+  { src = "https://github.com/vague-theme/vague.nvim" },
 })
