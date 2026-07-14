@@ -1,4 +1,7 @@
 {
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "statusLine": {
     "type": "command",
     "command": "fish /home/patrick/.claude/statusline-command.fish"
@@ -26,6 +29,6 @@
     }
   },
   "tui": "fullscreen",
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipWorkflowUsageWarning": true,
+  "skipAutoPermissionPrompt": true
 }

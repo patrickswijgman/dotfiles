@@ -5,7 +5,7 @@ require("conform").setup({
     javascriptreact = { "biome", "prettierd", stop_after_first = true },
     typescriptreact = { "biome", "prettierd", stop_after_first = true },
     html = { "biome", "prettierd", stop_after_first = true },
-    css = { "biome", "prettierd", stop_after_first = true },
+    css = { "stylelint", "biome" },
     json = { "biome", "prettierd", stop_after_first = true },
     jsonc = { "biome", "prettierd", stop_after_first = true },
     yaml = { "prettierd" },

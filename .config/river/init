@@ -18,7 +18,6 @@ dbus-update-activation-environment --systemd --all
 
 ### Settings
 
-riverctl focus-follows-cursor "normal"
 riverctl hide-cursor timeout 5000
 riverctl set-repeat 30 300
 
